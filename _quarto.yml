@@ -9,8 +9,8 @@ project:
 website:
   title: "L4 Fluid Mechanics"
   description: "Course materials for ENGI44710 / ENGI47215 Fluid Mechanics, Durham University"
-  site-url: "https://REPLACE-ME.github.io/l4-fluid-mechanics"
-  repo-url: "https://github.com/REPLACE-ME/l4-fluid-mechanics"
+  site-url: "https://majidbastankhah.github.io/l4-fluid-mechanics"
+  repo-url: "https://github.com/majidbastankhah/l4-fluid-mechanics"
   repo-actions: [issue]
   search:
     location: navbar
