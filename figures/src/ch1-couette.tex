@@ -1,0 +1,51 @@
+    \begin{tikzpicture}[>=latex, scale=1.2]
+        
+        % --- 1. WALLS ---
+        % Dimensions
+        \def\Length{8}
+        \def\Height{3}
+        
+        % Bottom Wall (Stationary)
+        \draw[thick] (0,0) -- (\Length,0);
+        \fill[pattern=north east lines, pattern color=black!60] (0,0) rectangle (\Length,-0.25);
+        \node at (\Length/2, -0.6) {\Large \textit{stationary plate}};
+        
+        % Top Wall (Moving)
+        \draw[thick] (0,\Height) -- (\Length,\Height);
+        \fill[pattern=north east lines, pattern color=black!60] (0,\Height) rectangle (\Length,\Height+0.25);
+
+        % --- 2. COORDINATE SYSTEM ---
+        % Origin shift slightly right
+        \draw[->, thick] (0.5, 0) -- (0.5, 1.5) node[right] {$y$};
+        \draw[->, thick] (0.5, 0) -- (1.5, 0) node[above] {$x$};
+
+        % --- 3. VELOCITY PROFILE ---
+        % Start point x=2.5
+        \draw[dashed, thick] (2.5, 0) -- (2.5, \Height); % Vertical reference
+        \draw[thick] (2.5, 0) -- (5.5, \Height);         % Velocity gradient line
+        
+        % Velocity vector arrow u(y)
+        \draw[->, thick] (2.5, 1.5) -- (4.0, 1.5) node[right] {\large $u(y)$};
+
+        % --- 4. FLUID ELEMENTS (Sheared) ---
+        % Element (1) - Higher up
+        % Drawing a small parallelogram to show shear
+        \begin{scope}[shift={(3.2, 2.2)}]
+            \draw[fill=white, pattern=north east lines] (0,0) -- (0.5,0) -- (0.3,-0.3) -- (-0.2,-0.3) -- cycle;
+            \node[right] at (0.5, 0) {(1)};
+        \end{scope}
+
+        % Element (2) - Lower down
+        \begin{scope}[shift={(3.8, 0.6)}]
+            \draw[fill=white, pattern=north east lines] (0,0) -- (0.5,0) -- (0.3,-0.3) -- (-0.2,-0.3) -- cycle;
+            \node[right] at (0.5, 0) {(2)};
+        \end{scope}
+
+        % --- 5. TOP PLATE FORCES ---
+        % Shear Stress Tau
+        \draw[->, ultra thick] (3.0, \Height+0.5) -- (5.0, \Height+0.5) node[midway, above] {\Large $\tau$};
+        
+        % Velocity U
+        \draw[->, ultra thick, double] (\Length+0.5, \Height) -- (\Length+1.5, \Height) node[right] {\Large $U$};
+
+    \end{tikzpicture}

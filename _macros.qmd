@@ -1,0 +1,11 @@
+<!-- LaTeX macros shared by every web page and slide deck. Included with {{< include /_macros.qmd >}}.
+     The PDF versions get the same macros from assets/macros.tex. -->
+::: {.content-visible when-format="html"}
+::: {.hidden}
+$$
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\uvec}[1]{\hat{#1}}
+\newcommand{\del}{\nabla}
+$$
+:::
+:::

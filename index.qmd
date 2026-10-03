@@ -1,0 +1,51 @@
+---
+title: "L4 Fluid Mechanics"
+subtitle: "ENGI44710 / ENGI47215 · Department of Engineering, Durham University"
+toc: false
+---
+
+Welcome to the course website. Everything for the module lives here: lecture notes, slides, problems with hints and solutions, and workshop material. Use the **search** box (top right) to find any topic across all of them.
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+### 📖 [Notes](notes/index.qmd)
+The full course notes, one page per chapter, with worked examples, interactive figures and quick self-checks. Each chapter can also be downloaded as a PDF.
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### 🖥️ [Slides](slides.qmd)
+The slides used in lectures. They open full screen in your browser and link back to the relevant part of the notes.
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### ✎ [Problems](problems/index.qmd)
+One problem bank, ordered by topic. Each problem points to the section of the notes to study first, and has a hint, a final answer and a full solution.
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### 🧪 [Workshops](workshops/index.qmd)
+Guided problem-solving sessions, released before each workshop.
+:::
+
+:::
+
+## Course roadmap
+
+| Chapter | Topic | What you will learn |
+|:--|:--|:--|
+| 1 | [Preliminaries](notes/ch1.qmd) | Fluid elements, Eulerian vs Lagrangian, the material derivative, vorticity, shear stress |
+| 2 | Conservation equations | Continuity, Navier–Stokes and energy equations; exact solutions for simple flows |
+| 3 | Turbulence and turbulence modelling | What turbulence is, Reynolds averaging, eddy viscosity and $k$–$\varepsilon$ models |
+| 4 | Boundary layers | Boundary-layer equations, Blasius solution, momentum integral, turbulent boundary layers, separation |
+
+## How to get the most out of this course
+
+1. **Before the lecture**, skim the notes section for that week.
+2. **In the lecture**, follow the slides and join in with the quick questions.
+3. **After the lecture**, work through the linked problems: try first, use the hint, then check the answer.
+4. Use the [Key equations](resources/key-equations.qmd) page while solving problems, and come to the workshops with questions.
+
+::: {.callout-tip appearance="simple"}
+Found a mistake or something unclear? Use the **Report an issue** link in the right-hand margin of any page, or email the lecturer.
+:::

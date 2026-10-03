@@ -1,0 +1,21 @@
+# Settings shared by every slide deck in this folder
+format:
+  revealjs:
+    theme: [default, ../assets/slides.scss]
+    slide-number: c/t
+    show-slide-number: all
+    chalkboard:
+      buttons: true
+    menu: true
+    preview-links: auto
+    hash-type: number
+    width: 1200
+    height: 750
+    margin: 0.06
+    footer: "L4 Fluid Mechanics · Chapter 1"
+    logo: ../assets/img/durham-logo.png
+    transition: none
+    center: false
+    auto-stretch: false
+    pdf-separate-fragments: false
+toc: false

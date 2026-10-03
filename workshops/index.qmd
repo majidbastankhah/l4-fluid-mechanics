@@ -1,0 +1,13 @@
+---
+title: "Workshops"
+toc: false
+---
+
+Workshops are guided problem-solving sessions in which we work through a full problem together, step by step. The handout for each workshop will be posted here before the session, and the completed version afterwards.
+
+| Workshop | Topic | Status |
+|:--|:--|:--|
+| 1 | Plane Couette and Poiseuille flow | released with Chapter 2 |
+| 2 | Flow between concentric cylinders | released with Chapter 2 |
+| 3 | Turbulence | released with Chapter 3 |
+| 4 | Boundary layers | released with Chapter 4 |

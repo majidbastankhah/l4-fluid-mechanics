@@ -1,0 +1,12 @@
+/*-- scss:defaults --*/
+// Durham "Palatinate" purple as the accent colour
+$primary: #68246D;
+$link-color: #7b2d82;
+$font-family-sans-serif: unquote("'Source Sans 3'"), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$headings-font-weight: 600;
+$font-size-base: 1.05rem;
+$callout-color-note: #2b6cb0;
+$callout-color-tip: #2f855a;
+
+/*-- scss:rules --*/
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap');

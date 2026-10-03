@@ -1,0 +1,31 @@
+/*-- scss:defaults --*/
+$presentation-heading-color: #68246D;
+$link-color: #7b2d82;
+$presentation-font-size-root: 34px;
+$presentation-heading-font-weight: 600;
+$font-family-sans-serif: unquote("'Source Sans 3'"), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$presentation-heading-font: $font-family-sans-serif;
+
+/*-- scss:rules --*/
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap');
+.reveal .slide-logo { max-height: 2.2rem !important; bottom: 6px !important; }
+.reveal h2 { border-bottom: 3px solid #68246D; padding-bottom: .15em; }
+.reveal .callout { font-size: .85em; }
+.reveal .notes-link { position: absolute; right: 0; top: 2.9rem; font-size: .5em; z-index: 5; }
+.reveal .notes-link a { color: #68246D; border: 1px solid #68246D; border-radius: 999px; padding: .1em .6em; }
+.reveal .answer-box { border: 2px solid #68246D; border-radius: 10px; padding: .1em .8em; display: inline-block; margin-top: .3em; }
+.reveal .poll ol { list-style-type: upper-alpha; }
+.reveal .poll li { margin: .25em 0; }
+.reveal .poll .correct.visible { background: rgba(47,133,90,.15); border-radius: 6px; }
+.reveal .kicker { color: #6b6b6b; font-size: .7em; text-transform: uppercase; letter-spacing: .08em; }
+.reveal .small { font-size: .7em; }
+.reveal .smaller { font-size: .55em; }
+/* interactive widgets inside slides */
+.reveal .widget { font-size: .48em; max-width: 1000px; margin: .2em auto; border: 1px solid #ddd; border-radius: 10px; padding: .4em .8em; }
+.reveal .widget .wtitle { font-weight: 600; }
+.reveal .widget .wctrl { display: flex; flex-wrap: wrap; gap: .4em 1em; align-items: center; margin: .2em 0; }
+.reveal .widget canvas { width: 100%; height: auto; display: block; }
+.reveal .widget .readout { margin-top: .3em; line-height: 1.35; }
+.reveal .widget .wbtn { border: 1px solid #68246D; background: #fff; border-radius: 6px; padding: 0 .5em; font-size: 1em; }
+.reveal .widget select, .reveal .widget input { font-size: 1em; }
+.reveal .quarto-figure img { max-height: 420px; }

@@ -1,0 +1,21 @@
+---
+title: "Lecture slides"
+format: html
+toc: false
+---
+
+The slides open full screen in your browser. They link to the matching section of the notes, and the interactive figures work inside the slides too.
+
+| Lecture | Topic |
+|:--|:--|
+| [Chapter 1 · Lecture 1](slides/ch1-lecture1.qmd) | Fields and the material derivative |
+| [Chapter 1 · Lecture 2](slides/ch1-lecture2.qmd) | Vorticity and shear stress |
+
+::: {.callout-note appearance="simple" collapse="true"}
+## Keyboard shortcuts
+- **→ / Space**: next step · **←**: back · **F**: full screen · **Esc / O**: slide overview
+- **M**: menu (jump to any slide, change theme)
+- **S**: speaker view with notes and timer (lecturer)
+- **C**: draw on the slide · **B**: blackboard
+- **E**: printable view; then print to PDF from your browser to save a copy
+:::

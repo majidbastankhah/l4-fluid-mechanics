@@ -1,0 +1,280 @@
+---
+title: "Chapter 1: Preliminaries"
+subtitle: "Lecture 1 · Fields and the material derivative"
+author: "Majid Bastankhah"
+institute: "Department of Engineering, Durham University · ENGI44710 / ENGI47215"
+---
+
+## Two approaches to fluid mechanics
+
+{{< include /_macros.qmd >}}
+
+[[📖 Notes §1.1](../notes/ch1.qmd#sec-intro)]{.notes-link}
+
+Two complementary viewpoints:
+
+::: {.incremental}
+- **Control-volume approach**: used in L1–L2 to analyse devices (pumps, turbines, ducts). Applies conservation laws over finite regions.
+- **Differential approach**: used in this course. Examines pointwise behaviour of *fluid elements*.
+:::
+
+::: {.notes}
+OPENING: This first lecture sets the conceptual foundations needed for the differential analysis of fluid motion. They have seen fluids before, but always at the control-volume level. Here we shift to analysing fields: velocity, pressure, density defined at every point. This is essential for later derivations of continuity, Navier–Stokes, and energy equations. Make clear that this pointwise viewpoint is what enables CFD and many modern engineering analyses.
+
+Highlight how the control-volume approach is good for global quantities (flow rate, forces, power), whereas the differential approach enables modelling of velocity gradients, shear stresses, vorticity, and instabilities. The shift to the Eulerian field description is a major step forward.
+:::
+
+## Definition of a fluid
+
+::: {.callout-tip icon=false}
+## A fluid is:
+*a substance that deforms continuously when subjected to a shear force.*
+:::
+
+Implications:
+
+- Fluids cannot sustain a shear force at rest.
+- Even tiny shear forces cause ongoing deformation.
+
+::: {.notes}
+Use the comparison with solids: solids can support a shear force without flowing; fluids cannot. This behaviour defines fluids functionally rather than by molecular structure. It's a key concept for understanding viscosity and shear-driven flows later.
+
+Shear force acts parallel, not perpendicular, to a surface.
+:::
+
+## Inertial vs viscous effects: Reynolds number
+
+Two competing physical influences:
+
+- **Inertial forces**: due to fluid momentum (convective transport, destabilising).
+- **Viscous forces**: due to momentum diffusion (stabilising).
+
+$$
+Re = \frac{\text{inertia forces}}{\text{viscous forces}}
+$$
+
+::: {.fragment}
+- $Re \ll 1$: viscous-dominated, smooth creeping motion.
+- $Re \gg 1$: inertia-dominated, possible turbulence.
+:::
+
+::: {.notes}
+Discuss classic examples: microfluidics (Re tiny), river flow (Re large), aerodynamics (Re very large). Students should appreciate how Re governs qualitative flow behaviour and determines modelling strategy.
+
+Also discuss convective vs diffusive process and how it relates to the Re number definition.
+:::
+
+## Unknown fields in fluid mechanics
+
+Six primary fields in general flows:
+
+$$
+u,\; v,\; w,\; p,\; \rho,\; T
+$$
+
+Connected through:
+
+- Continuity (mass)
+- Momentum conservation (3 scalar equations)
+- Energy conservation
+- Equation of state
+
+::: {.notes}
+This produces a tightly coupled system of PDEs. Analytical solutions exist only for special cases; most engineering flows require numerical methods. Important to emphasise that the equations stem from universal physical principles, not empirical correlations.
+
+Momentum equation: body forces like gravity, shear stress and pressure gradient forces ...
+:::
+
+## Continuum hypothesis
+
+Assumptions:
+
+- Fluid behaves as a **continuous medium**.
+- Properties represent averages over volumes that are still large compared with molecular scales.
+- Quantities like $u(x,y,z,t)$ are smooth functions.
+
+::: {.notes}
+Writing equations in differential form is the key for solving these equations numerically. Note that within each element we assume changes in fluid properties are negligible.
+
+Clarify that although fluids are molecular, for most engineering scales the continuum approximation is extraordinarily accurate. Mention regimes where it breaks down: very high vacuums, micro/nano devices, rarefied gas dynamics.
+:::
+
+## Eulerian vs Lagrangian descriptions
+
+Two representations:
+
+- **Lagrangian**: follow a tagged fluid element.
+- **Eulerian**: observe flow properties at fixed spatial points.
+
+We prefer the **Eulerian** viewpoint.
+
+::: {.notes}
+Use a simple analogy: standing on a bridge watching water pass (Eulerian) vs attaching a tracker to a leaf and following it downstream (Lagrangian). The material derivative is the link between these descriptions.
+:::
+
+## The velocity field
+
+Velocity is a vector field:
+
+$$
+\vect{q}(x,y,z,t) = u\,\uvec{i} + v\,\uvec{j} + w\,\uvec{k}
+$$
+
+**Goal:** determine the acceleration experienced by a moving fluid element, because Newton's 2nd law needs
+
+$$
+\boxed{\text{Force} = (\text{mass}) \times (\text{acceleration})}
+$$
+
+::: {.notes}
+Emphasise why we need to know acceleration and its importance in the momentum equation.
+:::
+
+## Material derivative: chain rule
+
+[[📖 Notes §1.2](../notes/ch1.qmd#sec-material-derivative)]{.notes-link}
+
+For a fluid element moving along a path, $u = u\big(x(t),y(t),z(t),t\big)$:
+
+$$
+\frac{du}{dt} = \frac{\partial u}{\partial t} + \frac{\partial u}{\partial x}\frac{dx}{dt} + \frac{\partial u}{\partial y}\frac{dy}{dt} + \frac{\partial u}{\partial z}\frac{dz}{dt}
+$$
+
+::: {.fragment}
+and since $dx/dt = u$, $dy/dt = v$, $dz/dt = w$:
+
+$$
+\frac{du}{dt} = \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}
+$$
+
+Similarly for $v$ and $w$.
+:::
+
+::: {.notes}
+Explain step-by-step: $u(x(t),y(t),z(t),t)$ is a composite function, so its derivative must account for how the fluid element moves through the field. Students should see why spatial gradients contribute to acceleration.
+:::
+
+## Vector form of the material derivative
+
+$$
+\frac{D\vect{q}}{Dt} = \frac{\partial \vect{q}}{\partial t} + (\vect{q}\cdot\del)\vect{q}
+$$
+
+Two contributions:
+
+- **Local acceleration**: $\dfrac{\partial\vect{q}}{\partial t}$ (zero in steady flow)
+- **Convective acceleration**: $(\vect{q}\cdot\del)\vect{q}$ (nonlinear!)
+
+::: {.notes}
+Stress that the convective term is nonlinear since velocity multiplies velocity gradients. This is one of the reasons the Navier–Stokes equations are difficult to solve. Even steady flows may have significant acceleration due to convection.
+:::
+
+## Quick question {.poll}
+
+Water flows **steadily** through a converging nozzle. A fluid element moves from the wide inlet to the narrow exit. Its acceleration is...
+
+1. zero, because the flow is steady
+2. non-zero, because of the **local** term $\partial\vect{q}/\partial t$
+3. [non-zero, because of the **convective** term $(\vect{q}\cdot\del)\vect{q}$]{.fragment .highlight-current-green}
+4. impossible to say without the pressure field
+
+::: {.fragment}
+**C.** Steady means $\partial\vect{q}/\partial t = 0$ at every fixed point, but the element moves into a region of higher velocity.
+:::
+
+::: {.notes}
+Peer-instruction moment: ask them to vote (hands, or the in-class polling tool), then discuss with a neighbour for one minute and vote again before revealing. Common misconception: "steady" means "no acceleration".
+:::
+
+## Example: material derivative
+
+Given the velocity field, find the acceleration of a fluid element:
+$$
+\vect{q} = 3t\,\uvec{i} + xz\,\uvec{j} + t y^2\,\uvec{k}
+$$
+
+::: {.fragment}
+$u = 3t,\; v = xz,\; w = t y^2 \qquad \dfrac{\partial \vect{q}}{\partial t} = 3\uvec{i} + y^2\uvec{k}$
+:::
+
+::: {.fragment}
+$\dfrac{\partial \vect{q}}{\partial x} = z\,\uvec{j}, \quad \dfrac{\partial \vect{q}}{\partial y} = 2ty\,\uvec{k}, \quad \dfrac{\partial \vect{q}}{\partial z} = x\,\uvec{j}$
+:::
+
+::: {.fragment}
+$(\vect{q}\cdot\del)\vect{q} = 3t \cdot z\,\uvec{j} + xz \cdot 2ty\,\uvec{k} + ty^2 \cdot x\,\uvec{j}$
+:::
+
+::: {.fragment .answer-box}
+$$
+\frac{D\vect{q}}{Dt} = 3\,\uvec{i} + (3tz + txy^2)\,\uvec{j} + (2xyzt + y^2)\,\uvec{k}
+$$
+:::
+
+::: {.notes}
+Encourage students to try deriving this live with you before revealing each step (press → to reveal the next line; press C to draw on the slide). It reinforces the chain-rule interpretation of the material derivative.
+
+1. Identify components: u = 3t, v = xz, w = ty².
+2. Time derivatives: ∂u/∂t = 3, ∂v/∂t = 0, ∂w/∂t = y².
+3. Spatial derivatives as shown.
+4. Evaluate (q·∇)q term by term.
+5. Add local + convective contributions.
+:::
+
+## Physical meaning of convective acceleration
+
+[[📖 Notes §1.2.1](../notes/ch1.qmd#sec-convective-meaning)]{.notes-link}
+
+![](../figures/build/ch1-converging-channel.svg){width=85%}
+
+::: {.fragment}
+$A_B < A_A$ and $A_A u_A = A_B u_B \;\Rightarrow\; u_B > u_A$: elements accelerate even though the flow is steady.
+:::
+
+::: {.notes}
+Use this figure to reinforce the idea of convective acceleration. Point out that:
+
+- The cross-sectional area at station B is smaller than at A.
+- For incompressible steady flow, conservation of mass requires A_A u_A = A_B u_B.
+- Therefore A_B < A_A ⇒ u_B > u_A, so a fluid element moving from A to B experiences an increase in speed.
+
+Emphasise: the flow can be steady (no explicit time dependence), yet fluid elements still accelerate because they move into regions of different local velocity — this is the essence of convective acceleration.
+:::
+
+## See it: following an element through a nozzle
+
+<div class="widget" data-widget="nozzle"></div>
+
+::: {.notes}
+Live demo. Point at the green probe (Eulerian observer: velocity constant in steady flow) versus the red element (Lagrangian: speeds up). Then tick "unsteady inflow" to add a local acceleration that is the same everywhere in phase; the orange bar now oscillates on top of the blue convective bar.
+
+With V0 = 3 m/s, L = 0.1 m this is exactly Problem 1.2 — students can use it to check part (b) later.
+:::
+
+## Streamtube interpretation
+
+![](../figures/build/ch1-streamtube.svg){width=80%}
+
+No flow crosses the wall of a streamtube, so the same argument applies: as the tube narrows from A to B the element speeds up.
+
+::: {.notes}
+Explain that a streamtube is a bundle of streamlines such that there is no flow across its mantle. Fluid entering at A remains within the streamtube and exits at B. For incompressible steady flow, the volume flow rate is constant, so A_A u_A = A_B u_B. Just as in the converging duct, this implies acceleration of fluid elements in the streamtube as the area shrinks.
+:::
+
+## Lecture 1: summary
+
+- Introduced the differential (field) approach to fluid mechanics.
+- Defined the continuum hypothesis and Eulerian vs Lagrangian views.
+- Derived the **material derivative**:
+  $$
+  \frac{D\vect{q}}{Dt} = \frac{\partial\vect{q}}{\partial t} + (\vect{q}\cdot\del)\vect{q}
+  $$
+- Interpreted **convective acceleration** using a converging duct and a streamtube.
+
+**Before next lecture:** try [Problems 1.1–1.3](../problems/index.qmd#topic-material-derivative).
+
+::: {.notes}
+Use this slide to close Lecture 1. Emphasise again that the material derivative and convective acceleration are central to understanding fluid motion. In the next lecture, you will add another key concept: vorticity, which quantifies local rotation of fluid elements.
+:::
+
+<script src="../assets/widgets/widgets.js"></script>

@@ -1,0 +1,66 @@
+    \begin{tikzpicture}[
+        scale=1.2, 
+        >=latex, 
+        midarrow/.style={postaction={decorate, decoration={markings,mark=at position 0.6 with {\arrow{>}}}}}
+    ]
+
+        % --- 1. COORDINATE SYSTEM (Top Left) ---
+        \begin{scope}[shift={(-1, 2.5)}, scale=0.6]
+            \draw[->, thick] (0,0,0) -- (1.5,0,0) node[right] {$x$};
+            \draw[->, thick] (0,0,0) -- (0,1.5,0) node[right] {$y$};
+            \draw[->, thick] (0,0,0) -- (0,0,1.5) node[left] {$z$};
+        \end{scope}
+
+        % --- DEFINITIONS FOR SHAPE ---
+        % Inlet (A)
+        \coordinate (A_top) at (0, 1);
+        \coordinate (A_bottom) at (0, -1);
+        \coordinate (A_center) at (0,0);
+        
+        % Outlet (B) - Shifted right and up
+        \coordinate (B_top) at (6, 2.2);
+        \coordinate (B_bottom) at (6, 1.2);
+        \coordinate (B_center) at (6, 1.7);
+
+        % --- 2. INTERNAL STREAMLINES (Dashed) ---
+        % We draw these first so they appear "behind" or inside
+        \draw[dashed, gray, midarrow] (0, 0.5) to[out=15, in=190] (6, 1.9);
+        \draw[dashed, gray, midarrow] (0, 0) to[out=15, in=190] (6, 1.7);
+        \draw[dashed, gray, midarrow] (0, -0.5) to[out=15, in=190] (6, 1.5);
+
+        % --- 3. TUBE OUTLINE ---
+        % Draw Inlet Ellipse (A)
+        \draw[thick] (A_center) ellipse (0.4 and 1);
+
+        % Draw Outlet Ellipse (B)
+        \draw[thick] (B_center) ellipse (0.2 and 0.5);
+
+        % Draw Wall Streamlines (The tube surface)
+        % Top Wall
+        \draw[thick, midarrow] (A_top) to[out=15, in=190] (B_top);
+        
+        % Bottom Wall
+        \draw[thick, midarrow] (A_bottom) to[out=15, in=190] (B_bottom);
+        
+        % Side curve for 3D effect (Visualizing the bulk)
+        \draw[thick, midarrow] (0.35, 0.3) to[out=15, in=190] (6.15, 1.8);
+
+        % --- 4. LABELS ---
+        % Label A
+        \draw[dashed] (0, -1) -- (0, -1.6) node[below] {A};
+        
+        % Label B
+        \draw[dashed] (6, 1.2) -- (6, 0.8) node[below] {B};
+
+        % Flow Direction Label
+        \draw[<-, thick] (-0.5, -0.5) -- (-1.5, -1) node[below, align=center] {direction\\of flow};
+
+        % Descriptive Text (Right side)
+        \node[align=left, anchor=west] at (4, -0.5) {
+            \textit{A streamtube, formed by}\\
+            \textit{individual streamlines,}\\
+            \textit{within a moving fluid bulk}\\
+            \textit{for steady flow.}
+        };
+
+    \end{tikzpicture}

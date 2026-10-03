@@ -1,0 +1,66 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - figures/build/*.svg
+    - figures/build/*.pdf
+    - assets/**
+
+website:
+  title: "L4 Fluid Mechanics"
+  description: "Course materials for ENGI44710 / ENGI47215 Fluid Mechanics, Durham University"
+  site-url: "https://REPLACE-ME.github.io/l4-fluid-mechanics"
+  repo-url: "https://github.com/REPLACE-ME/l4-fluid-mechanics"
+  repo-actions: [issue]
+  search:
+    location: navbar
+    type: overlay
+  page-navigation: true
+  back-to-top-navigation: true
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Notes"
+        href: notes/index.qmd
+      - text: "Slides"
+        href: slides.qmd
+      - text: "Problems"
+        href: problems/index.qmd
+      - text: "Workshops"
+        href: workshops/index.qmd
+      - text: "Key equations"
+        href: resources/key-equations.qmd
+  sidebar:
+    - title: "Notes"
+      style: docked
+      contents:
+        - notes/index.qmd
+        - notes/ch1.qmd
+        - text: "2 · Conservation Equations (coming soon)"
+          href: notes/index.qmd#coming-soon
+        - text: "3 · Turbulence (coming soon)"
+          href: notes/index.qmd#coming-soon
+        - text: "4 · Boundary Layers (coming soon)"
+          href: notes/index.qmd#coming-soon
+  page-footer:
+    left: "L4 Fluid Mechanics · Dr Majid Bastankhah · Department of Engineering, Durham University"
+    right: "Spotted a mistake? Use **Report an issue** in the page margin, or email the lecturer."
+
+format:
+  html:
+    theme:
+      light: [cosmo, assets/theme.scss]
+      dark: [darkly, assets/theme.scss, assets/theme-dark.scss]
+    css: assets/site.css
+    toc: true
+    toc-depth: 3
+    toc-title: "On this page"
+    number-sections: false
+    html-math-method: mathjax
+    fig-cap-location: bottom
+    crossref:
+      chapters: true
+
+filters:
+  - assets/svg-to-pdf.lua

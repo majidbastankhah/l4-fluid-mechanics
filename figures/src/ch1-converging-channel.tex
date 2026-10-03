@@ -1,0 +1,56 @@
+    \begin{tikzpicture}[scale=0.85, >=latex]
+        % Define dimensions
+        \def\Rbig{1.5}   % Radius of large section
+        \def\Rsmall{0.7} % Radius of small section
+        \def\Lone{2.5}   % Length of large section
+        \def\Ltrans{2.0} % Length of transition
+        \def\Ltwo{2.0}   % Length of small section
+        \def\Hatch{0.3}  % Height of the wall hatching
+
+        % --- 1. WALL HATCHING (Upper and Lower) ---
+        % Upper Wall Hatching
+        \fill[pattern=north east lines, pattern color=black!50] 
+            (0, \Rbig) -- (\Lone, \Rbig) -- (\Lone+\Ltrans, \Rsmall) -- (\Lone+\Ltrans+\Ltwo, \Rsmall) 
+            -- (\Lone+\Ltrans+\Ltwo, \Rsmall+\Hatch) -- (\Lone+\Ltrans, \Rsmall+\Hatch) -- (\Lone, \Rbig+\Hatch) -- (0, \Rbig+\Hatch) -- cycle;
+            
+        % Lower Wall Hatching
+        \fill[pattern=north east lines, pattern color=black!50] 
+            (0, -\Rbig) -- (\Lone, -\Rbig) -- (\Lone+\Ltrans, -\Rsmall) -- (\Lone+\Ltrans+\Ltwo, -\Rsmall) 
+            -- (\Lone+\Ltrans+\Ltwo, -\Rsmall-\Hatch) -- (\Lone+\Ltrans, -\Rsmall-\Hatch) -- (\Lone, -\Rbig-\Hatch) -- (0, -\Rbig-\Hatch) -- cycle;
+
+        % --- 2. MAIN LINES ---
+        % Draw Upper and Lower Walls
+        \draw[thick] (0, \Rbig) -- (\Lone, \Rbig) -- (\Lone+\Ltrans, \Rsmall) -- (\Lone+\Ltrans+\Ltwo, \Rsmall);
+        \draw[thick] (0, -\Rbig) -- (\Lone, -\Rbig) -- (\Lone+\Ltrans, -\Rsmall) -- (\Lone+\Ltrans+\Ltwo, -\Rsmall);
+
+        % --- 3. CROSS SECTIONS (Ellipses and Verticals) ---
+        % Inlet (Left) - 3D effect
+        \draw[thick] (0,0) ellipse (0.4 and \Rbig);
+        
+        % Transition A (Large)
+        \draw[dashed] (\Lone, \Rbig) -- (\Lone, -\Rbig);
+        \draw[thick] (\Lone, \Rbig) arc (90:-90:0.3 and \Rbig); % Subtle curve for 3D look
+        
+        % Transition B (Small)
+        \draw[dashed] (\Lone+\Ltrans, \Rsmall) -- (\Lone+\Ltrans, -\Rsmall);
+        \draw[thick] (\Lone+\Ltrans, \Rsmall) arc (90:-90:0.15 and \Rsmall);
+
+        % Outlet (Right)
+        \draw[thick] (\Lone+\Ltrans+\Ltwo, 0) ellipse (0.2 and \Rsmall);
+
+        % --- 4. CENTERLINE AND ARROWS ---
+        % Centerline
+        \draw[dashdotted, gray] (-1, 0) -- (\Lone+\Ltrans+\Ltwo+1.5, 0);
+        
+        % Flow Arrow (Inlet)
+        \draw[->, thick, double] (-1.5, 0) -- (-0.5, 0);
+        
+        % Flow Arrow (Outlet)
+        \draw[->, thick, double] (\Lone+\Ltrans+\Ltwo+0.5, 0) -- (\Lone+\Ltrans+\Ltwo+1.5, 0) node[right, align=left] {direction of\\flow};
+
+        % --- 5. LABELS A and B ---
+        % Drop lines
+        \draw[dashed] (\Lone, -\Rbig) -- (\Lone, -\Rbig-0.8) node[below] {A};
+        \draw[dashed] (\Lone+\Ltrans, -\Rsmall) -- (\Lone+\Ltrans, -\Rbig-0.8) node[below] {B};
+
+    \end{tikzpicture}

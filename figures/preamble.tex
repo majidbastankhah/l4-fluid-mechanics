@@ -1,0 +1,11 @@
+% Shared preamble for all TikZ figures.
+% Each file in figures/src/ contains ONLY a tikzpicture environment.
+% Run `bash figures/build.sh` to regenerate the PDF + SVG versions in figures/build/.
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[T1]{fontenc}
+\IfFileExists{newtxmath.sty}{\usepackage{newtxtext}\usepackage{newtxmath}}{\usepackage{mathptmx}}
+\usepackage{amsmath,bm}
+\usetikzlibrary{arrows.meta,decorations.markings,calc,patterns,decorations.pathreplacing,matrix,positioning,angles,quotes}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\uvec}[1]{\hat{#1}}
+\newcommand{\del}{\nabla}

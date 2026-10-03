@@ -1,0 +1,62 @@
+    \begin{tikzpicture}[>=latex, scale=.8]
+
+        % --- DEFINITION: FLUID ELEMENT MACRO ---
+        % This draws a square box with local x, y, z axes.
+        % Usage: \fluidelement{x_pos}{y_pos}{rotation_angle}
+        \newcommand{\fluidelement}[3]{
+            \begin{scope}[shift={(#1,#2)}, rotate=#3]
+                % The Box
+                \draw[thick, fill=white] (-0.25,-0.25) rectangle (0.25,0.25);
+                
+                % The Axes (Local coordinates attached to the element)
+                % z-axis (up)
+                \draw[->] (0,0) -- (0,0.6) node[above, font=\scriptsize] {$z$};
+                % y-axis (right)
+                \draw[->] (0,0) -- (0.6,0) node[right, font=\scriptsize] {$y$};
+                % x-axis (3D projection, bottom-left)
+                \draw[->] (0,0) -- (-0.4,-0.4) node[left, font=\scriptsize] {$x$};
+            \end{scope}
+        }
+
+        % =========================================
+        % PART (a): IRROTATIONAL MOTION (Top)
+        % =========================================
+        
+        % 1. The Streamline Path
+        \draw[thick, ->] (0, 4) to[out=-10, in=170] (8, 1.5);
+        
+        % 2. The Fluid Elements (NO ROTATION)
+        % Notice the 3rd argument is always "0"
+        \fluidelement{1.5}{3.6}{0}
+        \fluidelement{3.5}{2.8}{0}
+        \fluidelement{5.5}{2.1}{0}
+        \fluidelement{7.5}{1.6}{0}
+        
+        % 3. Label
+        \node[anchor=east] at (9, 5) {\textbf{(a) Irrotational frictionless motion}};
+        \node[anchor=east, gray] at (9, 4.4) {(Axes maintain orientation)};
+
+        % =========================================
+        % PART (b): ROTATIONAL MOTION (Bottom)
+        % =========================================
+        
+        % Shift the whole second diagram down by 5 units
+        \begin{scope}[shift={(0,-1)}]
+            
+            % 1. The Streamline Path
+            \draw[thick, ->] (0, 0) to[out=-10, in=170] (8, -2.5);
+            
+            % 2. The Fluid Elements (WITH ROTATION)
+            % The 3rd argument changes (-20, -15, -10, 0) to mimic rotation
+            \fluidelement{1.5}{-0.4}{-25}
+            \fluidelement{3.5}{-1.2}{-15}
+            \fluidelement{5.5}{-1.9}{-5}
+            \fluidelement{7.5}{-2.4}{0}
+            
+            % 3. Label
+            \node[anchor=east] at (9, 1) {\textbf{(b) Rotational frictionless motion}};
+            \node[anchor=east, gray] at (9, 0.4) {(Axes rotate with the element)};
+            
+        \end{scope}
+
+    \end{tikzpicture}

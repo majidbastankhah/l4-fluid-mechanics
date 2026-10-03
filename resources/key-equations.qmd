@@ -1,0 +1,19 @@
+---
+title: "Key equations"
+subtitle: "A growing reference sheet, collected from the summary of each chapter"
+---
+
+{{< include /_macros.qmd >}}
+
+## Chapter 1 · Preliminaries {#ch1}
+
+| Quantity | Expression | Notes |
+|:--|:--|:--|
+| Material derivative | $\dfrac{D}{Dt} = \dfrac{\partial}{\partial t} + (\vect{q}\cdot\del)$ | [§1.2](../notes/ch1.qmd#sec-material-derivative) |
+| Acceleration | $\dfrac{D\vect{q}}{Dt} = \underbrace{\dfrac{\partial \vect{q}}{\partial t}}_{\text{local}} + \underbrace{(\vect{q}\cdot\del)\vect{q}}_{\text{convective}}$ | local term is zero in steady flow |
+| Convective operator | $(\vect{q}\cdot\del) = u\dfrac{\partial}{\partial x} + v\dfrac{\partial}{\partial y} + w\dfrac{\partial}{\partial z}$ | note $\vect{q}\cdot\del \neq \del\cdot\vect{q}$ |
+| Vorticity | $\vect{\xi} = \del\times\vect{q} = \left(\dfrac{\partial w}{\partial y} - \dfrac{\partial v}{\partial z}\right)\uvec{i} + \left(\dfrac{\partial u}{\partial z} - \dfrac{\partial w}{\partial x}\right)\uvec{j} + \left(\dfrac{\partial v}{\partial x} - \dfrac{\partial u}{\partial y}\right)\uvec{k}$ | [§1.3](../notes/ch1.qmd#sec-vorticity); irrotational if $\vect{\xi} = 0$ |
+| Vorticity (cylindrical) | $\xi_r = \dfrac{1}{r}\dfrac{\partial u_z}{\partial \theta} - \dfrac{\partial u_\theta}{\partial z},\; \xi_\theta = \dfrac{\partial u_r}{\partial z} - \dfrac{\partial u_z}{\partial r},\; \xi_z = \dfrac{1}{r}\left(\dfrac{\partial (r u_\theta)}{\partial r} - \dfrac{\partial u_r}{\partial \theta}\right)$ | from the [curvilinear curl](../notes/ch1.qmd#sec-curvilinear) |
+| Divergence | $\del\cdot\vect{q} = \dfrac{\partial u}{\partial x} + \dfrac{\partial v}{\partial y} + \dfrac{\partial w}{\partial z}$ | zero for incompressible flow |
+| Newtonian fluid (simple shear) | $\tau = \mu \dfrac{du}{dy}$ | [§1.4](../notes/ch1.qmd#sec-shear-stress) |
+| Reynolds number | $Re = \dfrac{\text{inertia forces}}{\text{viscous forces}}$ | [§1.1](../notes/ch1.qmd#sec-intro) |

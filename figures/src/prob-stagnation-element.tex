@@ -1,0 +1,58 @@
+\begin{tikzpicture}[scale=1.5]
+    % 1. The Grid
+    % Draw the grid lines (gray and thin)
+    \draw[step=1cm, gray!50, very thin] (-0.5,-0.5) grid (5.5, 4.5);
+
+    % 2. The Axes
+    % Draw thick main axes
+    \draw[thick] (-0.5,0) -- (5.5,0); % X-axis line
+    \draw[thick] (0,-0.5) -- (0,4.5); % Y-axis line
+
+    % Axis Labels
+    % X-axis numbers
+    \foreach \x in {1, 2, 3, 4, 5}
+        \node[anchor=north] at (\x, -0.1) {\Large \x};
+    
+    % Y-axis numbers
+    \foreach \y in {1, 2, 3, 4}
+        \node[anchor=east] at (-0.1, \y) {\Large \y};
+
+    % 3. The Square at t=0
+    % Define coordinates
+    \coordinate (S1) at (2,2);
+    \coordinate (S2) at (3,2);
+    \coordinate (S3) at (3,3);
+    \coordinate (S4) at (2,3);
+
+    % Draw square with hatching
+    \draw[thick, pattern=north east lines, pattern color=black] (S1) rectangle (S3);
+    
+    % Draw vertices (black dots)
+    \foreach \p in {S1, S2, S3, S4}
+        \filldraw[black] (\p) circle (1.5pt);
+
+    % Label inside
+    \node at (2.5, 2.5) {\Large $t=0$};
+
+    % 4. The Rectangle at t=0.5
+    % Define coordinates (Estimated from visual: x from 3.5 to 5, y from 1 to 1.5)
+    \coordinate (R1) at (3.29, 1.21);
+    \coordinate (R2) at (4.93, 1.21);
+    \coordinate (R3) at (4.93, 1.82);
+    \coordinate (R4) at (3.29, 1.82);
+
+    % Draw rectangle with hatching
+    \draw[thick, pattern=north east lines, pattern color=black] (R1) rectangle (R3);
+
+    % Draw vertices (black dots)
+    \foreach \p in {R1, R2, R3, R4}
+        \filldraw[black] (\p) circle (1.5pt);
+
+    % Label inside
+    \node at (4.25, 1.5) {\Large $t=0.5$};
+
+    % 5. The Arrow
+    % Arrow pointing from square area to rectangle area
+    \draw[->, very thick, >=Stealth] (3.1, 2.2) -- (3.8, 1.9);
+
+\end{tikzpicture}

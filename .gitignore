@@ -1,0 +1,8 @@
+/.quarto/
+/_site/
+*_files/
+*.html
+!assets/**/*.html
+.DS_Store
+*.aux
+*.log
