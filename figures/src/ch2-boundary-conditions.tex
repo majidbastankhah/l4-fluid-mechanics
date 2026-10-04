@@ -1,0 +1,37 @@
+    \begin{tikzpicture}[>=latex, scale=1.1]
+        \def\L{10}
+        \def\H{4}
+        \def\Mid{\H/2}
+        % walls and interface
+        \draw[thick] (0,\H) -- (\L,\H);
+        \fill[pattern=north east lines, pattern color=black!50] (0,\H) rectangle (\L, \H+0.25);
+        \node[above right] at (0.2, \H+0.3) {\textit{Solid impermeable surface}};
+        \draw[thick] (0,0) -- (\L,0);
+        \fill[pattern=north east lines, pattern color=black!50] (0,0) rectangle (\L, -0.25);
+        \node[below right] at (2.2, -0.3) {\textit{Solid impermeable surface}};
+        \draw[thick] (0,\Mid) -- (\L,\Mid);
+        \node[left] at (0, \Mid) {\begin{tabular}{r}\textit{Fluid-fluid}\\\textit{interface}\end{tabular}};
+        % inlet / outlet
+        \draw[dashed, thick] (0, -0.5) -- (0, \H+0.5);
+        \node[below] at (0, -0.6) {\Large Inlet};
+        \draw[dashed, thick] (\L, -0.5) -- (\L, \H+0.5);
+        \node[below] at (\L, -0.6) {\Large Outlet};
+        % fluids
+        \node at (\L/2 - 1, \Mid + 1) {\Large FLUID 2};
+        \node at (\L/2 - 1, \Mid - 1) {\Large FLUID 1};
+        % axes
+        \draw[->, thick] (1.5, 0) -- (2.5, 0) node[below] {$x$};
+        \draw[->, thick] (1.5, 0) -- (1.5, 1.0) node[right] {$y$};
+        % annotations
+        \node[align=left, anchor=west] (immiscible) at (\L+0.5, \H-0.5) {\textit{Fluids assumed}\\ \textit{to be immiscible.}};
+        \draw[->, thick, out=180, in=0] (immiscible.west) to (\L, \Mid);
+        \begin{scope}[shift={(\L+0.5, \Mid - 0.5)}]
+            \draw[thick] (0, 0) -- (1.0, 0) -- (1.0, -0.15) -- (1.5, 0.15) -- (1.0, 0.45) -- (1.0, 0.3) -- (0, 0.3) -- cycle;
+            \clip (0, 0) -- (1.0, 0) -- (1.0, -0.15) -- (1.5, 0.15) -- (1.0, 0.45) -- (1.0, 0.3) -- (0, 0.3) -- cycle;
+            \foreach \x in {0, 0.2, ..., 2.0} \draw (\x, -0.5) -- (\x+0.3, 1.0);
+        \end{scope}
+        \node[align=left, anchor=west] at (\L+2.2, \Mid - 0.3) {\textit{direction}\\ \textit{of flow}};
+        \node[anchor=west] at (\L+0.5, \Mid - 1.2) {\Large $\vect{q} = (u(y), 0, 0)$};
+        \node[align=left, anchor=west] (steady) at (\L+1, -0.5) {\textit{Steady flow}\\ \textit{between two}\\ \textit{solid surfaces}};
+        \draw[->, thick, out=180, in=0] (steady.west) to (\L, 0.4);
+    \end{tikzpicture}

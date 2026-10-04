@@ -1,0 +1,147 @@
+---
+title: "Problem-solving strategy for flow problems"
+subtitle: "A step-by-step method for solving fluid mechanics problems with the conservation equations"
+toc: true
+---
+
+{{< include /_macros.qmd >}}
+
+In Chapter 1, a [Problem Solving Recipe](../notes/ch1.qmd#sec-recipe) was provided which can be followed to solve any problem in Engineering Science. More specifically, how do we solve fluid mechanics problems? For beginners the following problem-solving methodology is as good as any. The [workshops](../workshops/index.qmd) are all structured along these four steps, so use them to practise it.
+
+## The four steps
+
+::: {.callout-tip icon=false}
+## STEP 1 · Identify the characteristics of the fluid and flow field
+These will be contained within the problem/question specification.
+
+1. List the data/information given and the results required.
+2. Check to see if the fluid/flow is: (i) incompressible or compressible; (ii) inviscid or real; (iii) steady or unsteady; (iv) one, two or three dimensional; (v) rotational or irrotational.
+:::
+
+::: {.callout-tip icon=false}
+## STEP 2 · Select the method of approach
+1. In this case we are using the differential description of a fluid, point-by-point, in the form of 3 conservation equations.
+2. Draw and label any diagrams needed to illustrate the problem and obtain a solution.
+3. Select the appropriate coordinate system that best describes the motion: let one of the coordinates be orientated in the direction of the flow.
+:::
+
+::: {.callout-tip icon=false}
+## STEP 3 · Write down the governing equations of the flow
+Continuity and Navier–Stokes, but including the energy equation too if energy transfer is involved.
+
+1. Apply the characteristics identified in STEP 1 to reduce the equations consistent with STEP 2 to their simplest form.
+2. Examine all conditions given at a point or a boundary: (i) identify all kinematic conditions; (ii) identify all stress conditions; (iii) identify all initial conditions.
+:::
+
+::: {.callout-tip icon=false}
+## STEP 4 · Solve the problem!
+1. Think about the problem in terms of its physical significance: each term of the reduced governing equation(s) and its boundary conditions have a physical interpretation. The dimensions of each term must be identical and correct.
+2. Check to see if there are sufficient equations to solve for the unknowns. If not then additional equations will have to be sought, for example an equation of state and/or stress relationships.
+3. Select a method to solve the reduced governing equations: in the main this will involve integration and differentiation and the use of initial and boundary conditions to determine any unknown constants that arise.
+:::
+
+## Example
+
+The example below is solved using the above approach as an illustration and to get you thinking along similar lines in your solving pursuits.
+
+::: {.callout-note icon=false}
+## Worked example: a flow with constant cross-flow velocity
+Consider a steady, two-dimensional, incompressible viscous flow with no body forces where the pressure gradient $\partial p/\partial x = 0$ and the $y$-component of velocity $v$ is equal in magnitude to the kinematic viscosity $\nu$ and is a constant. At the location $y = 0$, the shear stress $\tau_{xy}$ is unity. (a) Find an expression for the shear stress $\tau_{xy}$ and vorticity component $\xi_{z}$; (b) find the velocity distribution given it is zero when $y = 0$. *Try it before opening the solution.*
+
+```{=html}
+<details class="solution"><summary>Show solution</summary>
+```
+
+**STEP 1**
+
+- the flow is steady: $\partial/\partial t = 0$
+- the flow is 2D: $\partial/\partial z = 0$
+- the flow is incompressible: $\rho = \text{constant}$
+- the fluid is real: $\nu \neq 0$, constant
+- there are no body forces: $\vect{g} = 0$
+- the pressure gradient is zero: $\partial p/\partial x = 0$
+- $v$ is given by: $v = \nu$ (the kinematic viscosity)
+- given boundary conditions: $\tau_{xy}|_{y=0} = 1$ and $u|_{y=0} = 0$
+- find $\tau_{xy}$, $\xi_{z}$ and $u(y)$
+
+**STEP 2**
+
+Use the differential form of the associated conservation equations, continuity and momentum.
+
+![Coordinate system for the example.](../figures/build/ws-strategy-axes.svg){width=45% fig-alt="Cartesian axes x and y with a velocity u(y) in the x-direction, a constant cross-flow velocity v equal to nu, and the conditions tau_xy = 1 and u = 0 at y = 0."}
+
+**STEP 3**
+
+Write down the governing equations of the flow and simplify based on STEP 1. Continuity equation:
+$$
+\frac{\partial u}{\partial x} + \underbrace{\frac{\partial v}{\partial y}}_{0 \text{ since } v = \nu} + \underbrace{\frac{\partial w}{\partial z}}_{0 \text{ (2D)}} = 0 \quad \Rightarrow \quad \frac{\partial u}{\partial x} = 0
+$$ {#eq-ss-cont}
+which means that since $u$ is not a function of $x$, $z$ and $t$ it is at most a function of $y$ only.
+
+Navier–Stokes equations:
+$$
+\begin{aligned}
+&\underbrace{u \frac{\partial u}{\partial x}}_{0 \text{ from eq. } (1)} + v \frac{\partial u}{\partial y} + \underbrace{w \frac{\partial u}{\partial z}}_{0} \\
+&\qquad = -\frac{1}{\rho}\underbrace{\frac{\partial p}{\partial x}}_{0} + \nu\left(\underbrace{\frac{\partial^{2}u}{\partial x^{2}}}_{0} + \frac{\partial^{2}u}{\partial y^{2}} + \underbrace{\frac{\partial^{2}u}{\partial z^{2}}}_{0}\right)
+\end{aligned}
+$$ {#eq-ss-nsx}
+Since $v = \nu$ and $u = u(y)$, @eq-ss-nsx becomes:
+$$
+\nu \frac{du}{dy} = \nu \frac{d^{2}u}{dy^{2}} \quad \Rightarrow \quad \frac{d^{2}u}{dy^{2}} = \frac{du}{dy}
+$$ {#eq-ss-ode}
+Similarly, for the $y$-momentum:
+$$
+\begin{aligned}
+&u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z} = -\frac{1}{\rho}\frac{\partial p}{\partial y} + \nu\left(\frac{\partial^{2}v}{\partial x^{2}} + \frac{\partial^{2}v}{\partial y^{2}} + \frac{\partial^{2}v}{\partial z^{2}}\right) \\
+&\quad \Rightarrow \quad \frac{\partial p}{\partial y} = 0
+\end{aligned}
+$$ {#eq-ss-nsy}
+@eq-ss-nsy means that since all components of the pressure gradient are zero, the pressure everywhere in the flow field must be a constant.
+
+**STEP 4**
+
+Integrating @eq-ss-ode once gives:
+$$
+\frac{du}{dy} = C_{1}e^{y}
+$$ {#eq-ss-dudy}
+To evaluate $C_{1}$, we use the boundary condition that:
+$$
+\tau_{xy}|_{y=0} = \mu \frac{du}{dy}\bigg|_{y=0} = 1
+$$ {#eq-ss-bc}
+From @eq-ss-dudy and @eq-ss-bc, we obtain $C_{1} = 1/\mu$.
+
+**(a)** So from @eq-ss-dudy, the shear stress distribution is:
+$$
+\tau_{xy} = e^{y}
+$$
+The vorticity component $\xi_{z}$ is obtained as:
+$$
+\xi_{z} = -\frac{du}{dy} \quad \Rightarrow \quad \xi_{z} = -\frac{e^{y}}{\mu}
+$$
+
+**(b)** If we impose the given condition that $u(y) = 0$ at $y = 0$, then after integrating $du/dy = e^{y}/\mu$ we get:
+$$
+u(y) = \frac{e^{y}}{\mu} + C_{2} \quad \Rightarrow \quad C_{2} = -\frac{1}{\mu}
+$$
+Finally, the velocity profile is:
+$$
+u(y) = \frac{1}{\mu}\left(e^{y} - 1\right)
+$$
+
+*Comment:* the numbers in this example are dimensionless ("$v$ equal in magnitude to $\nu$", "$\tau_{xy}$ is unity"), which is why $e^{y}$ appears without a length scale. Note also that the flow is **not** unidirectional ($v \neq 0$), yet continuity still gives $\partial u/\partial x = 0$, i.e. a fully developed $u$-profile.
+
+```{=html}
+</details>
+```
+:::
+
+## Where to practise
+
+| Workshop | Practise the method on |
+|:--|:--|
+| [Workshop 1](../workshops/workshop1.qmd) | plane Couette and Poiseuille flow (Cartesian coordinates) |
+| [Workshop 2](../workshops/workshop2.qmd) | film flow down an incline; flow between rotating cylinders (cylindrical coordinates) |
+| [Workshop 3](../workshops/workshop3.qmd) | Reynolds averaging, mixing-length and near-wall turbulence modelling |
+| [Workshop 4](../workshops/workshop4.qmd) | boundary-layer equations, momentum integral equation, drag and the log law |
+
+You will find many more problems, with hints and full solutions, in the [problem bank](../problems/index.qmd).

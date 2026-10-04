@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=1.4, >=Stealth]
+  \draw[->, thick] (0,0) -- (5.5,0) node[right] {$x$};
+  \draw[->, thick] (0,0) -- (0,2) node[above] {$y$};
+  \fill[gray!25] (0,-0.2) rectangle (5,0);
+  \foreach \x in {0.25,0.5,...,4.75} \fill[white] (\x-0.03,-0.2) rectangle (\x+0.03,0);
+  \draw[thick] (0,0) -- (5,0);
+  \node[below, font=\small] at (2.3,-0.65) {porous wall (suction applied)};
+  \foreach \x in {0.5, 1.5, 2.5, 3.5, 4.5} \draw[->, thick, blue!70!black] (\x, 0) -- (\x, -0.55);
+  \node[right, blue!70!black] at (4.55, -0.4) {$V_0 < 0$};
+  \draw[dashed, thick, darkgray] (0,0) to[out=75, in=180] (1.5, 1.2) -- (5, 1.2);
+  \node[above, darkgray, font=\small] at (1.9, 1.2) {boundary-layer edge ($\delta$)};
+  \foreach \y in {0.5, 1, 1.5} \draw[->, thick] (-1.2, \y) -- (-0.2, \y);
+  \node[left] at (-1.2, 1) {$U_\infty$};
+  \draw[thick] (3,0) -- (3,1.7);
+  \draw[thick, red!75!black, domain=0:1.7, samples=40] plot ({3 + 1.2*(1 - exp(-3.8*\x))}, \x);
+  \foreach \y in {0.15, 0.35, 0.6, 0.9, 1.2, 1.5} \draw[->, red!60] (3,\y) -- ({3 + 1.2*(1 - exp(-3.8*\y))}, \y);
+  \node[right, red!75!black] at (4.25, 1.55) {$u(y)$};
+\end{tikzpicture}

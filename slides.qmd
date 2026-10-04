@@ -10,6 +10,12 @@ The slides open full screen in your browser. They link to the matching section o
 |:--|:--|
 | [Chapter 1 · Lecture 1](slides/ch1-lecture1.qmd) | Fields and the material derivative |
 | [Chapter 1 · Lecture 2](slides/ch1-lecture2.qmd) | Vorticity and shear stress |
+| [Chapter 2](slides/ch2.qmd) | Conservation equations: mass, momentum and energy |
+| [Chapter 3 · Part 1](slides/ch3-part1.qmd) | What is turbulence? Scales, the energy cascade, averaging and the RANS equations |
+| [Chapter 3 · Part 2](slides/ch3-part2.qmd) | Turbulence modelling for incompressible flows |
+| [Chapter 4 · Part 1](slides/ch4-part1.qmd) | Laminar boundary layers: thicknesses, Prandtl's equations, Blasius, momentum integral |
+| [Chapter 4 · Part 2](slides/ch4-part2.qmd) | Turbulent boundary layers, transition, combined boundary layers, separation |
+| [Revision](slides/revision.qmd) | Chapters 1–4 |
 
 ::: {.callout-note appearance="simple" collapse="true"}
 ## Keyboard shortcuts

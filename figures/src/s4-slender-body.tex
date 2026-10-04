@@ -1,0 +1,42 @@
+\begin{tikzpicture}[
+    >={Stealth[length=2.5mm]}, font=\large,
+    midarrow/.style={decoration={markings, mark=at position 0.45 with {\arrow{Stealth[length=2.5mm]}}}, postaction={decorate}},
+    streamline/.style={thick, midarrow}
+]
+    % Flow past a slender body (wedge); BL thickness exaggerated (after Ch4 Part A slides)
+    \fill[pattern=north east lines, pattern color=gray!60] (0,0) -- (20:7.5) -- (-20:7.5) -- cycle;
+    \draw[very thick] (0,0) -- (20:7.5);
+    \draw[very thick] (0,0) -- (-20:7.5);
+    \draw[thick, dashed, ->] (0,0) -- (8,0) node[right] {$s$};
+    \draw[thick] (1.5, {1.5*sin(20)}) arc (20:-20:1.5);
+    \node at (1.0, 0) {$2\phi$};
+    \begin{scope}[rotate=20]
+        \draw[thick, ->] (0,0) -- (7,0) node[below right] {$x$};
+        \draw[thick, ->] (0,0) -- (0,3) node[left] {$y$};
+        \draw[thick, dashed] (0,0) .. controls (2,0.3) and (4,0.7) .. (7.5,1.2);
+        \coordinate (Base) at (4.5,0);
+        \coordinate (Top)  at (4.5,1.6);
+        \draw[thick] (Base) .. controls (4.7, 0.1) and (5.4, 0.4) .. (5.4, 0.83) -- (5.4, 1.6);
+        \draw (Base) -- (Top);
+        \foreach \y in {0.15, 0.35, 0.55, 0.75} {
+            \pgfmathsetmacro{\vLength}{0.9 * (1 - (1 - \y/0.83)^2)}
+            \draw[->] (4.5, \y) -- ++(\vLength, 0);
+        }
+        \foreach \y in {0.95, 1.15, 1.35, 1.55} {
+            \draw[->] (4.5, \y) -- ++(0.9, 0);
+        }
+        \node[above] at (5.4, 1.6) {$U_\infty(x)$};
+        \draw[decorate, decoration={brace, amplitude=6pt}, thick]
+             (7.3, 1.15) -- (7.3, 0) node[midway, right=8pt] {$\delta(x)$};
+    \end{scope}
+    \node[left] at (-5.5, 0) {\Large $U_{FS}$};
+    \foreach \y in {-1.5, -0.5, 0.5, 1.5} {
+        \draw[thick, ->] (-5.5, \y) -- (-4.5, \y);
+    }
+    \draw[streamline] (-4.5, 0.5) to[out=0, in=195] (-0.5, 1) to[out=15, in=200] (20:7.5 |- 0,3.2);
+    \draw[streamline] (-4.5, 1.5) to[out=0, in=190] (-0.5, 2) to[out=10, in=200] (20:7.5 |- 0,4.2);
+    \draw[streamline] (-4.5, -0.5) to[out=0, in=165] (-0.5, -1) to[out=-15, in=160] (-20:7.5 |- 0,-3.2);
+    \draw[streamline] (-4.5, -1.5) to[out=0, in=170] (-0.5, -2) to[out=-10, in=160] (-20:7.5 |- 0,-4.2);
+    \node[left] at (-2.5, -3) {streamlines};
+    \draw[->, thick, bend left=15] (-2.7, -2.7) to (-1.8, -1.7);
+\end{tikzpicture}

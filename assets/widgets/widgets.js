@@ -332,9 +332,10 @@
 
   function init() {
     document.querySelectorAll('.widget[data-widget]').forEach(root => {
+      const k = root.getAttribute('data-widget');
+      if (k !== 'nozzle' && k !== 'vorticity') return;
       if (root.dataset.ready) return;
       root.dataset.ready = '1';
-      const k = root.getAttribute('data-widget');
       if (k === 'nozzle') nozzle(root);
       if (k === 'vorticity') vorticity(root);
     });

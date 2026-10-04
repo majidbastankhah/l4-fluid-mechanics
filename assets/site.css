@@ -47,3 +47,12 @@ details.solution[open] > summary { margin-bottom: .5rem; }
 .widget .readout { font-size: .92rem; margin-top: .4rem; }
 .widget .wbtn { border: 1px solid rgba(104,36,109,.5); background: transparent; color: inherit; border-radius: 6px; padding: .1rem .6rem; }
 .widget .wbtn.on { background: var(--bs-primary); color: #fff; }
+
+/* Wide display equations and tables scroll inside the column instead of pushing the page sideways (phones) */
+main mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; min-width: 0 !important; }
+main .table-responsive, main table { max-width: 100%; }
+@media (max-width: 700px) { main table { display: block; overflow-x: auto; } }
+.try-problems:not(:has(a)) { display: none; }
+main span.math.display { display: block; overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+main span.math.inline mjx-container { max-width: 100%; }
+@media (max-width: 700px) { main span.math.inline { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle; } }

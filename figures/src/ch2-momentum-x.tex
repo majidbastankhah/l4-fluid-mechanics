@@ -1,0 +1,60 @@
+    \begin{tikzpicture}[scale=1.4, >=latex, line cap=round, line join=round]
+        \tikzset{x={(1cm,0cm)}, y={(0cm,1cm)}, z={(-0.6cm,-0.4cm)}}
+        \definecolor{pressCol}{RGB}{0, 102, 204}   % Blue for Pressure
+        \definecolor{normCol}{RGB}{204, 0, 0}      % Red for Normal Stress
+        \definecolor{shearCol}{RGB}{0, 102, 0}     % Green for Shear Stress
+        \def\dx{3.5}
+        \def\dy{2.5}
+        \def\dz{2.5}
+        \coordinate (O) at (0,0,0); \coordinate (A) at (\dx,0,0);
+        \coordinate (B) at (\dx,\dy,0); \coordinate (C) at (0,\dy,0);
+        \coordinate (D) at (0,0,\dz); \coordinate (E) at (\dx,0,\dz);
+        \coordinate (F) at (\dx,\dy,\dz); \coordinate (G) at (0,\dy,\dz);
+        % hidden edges
+        \draw[dashed, gray!60] (O) -- (A);
+        \draw[dashed, gray!60] (O) -- (C);
+        \draw[dashed, gray!60] (O) -- (D);
+        % dimension labels
+        \draw[|<->|] (-0.4, 0, \dz) -- (-0.4, \dy, \dz) node[midway, left] {$dy$};
+        \draw[|<->|] (0, -0.4, \dz) -- (\dx, -0.4, \dz) node[midway, below] {$dx$};
+        \draw[|<->|] (\dx+0.4, 0, 0) -- (\dx+0.4, 0, \dz) node[midway, right] {$dz$};
+        % left face (x)
+        \coordinate (LeftC) at (0, \dy/2, \dz/2);
+        \draw[->, thick, double, pressCol] ($(LeftC)+(-1.2, 0.4, 0)$) -- ($(LeftC)+(0, 0.4, 0)$) node[left, pos=0] {$p$};
+        \draw[->, thick, normCol] (LeftC) -- ++(-1.2, 0, 0) node[left] {$\tau_{xx}$};
+        % bottom face (y) - shear tau_xy
+        \coordinate (BotC) at (\dx/2, 0, \dz/2);
+        \draw[<-, thick, dashed, shearCol] (BotC) -- ++(1, 0, 0) node[right] {$\tau_{xy}$};
+        \draw[thick, shearCol] ($(BotC)+(1,0,0.15)$) -- ($(BotC)+(1,0,-0.15)$);
+        % back face (z) - shear tau_xz
+        \coordinate (BackC) at (\dx/2, \dy/2, 0);
+        \draw[<-, thick, dashed, shearCol] (BackC) -- ++(1, 0, 0) node[right] {$\tau_{xz}$};
+        \draw[thick, shearCol] ($(BackC)+(1,0.15,0)$) -- ($(BackC)+(1,-0.15,0)$);
+        % visible edges
+        \draw[thick] (A) -- (B) -- (F) -- (E) -- cycle;
+        \draw[thick] (C) -- (B) -- (F) -- (G) -- cycle;
+        \draw[thick] (D) -- (E) -- (F) -- (G) -- cycle;
+        \draw[thick] (C) -- (G) -- (D);
+        % top face (y + dy)
+        \coordinate (TopC) at (\dx/2, \dy, \dz/2);
+        \draw[->, thick, shearCol] (TopC) -- ++(1.2, 0, 0)
+            node[right, font=\small, xshift=2pt, fill=white, inner sep=1pt] {$\tau_{xy} + \frac{\partial \tau_{xy}}{\partial y}dy$};
+        \draw[thick, shearCol] ($(TopC)+(0,0,0.2)$) -- ($(TopC)+(0,0,-0.2)$);
+        % front face (z + dz)
+        \coordinate (FrontC) at (\dx/2, \dy/2, \dz);
+        \draw[->, thick, shearCol] (FrontC) -- ++(0.7, 0, 0)
+            node[right, font=\small, xshift=2pt, fill=white, inner sep=1pt] {$\tau_{xz} + \frac{\partial \tau_{xz}}{\partial z}dz$};
+        \draw[thick, shearCol] ($(FrontC)+(0,0.2,0)$) -- ($(FrontC)+(0,-0.2,0)$);
+        % right face (x + dx)
+        \coordinate (RightC) at (\dx, \dy/2, \dz/2);
+        \draw[<-, thick, double, pressCol] ($(RightC)+(0, 0.3, 0)$) -- ++(1.2, 0, 0)
+            node[right, font=\small] {$p + \frac{\partial p}{\partial x}dx$};
+        \draw[->, thick, normCol] ($(RightC)+(0, -0.4, 0)$) -- ++(1.2, 0, 0)
+            node[right, font=\small] {$\tau_{xx} + \frac{\partial \tau_{xx}}{\partial x}dx$};
+        % axes
+        \begin{scope}[shift={(\dx+2.5, \dy, 0)}]
+            \draw[->] (0,0,0) -- (0.8,0,0) node[right] {$x$};
+            \draw[->] (0,0,0) -- (0,0.8,0) node[above] {$y$};
+            \draw[->] (0,0,0) -- (0,0,0.8) node[below left] {$z$};
+        \end{scope}
+    \end{tikzpicture}

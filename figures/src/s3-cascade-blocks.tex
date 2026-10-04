@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+  \node[draw, thick, fill=blue!10, text width=3.2cm, align=center, minimum height=2cm] (large) at (0,0) {\textbf{Production}\\ Large eddies\\ (inertia)};
+  \node[draw, thick, fill=green!10, text width=3.2cm, align=center, minimum height=2cm] (trans) at (4.6,0) {\textbf{Transfer}\\ Inertial range\\ (inviscid)};
+  \node[draw, thick, fill=red!10, text width=3.2cm, align=center, minimum height=2cm] (small) at (9.2,0) {\textbf{Dissipation}\\ Small eddies\\ (viscosity)};
+  \draw[-{Latex[length=3mm]}, ultra thick] (large) -- (trans);
+  \draw[-{Latex[length=3mm]}, ultra thick] (trans) -- (small);
+  \node[above=2mm of large, font=\small] {mean flow $\rightarrow$ energy in};
+  \node[above=2mm of small, font=\small] {heat $\leftarrow$ energy out at rate $\varepsilon$};
+\end{tikzpicture}

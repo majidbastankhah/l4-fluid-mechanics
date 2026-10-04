@@ -1,0 +1,33 @@
+\begin{tikzpicture}[>=Stealth]
+  \def\Ri{1.5} \def\Ro{3.5} \def\Rw{4.0}
+  \fill[cyan!8] (0,0) circle (\Ro);
+  \fill[white] (0,0) circle (\Ri);
+  \fill[pattern=north east lines, pattern color=gray] (0,0) circle (\Ri);
+  \draw[thick] (0,0) circle (\Ri);
+  \fill (0,0) circle (1.5pt);
+  \node[fill=white, inner sep=1pt, font=\small] at (0, 0.55) {MOVING};
+  \draw[->] (0,0) -- (-70:\Ri) node[midway, fill=white, inner sep=1pt] {$R_i$};
+  \draw[->, thick] (160:1.85) arc (160:200:1.85) node[midway, left] {$\Omega_i$};
+  \draw[thick] (0,0) circle (\Ro);
+  \draw[thick] (0,0) circle (\Rw);
+  \fill[pattern=north east lines, pattern color=gray, even odd rule] (0,0) circle (\Rw) (0,0) circle (\Ro);
+  \node[below, font=\small] at (0, -\Rw) {FIXED};
+  \draw[->] (0,0) -- (30:\Ro) node[pos=0.72, fill=cyan!8, inner sep=1pt] {$R_o$};
+  \node at (0, -2.6) {$\rho,\ \mu$};
+  \begin{scope}[shift={(0,\Ri)}]
+    \draw (0,0) -- (0, {\Ro-\Ri});
+    \draw[thick] plot[domain=0:{\Ro-\Ri}, samples=30] ({-1.2 * (1 - \x/(\Ro-\Ri))^2}, \x);
+    \foreach \y in {0, 0.4, 0.8, 1.2, 1.6} {
+      \draw[->] (0, \y) -- ({-1.2 * (1 - \y/(\Ro-\Ri))^2}, \y);
+    }
+    \node[left] at (-0.75, 1.05) {$u_\theta(r)$};
+  \end{scope}
+  \begin{scope}[shift={(6.6,0.6)}]
+    \draw (-1.2, 0) -- (1.8, 0);
+    \draw (0, -1.2) -- (0, 1.8);
+    \draw[->, thick] (0,0) -- (1.3, 1.3) node[right] {$r$};
+    \draw (0.5, 0) arc (0:45:0.5);
+    \node at (22.5:0.78) {$\theta$};
+    \node[align=left, anchor=north west, font=\small] at (-1.2, -1.4) {origin at the centre\\of the inner cylinder;\\$z$-axis into the page};
+  \end{scope}
+\end{tikzpicture}

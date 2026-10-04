@@ -1,0 +1,19 @@
+    \begin{tikzpicture}[>=latex, scale=.6]
+        \def\Length{7}
+        \def\Height{2.5}
+        % top plate (moving)
+        \draw[thick] (0,\Height) -- (\Length,\Height);
+        \fill[pattern=north east lines, pattern color=black!60] (0,\Height) rectangle (\Length, \Height+0.25);
+        \node[above] at (\Length/2, \Height+0.3) {\Large $T_\infty$};
+        \draw[->, ultra thick, double] (\Length+0.2, \Height) -- (\Length+1.2, \Height) node[right] {\Large $U$};
+        % bottom plate (stationary)
+        \draw[thick] (0,0) -- (\Length,0);
+        \fill[pattern=north east lines, pattern color=black!60] (0,0) rectangle (\Length, -0.25);
+        \node[below] at (\Length/2, -0.3) {\Large $T_w$};
+        % gap
+        \draw[<->, thick] (0.5, 0) -- (0.5, \Height) node[midway, fill=white] {\Large $h$};
+        % axes
+        \draw[->, thick] (4, 0) -- (4, 1.2) node[right] {\Large $y$};
+        \draw[->, thick] (4, 0) -- (5.2, 0) node[right] {\Large $x$};
+        \node[anchor=west] at (\Length+0.4, 1.0) {\Large $T_\infty > T_w$};
+    \end{tikzpicture}

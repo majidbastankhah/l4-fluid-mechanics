@@ -1,0 +1,29 @@
+\begin{tikzpicture}[>=Stealth, thick]
+  \def\L{8} \def\H{2.5} \def\Uin{1.5} \def\Uexit{2.8} \def\blMax{0.8}
+  \draw (0, \H) -- (\L, \H);
+  \fill[pattern=north east lines] (0, \H) rectangle (\L, \H+0.3);
+  \draw (0, 0) -- (\L, 0);
+  \fill[pattern=north east lines] (0, 0) rectangle (\L, -0.3);
+  \draw[thin, dashed] (0,0) -- (0,\H);
+  \foreach \y in {0.25, 0.75, 1.25, 1.75, 2.25} \draw[->] (-\Uin, \y) -- (0, \y);
+  \node[left] at (-\Uin, \H/2) {$2\ \mathrm{m\,s^{-1}}$};
+  \fill[pattern=crosshatch, pattern color=gray!60] (0,0) -- plot[domain=0:\L, samples=60] (\x, {\blMax*sqrt(\x/\L)}) -- (\L,0) -- cycle;
+  \fill[pattern=crosshatch, pattern color=gray!60] (0,\H) -- plot[domain=0:\L, samples=60] (\x, {\H - \blMax*sqrt(\x/\L)}) -- (\L,\H) -- cycle;
+  \node[fill=white, inner sep=1pt, font=\small] at (0.6*\L, 0.35*\blMax) {BL};
+  \node[fill=white, inner sep=1pt, font=\small] at (0.6*\L, \H - 0.35*\blMax) {BL};
+  \node[font=\small] at (0.4*\L, \H/2) {inviscid core};
+  \draw[thin, dashed] (\L,0) -- (\L,\H);
+  \begin{scope}[shift={(\L,0)}]
+    \draw[very thick, variable=\y, domain=0:\H, samples=80] plot ({\Uexit*(1 - pow(abs((\y - \H/2)/(\H/2)), 7))}, \y);
+    \foreach \f in {0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 0.9} {
+      \pgfmathsetmacro{\yp}{\f*\H}
+      \pgfmathsetmacro{\ul}{\Uexit*(1 - pow(abs((\yp - \H/2)/(\H/2)), 7))}
+      \draw[->, thin] (0, \yp) -- (\ul, \yp);
+    }
+    \node[right] at (\Uexit, \H/2) {$U_{exit}$};
+  \end{scope}
+  \draw[thin] (0, -0.6) -- (0, -1.1);
+  \draw[thin] (\L, -0.6) -- (\L, -1.1);
+  \draw[<->, thin] (0, -0.85) -- (\L, -0.85) node[midway, fill=white] {$3$ m};
+  \node[anchor=north east, font=\small] at (\L+3, -1.25) {$0.4\ \mathrm{m}\times 0.4\ \mathrm{m}$ square duct};
+\end{tikzpicture}

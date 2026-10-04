@@ -1,0 +1,36 @@
+\begin{tikzpicture}[>=latex]
+    \def\beltWidth{0.2}
+    \def\filmThick{1.0}
+    \def\beltHeight{5}
+    \def\bulkLevel{0.5}
+    % liquid
+    \fill[cyan!15] (0, -0.5) -- (0, \beltHeight) -- (\filmThick, \beltHeight)
+        -- (\filmThick, 1.5) to[out=-90, in=180] (3.5, \bulkLevel) -- (4.6, \bulkLevel) -- (4.6, -0.5) -- cycle;
+    % belt
+    \fill[pattern=north east lines] (-\beltWidth, -0.5) rectangle (0, \beltHeight);
+    \draw[thick] (0, -0.5) -- (0, \beltHeight);
+    \draw[thin] (-\beltWidth, -0.5) -- (-\beltWidth, \beltHeight);
+    \node[rotate=90] at (-0.45, 1.6) {belt};
+    % free surface
+    \draw[thick] (\filmThick, \beltHeight) -- (\filmThick, 1.5);
+    \draw[thick] (\filmThick, 1.5) to[out=-90, in=180] (3.5, \bulkLevel) -- (4.6, \bulkLevel);
+    % film label
+    \node (filmLabel) at (2.6, 4.2) {liquid film};
+    \draw[->] (filmLabel) -- (0.6*\filmThick, 4.45);
+    % axes
+    \draw[thick, ->] (0, 2.6) -- (1.6, 2.6) node[right] {$y,\ v$};
+    \draw[thick, ->] (0, 2.6) -- (0, 3.6) node[right] {$x,\ u$};
+    % belt speed
+    \draw[ultra thick, ->] (-0.75, 4.0) -- (-0.75, 4.9) node[left] {$V_b$};
+    % thickness
+    \draw[thin] (0, 5.1) -- (0, 5.35);
+    \draw[thin] (\filmThick, 5.1) -- (\filmThick, 5.35);
+    \draw[<->] (0, 5.25) -- (\filmThick, 5.25);
+    \node[above] at (0.5*\filmThick, 5.25) {$h$};
+    % gravity
+    \draw[thick, -{Stealth[scale=1.2]}] (3.3, 3.4) -- (3.3, 2.4) node[right] {$g$};
+    % free-surface symbol
+    \draw (3.95, \bulkLevel+0.32) -- (4.25, \bulkLevel+0.32) -- (4.1, \bulkLevel+0.06) -- cycle;
+    \node[right] at (4.25, \bulkLevel+0.32) {$p_{atm}$};
+    \node at (3.2, -0.15) {$\rho,\ \mu$};
+\end{tikzpicture}

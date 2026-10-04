@@ -17,3 +17,9 @@ subtitle: "A growing reference sheet, collected from the summary of each chapter
 | Divergence | $\del\cdot\vect{q} = \dfrac{\partial u}{\partial x} + \dfrac{\partial v}{\partial y} + \dfrac{\partial w}{\partial z}$ | zero for incompressible flow |
 | Newtonian fluid (simple shear) | $\tau = \mu \dfrac{du}{dy}$ | [§1.4](../notes/ch1.qmd#sec-shear-stress) |
 | Reynolds number | $Re = \dfrac{\text{inertia forces}}{\text{viscous forces}}$ | [§1.1](../notes/ch1.qmd#sec-intro) |
+
+{{< include _keyeq-ch2.qmd >}}
+
+{{< include _keyeq-ch3.qmd >}}
+
+{{< include _keyeq-ch4.qmd >}}

@@ -1,0 +1,14 @@
+\begin{tikzpicture}[scale=1.0]
+  \definecolor{normCol}{RGB}{204,0,0}
+  \def\pipeL{8} \def\pipeH{1} \def\inletW{1.5}
+  % pipe walls and bell-mouth inlet
+  \draw[thick] (0, \pipeH/2) -- (\pipeL, \pipeH/2);
+  \draw[thick] (0, -\pipeH/2) -- (\pipeL, -\pipeH/2);
+  \draw[thick] (-\inletW, \pipeH/2 + 0.5) to[out=-45, in=180] (0, \pipeH/2);
+  \draw[thick] (-\inletW, -\pipeH/2 - 0.5) to[out=45, in=180] (0, -\pipeH/2);
+  \draw[-{Latex[length=2.5mm]}, gray] (\pipeL+0.2, 0) -- (\pipeL+0.9, 0) node[right, black] {flow};
+  % dye: straight filament
+  \draw[ultra thick, normCol] (-\inletW + 0.5, 0) -- (\pipeL, 0);
+  \fill[normCol] (-\inletW + 0.5, 0) circle (0.1);
+  \node[below, font=\small] at (-\inletW + 0.5, -0.15) {dye};
+\end{tikzpicture}

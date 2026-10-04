@@ -1,0 +1,20 @@
+\begin{tikzpicture}[>=Stealth]
+  \fill[red!8] (0,0) rectangle (8,1);
+  \draw[dashed, red!70!black] (0,1) -- (8,1);
+  \node[red!60!black, right, font=\small] at (2.6, 0.5) {viscous sublayer (power series valid here)};
+  \fill[pattern=north east lines] (0,-0.3) rectangle (8,0);
+  \draw[thick] (0,0) -- (8,0);
+  \node[below, font=\small] at (4,-0.3) {SOLID WALL (no-slip: $u=v=w=0$)};
+  \draw[->, thick] (0,0) -- (0,4) node[above] {$y$ (distance from wall)};
+  \draw[->, thick] (0,0) -- (1.5,0) node[above right] {$x$};
+  \draw[thick, blue!70!black] plot[domain=0:1, samples=20] ({\x*1.5}, \x);
+  \draw[thick, blue!70!black] plot[domain=1:3.5, samples=50] ({1.5 + 1.5*ln(\x)}, \x);
+  \foreach \y in {0.2, 0.6, 1.4, 2.2, 3.0} {
+    \pgfmathsetmacro{\xval}{\y <= 1 ? \y*1.5 : 1.5 + 1.5*ln(\y)}
+    \draw[->, blue!60] (0,\y) -- (\xval,\y);
+  }
+  \node[blue!70!black, right] at (3.4, 3.3) {mean velocity profile $U(y)$};
+  \draw[thick, ->] (5.9,2.0) arc[start angle=0, end angle=320, radius=0.45];
+  \draw[thick, ->] (6.55,2.15) arc[start angle=180, end angle=-140, radius=0.3];
+  \node at (7.3, 1.55) {$k,\ \epsilon,\ \omega$};
+\end{tikzpicture}

@@ -1,0 +1,40 @@
+    \begin{tikzpicture}[scale=1.0, >=latex, line cap=round, line join=round]
+        \tikzset{x={(1cm,0cm)}, y={(0cm,1cm)}, z={(-0.6cm,-0.4cm)}}
+        \definecolor{pressCol}{RGB}{0, 102, 204}
+        \definecolor{bodyCol}{RGB}{230, 120, 0}
+        \def\dx{3.5} \def\dy{2.5} \def\dz{2.5}
+        \coordinate (O) at (0,0,0); \coordinate (A) at (\dx,0,0);
+        \coordinate (B) at (\dx,\dy,0); \coordinate (C) at (0,\dy,0);
+        \coordinate (D) at (0,0,\dz); \coordinate (E) at (\dx,0,\dz);
+        \coordinate (F) at (\dx,\dy,\dz); \coordinate (G) at (0,\dy,\dz);
+        % hidden edges
+        \draw[dashed, gray!50] (O) -- (A);
+        \draw[dashed, gray!50] (O) -- (C);
+        \draw[dashed, gray!50] (O) -- (D);
+        % pressure on the (hidden) left face, pushing in (+x)
+        \coordinate (LeftC) at (0, \dy/2, \dz/2);
+        \draw[thick, double, pressCol] ($(LeftC)+(-2.0,0,0)$) -- ($(LeftC)+(-0.75,0,0)$);
+        \draw[->, thick, double, dashed, pressCol] ($(LeftC)+(-0.75,0,0)$) -- (LeftC);
+        \node[pressCol, above] at ($(LeftC)+(-1.7,0.05,0)$) {$p\,dy\,dz$};
+        % visible edges
+        \draw[thick] (A) -- (B) -- (F) -- (E) -- cycle;
+        \draw[thick] (C) -- (B) -- (F) -- (G) -- cycle;
+        \draw[thick] (D) -- (E) -- (F) -- (G) -- cycle;
+        \draw[thick] (C) -- (G) -- (D);
+        % body force at the centre
+        \coordinate (Ctr) at (\dx/2, \dy/2, \dz/2);
+        \fill[bodyCol] (Ctr) circle (1.5pt);
+        \draw[->, very thick, bodyCol] (Ctr) -- ++(1.0,0,0); \node[bodyCol, above left, inner sep=1pt] at (Ctr) {$\rho F_x\,dV$};
+        % pressure on the right face, pushing in (-x)
+        \coordinate (RightC) at (\dx, \dy/2, \dz/2);
+        \draw[<-, thick, double, pressCol] (RightC) -- ++(1.8, 0, 0)
+            node[right] {$\left(p + \dfrac{\partial p}{\partial x}dx\right) dy\,dz$};
+        % dimensions
+        \draw[|<->|] (0, -0.4, \dz) -- (\dx, -0.4, \dz) node[midway, below] {$dx$};
+        % axes
+        \begin{scope}[shift={(\dx+3.0, -0.6, \dz)}]
+            \draw[->] (0,0,0) -- (0.8,0,0) node[right] {$x$};
+            \draw[->] (0,0,0) -- (0,0.8,0) node[above] {$y$};
+            \draw[->] (0,0,0) -- (0,0,0.8) node[below left] {$z$};
+        \end{scope}
+    \end{tikzpicture}

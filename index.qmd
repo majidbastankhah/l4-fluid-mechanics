@@ -35,16 +35,16 @@ Guided problem-solving sessions, released before each workshop.
 | Chapter | Topic | What you will learn |
 |:--|:--|:--|
 | 1 | [Preliminaries](notes/ch1.qmd) | Fluid elements, Eulerian vs Lagrangian, the material derivative, vorticity, shear stress |
-| 2 | Conservation equations | Continuity, Navier–Stokes and energy equations; exact solutions for simple flows |
-| 3 | Turbulence and turbulence modelling | What turbulence is, Reynolds averaging, eddy viscosity and $k$–$\varepsilon$ models |
-| 4 | Boundary layers | Boundary-layer equations, Blasius solution, momentum integral, turbulent boundary layers, separation |
+| 2 | [Conservation equations](notes/ch2.qmd) | Continuity, Navier–Stokes and energy equations; exact solutions for simple flows |
+| 3 | [Turbulence and turbulence modelling](notes/ch3.qmd) | What turbulence is, Reynolds averaging, eddy viscosity and $k$–$\varepsilon$ models |
+| 4 | [Boundary layers](notes/ch4.qmd) | Boundary-layer equations, Blasius solution, momentum integral, turbulent boundary layers, separation |
 
 ## How to get the most out of this course
 
 1. **Before the lecture**, skim the notes section for that week.
 2. **In the lecture**, follow the slides and join in with the quick questions.
 3. **After the lecture**, work through the linked problems: try first, use the hint, then check the answer.
-4. Use the [Key equations](resources/key-equations.qmd) page while solving problems, and come to the workshops with questions.
+4. Use the [Key equations](resources/key-equations.qmd) page and the [problem-solving strategy](resources/solving-strategy.qmd) while solving problems, and come to the workshops with questions.
 
 ::: {.callout-tip appearance="simple"}
 Found a mistake or something unclear? Use the **Report an issue** link in the right-hand margin of any page, or email the lecturer.

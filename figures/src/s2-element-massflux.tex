@@ -1,0 +1,32 @@
+    \begin{tikzpicture}[scale=1.0, >=latex, line join=round]
+        \tikzset{x={(1cm,0cm)}, y={(0cm,1cm)}, z={(-0.6cm,-0.4cm)}}
+        \definecolor{fluxCol}{RGB}{0, 102, 204}
+        \def\dx{3.5} \def\dy{2.5} \def\dz{2.5}
+        \coordinate (O) at (0,0,0); \coordinate (A) at (\dx,0,0);
+        \coordinate (B) at (\dx,\dy,0); \coordinate (C) at (0,\dy,0);
+        \coordinate (D) at (0,0,\dz); \coordinate (E) at (\dx,0,\dz);
+        \coordinate (F) at (\dx,\dy,\dz); \coordinate (G) at (0,\dy,\dz);
+        % hidden edges
+        \draw[dashed, gray!50] (O) -- (A);
+        \draw[dashed, gray!50] (O) -- (C);
+        \draw[dashed, gray!50] (O) -- (D);
+        % shaded inflow face (x) and outflow face (x+dx)
+        \fill[fluxCol!12] (O) -- (C) -- (G) -- (D) -- cycle;
+        \fill[fluxCol!12] (A) -- (B) -- (F) -- (E) -- cycle;
+        % inflow arrow (enters the left face)
+        \coordinate (LeftC) at (0, \dy/2, \dz/2);
+        \draw[very thick, fluxCol] ($(LeftC)+(-2.0,0,0)$) -- ($(LeftC)+(-0.75,0,0)$); \draw[->, very thick, fluxCol, dashed] ($(LeftC)+(-0.75,0,0)$) -- (LeftC);
+        \node[fluxCol, above] at ($(LeftC)+(-1.6,0.05,0)$) {$\rho u\,dy\,dz$};
+        % edges
+        \draw[thick] (A) -- (B) -- (F) -- (E) -- cycle;
+        \draw[thick] (C) -- (B) -- (F) -- (G) -- cycle;
+        \draw[thick] (D) -- (E) -- (F) -- (G) -- cycle;
+        \draw[thick] (C) -- (G) -- (D);
+        % outflow arrow (leaves the right face)
+        \coordinate (RightC) at (\dx, \dy/2, \dz/2);
+        \draw[->, very thick, fluxCol] (RightC) -- ++(2.0,0,0)
+            node[right, align=left] {$\left(\rho u + \dfrac{\partial(\rho u)}{\partial x}dx\right) dy\,dz$};
+        % labels of faces
+        \node[font=\normalsize, gray!60!black, above] at (C) {face at $x$};
+        \node[font=\normalsize, gray!60!black, above] at (B) {face at $x+dx$};
+    \end{tikzpicture}

@@ -1,0 +1,482 @@
+## Chapter 3 · Turbulence and Turbulence Modelling {#ch3}
+
+At this stage the range of problems we can look at is a bit limited; in Chapter 4 there is more scope for using the ideas of Chapter 3, when we consider turbulent boundary-layer flow.
+
+### Turbulent scales {#topic-turbulent-scales .unnumbered}
+
+::: {.problem #p3-1 data-sec="ch3:sec-length-scales" data-ch="3" data-d="2"}
+### Problem 3.1 · Kolmogorov scales of a high-speed flow {.unnumbered}
+<!-- origin: Sheet 2 Q7. Statement: "U_A = 150 m/s" corrected to u_l = 150 m/s (the large-eddy velocity scale used everywhere else in the question). -->
+
+[[★★ core]{.tag .diff} Study first: [§3.5 Estimating length scales](../notes/ch3.qmd#sec-length-scales) and [§3.4 The energy cascade](../notes/ch3.qmd#sec-energy-cascade)]{.meta}
+
+For a turbulent flow, experimental evidence suggests that energy per unit mass is passed down from the largest eddies (integral length scale $l$ and velocity scale $u_l$) at a rate given by the turbulent kinetic energy per unit mass per unit turn-over time, which must equal the rate of dissipation, $\varepsilon$, at the smallest eddies (Kolmogorov length and velocity scales $\eta$ and $u_\eta$), such that $\varepsilon \approx u_l^3/l$.
+
+Show that $\eta = l\,Re_l^{-3/4}$ and $u_\eta = u_l\,Re_l^{-1/4}$, where $Re_l = u_l l/\nu$, can be written as $\eta = \left(\nu^3/\varepsilon\right)^{1/4}$ and $u_\eta = (\varepsilon \nu)^{1/4}$.
+
+For a particular flow $u_l = 150\ \text{m s}^{-1}$, $l = 0.6$ m and $\nu = 10^{-5}\ \text{m}^2\,\text{s}^{-1}$. Calculate $\varepsilon$, $\eta$ and $u_\eta$, and the timescales of the smallest and largest eddies, $\tau_\eta$ and $\tau_l$.
+
+<details class="hint"><summary>Hint</summary>
+
+Raise $\eta = l\,Re_l^{-3/4}$ to the fourth power, write out $Re_l$, and look for the combination $u_l^3/l$. Do the same for $u_\eta$. The timescales are simply length/velocity for each class of eddy.
+
+</details>
+<details class="answer"><summary>Final answer</summary>
+
+$\varepsilon = 5.625\times10^{6}\ \text{m}^2\,\text{s}^{-3}$, $\eta = 3.65\ \mu\text{m}$, $u_\eta = 2.74\ \text{m s}^{-1}$, $\tau_\eta = 1.33\ \mu\text{s}$, $\tau_l = 4.0$ ms.
+
+<span class="checker" data-answer="5.625e6" data-tol="0.02">$\varepsilon$ = <input type="text" inputmode="decimal"> m²/s³ <span class="fb"></span></span>
+<span class="checker" data-answer="3.651" data-tol="0.02">$\eta$ = <input type="text" inputmode="decimal"> μm <span class="fb"></span></span>
+<span class="checker" data-answer="2.739" data-tol="0.02">$u_\eta$ = <input type="text" inputmode="decimal"> m/s <span class="fb"></span></span>
+<span class="checker" data-answer="1.333" data-tol="0.02">$\tau_\eta$ = <input type="text" inputmode="decimal"> μs <span class="fb"></span></span>
+<span class="checker" data-answer="4.0" data-tol="0.02">$\tau_l$ = <input type="text" inputmode="decimal"> ms <span class="fb"></span></span>
+
+</details>
+<details class="full"><summary>Full solution</summary>
+
+We are given $\varepsilon \approx u_l^3/l$ and $Re_l = u_l l/\nu$.
+
+To show $\eta = (\nu^3/\varepsilon)^{1/4}$, start from $\eta = l\,Re_l^{-3/4}$:
+$$
+\eta^4 = l^4 Re_l^{-3} = l^4 \left( \frac{\nu}{u_l l} \right)^3 = \frac{l \nu^3}{u_l^3}
+$$
+Since $l/u_l^3 = 1/\varepsilon$, we have $\eta^4 = \nu^3/\varepsilon$, i.e. $\eta = (\nu^3/\varepsilon)^{1/4}$.
+
+To show $u_\eta = (\varepsilon \nu)^{1/4}$, start from $u_\eta = u_l\,Re_l^{-1/4}$:
+$$
+u_\eta^4 = u_l^4 Re_l^{-1} = u_l^4 \frac{\nu}{u_l l} = \frac{u_l^3 \nu}{l}
+$$
+Since $u_l^3/l = \varepsilon$, we have $u_\eta^4 = \varepsilon \nu$, i.e. $u_\eta = (\varepsilon \nu)^{1/4}$.
+
+With $u_l = 150\ \text{m s}^{-1}$, $l = 0.6$ m, $\nu = 10^{-5}\ \text{m}^2\,\text{s}^{-1}$:
+$$
+\begin{aligned}
+\varepsilon &= \frac{150^3}{0.6} = \frac{3.375\times10^{6}}{0.6} = 5.625 \times 10^6\ \text{m}^2\,\text{s}^{-3} \\
+\eta &= \left( \frac{(10^{-5})^3}{5.625 \times 10^6} \right)^{1/4} = \left( 1.778 \times 10^{-22} \right)^{1/4} = 3.651 \times 10^{-6}\ \text{m} \\
+u_\eta &= (5.625 \times 10^6 \times 10^{-5})^{1/4} = (56.25)^{1/4} = 2.739\ \text{m s}^{-1}
+\end{aligned}
+$$
+Turbulent timescales:
+$$
+\tau_\eta = \frac{\eta}{u_\eta} = \frac{3.651 \times 10^{-6}}{2.739} = 1.333 \times 10^{-6}\ \text{s}, \qquad
+\tau_l = \frac{l}{u_l} = \frac{0.6}{150} = 4.0 \times 10^{-3}\ \text{s}
+$$
+
+As a check, $Re_l = 150\times0.6/10^{-5} = 9\times10^{6}$, so $l/\eta = Re_l^{3/4} \approx 1.6\times10^{5}$ and $\tau_l/\tau_\eta = Re_l^{1/2} = 3000$: the smallest eddies are five orders of magnitude smaller, and evolve three thousand times faster, than the largest ones. This is why resolving every scale (DNS) is so expensive.
+
+</details>
+<label class="done"><input type="checkbox"> done</label>
+:::
+
+### Reynolds averaging and the RANS equations {#topic-rans .unnumbered}
+
+::: {.problem #p3-2 data-sec="ch3:sec-rans" data-ch="3" data-d="1"}
+### Problem 3.2 · Time-averaged continuity for compressible flow {.unnumbered}
+<!-- origin: Sheet 2 Q1 -->
+
+[[★ warm-up]{.tag .diff} Study first: [§3.6.1 Time-averaging rules](../notes/ch3.qmd#sec-averaging-rules) and [§3.7 The time-averaged equations](../notes/ch3.qmd#sec-rans)]{.meta}
+
+For compressible flow, defining the instantaneous density as $\rho = \bar{\rho} + \rho'$ and $u = U + u'$, $v = V + v'$, $w = W + w'$ (with $U=\overline{u}$, $V=\overline{v}$, $W=\overline{w}$), show that the time-averaged continuity equation can be written as
+$$
+\begin{aligned}
+&\frac{\partial \bar{\rho}}{\partial t} + \frac{\partial}{\partial x}(\bar{\rho}U) + \frac{\partial}{\partial y}(\bar{\rho}V) + \frac{\partial}{\partial z}(\bar{\rho}W) \\
+&\qquad + \left\{ \frac{\partial}{\partial x}(\overline{\rho'u'}) + \frac{\partial}{\partial y}(\overline{\rho'v'}) + \frac{\partial}{\partial z}(\overline{\rho'w'}) \right\} = 0 .
+\end{aligned}
+$$
+
+<details class="hint"><summary>Hint</summary>
+
+Start from $\partial \rho/\partial t + \del\cdot(\rho\vect{q}) = 0$, substitute the decompositions, expand the products $\rho u$, $\rho v$, $\rho w$ and average term by term. Which averages of a *single* fluctuating quantity vanish, and which product of two fluctuations survives?
+
+</details>
+<details class="answer"><summary>Final answer</summary>
+
+Each flux averages to $\overline{\rho u} = \bar\rho U + \overline{\rho' u'}$ (and similarly for $v$, $w$), while $\overline{\partial\rho/\partial t} = \partial\bar\rho/\partial t$; substituting gives the stated equation. The extra terms $\overline{\rho'u_i'}$ are turbulent mass fluxes that have no counterpart in incompressible flow.
+
+</details>
+<details class="full"><summary>Full solution</summary>
+
+The continuity equation for compressible flow is
+$$
+\frac{\partial \rho}{\partial t} + \del \cdot (\rho \vect{q}) = 0, \quad \text{i.e.} \quad \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x}(\rho u) + \frac{\partial}{\partial y}(\rho v) + \frac{\partial}{\partial z}(\rho w) = 0
+$$
+with $\rho = \bar{\rho} + \rho'$, $u = U + u'$, $v = V + v'$, $w = W + w'$. Consider each term in turn, applying time-averaging. By definition of Reynolds averaging, the time average of a fluctuating component is zero ($\overline{\rho'} = 0$, $\overline{u'} = 0$, …):
+$$
+\begin{aligned}
+\overline{\frac{\partial \rho}{\partial t}} &= \overline{\frac{\partial}{\partial t}(\bar{\rho} + \rho')} = \frac{\partial \bar{\rho}}{\partial t} + \cancelto{0}{\frac{\partial \overline{\rho'}}{\partial t}} = \frac{\partial \bar{\rho}}{\partial t} \\
+\overline{\frac{\partial (\rho u)}{\partial x}} &= \overline{\frac{\partial}{\partial x}\left([\bar{\rho} + \rho'][U + u']\right)} = \overline{\frac{\partial}{\partial x}(\bar{\rho}U + \bar{\rho}u' + \rho'U + \rho'u')} \\
+&= \frac{\partial}{\partial x} \left( \bar{\rho}U + \cancelto{0}{\bar{\rho}\,\overline{u'}} + \cancelto{0}{\overline{\rho'}\,U} + \overline{\rho'u'} \right)
+= \frac{\partial (\bar{\rho}U)}{\partial x} + \frac{\partial}{\partial x}(\overline{\rho'u'})
+\end{aligned}
+$$
+Similarly for the other two directions:
+$$
+\overline{\frac{\partial (\rho v)}{\partial y}} = \frac{\partial}{\partial y}(\bar{\rho}V) + \frac{\partial}{\partial y}(\overline{\rho'v'}), \qquad
+\overline{\frac{\partial (\rho w)}{\partial z}} = \frac{\partial}{\partial z}(\bar{\rho}W) + \frac{\partial}{\partial z}(\overline{\rho'w'})
+$$
+Inserting these back into the continuity equation gives the averaged continuity equation for compressible flow:
+$$
+\begin{aligned}
+&\frac{\partial \bar{\rho}}{\partial t} + \frac{\partial}{\partial x}(\bar{\rho}U) + \frac{\partial}{\partial y}(\bar{\rho}V) + \frac{\partial}{\partial z}(\bar{\rho}W) \\
+&\qquad + \frac{\partial}{\partial x}(\overline{\rho'u'}) + \frac{\partial}{\partial y}(\overline{\rho'v'}) + \frac{\partial}{\partial z}(\overline{\rho'w'}) = 0
+\end{aligned}
+$$
+
+</details>
+<label class="done"><input type="checkbox"> done</label>
+:::
+
+::: {.problem #p3-3 data-sec="ch3:sec-rans" data-ch="3" data-d="3"}
+### Problem 3.3 · RANS equations in cylindrical polar coordinates {.unnumbered}
+<!-- origin: Sheet 2 Q2. Given N-S equations corrected: r-equation viscous term +u_r/r^2 -> -u_r/r^2; theta-equation pressure term -dp/dtheta -> -(1/r) dp/dtheta. -->
+
+[[★★★ challenge]{.tag .diff} Study first: [§3.7 The time-averaged continuity and N–S equations](../notes/ch3.qmd#sec-rans) and [§3.6.2 Apparent turbulent stresses](../notes/ch3.qmd#sec-turbulent-stresses)]{.meta}
+
+In cylindrical polar coordinates the velocity field is $\vect{q} = (u_r, u_\theta, u_z)$. Writing $u_r = U_r + u_r'$, $u_\theta = U_\theta + u_\theta'$, $u_z = U_z + u_z'$ and $p = P + p'$, derive the time-averaged continuity and Navier–Stokes equations for incompressible flow in the absence of body forces.
+
+The instantaneous N–S equations are
+$$
+\begin{aligned}
+\rho \left\{ \frac{D u_r}{D t} - \frac{u_\theta^2}{r} \right\} &= -\frac{\partial p}{\partial r} + \mu \left\{ \nabla^2 u_r - \frac{u_r}{r^2} - \frac{2}{r^2} \frac{\partial u_\theta}{\partial \theta} \right\} + \rho F_r \\
+\rho \left\{ \frac{D u_\theta}{D t} + \frac{u_r u_\theta}{r} \right\} &= -\frac{1}{r}\frac{\partial p}{\partial \theta} + \mu \left\{ \nabla^2 u_\theta - \frac{u_\theta}{r^2} + \frac{2}{r^2} \frac{\partial u_r}{\partial \theta} \right\} + \rho F_\theta \\
+\rho \frac{D u_z}{D t} &= -\frac{\partial p}{\partial z} + \mu \nabla^2 u_z + \rho F_z
+\end{aligned}
+$$
+where
+$$
+\del \cdot \vect{q} = \frac{1}{r} \frac{\partial}{\partial r}(r u_r) + \frac{1}{r} \frac{\partial u_\theta}{\partial \theta} + \frac{\partial u_z}{\partial z}, \qquad
+\frac{D}{Dt} = \frac{\partial}{\partial t} + u_r \frac{\partial}{\partial r} + \frac{u_\theta}{r} \frac{\partial}{\partial \theta} + u_z \frac{\partial}{\partial z},
+$$
+$$
+\nabla^2 = \frac{\partial^2}{\partial r^2} + \frac{1}{r} \frac{\partial}{\partial r} + \frac{1}{r^2} \frac{\partial^2}{\partial \theta^2} + \frac{\partial^2}{\partial z^2}.
+$$
+
+<details class="hint"><summary>Hint</summary>
+
+Continuity is linear, so averaging is immediate. For momentum, only the non-linear terms produce anything new: expand e.g. $\overline{u_r\,\partial u_r/\partial r}$ and $\overline{u_\theta^2/r}$. Then use $\del\cdot\vect{q}' = 0$ to write the fluctuating convective terms $\overline{\vect{q}'\cdot\del u_r'}$ as $\overline{\del\cdot(\vect{q}'u_r')}$, and expand that divergence in cylindrical coordinates (it produces an extra $\overline{u_r'^2}/r$ term). Do the $r$-equation in full; the other two follow the same pattern.
+
+</details>
+<details class="answer"><summary>Final answer</summary>
+
+With $\bar D/Dt = \partial/\partial t + U_r\,\partial/\partial r + (U_\theta/r)\,\partial/\partial\theta + U_z\,\partial/\partial z$ (mean-flow material derivative) and $\nabla^2$ as above:
+$$
+\frac{\partial U_r}{\partial r} + \frac{U_r}{r} + \frac{1}{r}\frac{\partial U_\theta}{\partial \theta} + \frac{\partial U_z}{\partial z} = 0
+$$
+$$
+\begin{aligned}
+\rho \left( \frac{\bar D U_r}{Dt} - \frac{U_\theta^2}{r} \right) &= -\frac{\partial P}{\partial r} + \mu \left( \nabla^2 U_r - \frac{U_r}{r^2} - \frac{2}{r^2} \frac{\partial U_\theta}{\partial \theta} \right) \\
+&\quad - \rho \left( \frac{1}{r} \frac{\partial (r \overline{u_r'^2})}{\partial r} + \frac{1}{r} \frac{\partial \overline{u_r' u_\theta'}}{\partial \theta} + \frac{\partial \overline{u_r' u_z'}}{\partial z} - \frac{\overline{u_\theta'^2}}{r} \right) \\
+\rho \left( \frac{\bar D U_\theta}{Dt} + \frac{U_r U_\theta}{r} \right) &= -\frac{1}{r}\frac{\partial P}{\partial \theta} + \mu \left( \nabla^2 U_\theta - \frac{U_\theta}{r^2} + \frac{2}{r^2} \frac{\partial U_r}{\partial \theta} \right) \\
+&\quad - \rho \left( \frac{1}{r^2} \frac{\partial (r^2 \overline{u_r' u_\theta'})}{\partial r} + \frac{1}{r} \frac{\partial \overline{u_\theta'^2}}{\partial \theta} + \frac{\partial \overline{u_\theta' u_z'}}{\partial z} \right) \\
+\rho \frac{\bar D U_z}{Dt} &= -\frac{\partial P}{\partial z} + \mu \nabla^2 U_z \\
+&\quad - \rho \left( \frac{1}{r} \frac{\partial (r \overline{u_r' u_z'})}{\partial r} + \frac{1}{r} \frac{\partial \overline{u_\theta' u_z'}}{\partial \theta} + \frac{\partial \overline{u_z'^2}}{\partial z} \right)
+\end{aligned}
+$$
+
+</details>
+<details class="full"><summary>Full solution</summary>
+
+**Continuity.** For incompressible flow ($\rho$ = constant) continuity is $\del \cdot \vect{q} = 0$. Writing $\vect{q} = \vect{Q} + \vect{q}'$ with $\vect{Q} = (U_r, U_\theta, U_z)$ and $\vect{q}' = (u_r', u_\theta', u_z')$:
+$$
+\del \cdot \vect{q} = \del \cdot \vect{Q} + \del \cdot \vect{q}' = 0
+$$
+Averaging gives $\del \cdot \vect{Q} + \cancelto{0}{\del \cdot \overline{\vect{q}'}} = 0$, that is
+$$
+\frac{1}{r}\frac{\partial}{\partial r}(r U_r) + \frac{1}{r}\frac{\partial U_\theta}{\partial \theta} + \frac{\partial U_z}{\partial z} = 0
+\quad\Longleftrightarrow\quad
+\frac{\partial U_r}{\partial r} + \frac{U_r}{r} + \frac{1}{r}\frac{\partial U_\theta}{\partial \theta} + \frac{\partial U_z}{\partial z} = 0 .
+$$
+Subtracting this from the instantaneous equation also shows that $\del\cdot\vect{q}' = 0$.
+
+**Momentum.** We consider the $r$-momentum equation in full; the other two follow the same pattern. Written out (with $F_r = 0$, no body forces):
+$$
+\begin{aligned}
+&\rho \left( \frac{\partial u_r}{\partial t} + u_r \frac{\partial u_r}{\partial r} + \frac{u_\theta}{r} \frac{\partial u_r}{\partial \theta} + u_z \frac{\partial u_r}{\partial z} - \frac{u_\theta^2}{r} \right) = -\frac{\partial p}{\partial r} \\
+&\qquad + \mu \left( \frac{\partial^2 u_r}{\partial r^2} + \frac{1}{r} \frac{\partial u_r}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u_r}{\partial \theta^2} + \frac{\partial^2 u_r}{\partial z^2} - \frac{u_r}{r^2} - \frac{2}{r^2} \frac{\partial u_\theta}{\partial \theta} \right)
+\end{aligned}
+$$
+Replace the instantaneous variables by mean plus fluctuation and take the time average. For the non-linear convective terms, remembering that the average of a single fluctuating quantity is zero:
+$$
+\begin{aligned}
+\overline{u_r \frac{\partial u_r}{\partial r}} &= \overline{(U_r + u_r') \frac{\partial}{\partial r}(U_r + u_r')} = U_r \frac{\partial U_r}{\partial r} + \cancelto{0}{U_r \frac{\partial \overline{u_r'}}{\partial r}} + \cancelto{0}{\overline{u_r'} \frac{\partial U_r}{\partial r}} + \overline{u_r' \frac{\partial u_r'}{\partial r}} \\
+&= U_r \frac{\partial U_r}{\partial r} + \overline{u_r' \frac{\partial u_r'}{\partial r}}
+\end{aligned}
+$$
+Applying the same to the other convective terms and to the centrifugal term $-u_\theta^2/r$:
+$$
+\begin{aligned}
+\overline{\frac{u_\theta}{r} \frac{\partial u_r}{\partial \theta}} &= \frac{U_\theta}{r} \frac{\partial U_r}{\partial \theta} + \overline{\frac{u_\theta'}{r} \frac{\partial u_r'}{\partial \theta}}, \qquad
+\overline{u_z \frac{\partial u_r}{\partial z}} = U_z \frac{\partial U_r}{\partial z} + \overline{u_z' \frac{\partial u_r'}{\partial z}} \\
+\overline{\frac{u_\theta^2}{r}} &= \frac{\overline{(U_\theta + u_\theta')^2}}{r} = \frac{U_\theta^2}{r} + \frac{2 U_\theta \cancelto{0}{\overline{u_\theta'}}}{r} + \frac{\overline{u_\theta'^2}}{r} = \frac{U_\theta^2}{r} + \frac{\overline{u_\theta'^2}}{r}
+\end{aligned}
+$$
+The linear viscous and pressure terms simply become their mean values, since time averaging commutes with spatial differentiation (e.g. $\overline{\partial p/\partial r} = \partial P/\partial r$).
+
+Now use continuity for the fluctuations, $\del \cdot \vect{q}' = \dfrac{\partial u_r'}{\partial r} + \dfrac{u_r'}{r} + \dfrac{1}{r}\dfrac{\partial u_\theta'}{\partial \theta} + \dfrac{\partial u_z'}{\partial z} = 0$, to group the fluctuating terms with the product rule:
+$$
+\begin{aligned}
+&\overline{u_r' \frac{\partial u_r'}{\partial r}} + \overline{\frac{u_\theta'}{r} \frac{\partial u_r'}{\partial \theta}} + \overline{u_z' \frac{\partial u_r'}{\partial z}} \\
+&\qquad= \overline{\vect{q}' \cdot \del u_r'}
+= \overline{\del \cdot (\vect{q}' u_r')} - \overline{u_r' (\cancelto{0}{\del \cdot \vect{q}'})} \\
+&\qquad= \frac{\partial \overline{u_r'^2}}{\partial r} + \frac{\overline{u_r'^2}}{r} + \frac{1}{r}\frac{\partial \overline{u_\theta' u_r'}}{\partial \theta} + \frac{\partial \overline{u_r' u_z'}}{\partial z} \\
+&\qquad= \frac{1}{r}\frac{\partial (r\overline{u_r'^2})}{\partial r} + \frac{1}{r}\frac{\partial \overline{u_\theta' u_r'}}{\partial \theta} + \frac{\partial \overline{u_r' u_z'}}{\partial z}
+\end{aligned}
+$$
+Inserting this, and moving the Reynolds-stress terms to the right-hand side as effective turbulent stresses, gives the time-averaged $r$-momentum equation:
+$$
+\begin{aligned}
+\rho \left( \frac{\bar D U_r}{Dt} - \frac{U_\theta^2}{r} \right) &= -\frac{\partial P}{\partial r} + \mu \left( \nabla^2 U_r - \frac{U_r}{r^2} - \frac{2}{r^2} \frac{\partial U_\theta}{\partial \theta} \right) \\
+&\quad - \rho \left( \frac{1}{r} \frac{\partial}{\partial r}(r \overline{u_r'^2}) + \frac{1}{r} \frac{\partial}{\partial \theta}(\overline{u_\theta' u_r'}) + \frac{\partial}{\partial z}(\overline{u_r' u_z'}) - \frac{\overline{u_\theta'^2}}{r} \right)
+\end{aligned}
+$$
+where $\bar D/Dt = \partial/\partial t + U_r\,\partial/\partial r + (U_\theta/r)\,\partial/\partial\theta + U_z\,\partial/\partial z$ is the material derivative following the *mean* flow.
+
+The $\theta$- and $z$-equations follow in exactly the same way. In the $\theta$-equation the extra term $\overline{u_r u_\theta}/r = U_rU_\theta/r + \overline{u_r'u_\theta'}/r$ combines with $\overline{\del\cdot(\vect{q}'u_\theta')}$ to give $\frac{1}{r^2}\frac{\partial}{\partial r}(r^2\overline{u_r'u_\theta'})$; the results are listed in the final answer.
+
+</details>
+<label class="done"><input type="checkbox"> done</label>
+:::
+
+### The mixing-length model {#topic-mixing-length .unnumbered}
+
+::: {.problem #p3-4 data-sec="ch3:sec-mixing-length" data-ch="3" data-d="2"}
+### Problem 3.4 · Mixing length between two tall buildings {.unnumbered}
+<!-- origin: Sheet 2 Q4 -->
+
+[[★★ core]{.tag .diff} Study first: [§3.9.3 The Prandtl mixing-length model](../notes/ch3.qmd#sec-mixing-length) and [§3.9.2 The Boussinesq eddy-viscosity model](../notes/ch3.qmd#sec-boussinesq)]{.meta}
+
+Even though it can never be true for turbulent flow, assume the mean velocity distribution takes the form $U(y) = ay^2 + b$ for turbulent flow between two stationary plates separated by a distance $2h$. Taking $x$ and $y$ parallel and perpendicular to the plates, with the origin such that $U(0) = U_{\max}$, show that $a = -U_{\max}/h^2$ and $b = U_{\max}$, giving $U(y) = U_{\max}\left[1 - (y/h)^2\right]$.
+
+Two rectangular high-rise buildings are so close to each other that the small gap between them can be modelled as two flat surfaces a distance $2h$ apart, with the mean velocity distribution given by the above equation. If the mixing length is given by $l_m = \kappa y^*$, where $\kappa = 0.4$ (the value for turbulent flow near a wall) and $y^*$ is von Kármán's approximation of the mixing length, $y^* = \left| \dfrac{dU/dy}{d^2U/dy^2} \right|$, find an expression for the shear stress distribution for fully turbulent flow.
+
+<details class="hint"><summary>Hint</summary>
+
+The boundary conditions are $U(0) = U_{\max}$ and no slip at $y = \pm h$. For the stress, combine $\tau_{\text{turb}} = \mu_t\, dU/dy$ with $\mu_t = \rho l_m^2 |dU/dy|$, and be careful with the sign of $dU/dy$ in the upper half of the gap.
+
+</details>
+<details class="answer"><summary>Final answer</summary>
+
+$l_m = \kappa |y|$ and, for $0 \le y \le h$,
+$$
+\tau_{\text{turb}} = -4\kappa^2 \rho U_{\max}^2 \left(\frac{y}{h}\right)^4 = -0.64\,\rho U_{\max}^2 \left(\frac{y}{h}\right)^4
+$$
+(antisymmetric about the centreline: the sign reverses for $y<0$).
+
+<span class="checker" data-answer="-0.64" data-tol="0.01">$\tau_{\text{turb}}/(\rho U_{\max}^2)$ at $y = h$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
+
+</details>
+<details class="full"><summary>Full solution</summary>
+
+Boundary conditions: $U(0) = U_{\max}$ and $U(\pm h) = 0$. With $U(y) = a y^2 + b$:
+
+- at $y=0$: $U_{\max} = a(0)^2 + b \Rightarrow b = U_{\max}$;
+- at $y=h$: $a h^2 + b = 0 \Rightarrow a = -b/h^2 = -U_{\max}/h^2$.
+
+Hence $U(y) = U_{\max}\left( 1 - [y/h]^2 \right)$ as required.
+
+The derivatives needed for von Kármán's length scale are
+$$
+\frac{dU}{dy} = -\frac{2U_{\max}y}{h^2}, \qquad \frac{d^2 U}{dy^2} = -\frac{2U_{\max}}{h^2}
+\quad\Rightarrow\quad
+y^* = \left| \frac{-2U_{\max}y/h^2}{-2U_{\max}/h^2} \right| = |y|
+$$
+Taking $y \geq 0$ (the upper half of the gap), $y^* = y$ and so $l_m = \kappa y$.
+
+The turbulent shear stress follows from the Boussinesq model with Prandtl's eddy viscosity, $\mu_t = \rho l_m^2 |\partial U/\partial y|$:
+$$
+\tau_{\text{turb}} = \mu_t \frac{\partial U}{\partial y} = \rho l_m^2 \left| \frac{\partial U}{\partial y} \right| \frac{\partial U}{\partial y}
+$$
+For $y > 0$ the velocity gradient is negative, so $|\partial U/\partial y| = 2U_{\max}y/h^2$. Thus
+$$
+\begin{aligned}
+\tau_{\text{turb}} &= \rho (\kappa y)^2 \left( \frac{2U_{\max}y}{h^2} \right) \left( -\frac{2U_{\max}y}{h^2} \right) \\
+&= -4\kappa^2 \rho U_{\max}^2 \left( \frac{y}{h} \right)^4 = -0.64\, \rho U_{\max}^2 \left( \frac{y}{h} \right)^4
+\end{aligned}
+$$
+For $y<0$ the same steps give $+0.64\,\rho U_{\max}^2 (y/h)^4$: the stress is antisymmetric about the centreline, as it must be.
+
+*Comment.* A momentum balance on fully developed channel flow ($0 = -dP/dx + d\tau/dy$) shows that the total shear stress must vary *linearly* with $y$. The $y^4$ variation obtained here is one way of seeing why a parabolic mean profile "can never be true" for turbulent flow.
+
+</details>
+<label class="done"><input type="checkbox"> done</label>
+:::
+
+::: {.problem #p3-5 data-sec="ch3:sec-mixing-length" data-ch="3" data-d="1"}
+### Problem 3.5 · Mixing length for a power-law profile {.unnumbered}
+<!-- origin: Sheet 2 Q5 -->
+
+[[★ warm-up]{.tag .diff} Study first: [§3.9.3 The Prandtl mixing-length model](../notes/ch3.qmd#sec-mixing-length)]{.meta}
+
+Assume the mean velocity profile for turbulent flow between two stationary flat plates, separated by a small distance $2h$, is given by $U(y) = a y^n$, where $a$ and $n$ are constants. Obtain the mixing length using von Kármán's expression from [Problem 3.4](#p3-4), $l_m = \kappa\left|\dfrac{dU/dy}{d^2U/dy^2}\right|$ with $\kappa = 0.4$. What happens to the mixing length as $n$ is increased from 2 to 3 and then from 3 to 4?
+
+<details class="hint"><summary>Hint</summary>
+
+Differentiate twice; the constant $a$ and a factor $n$ cancel in the ratio.
+
+</details>
+<details class="answer"><summary>Final answer</summary>
+
+$l_m = \dfrac{\kappa y}{n-1} = \dfrac{0.4\,y}{n-1}$: $0.4y$, $0.2y$ and $0.133y$ for $n = 2, 3, 4$. The mixing length decreases as $n$ increases.
+
+<span class="checker" data-answer="0.2" data-tol="0.02">$l_m/y$ for $n=3$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
+<span class="checker" data-answer="0.1333" data-tol="0.02">$l_m/y$ for $n=4$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
+
+</details>
+<details class="full"><summary>Full solution</summary>
+
+$$
+U = a y^n \;\Rightarrow\; \frac{dU}{dy} = an\, y^{n-1} \;\Rightarrow\; \frac{d^2 U}{dy^2} = an(n-1)\, y^{n-2}
+$$
+Using von Kármán's expression:
+$$
+l_m = \kappa \left| \frac{dU/dy}{d^2 U/dy^2} \right| = \kappa \left| \frac{\cancel{an}\, y^{n-1}}{\cancel{an}(n-1)\,y^{n-2}} \right| = \frac{\kappa y}{n-1} = \frac{0.4y}{n-1}
+$$
+For $n=2$: $l_m = 0.4y/1 = 0.4y$. For $n=3$: $l_m = 0.4y/2 = 0.2y$. For $n=4$: $l_m = 0.4y/3 = 0.133y$.
+
+As $n$ increases the denominator $(n-1)$ grows, so the mixing length decreases.
+
+</details>
+<label class="done"><input type="checkbox"> done</label>
+:::
+
+### One-equation model and the $k$ equation {#topic-one-equation .unnumbered}
+
+::: {.problem #p3-6 data-sec="ch3:sec-one-equation" data-ch="3" data-d="2"}
+### Problem 3.6 · Exact and modelled production of $k$ {.unnumbered}
+<!-- origin: Sheet 2 Q6. Pressure-diffusion term corrected from -u' d(p'bar)/dx - v' d(p'bar)/dy to -overline{u' dp'/dx} - overline{v' dp'/dy}. Old equation numbers (3.30, 3.33, 3.20) replaced by links. -->
+
+[[★★ core]{.tag .diff} Study first: [§3.9.4 The one-equation model](../notes/ch3.qmd#sec-one-equation) and [§3.9.2 The Boussinesq eddy-viscosity model](../notes/ch3.qmd#sec-boussinesq)]{.meta}
+
+Consider the exact transport equation for the turbulent kinetic energy $k$ in steady, two-dimensional mean flow (see [the one-equation model](../notes/ch3.qmd#sec-one-equation) in the notes):
+$$
+\begin{aligned}
+\underbrace{\rho U \frac{\partial k}{\partial x} + \rho V \frac{\partial k}{\partial y}}_{\text{convection}}
+&= \underbrace{-\left[ \frac{\partial}{\partial x}\left(\tfrac{1}{2}\rho \overline{u'^3} + \tfrac{1}{2}\rho \overline{u'v'^2}\right) + \frac{\partial}{\partial y}\left(\tfrac{1}{2}\rho \overline{v'^3} + \tfrac{1}{2}\rho \overline{u'^2 v'}\right) \right]}_{\text{turbulent diffusion}} \\
+&\quad + \underbrace{\left[ -\overline{u'\frac{\partial p'}{\partial x}} - \overline{v'\frac{\partial p'}{\partial y}} \right]}_{\text{pressure diffusion}}
++ \underbrace{\left[ \mu\overline{u' \nabla^2 u'} + \mu\overline{ v' \nabla^2 v'} \right]}_{\text{viscous diffusion and dissipation}} \\
+&\quad + \underbrace{\left( -\rho \left[ \overline{u'^2}\frac{\partial U}{\partial x} + \overline{u'v'}\frac{\partial U}{\partial y} + \overline{u'v'}\frac{\partial V}{\partial x} + \overline{v'^2}\frac{\partial V}{\partial y} \right] \right)}_{\text{production } P_k}
+\end{aligned}
+$$
+and the corresponding modelled equation of the one-equation model:
+$$
+\begin{aligned}
+\rho U \frac{\partial k}{\partial x} + \rho V \frac{\partial k}{\partial y}
+&= \underbrace{\frac{\partial}{\partial x}\left( \frac{\mu_t}{\sigma_k}\frac{\partial k}{\partial x} \right) + \frac{\partial}{\partial y}\left( \frac{\mu_t}{\sigma_k}\frac{\partial k}{\partial y} \right)}_{\text{modelled diffusion}} \\
+&\quad + \underbrace{\mu_t \left\{ 2\left( \left[\frac{\partial U}{\partial x}\right]^2 + \left[\frac{\partial V}{\partial y}\right]^2 \right) + \left( \frac{\partial U}{\partial y} + \frac{\partial V}{\partial x} \right)^2 \right\}}_{\text{production } P_k} - \underbrace{\rho \varepsilon}_{\text{dissipation}}
+\end{aligned}
+$$
+Show that the exact production term $P_k$ is equivalent to the modelled production term.
+
+<details class="hint"><summary>Hint</summary>
+
+Use the Boussinesq approximation for the Reynolds stresses,
+$-\rho \overline{u_i' u_j'} = \mu_t \left( \dfrac{\partial U_i}{\partial x_j} + \dfrac{\partial U_j}{\partial x_i} \right) - \dfrac{2}{3}\rho k\, \delta_{ij}$,
+to write $-\rho\overline{u'^2}$, $-\rho\overline{v'^2}$ and $-\rho\overline{u'v'}$ in 2D, then substitute. One group of terms is removed by mean-flow continuity.
+
+</details>
+<details class="answer"><summary>Final answer</summary>
+
+Substituting the Boussinesq stresses gives
+$$
+P_k = \mu_t \left[ 2\left(\frac{\partial U}{\partial x}\right)^2 + 2\left(\frac{\partial V}{\partial y}\right)^2 + \left( \frac{\partial U}{\partial y} + \frac{\partial V}{\partial x} \right)^2 \right] - \frac{2}{3}\rho k \left( \frac{\partial U}{\partial x} + \frac{\partial V}{\partial y} \right)
+$$
+and the last term vanishes because $\partial U/\partial x + \partial V/\partial y = 0$.
+
+</details>
+<details class="full"><summary>Full solution</summary>
+
+The exact production term is
+$$
+P_k = -\rho \left[ \overline{u'^2}\frac{\partial U}{\partial x} + \overline{u'v'}\frac{\partial U}{\partial y} + \overline{u'v'}\frac{\partial V}{\partial x} + \overline{v'^2}\frac{\partial V}{\partial y} \right]
+$$
+From the Boussinesq approximation, the Reynolds stresses in a 2D flow are
+$$
+-\rho \overline{u'^2} = 2\mu_t \frac{\partial U}{\partial x} - \frac{2}{3}\rho k, \qquad
+-\rho \overline{v'^2} = 2\mu_t \frac{\partial V}{\partial y} - \frac{2}{3}\rho k,
+$$
+$$
+-\rho \overline{u'v'} = \mu_t \left( \frac{\partial U}{\partial y} + \frac{\partial V}{\partial x} \right)
+$$
+Substituting these into the exact production term:
+$$
+\begin{aligned}
+P_k &= \left(-\rho \overline{u'^2}\right) \frac{\partial U}{\partial x} + \left(-\rho \overline{u'v'}\right) \left( \frac{\partial U}{\partial y} + \frac{\partial V}{\partial x} \right) + \left(-\rho \overline{v'^2}\right) \frac{\partial V}{\partial y} \\
+&= \left( 2\mu_t \frac{\partial U}{\partial x} - \frac{2}{3}\rho k \right) \frac{\partial U}{\partial x} + \mu_t \left( \frac{\partial U}{\partial y} + \frac{\partial V}{\partial x} \right)^2 + \left( 2\mu_t \frac{\partial V}{\partial y} - \frac{2}{3}\rho k \right) \frac{\partial V}{\partial y} \\
+&= \mu_t \left[ 2\left(\frac{\partial U}{\partial x}\right)^2 + 2\left(\frac{\partial V}{\partial y}\right)^2 + \left( \frac{\partial U}{\partial y} + \frac{\partial V}{\partial x} \right)^2 \right] - \frac{2}{3}\rho k \left( \frac{\partial U}{\partial x} + \frac{\partial V}{\partial y} \right)
+\end{aligned}
+$$
+By the continuity equation for incompressible mean flow, $\del \cdot \vect{Q} = \partial U/\partial x + \partial V/\partial y = 0$, so the last term vanishes. This leaves exactly the modelled production term:
+$$
+P_k = \mu_t \left[ 2\left(\frac{\partial U}{\partial x}\right)^2 + 2\left(\frac{\partial V}{\partial y}\right)^2 + \left( \frac{\partial U}{\partial y} + \frac{\partial V}{\partial x} \right)^2 \right]
+$$
+
+</details>
+<label class="done"><input type="checkbox"> done</label>
+:::
+
+::: {.problem #p3-7 data-sec="ch3:sec-one-equation" data-ch="3" data-d="2"}
+### Problem 3.7 · From the one-equation model to the mixing-length model {.unnumbered}
+<!-- origin: Sheet 2 Q3 -->
+
+[[★★ core]{.tag .diff} Study first: [§3.9.4 The one-equation model](../notes/ch3.qmd#sec-one-equation) and [§3.9.3 The mixing-length model](../notes/ch3.qmd#sec-mixing-length)]{.meta}
+
+Consider the modelled transport equation for the turbulent kinetic energy, $k$, in a two-dimensional mean flow:
+$$
+\begin{aligned}
+\rho \frac{\partial k}{\partial t} + \rho U \frac{\partial k}{\partial x} + \rho V \frac{\partial k}{\partial y} &= \frac{\partial}{\partial x} \left( \frac{\mu_t}{\sigma_k} \frac{\partial k}{\partial x} \right) \\
+&\quad + \frac{\partial}{\partial y} \left( \frac{\mu_t}{\sigma_k} \frac{\partial k}{\partial y} \right) \\
+&\quad + \mu_t \left\{ 2\left( \left[ \frac{\partial U}{\partial x} \right]^2 + \left[ \frac{\partial V}{\partial y} \right]^2 \right) + \left( \frac{\partial U}{\partial y} + \frac{\partial V}{\partial x} \right)^2 \right\} \\
+&\quad - \rho \varepsilon
+\end{aligned}
+$$
+Assume a steady, one-dimensional shear flow in which the transport terms (both convective and diffusive) can be neglected. Using the relationship for the dissipation rate, $\varepsilon = k^{3/2}/l_s$, and the eddy viscosity $\mu_t = C_\mu \rho\, l_s k^{1/2}$, show that the resulting expression is a special case of the classical mixing-length model (MLM), $\mu_t = \rho\, l_m^2 \left| \partial U/\partial y \right|$, provided that the mixing length is $l_m = C_\mu^{3/4} l_s$.
+
+<details class="hint"><summary>Hint</summary>
+
+In a steady 1D shear flow ($V = 0$, $\partial/\partial x = 0$) the $k$ equation reduces to a local balance "production = dissipation". Eliminate $k$ between the expressions for $\mu_t$ and $\varepsilon$, then solve for $\mu_t$.
+
+</details>
+<details class="answer"><summary>Final answer</summary>
+
+Production = dissipation, $\mu_t (\partial U/\partial y)^2 = \rho\varepsilon$, combined with $k^{1/2} = \mu_t/(C_\mu \rho l_s)$ gives
+$$
+\mu_t = \rho\, C_\mu^{3/2} l_s^2 \left| \frac{\partial U}{\partial y} \right| = \rho\, l_m^2 \left| \frac{\partial U}{\partial y} \right| \quad\text{with}\quad l_m = C_\mu^{3/4} l_s .
+$$
+
+</details>
+<details class="full"><summary>Full solution</summary>
+
+Apply the assumptions of steady, one-dimensional shear flow ($V = 0$ and $\partial/\partial x = 0$) and neglect the transport terms. The convective terms (left-hand side) and the diffusive terms (first two terms on the right-hand side) are eliminated, and the production term simplifies:
+$$
+\begin{aligned}
+\cancelto{0}{\rho \frac{D k}{D t}} &= \cancelto{0}{\text{diffusion}} - \rho \varepsilon \\
+&\quad + \mu_t \left\{ 2\left( \cancelto{0}{\left[ \frac{\partial U}{\partial x} \right]^2} + \cancelto{0}{\left[ \frac{\partial V}{\partial y} \right]^2} \right) + \left( \frac{\partial U}{\partial y} + \cancelto{0}{\frac{\partial V}{\partial x}} \right)^2 \right\}
+\end{aligned}
+$$
+This leaves a balance between the local production and dissipation of turbulent kinetic energy:
+$$
+\mu_t \left( \frac{\partial U}{\partial y} \right)^2 - \rho \varepsilon = 0
+$$
+From $\mu_t = C_\mu \rho l_s k^{1/2}$ we have $k^{1/2} = \mu_t/(C_\mu \rho l_s)$. Substituting into $\varepsilon = (k^{1/2})^3/l_s$:
+$$
+\varepsilon = \frac{1}{l_s} \left( \frac{\mu_t}{C_\mu \rho l_s} \right)^3
+$$
+and then into the balance:
+$$
+\mu_t \left( \frac{\partial U}{\partial y} \right)^2 = \rho \left[ \frac{1}{l_s} \left( \frac{\mu_t}{C_\mu \rho l_s} \right)^3 \right] = \frac{\mu_t^3}{l_s^4 \rho^2 C_\mu^3}
+$$
+Cancelling one $\mu_t$ and solving:
+$$
+\left( \frac{\partial U}{\partial y} \right)^2 = \frac{\mu_t^2}{l_s^4 \rho^2 C_\mu^3}
+\quad\Rightarrow\quad
+\mu_t = \rho\, l_s^2 C_\mu^{3/2} \left| \frac{\partial U}{\partial y} \right|
+$$
+(taking the positive root, since $\mu_t > 0$). Comparing with the MLM, $\mu_t = \rho l_m^2 |\partial U/\partial y|$:
+$$
+l_m^2 = C_\mu^{3/2} l_s^2 \;\Rightarrow\; l_m = C_\mu^{3/4} l_s
+$$
+Hence, when transport of $k$ is negligible (local equilibrium), the one-equation model reduces to the MLM.
+
+</details>
+<label class="done"><input type="checkbox"> done</label>
+:::

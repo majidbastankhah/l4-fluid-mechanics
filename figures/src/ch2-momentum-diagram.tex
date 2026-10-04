@@ -1,0 +1,28 @@
+\begin{tikzpicture}[
+    box/.style={draw, rectangle, minimum width=3.8cm, minimum height=1.6cm, align=center},
+    smallbox/.style={draw, rectangle, minimum width=3.2cm, minimum height=1.2cm, align=center}
+]
+% Top row
+\node[box] (sumf) {Sum of the forces\\ $\sum \vect{F}$ acting on a\\ fluid element};
+\node[right=1.5cm of sumf] (equals) {$=$};
+\node[box, right=1.5cm of equals] (mass) {The mass of\\ the fluid element};
+\node[right=0.8cm of mass] (times) {$\times$};
+\node[box, right=0.8cm of times] (accel) {Total acceleration\\ of the fluid\\ element};
+% Labels (A) and (B)
+\node[below=0.2cm of mass] {(A)};
+\node[below=0.2cm of accel] {(B)};
+% Bottom row
+\node[smallbox, below=2.5cm of sumf] (body) {Body\\Forces};
+\node[right=0.8cm of body] (plus1) {$+$};
+\node[smallbox, right=0.8cm of plus1] (pressure) {Pressure\\Forces};
+\node[right=0.8cm of pressure] (plus2) {$+$};
+\node[smallbox, right=0.8cm of plus2] (shear) {Shear and Normal\\Forces};
+% Labels (C), (D), (E)
+\node[below=0.2cm of body] {(C)};
+\node[below=0.2cm of pressure] {(D)};
+\node[below=0.2cm of shear] {(E)};
+% Arrows
+\draw[<-, thick] (body.north) -- (sumf.south);
+\draw[<-, thick] (pressure.north) -- (sumf.south);
+\draw[<-, thick] (shear.north) -- (sumf.south);
+\end{tikzpicture}

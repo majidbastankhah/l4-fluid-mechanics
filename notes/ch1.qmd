@@ -282,7 +282,7 @@ The same idea explains why wind turbines are often placed on hill tops. As the a
 *Answers:* (1) $\partial \vect{q}/\partial t = 0$ because the flow is steady, but $D\vect{q}/Dt \neq 0$: elements speed up as the cross-section shrinks, so the convective acceleration is non-zero. (2) Each term is a velocity multiplied by a velocity gradient, e.g. $u\,\partial u/\partial x$, so the unknown appears as a product with itself.
 :::
 
-::: {.try-problems}
+::: {.try-problems data-sec="sec-material-derivative"}
 **Try these problems:** [Problem 1.1](../problems/index.qmd#p1-1), [Problem 1.2](../problems/index.qmd#p1-2), [Problem 1.3](../problems/index.qmd#p1-3)
 :::
 
@@ -362,7 +362,7 @@ As expected for a two-dimensional flow in the $xy$-plane, the only non-zero comp
 Each blade of a wind turbine (like each wing of an aircraft) sheds a concentrated **tip vortex**, a tube of high vorticity that spirals downstream in the wake. How stable these vortices are, and how they eventually break down, influences how quickly the wake mixes with the surrounding flow and recovers before it reaches the next turbine in a wind farm.
 :::
 
-::: {.try-problems}
+::: {.try-problems data-sec="sec-vorticity"}
 **Try these problems:** [Problem 1.4](../problems/index.qmd#p1-4), [Problem 1.5](../problems/index.qmd#p1-5)
 :::
 

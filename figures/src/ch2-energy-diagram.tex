@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+    box/.style={draw, thick, minimum width=3.7cm, minimum height=2.3cm, align=center, font=\large},
+    sbox/.style={draw, thick, minimum width=2.9cm, minimum height=1.5cm, align=center, font=\large},
+    lab/.style={font=\large},
+    op/.style={font=\LARGE}
+]
+\node[box] (A) {RATE OF CHANGE\\ OF ENERGY\\ INSIDE THE\\ FLUID ELEMENT};
+\node[op, right=0.6cm of A] (eq) {$=$};
+\node[box, right=0.6cm of eq] (B) {NET FLUX\\ OF HEAT\\ INTO THE\\ FLUID ELEMENT};
+\node[op, right=0.6cm of B] (plus) {$+$};
+\node[box, right=0.6cm of plus] (R) {RATE OF WORK\\ DONE BY THE\\ FORCES\\ PRESENT};
+\node[sbox, below=2.2cm of R] (D) {PRESSURE\\ FORCES};
+\node[op, left=0.5cm of D] (p1) {$+$};
+\node[sbox, left=0.5cm of p1] (C) {BODY\\ FORCES};
+\node[op, right=0.5cm of D] (p2) {$+$};
+\node[sbox, right=0.5cm of p2] (E) {SHEAR AND\\ NORMAL\\ STRESSES};
+\draw[<-, thick] (C.north) -- (R.south west);
+\draw[<-, thick] (D.north) -- (R.south);
+\draw[<-, thick] (E.north) -- (R.south east);
+\node[lab, below=0.3cm of A] {\textbf{(A)}};
+\node[lab, below=0.3cm of B] {\textbf{(B)}};
+\node[lab, below=0.3cm of C] {\textbf{(C)}};
+\node[lab, below=0.3cm of D] {\textbf{(D)}};
+\node[lab, below=0.3cm of E] {\textbf{(E)}};
+\end{tikzpicture}

@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=1.0]
+  \definecolor{normCol}{RGB}{204,0,0}
+  \def\pipeL{8} \def\pipeH{1} \def\inletW{1.5}
+  % pipe walls and bell-mouth inlet
+  \draw[thick] (0, \pipeH/2) -- (\pipeL, \pipeH/2);
+  \draw[thick] (0, -\pipeH/2) -- (\pipeL, -\pipeH/2);
+  \draw[thick] (-\inletW, \pipeH/2 + 0.5) to[out=-45, in=180] (0, \pipeH/2);
+  \draw[thick] (-\inletW, -\pipeH/2 - 0.5) to[out=45, in=180] (0, -\pipeH/2);
+  \draw[-{Latex[length=2.5mm]}, gray] (\pipeL+0.2, 0) -- (\pipeL+0.9, 0) node[right, black] {flow};
+  % dye: breaks up and fills the pipe
+  \draw[ultra thick, normCol] (-\inletW + 0.5, 0) -- (1.5, 0);
+  \shade[left color=normCol!45, right color=normCol!20] (2.0, -0.45) rectangle (\pipeL, 0.45);
+  \draw[normCol, thick, smooth, tension=0.7] plot coordinates {
+      (1.5, 0) (1.8, 0.1) (2.0, -0.1) (2.2, 0.3) (2.4, -0.2)
+      (2.6, 0.1) (2.8, -0.3) (3.0, 0.2) (3.2, -0.1) (3.5, 0.35) (3.8, -0.3) (4.1, 0.1)};
+  \fill[normCol] (-\inletW + 0.5, 0) circle (0.1);
+  \node[below, font=\small] at (-\inletW + 0.5, -0.15) {dye};
+\end{tikzpicture}

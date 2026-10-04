@@ -3,11 +3,13 @@ title: "Workshops"
 toc: false
 ---
 
-Workshops are guided problem-solving sessions in which we work through a full problem together, step by step. The handout for each workshop will be posted here before the session, and the completed version afterwards.
+Workshops are guided problem-solving sessions in which we work through a full problem together, step by step. Each workshop page follows the same structure as the printed handout: identify the characteristics of the flow, choose the method, simplify the governing equations and solve. Every gap in the handout can be revealed on its own, so try each step yourself before opening it; a **Reveal all answers** button at the top of each page shows the completed version.
 
-| Workshop | Topic | Status |
+| Workshop | Topic | Notes sections used |
 |:--|:--|:--|
-| 1 | Plane Couette and Poiseuille flow | released with Chapter 2 |
-| 2 | Flow between concentric cylinders | released with Chapter 2 |
-| 3 | Turbulence | released with Chapter 3 |
-| 4 | Boundary layers | released with Chapter 4 |
+| [1 · Idealised unidirectional flows](workshop1.qmd) | Plane Couette (shear-driven) and plane Poiseuille (pressure-driven) flow; shear stress, vorticity and mean velocity; superposition, with an interactive profile explorer | [Recipe](../notes/ch1.qmd#sec-recipe), [vorticity](../notes/ch1.qmd#sec-vorticity); [continuity](../notes/ch2.qmd#sec-continuity), [Navier–Stokes](../notes/ch2.qmd#sec-ns-special), [stresses](../notes/ch2.qmd#sec-stresses), [boundary conditions](../notes/ch2.qmd#sec-bcs) |
+| [2 · Gravity & rotation driven flows](workshop2.qmd) | Film flow down an incline (free surface, flow rate); flow between concentric cylinders (cylindrical coordinates, torque, the rotational viscometer) | [Continuity](../notes/ch2.qmd#sec-continuity), [Navier–Stokes](../notes/ch2.qmd#sec-ns-special), [stresses](../notes/ch2.qmd#sec-stresses), [boundary conditions](../notes/ch2.qmd#sec-bcs); [curvilinear coordinates](../notes/ch1.qmd#sec-curvilinear) |
+| [3 · Turbulence modelling](workshop3.qmd) | Part A: mean values, $k$ and $\overline{u'v'}$ from a velocity signal, Kolmogorov scales and DNS, the mixing-length model on a jet, why $k$–$\varepsilon$. Part B: near-wall scaling of $k$, $\epsilon$ and $\omega$ | [Reynolds averaging](../notes/ch3.qmd#sec-reynolds-averaging), [turbulent stresses](../notes/ch3.qmd#sec-turbulent-stresses), [energy cascade](../notes/ch3.qmd#sec-energy-cascade), [length scales](../notes/ch3.qmd#sec-length-scales), [modelling](../notes/ch3.qmd#sec-modelling), [Boussinesq](../notes/ch3.qmd#sec-boussinesq), [mixing length](../notes/ch3.qmd#sec-mixing-length), [$k$–$\varepsilon$](../notes/ch3.qmd#sec-k-epsilon); [law of the wall](../notes/ch4.qmd#sec-log-law) |
+| [4 · Boundary layer flow](workshop4.qmd) | Asymptotic suction boundary layer; momentum integral with a linear profile; displacement effect in a duct; flat-plate friction drag; the atmospheric log law | [BL thicknesses](../notes/ch4.qmd#sec-bl-thickness), [BL equations](../notes/ch4.qmd#sec-bl-equations), [Blasius](../notes/ch4.qmd#sec-blasius), [momentum integral](../notes/ch4.qmd#sec-mie), [log law](../notes/ch4.qmd#sec-log-law), [turbulent flat plate](../notes/ch4.qmd#sec-turbulent-flat-plate), [transition](../notes/ch4.qmd#sec-transition), [combined BL](../notes/ch4.qmd#sec-combined-bl) |
+
+All four workshops use the same method. If you are unsure how to start a problem, read the [problem-solving strategy for flow problems](../resources/solving-strategy.qmd) (with a fully worked example), and then try the related problems in the [problem bank](../problems/index.qmd).

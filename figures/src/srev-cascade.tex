@@ -1,0 +1,8 @@
+\begin{tikzpicture}[font=\large]
+    % Energy cascade: production -> transfer -> dissipation (revision deck)
+    \node[draw, thick, fill=blue!10, text width=3.4cm, align=center, minimum height=2.2cm] (large) at (0,0) {\textbf{Production}\\ large eddies\\ (inertia)};
+    \node[draw, thick, fill=green!10, text width=3.4cm, align=center, minimum height=2.2cm] (trans) at (5,0) {\textbf{Transfer}\\ inertial range\\ (inviscid)};
+    \node[draw, thick, fill=red!10, text width=3.4cm, align=center, minimum height=2.2cm] (small) at (10,0) {\textbf{Dissipation}\\ small eddies\\ (viscosity)};
+    \draw[-{Latex[length=4mm]}, ultra thick] (large) -- (trans);
+    \draw[-{Latex[length=4mm]}, ultra thick] (trans) -- (small);
+\end{tikzpicture}

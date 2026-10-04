@@ -1,0 +1,59 @@
+    \begin{tikzpicture}[scale=1.8, >=latex]
+        % --- SETTINGS ---
+        \def\Uinf{3.5}      % Width of U_infinity
+        \def\DeltaY{3.0}    % Height of Delta (Boundary Layer)
+        \def\DeltaStar{1.09} % = 0.363*delta for the sine profile drawn
+        \def\ThetaY{0.41}   % = 0.137*delta for the sine profile drawn
+        
+        % --- AXES ---
+        \draw[->, thick] (0, 0) -- (\Uinf+0.5, 0) node[right] {$u$}; % Horizontal (velocity)
+        \draw[->, thick] (0, -0.2) -- (0, \DeltaY+0.5) node[above] {$y$}; % Vertical (distance)
+        
+        % --- WALL ---
+        \draw[thick] (0,0) -- (\Uinf+0.5, 0);
+        \fill[pattern=north east lines, pattern color=black!50] (0,0) rectangle (\Uinf+0.5, -0.2);
+        
+        % --- REFERENCE LINES ---
+        % U_infinity vertical line
+        \draw[thick] (\Uinf, 0) -- (\Uinf, \DeltaY+0.5);
+        \draw[->, thick] (0, \DeltaY+0.5) -- (\Uinf, \DeltaY+0.5) node[midway, above] {$U_\infty$};
+        
+        % 0.99 U_infinity dashed line
+        \draw[dashed, thick] (0, \DeltaY) -- (\Uinf, \DeltaY);
+        \node[above] at (\Uinf/2, \DeltaY) {$0.99 U_\infty$};
+        
+        % --- VELOCITY PROFILE u(y) ---
+        % Using a sine curve approximation: u = U * sin(pi*y / 2*delta)
+        \draw[ultra thick, smooth, domain=0:\DeltaY] plot ({\Uinf*sin(90*\x/\DeltaY)}, \x);
+        \node at (1.2, 1.2) {$u(y)$};
+        
+        % Arrows representing velocity vectors
+        \foreach \y in {0.5, 1.0, 1.5, 2.0, 2.5} {
+            \draw[->, thin] (0, \y) -- ({\Uinf*sin(90*\y/\DeltaY)}, \y);
+        }
+        
+        % --- SHADED REGION (Velocity Deficit) ---
+        \fill[gray, opacity=0.3] 
+            plot[domain=0:\DeltaY] ({\Uinf*sin(90*\x/\DeltaY)}, \x) 
+            -- (\Uinf, \DeltaY) -- (\Uinf, 0) -- (0,0) -- cycle;
+            
+        % Label for Velocity Deficit
+        \draw[<-] (2.5, 1.0) -- (4.0, 1.0) node[right, align=left] {$= U_\infty - u$ (velocity deficit \\due to presence of a BL)};
+
+        % --- DIMENSION LINES (Left Side) ---
+        
+        % Delta* (Displacement Thickness)
+        \draw[dashed] (0, \DeltaStar) -- (-1.0, \DeltaStar);
+        \draw[<->, thick] (-0.5, 0) -- (-0.5, \DeltaStar) node[midway, left] {$\delta^*$};
+        
+        % Theta (Momentum Thickness)
+        \draw[dashed] (0, \ThetaY) -- (-0.6, \ThetaY);
+        \draw[<->, thick] (-0.2, 0) -- (-0.2, \ThetaY) node[midway, right] {$\theta$};
+        
+        % --- DIMENSION LINES (Right Side) ---
+        
+        % Delta (Boundary Layer Thickness)
+        \draw[dashed] (0, \DeltaY) -- (\Uinf+0.5, \DeltaY);
+        \draw[<->, thick] (\Uinf+0.2, 0) -- (\Uinf+0.2, \DeltaY) node[midway, right] {$\delta$};
+
+    \end{tikzpicture}

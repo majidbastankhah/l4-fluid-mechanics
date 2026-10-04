@@ -1,0 +1,30 @@
+    \begin{tikzpicture}[scale=1.0, >=latex, line join=round]
+        % --- PROJECTION ---
+        \tikzset{x={(1cm,0cm)}, y={(0cm,1cm)}, z={(-0.6cm,-0.4cm)}}
+        \def\dx{3.5} \def\dy{2.5} \def\dz{2.5}
+        % --- COORDINATES ---
+        \coordinate (O) at (0,0,0); \coordinate (A) at (\dx,0,0);
+        \coordinate (B) at (\dx,\dy,0); \coordinate (C) at (0,\dy,0);
+        \coordinate (D) at (0,0,\dz); \coordinate (E) at (\dx,0,\dz);
+        \coordinate (F) at (\dx,\dy,\dz); \coordinate (G) at (0,\dy,\dz);
+        % --- HIDDEN EDGES ---
+        \draw[dashed, gray!50] (O) -- (A);
+        \draw[dashed, gray!50] (O) -- (C);
+        \draw[dashed, gray!50] (O) -- (D);
+        % --- CUBE EDGES ---
+        \draw[thick] (A) -- (B) -- (F) -- (E) -- cycle; % Right
+        \draw[thick] (C) -- (B) -- (F) -- (G) -- cycle; % Top
+        \draw[thick] (D) -- (E) -- (F) -- (G) -- cycle; % Front
+        \draw[thick] (C) -- (G) -- (D);
+        % --- DIMENSION LABELS ---
+        \draw[|<->|] (-0.4, 0, \dz) -- (-0.4, \dy, \dz) node[midway, left] {$dy$};
+        \draw[|<->|] (0, -0.4, \dz) -- (\dx, -0.4, \dz) node[midway, below] {$dx$};
+        \draw[|<->|] (\dx+0.4, 0, 0) -- (\dx+0.4, 0, \dz) node[midway, right] {$dz$};
+        \node[fill=white, inner sep=2pt] at (\dx/2, \dy/2, \dz) {$dV = dx\,dy\,dz$};
+        % --- COORDINATE SYSTEM ---
+        \begin{scope}[shift={(\dx+3.5, 1.5, \dz)}]
+            \draw[->, thick] (0,0,0) -- (1,0,0) node[right] {$x$};
+            \draw[->, thick] (0,0,0) -- (0,1,0) node[above] {$y$};
+            \draw[->, thick] (0,0,0) -- (0,0,1) node[below left] {$z$};
+        \end{scope}
+    \end{tikzpicture}

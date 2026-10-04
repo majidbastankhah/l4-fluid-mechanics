@@ -1,0 +1,50 @@
+\begin{tikzpicture}[
+    tcell/.style={align=center, font=\normalsize},
+    theader/.style={align=center, font=\bfseries, text=pressCol},
+    arrow/.style={thick, -Latex}]
+  \definecolor{pressCol}{RGB}{0,102,204}
+  \definecolor{normCol}{RGB}{204,0,0}
+  \definecolor{heatCol}{RGB}{230,120,0}
+  % side arrows
+  \draw[arrow, normCol, line width=1.5pt] (-3.5, 0.5) -- (-3.5, 5.5) node[midway, above, rotate=90, text=normCol, font=\bfseries\small] {Computational cost};
+  \draw[arrow, pressCol, line width=1.5pt] (-5.0, 5.5) -- (-5.0, 0.5) node[midway, above, rotate=90, text=pressCol, font=\bfseries\small] {Empirical modelling / assumptions};
+  % pyramid
+  \filldraw[fill=pressCol, draw=white, thick] (-3,0) -- (3,0) -- (2.5,1) -- (-2.5,1) -- cycle;
+  \node[text=white, font=\bfseries] at (0, 0.5) {0-Eq (MLM)};
+  \filldraw[fill=pressCol!80, draw=white, thick] (-2.5,1) -- (2.5,1) -- (2.0,2) -- (-2.0,2) -- cycle;
+  \node[text=white, font=\bfseries] at (0, 1.5) {1-Equation};
+  \filldraw[fill=heatCol!80, draw=white, thick] (-2.0,2) -- (2.0,2) -- (1.5,3) -- (-1.5,3) -- cycle;
+  \node[text=white, font=\bfseries] at (0, 2.5) {2-Eq ($k$--$\varepsilon$)};
+  \filldraw[fill=heatCol, draw=white, thick] (-1.5,3) -- (1.5,3) -- (1.0,4) -- (-1.0,4) -- cycle;
+  \node[text=white, font=\bfseries] at (0, 3.5) {RSM};
+  \filldraw[fill=normCol!80, draw=white, thick] (-1.0,4) -- (1.0,4) -- (0.5,5) -- (-0.5,5) -- cycle;
+  \node[text=white, font=\bfseries] at (0, 4.5) {LES};
+  \filldraw[fill=normCol, draw=white, thick] (-0.5,5) -- (0.5,5) -- (0,6) -- cycle;
+  \node[text=white, font=\bfseries\scriptsize] at (0, 5.35) {DNS};
+  % table
+  \node[theader] at (5.5, 6.2) {Solves};
+  \node[theader] at (9.4, 6.2) {Variables};
+  \node[theader] at (13.3, 6.2) {Closure};
+  \draw[thick, gray] (3.5, 5.85) -- (15.4, 5.85);
+  \node[tcell] at (5.5, 5.35) {Instantaneous N--S};
+  \node[tcell] at (9.4, 5.35) {$u, v, w, p$};
+  \node[tcell] at (13.3, 5.35) {None (exact)};
+  \node[tcell] at (5.5, 4.5) {Filtered N--S};
+  \node[tcell] at (9.4, 4.5) {$\bar{u}, \bar{v}, \bar{w}, \bar{p}$};
+  \node[tcell] at (13.3, 4.5) {Sub-grid-scale model};
+  \node[tcell] at (5.5, 3.5) {Mean flow + 7 PDEs};
+  \node[tcell] at (9.4, 3.5) {$U_i, P, \overline{u_i'u_j'}, \varepsilon$};
+  \node[tcell] at (13.3, 3.5) {Modelled stress transport};
+  \node[tcell] at (5.5, 2.5) {Mean flow + 2 PDEs};
+  \node[tcell] at (9.4, 2.5) {$U_i, P, k, \varepsilon$};
+  \node[tcell] at (13.3, 2.5) {Boussinesq EVM};
+  \node[tcell] at (5.5, 1.5) {Mean flow + 1 PDE};
+  \node[tcell] at (9.4, 1.5) {$U_i, P, k$};
+  \node[tcell] at (13.3, 1.5) {EVM + algebraic $l_s$};
+  \node[tcell] at (5.5, 0.5) {Mean-flow PDEs only};
+  \node[tcell] at (9.4, 0.5) {$U_i, P$};
+  \node[tcell] at (13.3, 0.5) {EVM + algebraic $l_m$};
+  % connectors and row separators
+  \foreach \y/\x in {5.35/0.25, 4.5/0.75, 3.5/1.25, 2.5/1.75, 1.5/2.25, 0.5/2.75} \draw[dashed, gray!60] (\x, \y) -- (3.5, \y);
+  \foreach \y in {4.9, 4.0, 3.0, 2.0, 1.0} \draw[gray!30] (3.5, \y) -- (15.4, \y);
+\end{tikzpicture}

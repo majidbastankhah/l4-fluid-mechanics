@@ -1,0 +1,21 @@
+\begin{tikzpicture}[>=Stealth]
+    % plates
+    \fill[pattern=north east lines] (0,2) rectangle (6,2.3);
+    \draw[thick] (0,2) -- (6,2);
+    \fill[pattern=north east lines] (0,-2.3) rectangle (6,-2);
+    \draw[thick] (0,-2) -- (6,-2);
+    % centreline
+    \draw[dashed] (0,0) -- (6,0);
+    % gap
+    \draw[<->, thick] (-0.5,-2) -- (-0.5,2) node[midway, fill=white] {$2h$};
+    % parabolic profile
+    \draw[thick, blue, domain=-2:2, variable=\y, samples=50] plot ({2 + 3*(1 - (\y/2)*(\y/2))}, \y);
+    \foreach \y in {-1.5,-1,-0.5,0,0.5,1,1.5}
+        \draw[->, thick, blue] (2,\y) -- ({2 + 3*(1 - (\y/2)*(\y/2))}, \y);
+    \node[right] at (5,0.2) {$u_{\max}$};
+    \draw[thick, blue] (2,-2) -- (2,2);
+    \node at (4.6,1.3) {$u(y)$};
+    % axes
+    \draw[->] (0.4,0) -- (1.2,0) node[below] {$x$};
+    \draw[->] (0.4,0) -- (0.4,0.8) node[left] {$y$};
+\end{tikzpicture}

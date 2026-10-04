@@ -1,0 +1,22 @@
+\begin{tikzpicture}[>=latex]
+  \def\StepH{1.5} \def\InletL{4} \def\OutletL{6}
+  % walls with hatching
+  \draw[thick] (0, 3) -- (\InletL+\OutletL, 3);
+  \foreach \x in {0.3, 0.8, ..., 9.8} \draw (\x, 3) -- (\x+0.3, 3.3);
+  \draw[thick] (0, \StepH) -- (\InletL, \StepH) -- (\InletL, 0) -- (\InletL+\OutletL, 0);
+  \foreach \x in {0.3, 0.8, ..., 3.8} \draw (\x, \StepH) -- (\x-0.3, \StepH-0.3);
+  \foreach \y in {0.2, 0.7, 1.2} \draw (\InletL, \y) -- (\InletL-0.3, \y-0.3);
+  \foreach \x in {4.3, 4.8, ..., 9.8} \draw (\x, 0) -- (\x-0.3, -0.3);
+  % mean streamlines
+  \draw[thick, ->] (0, 2.5) -- (\InletL, 2.5) .. controls (\InletL+2, 2.4) .. (\InletL+\OutletL, 2.2);
+  \draw[thick, ->] (0, 1.9) -- (\InletL, 1.9) .. controls (\InletL+2, 1.7) .. (\InletL+\OutletL, 1.4);
+  % dividing streamline and shear layer
+  \draw[thick, dashed] (\InletL, \StepH) .. controls (\InletL+1.5, \StepH) and (\InletL+2.5, 0.5) .. (\InletL+3.5, 0);
+  \foreach \x in {4.2, 4.35, ..., 6.8} \draw[gray, thin] (\x, {1.5 - 0.5*(\x-4)}) -- (\x+0.2, {1.5 - 0.5*(\x-4) + 0.2});
+  % recirculation (clockwise)
+  \draw[thick, ->] (\InletL+1.5, 0.5) arc (0:-280:0.4);
+  % labels
+  \draw[{Latex[scale=1.6]}-] (\InletL+2.4, 0.75) -- (\InletL+4.4, 1.0) node[right, align=left, font=\small] {shear layer:\\zone of high $\mu_t$};
+  \draw[thick, |-|] (\InletL+3.0, -0.45) -- (\InletL+3.8, -0.45) node[midway, below, font=\small] {reattachment zone};
+  \node[font=\small] at (\InletL+1.1, -0.4) {recirculation};
+\end{tikzpicture}

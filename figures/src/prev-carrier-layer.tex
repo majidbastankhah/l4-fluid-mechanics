@@ -1,0 +1,43 @@
+\begin{tikzpicture}[>=Stealth, yscale=0.9]
+    % plates
+    \fill[pattern=north east lines] (0,3) rectangle (8,3.3);
+    \draw[thick] (0,3) -- (8,3);
+    \fill[pattern=north east lines] (0,-3.3) rectangle (8,-3);
+    \draw[thick] (0,-3) -- (8,-3);
+    % carrier layers
+    \fill[cyan!12] (0,2.4) rectangle (8,3);
+    \fill[cyan!12] (0,-3) rectangle (8,-2.4);
+    \draw[densely dashed] (0,2.4) -- (8,2.4);
+    \draw[densely dashed] (0,-2.4) -- (8,-2.4);
+    \fill[orange!8] (0,-2.4) rectangle (8,2.4);
+    % centreline and axes
+    \draw[dash dot] (0,0) -- (8,0);
+    \draw[->, thick] (0.3,0) -- (1.4,0) node[below] {$x$};
+    \draw[->, thick] (0.3,0) -- (0.3,1.1) node[left] {$y$};
+    % labels
+    \node at (5.9,2.7) {\small Newtonian carrier layer ($\mu_c$)};
+    \node at (5.9,-2.7) {\small Newtonian carrier layer ($\mu_c$)};
+    \node at (5.9,1.2) {\small non-Newtonian bulk fluid ($\mu$, $n$)};
+    % dimensions
+    \draw[<->] (8.4,2.4) -- (8.4,3) node[midway, right] {$h$};
+    \draw[<->] (8.4,-3) -- (8.4,-2.4) node[midway, right] {$h$};
+    \draw[<->] (8.4,0) -- (8.4,2.4) node[midway, right] {$H$};
+    \draw[<->] (8.4,-2.4) -- (8.4,0) node[midway, right] {$H$};
+    % interface velocity
+    \node[left] at (0,2.4) {\small $y=H$};
+    \node[left] at (0,3) {\small $y=H+h$};
+    \node[left] at (0,-2.4) {\small $y=-H$};
+    \node[left] at (0,-3) {\small $y=-(H+h)$};
+    % velocity profile sketch: carrier parabola, blunt bulk
+    \draw[thick, blue] (2.2,3) -- (2.2,-3);
+    \draw[very thick, blue, domain=0:2.4, samples=40, variable=\y] plot ({2.2 + 1.6 + 0.8*(1-(\y/2.4)^3)}, \y);
+    \draw[very thick, blue, domain=-2.4:0, samples=40, variable=\y] plot ({2.2 + 1.6 + 0.8*(1-(-\y/2.4)^3)}, \y);
+    \draw[very thick, blue] (2.2,3) -- (3.8,2.4);
+    \draw[very thick, blue] (2.2,-3) -- (3.8,-2.4);
+    \draw[->, blue] (2.2,2.4) -- (3.75,2.4);
+    \node[blue, above] at (3.1,2.0) {\small $u_i$};
+    \draw[->, blue] (2.2,0.9) -- (4.55,0.9);
+    \draw[->, blue] (2.2,-0.9) -- (4.55,-0.9);
+    \node[blue, right] at (4.6,0.25) {\small $u(y)$};
+    \draw[->, thick] (5.5,-1.0) -- (6.9,-1.0) node[midway, below] {\small $dp/dx<0$};
+\end{tikzpicture}

@@ -1,0 +1,44 @@
+\begin{tikzpicture}[line width=0.8pt]
+    \def\rodR{0.8}
+    \def\filmR{1.8}
+    \def\topY{5}
+    \def\midY{3}
+    \def\botY{0}
+    % film (shaded) between rod and free surface
+    \fill[cyan!12] (-\filmR, \botY) -- (-\filmR, \midY) to[out=90, in=280] (-2.5, \topY) -- (-\rodR, \topY) -- (-\rodR, \botY) -- cycle;
+    \fill[cyan!12] (\filmR, \botY) -- (\filmR, \midY) to[out=90, in=260] (2.5, \topY) -- (\rodR, \topY) -- (\rodR, \botY) -- cycle;
+    % centreline
+    \draw[dash pattern=on 5pt off 3pt] (0, \topY+0.5) -- (0, \botY-0.5);
+    % rod
+    \fill[gray!15] (-\rodR, \topY) -- (-\rodR, \botY) -- (\rodR, \botY) -- (\rodR, \topY) -- cycle;
+    \draw[thick] (-\rodR, \topY) -- (-\rodR, \botY);
+    \draw[thick] (\rodR, \topY) -- (\rodR, \botY);
+    \draw (\rodR, \topY) arc (0:180:\rodR cm and 0.2cm);
+    \draw (-\rodR, \topY) arc (180:360:\rodR cm and 0.2cm);
+    \node at (-.42, 0.9) [rotate=270, fill=gray!15, inner sep=1pt] {\textbf{rod}};
+    % film free surfaces
+    \draw[thick] (-\filmR, \midY) -- (-\filmR, \botY);
+    \draw[thick] (-\filmR, \midY) to[out=90, in=280] (-2.5, \topY);
+    \draw[thick] (\filmR, \midY) -- (\filmR, \botY);
+    \draw[thick] (\filmR, \midY) to[out=90, in=260] (2.5, \topY);
+    % axes
+    \draw[-{Stealth[scale=1.2]}] (0, 5) -- (0, 3.8) node[right] {\Large $z$};
+    \draw[-{Stealth[scale=1.2]}] (0, 5) -- (1.5, 5) node[above] {\Large $r$};
+    % radii
+    \draw[<->, >=stealth] (0, 2.5) -- (\rodR, 2.5) node[midway, above] {$a$};
+    \draw[<->, >=stealth] (0, 1.8) -- (\filmR, 1.8) node[midway, above right=-1pt] {$b$};
+    % Q
+    \draw[-{Stealth[scale=1.2]}] (-1.9, 4.6) -- (-1.4, 3.9) node[midway, right] {\Large $Q$};
+    \draw[-{Stealth[scale=1.2]}] (1.9, 4.6) -- (1.4, 3.9);
+    \node at (-1.3, 2.4) [rotate=270] {film};
+    % atmosphere
+    \node at (3.4, 3.5) {\large $p_{atm}$};
+    \node at (3.5, 2.9) {\large $u_{atm} = 0$};
+    % gravity
+    \draw[-{Stealth[scale=1.2]}, double] (3.0, 1.8) -- (3.0, 1.0) node[right] {\Large $g$};
+    % u_z
+    \draw[-{Stealth[scale=1.2]}] (1.3, 0.6) -- (1.3, -0.3) node[below] {\Large $u_z$};
+    % fully developed region
+    \draw[<-, >=stealth, line width=1pt] (-2.8, \botY) -- (-2.8, \midY);
+    \node at (-3.4, 1.5) [rotate=-90, align=center] {fully developed\\region};
+\end{tikzpicture}

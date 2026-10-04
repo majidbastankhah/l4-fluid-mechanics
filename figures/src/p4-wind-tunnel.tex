@@ -1,0 +1,26 @@
+\begin{tikzpicture}[>=Stealth]
+    \draw[dash dot] (0,0) -- (10,0) node[right] {symmetry line};
+    % smooth inlet
+    \draw[thick] (0,1.5) to[out=0, in=180] (2,0.75);
+    \draw[thick] (0,-1.5) to[out=0, in=180] (2,-0.75);
+    \node[above] at (0.8,1.5) {inlet};
+    % pipe
+    \draw[thick] (2,0.75) -- (5,0.75);
+    \draw[thick] (2,-0.75) -- (5,-0.75);
+    \node[above] at (3.5,0.75) {pipe};
+    % constriction
+    \draw[thick] (5,0.75) -- (7,0.4);
+    \draw[thick] (5,-0.75) -- (7,-0.4);
+    \node[above] at (6.1,0.75) {constriction};
+    % fan section
+    \draw[thick] (7,0.4) -- (8.5,0.4);
+    \draw[thick] (7,-0.4) -- (8.5,-0.4);
+    \draw[thick, fill=gray!15] (8.5,-0.6) rectangle (9,0.6);
+    \node[rotate=90] at (8.75,0) {\small fan};
+    % velocities
+    \draw[->, thick] (2.5,0.2) -- (3.7,0.2) node[midway, above] {$10$ m/s};
+    \draw[->, thick] (7.15,-0.18) -- (8.35,-0.18);
+    \node[above] at (7.75,0.4) {\small $15$ m/s};
+    % diameter
+    \draw[<->] (1.5,-0.75) -- (1.5,0.75) node[midway, fill=white] {$0.3$ m};
+\end{tikzpicture}

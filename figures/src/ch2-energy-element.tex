@@ -1,0 +1,62 @@
+    \begin{tikzpicture}[scale=1.5, >=latex, line cap=round, line join=round]
+        \tikzset{x={(1cm,0cm)}, y={(0cm,1cm)}, z={(-0.6cm,-0.4cm)}}
+        \definecolor{convCol}{RGB}{0, 102, 204}    % Blue: u rho E
+        \definecolor{pressCol}{RGB}{204, 0, 0}     % Red: up
+        \definecolor{viscCol}{RGB}{0, 120, 0}      % Green: u*tau
+        \definecolor{heatCol}{RGB}{230, 120, 0}    % Orange: q
+        \def\dx{3.5} \def\dy{2.8} \def\dz{2.8}
+        \coordinate (O) at (0,0,0); \coordinate (A) at (\dx,0,0);
+        \coordinate (B) at (\dx,\dy,0); \coordinate (C) at (0,\dy,0);
+        \coordinate (D) at (0,0,\dz); \coordinate (E) at (\dx,0,\dz);
+        \coordinate (F) at (\dx,\dy,\dz); \coordinate (G) at (0,\dy,\dz);
+        % hidden edges
+        \draw[dashed, gray!60] (O) -- (A);
+        \draw[dashed, gray!60] (O) -- (C);
+        \draw[dashed, gray!60] (O) -- (D);
+        % left face (x): fluxes enter in +x; pressure pushes in +x; viscous normal stress acts in -x
+        \coordinate (LC) at (0, \dy/2, \dz/2);
+        \draw[->, thick, convCol]  ($(LC)+(-1.4, 0.6, 0)$) -- ($(LC)+(0, 0.6, 0)$) node[pos=0, left] {$u\rho E$};
+        \draw[->, thick, pressCol] ($(LC)+(-1.4, 0.2, 0)$) -- ($(LC)+(0, 0.2, 0)$) node[pos=0, left] {$up$};
+        \draw[<-, thick, viscCol]  ($(LC)+(-1.4, -0.2, 0)$) -- ($(LC)+(0, -0.2, 0)$) node[pos=0, left] {$u\tau_{xx}$};
+        \draw[->, line width=1.5pt, double, heatCol] ($(LC)+(-1.4, -0.8, 0)$) -- ($(LC)+(0, -0.8, 0)$) node[pos=0, left] {$q_x$};
+        % bottom face (y): shear acts in -x
+        \coordinate (BC) at (\dx/2, 0, \dz/2);
+        \draw[->, thick, viscCol,dashed] (BC) -- ++(-1.2, 0, 0) node[left, xshift=-2pt] {$u\tau_{xy}$};
+        \draw[thin, viscCol] ($(BC)+(0,0,0.15)$) -- ($(BC)+(0,0,-0.15)$);
+        % back face (z): shear acts in -x
+        \coordinate (BKC) at (\dx/2, \dy/2, 0);
+        \draw[->, thick, viscCol, dashed] (BKC) -- ++(-1.0, 0, 0) node[left, xshift=-2pt, yshift=4pt] {$u\tau_{xz}$};
+        \draw[thin, viscCol] ($(BKC)+(0,0.15,0)$) -- ($(BKC)+(0,-0.15,0)$);
+        % visible edges
+        \draw[thick] (A) -- (B) -- (F) -- (E) -- cycle;
+        \draw[thick] (C) -- (B) -- (F) -- (G) -- cycle;
+        \draw[thick] (D) -- (E) -- (F) -- (G) -- cycle;
+        \draw[thick] (C) -- (G) -- (D);
+        % top face (y + dy)
+        \coordinate (TC) at (\dx/2, \dy, \dz/2);
+        \draw[->, thick, viscCol] (TC) -- ++(1.4, 0, 0)
+            node[right, font=\small, xshift=2pt, fill=white, inner sep=1pt] {$u\tau_{xy} + \frac{\partial(u\tau_{xy})}{\partial y}dy$};
+        \draw[thin, viscCol] ($(TC)+(0,0,0.2)$) -- ($(TC)+(0,0,-0.2)$);
+        % front face (z + dz)
+        \coordinate (FC) at (\dx/2, \dy/2, \dz);
+        \draw[->, thick, viscCol] (FC) -- ++(1, 0, 0)
+            node[right, font=\small, xshift=2pt] {$u\tau_{xz} + \frac{\partial(u\tau_{xz})}{\partial z}dz$};
+        \draw[thin, viscCol] ($(FC)+(0,0.2,0)$) -- ($(FC)+(0,-0.2,0)$);
+        % right face (x + dx): pressure pushes in -x
+        \coordinate (RC) at (\dx, \dy/2, \dz/2);
+        \def\dist{1.8}
+        \draw[->, thick, convCol] ($(RC)+(0,0.8,0)$) -- ++(\dist, 0, 0)
+            node[right, font=\footnotesize, xshift=2pt] {$u\rho E + \frac{\partial(u\rho E)}{\partial x}dx$};
+        \draw[<-, thick, pressCol] ($(RC)+(0,0.3,0)$) -- ++(\dist, 0, 0)
+            node[right, font=\footnotesize, xshift=2pt] {$up + \frac{\partial(up)}{\partial x}dx$};
+        \draw[->, thick, viscCol] ($(RC)+(0,-0.2,0)$) -- ++(\dist, 0, 0)
+            node[right, font=\footnotesize, xshift=2pt] {$u\tau_{xx} + \frac{\partial(u\tau_{xx})}{\partial x}dx$};
+        \draw[->, line width=1.5pt, double, heatCol] ($(RC)+(0,-1.1,0)$) -- ++(\dist, 0, 0)
+            node[right, font=\footnotesize, xshift=2pt] {$q_x + \frac{\partial q_x}{\partial x}dx$};
+        % axes
+        \begin{scope}[shift={(\dx+4.2, \dy, 0)}]
+            \draw[->] (0,0,0) -- (0.8,0,0) node[right] {$x,u$};
+            \draw[->] (0,0,0) -- (0,0.8,0) node[above] {$y,v$};
+            \draw[->] (0,0,0) -- (0,0,0.8) node[below left] {$z,w$};
+        \end{scope}
+    \end{tikzpicture}

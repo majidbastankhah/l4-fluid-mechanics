@@ -1,0 +1,29 @@
+\begin{tikzpicture}[scale=1.3, >=stealth]
+    % fluids
+    \fill[cyan!10] (0,1) rectangle (5,2);
+    \fill[cyan!10] (0,-2) rectangle (5,-1);
+    \fill[orange!12] (0,-1) rectangle (5,1);
+    % walls
+    \fill[pattern=north east lines] (0,2) rectangle (5,2.2);
+    \fill[pattern=north east lines] (0,-2.2) rectangle (5,-2);
+    \draw[thick] (0, 2) -- (5, 2);
+    \draw[thick] (0, -2) -- (5, -2);
+    % interfaces and centreline
+    \draw[dashed] (0, 1) -- (5, 1);
+    \draw[dashed] (0, -1) -- (5, -1);
+    \draw[dashdotted] (0, 0) -- (5.2, 0) node[right] {centreline};
+    % axes
+    \draw[->, thick] (0,0) -- (1.0,0) node[below] {$x$};
+    \draw[->, thick] (0,0) -- (0,0.9) node[left] {$y$};
+    % labels
+    \node at (2.9, 1.5) {Newtonian fluid, $\mu$};
+    \node at (2.9, 0.45) {power-law (non-Newtonian) fluid};
+    \node at (2.9, -1.5) {Newtonian fluid, $\mu$};
+    % dimensions
+    \draw[<->] (-0.4, 1) -- (-0.4, 2) node[midway, left] {$h$};
+    \draw[<->] (-0.4, 0) -- (-0.4, 1) node[midway, left] {$H$};
+    \draw[<->] (-0.4, -1) -- (-0.4, 0) node[midway, left] {$H$};
+    \draw[<->] (-0.4, -2) -- (-0.4, -1) node[midway, left] {$h$};
+    % pressure gradient
+    \node[right] at (5.1, -0.55) {$\dfrac{dp}{dx} = \text{const} < 0$};
+\end{tikzpicture}

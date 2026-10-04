@@ -1,0 +1,40 @@
+\begin{tikzpicture}[>=Latex, font=\large]
+    \def\xStart{0}
+    \def\xSTwo{3}
+    \def\xSFour{7}
+    \def\xEnd{10}
+    \def\hLeft{2}
+    \def\hRight{1}
+    \def\wallThick{0.4}
+    % control volume shading
+    \fill[gray!12] (\xSTwo, -\hLeft) -- (\xSTwo, \hLeft) -- (\xSFour, \hRight) -- (\xSFour, -\hRight) -- cycle;
+    % top wall
+    \draw[thick] (\xStart, \hLeft) -- (\xSTwo, \hLeft) -- (\xSFour, \hRight) -- (\xEnd, \hRight);
+    \fill[pattern=north east lines]
+        (\xStart, \hLeft) -- (\xSTwo, \hLeft) -- (\xSFour, \hRight) -- (\xEnd, \hRight) --
+        (\xEnd, \hRight+\wallThick) -- (\xSFour, \hRight+\wallThick) -- (\xSTwo, \hLeft+\wallThick) -- (\xStart, \hLeft+\wallThick) -- cycle;
+    % bottom wall
+    \draw[thick] (\xStart, -\hLeft) -- (\xSTwo, -\hLeft) -- (\xSFour, -\hRight) -- (\xEnd, -\hRight);
+    \fill[pattern=north east lines]
+        (\xStart, -\hLeft) -- (\xSTwo, -\hLeft) -- (\xSFour, -\hRight) -- (\xEnd, -\hRight) --
+        (\xEnd, -\hRight-\wallThick) -- (\xSFour, -\hRight-\wallThick) -- (\xSTwo, -\hLeft-\wallThick) -- (\xStart, -\hLeft-\wallThick) -- cycle;
+    % CV boundaries
+    \draw[dashed, thick] (\xSTwo, -\hLeft) -- (\xSTwo, \hLeft);
+    \draw[dashed, thick] (\xSFour, -\hRight) -- (\xSFour, \hRight);
+    \node at (\xSTwo - 0.4, -0.6) {$S_2$};
+    \node at (\xSFour - 0.4, -0.6) {$S_4$};
+    \node at (5, -1.15) {$S_1$};
+    \node at (5, 1.15) {$S_3$};
+    % areas
+    \draw[decorate, decoration={brace, amplitude=10pt, mirror}, thick] (\xStart+0.2, \hLeft) -- (\xStart+0.2, -\hLeft) node[midway, left=12pt] {$A_A$};
+    \draw[decorate, decoration={brace, amplitude=10pt}, thick] (\xEnd-0.2, \hRight) -- (\xEnd-0.2, -\hRight) node[midway, right=12pt] {$A_B$};
+    % velocities
+    \draw[->, thick] (\xSTwo, 0) -- (\xSTwo + 1.5, 0) node[right] {$u_A$};
+    \draw (\xSTwo, 0.2) -- (\xSTwo+0.2, 0.2) -- (\xSTwo+0.2, 0);
+    \draw[->, thick] (\xSFour, 0) -- (\xSFour + 1.5, 0) node[right] {$u_B$};
+    \draw (\xSFour, 0.2) -- (\xSFour+0.2, 0.2) -- (\xSFour+0.2, 0);
+    % stations
+    \node at (\xSTwo, -2.9) {station $A$};
+    \node at (\xSFour, -2.9) {station $B$};
+    \draw[->, thick] (8, -2.9) -- (9.6, -2.9) node[right] {$x$};
+\end{tikzpicture}

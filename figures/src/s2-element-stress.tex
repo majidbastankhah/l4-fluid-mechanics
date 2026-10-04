@@ -1,0 +1,49 @@
+    \begin{tikzpicture}[scale=1.0, >=latex, line cap=round, line join=round]
+        \tikzset{x={(1cm,0cm)}, y={(0cm,1cm)}, z={(-0.6cm,-0.4cm)}}
+        \definecolor{normCol}{RGB}{204, 0, 0}
+        \definecolor{shearCol}{RGB}{0, 102, 0}
+        \def\dx{4.5} \def\dy{2.5} \def\dz{2.5}
+        \coordinate (O) at (0,0,0); \coordinate (A) at (\dx,0,0);
+        \coordinate (B) at (\dx,\dy,0); \coordinate (C) at (0,\dy,0);
+        \coordinate (D) at (0,0,\dz); \coordinate (E) at (\dx,0,\dz);
+        \coordinate (F) at (\dx,\dy,\dz); \coordinate (G) at (0,\dy,\dz);
+        % hidden edges
+        \draw[dashed, gray!50] (O) -- (A);
+        \draw[dashed, gray!50] (O) -- (C);
+        \draw[dashed, gray!50] (O) -- (D);
+        % --- stresses on the hidden (negative) faces act in -x ---
+        % left face (x): tau_xx, outward normal is -x
+        \coordinate (LeftC) at (0, 0.75, \dz/2);
+        \draw[thick, normCol, dashed] (LeftC) -- ++(-1.25,0,0);
+        \draw[->, thick, normCol] ($(LeftC)+(-1.25,0,0)$) -- ++(-1.0,0,0) node[left] {$\tau_{xx}$};
+        % bottom face (y)
+        \coordinate (BotC) at (\dx/2+0.6, 0, \dz/2);
+        \draw[<-, thick, dashed, shearCol] (BotC) -- ++(1.1, 0, 0) node[midway, below] {$\tau_{xy}$};
+        % back face (z)
+        \coordinate (BackC) at (\dx-1.2, 1.4, 0);
+        \draw[<-, thick, dashed, shearCol] (BackC) -- ++(1.0, 0, 0) node[midway, above] {$\tau_{xz}$};
+        % --- visible edges ---
+        \draw[thick] (A) -- (B) -- (F) -- (E) -- cycle;
+        \draw[thick] (C) -- (B) -- (F) -- (G) -- cycle;
+        \draw[thick] (D) -- (E) -- (F) -- (G) -- cycle;
+        \draw[thick] (C) -- (G) -- (D);
+        % --- stresses on the visible (positive) faces act in +x ---
+        % top face (y+dy)
+        \coordinate (TopC) at (0.9, \dy, 0.7*\dz);
+        \draw[->, thick, shearCol] (TopC) -- ++(1.4, 0, 0)
+            node[above right, xshift=-2pt, fill=white, inner sep=1pt] {$\tau_{xy} + \dfrac{\partial \tau_{xy}}{\partial y}dy$};
+        % front face (z+dz)
+        \coordinate (FrontC) at (0.4, 1.9, \dz);
+        \draw[->, thick, shearCol] (FrontC) -- ++(1.4, 0, 0)
+            node[right] {$\tau_{xz} + \dfrac{\partial \tau_{xz}}{\partial z}dz$};
+        % right face (x+dx)
+        \coordinate (RightC) at (\dx, \dy/2, \dz/2);
+        \draw[->, thick, normCol] (RightC) -- ++(1.6, 0, 0)
+            node[right] {$\tau_{xx} + \dfrac{\partial \tau_{xx}}{\partial x}dx$};
+        % axes
+        \begin{scope}[shift={(\dx+3.0, -0.8, \dz)}]
+            \draw[->] (0,0,0) -- (0.8,0,0) node[right] {$x$};
+            \draw[->] (0,0,0) -- (0,0.8,0) node[above] {$y$};
+            \draw[->] (0,0,0) -- (0,0,0.8) node[below left] {$z$};
+        \end{scope}
+    \end{tikzpicture}

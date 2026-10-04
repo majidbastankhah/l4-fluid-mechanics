@@ -1,0 +1,421 @@
+---
+title: "Workshop 2: Gravity & Rotation Driven Flows"
+subtitle: "Film flow down an incline and flow between concentric cylinders"
+toc: true
+toc-depth: 2
+---
+
+{{< include /_macros.qmd >}}
+
+::: {.callout-note icon=false}
+## How to use this page
+Work through the steps on paper first, exactly as you would with the printed handout. Each blank in a prompt is shown as a highlighted **?** that you can click to reveal that answer on its own, and each **Show step** box opens the worked answer for that step. Only open them after you have had a go.
+
+**Study first:** [Continuity equation](../notes/ch2.qmd#sec-continuity) · [Navier–Stokes equations](../notes/ch2.qmd#sec-ns-special) · [Newtonian stresses](../notes/ch2.qmd#sec-stresses) · [Boundary conditions](../notes/ch2.qmd#sec-bcs) · [Curvilinear coordinates](../notes/ch1.qmd#sec-curvilinear). For Problem B you need the continuity and Navier–Stokes equations in cylindrical polar coordinates (exam formula sheet). See also the [problem-solving strategy for flow problems](../resources/solving-strategy.qmd) and [Workshop 1](workshop1.qmd).
+:::
+
+<div class="ws-tools"><button type="button" class="reveal-all">Reveal all answers</button><span>opens every step and fills every blank on this page (click again to hide them)</span></div>
+
+## Problem A: Film flow down an incline
+
+Consider the case of a thin film of liquid flowing steadily under gravity down a rigid planar surface inclined at an angle $\alpha$ to the horizontal. $\rho$ and $\mu$ (and hence $\nu$) are constant. Assuming that the flow is unidirectional (parallel to the incline) and the film has thickness $h$, derive an expression for the velocity distribution through the liquid film.
+
+![Schematic of film flow with coordinate system.](../figures/build/ws2-film.svg){#fig-ws2-film width=75% fig-alt="A liquid film of thickness h flows down a fixed rigid incline at angle alpha to the horizontal, with a free surface in contact with air at atmospheric pressure. The x-axis points down the incline, y is normal to it, and the velocity profile is half a parabola with maximum at the free surface."}
+
+### Steps 1 & 2: Assumptions, setup and method
+
+*Determine the characteristics of the flow field and select the method.*
+
+**A. Assumptions checklist**
+
+- Is the flow steady? [Yes, $\partial/\partial t = 0$]{.gap}
+- Is the flow 2D? [Yes, $w = 0$, $\partial/\partial z = 0$]{.gap}
+- Are fluid properties constant? [Yes, $\rho =$ const, $\mu =$ const]{.gap}
+- Direction of flow? [Unidirectional ($v = 0$). We do not also assume that the flow is fully developed: with $v = w = 0$, continuity gives $\partial u/\partial x = 0$ (Step 3A), so "fully developed" follows automatically.]{.gap}
+- Is a body force present? [Yes, gravity. Using the coordinate system in @fig-ws2-film, the body force per unit volume $\vect{F} = (F_x, F_y)$ has components $F_x = \rho g \sin \alpha$ and $F_y = -\rho g \cos \alpha$.]{.gap}
+- Is the film thickness constant? [Yes]{.gap}
+- Is the surrounding air stationary? [Yes]{.gap}
+- Is atmospheric pressure constant? [Yes]{.gap}
+
+**B. Find:** velocity distribution in the film.
+
+**C. Method:** use continuity and conservation of momentum equations (i.e., Navier–Stokes equations) for incompressible flow.
+
+### Step 3: Governing equations
+
+**A. The continuity equation.** Write the continuity equation for incompressible flow and simplify it.
+
+<details class="answer"><summary>Show step</summary>
+
+$$
+\underbrace{\frac{\partial u}{\partial x}}_{\text{?}} + \underbrace{\cancelto{0}{\frac{\partial v}{\partial y}}}_{v=0} + \underbrace{\cancelto{0}{\frac{\partial w}{\partial z}}}_{\text{2D},\ w=0} = 0
+$$
+Since the flow is unidirectional ($v = 0$, $w = 0$) and 2D ($\partial/\partial z = 0$):
+$$
+\implies \frac{\partial u}{\partial x} = 0
+$$
+Therefore, $u$ is not a function of $x$: the flow is fully developed. Since it is steady, $u = u(y)$ only.
+
+</details>
+
+**B. The Navier–Stokes equations.** Write the full 2D equations in both $x$ and $y$ directions, and then cancel terms and simplify the equations based on our assumptions.
+
+<details class="answer"><summary>Show step</summary>
+
+**$x$-momentum:**
+$$
+\rho \left( \cancelto{0}{\frac{\partial u}{\partial t}} + u\cancelto{0}{\frac{\partial u}{\partial x}} + \cancelto{0}{v}\frac{\partial u}{\partial y} \right) = \rho g \sin \alpha - \frac{\partial p}{\partial x} + \mu \left( \cancelto{0}{\frac{\partial^2 u}{\partial x^2}} + \frac{\partial^2 u}{\partial y^2} \right)
+$$
+Simplifies to:
+$$
+0 = \rho g \sin \alpha - \frac{\partial p}{\partial x} + \mu \frac{d^2 u}{dy^2}
+$$ {#eq-ws2-xmom}
+
+**$y$-momentum:**
+$$
+\rho \left( \cancelto{0}{\frac{\partial v}{\partial t}} + u\cancelto{0}{\frac{\partial v}{\partial x}} + \cancelto{0}{v}\frac{\partial v}{\partial y} \right) = -\rho g \cos \alpha - \frac{\partial p}{\partial y} + \mu \left( \cancelto{0}{\frac{\partial^2 v}{\partial x^2}} + \cancelto{0}{\frac{\partial^2 v}{\partial y^2}} \right)
+$$
+Simplifies to:
+$$
+0 = -\rho g \cos \alpha - \frac{\partial p}{\partial y} \implies \frac{\partial p}{\partial y} = -\rho g \cos \alpha
+$$ {#eq-ws2-ymom}
+
+</details>
+
+### Step 4: Do the analysis
+
+**1. Solve the $y$-momentum equation:** Integrate the $y$-momentum equation and apply the boundary condition $p(h) = p_{atm}$ to find $p(x,y)$.
+
+<details class="answer"><summary>Show step</summary>
+
+Integrate $\partial p/\partial y = -\rho g \cos \alpha$:
+$$
+p(x,y) = -\rho g y \cos \alpha + f(x)
+$$
+Apply the free-surface boundary condition ($y = h$, $p = p_{atm}$):
+$$
+p_{atm} = -\rho g h \cos \alpha + f(x) \implies f(x) = p_{atm} + \rho g h \cos \alpha
+$$
+Substitute back:
+$$
+p = p_{atm} + \rho g \cos \alpha\, (h - y)
+$$
+**Result:** $p$ depends only on $y$, therefore $\partial p/\partial x = 0$.
+
+</details>
+
+**2. Velocity profile:** Now, use the pressure distribution that you already found above to solve the $x$-momentum equation. Apply boundary conditions: (1) no-slip at the wall ($y = 0$), (2) zero shear stress at the free surface ($y = h$).
+
+<details class="answer"><summary>Show step</summary>
+
+@eq-ws2-xmom becomes:
+$$
+0 = \rho g \sin \alpha - 0 + \mu \frac{d^2 u}{dy^2} \implies \frac{d^2 u}{dy^2} = -\frac{\rho g \sin \alpha}{\mu}
+$$
+Integrate once:
+$$
+\frac{du}{dy} = -\frac{\rho g \sin \alpha}{\mu} y + C_1
+$$
+Integrate again:
+$$
+u(y) = -\frac{\rho g \sin \alpha}{2\mu} y^2 + C_1 y + C_2
+$$
+
+**Apply BCs:**
+
+- No slip at $y = 0$: $u(0) = 0 \implies C_2 = 0$.
+- Zero shear at $y = h$: $\tau = \mu \dfrac{du}{dy}\Big|_{h} = 0$
+  $$
+  -\frac{\rho g \sin \alpha}{\mu} h + C_1 = 0 \implies C_1 = \frac{\rho g \sin \alpha}{\mu} h
+  $$
+
+**Final expression:**
+$$
+u(y) = \frac{\rho g \sin \alpha}{\mu} \left( hy - \frac{y^2}{2} \right)
+$$
+
+</details>
+
+**3. Volumetric flow rate per unit width ($q$):** Now that we have the velocity profile $u(y)$, calculate the total flow rate per unit width.
+$$
+q = \int_{0}^{h} u(y) \, dy
+$$
+
+<details class="answer"><summary>Show step</summary>
+
+Substitute the velocity profile derived above:
+$$
+q = \int_{0}^{h} \frac{\rho g \sin \alpha}{\mu} \left( hy - \frac{y^2}{2} \right) dy
+$$
+Factor out constants:
+$$
+q = \frac{\rho g \sin \alpha}{\mu} \left[ \frac{hy^2}{2} - \frac{y^3}{6} \right]_{0}^{h}
+$$
+Evaluate limits:
+$$
+q = \frac{\rho g \sin \alpha}{\mu} \left( \frac{h^3}{2} - \frac{h^3}{6} \right)
+$$
+**Result:**
+$$
+q = \frac{\rho g h^3 \sin \alpha}{3\mu}
+$$
+
+</details>
+
+::: {.callout-tip icon=false}
+## Application: curtain coating (e.g. chocolate manufacturing)
+**Context:** In food engineering or industrial painting, "curtain coating" involves pouring a liquid film over an object (like chocolate over a biscuit bar). We control the flow rate $q$ from the supply tank, but we need to ensure the film thickness $h$ is correct for product quality.
+
+**Insight:** Rearranging our flow rate result gives the relationship between supply and thickness:
+$$
+h = \left( \frac{3 \mu q}{\rho g \sin \alpha} \right)^{1/3}
+$$
+Notice that thickness scales with $q^{1/3}$. To double the coating thickness, you would need to increase the flow rate by a factor of 8 ($2^3$)!
+:::
+
+## Problem B: Flow between concentric cylinders {.ws-part}
+
+Consider the case of the flow in the gap between two very long concentric cylinders driven by the rotation of the inner cylinder; $\rho$ and $\mu$ (and hence $\nu$) constant. Since the cylinders are long and concentric, and the wall velocities do not vary with $\theta$, there is angular symmetry so the velocity does not vary with $\theta$ (nothing changes in the flow direction, i.e. the flow is fully developed); it is a function of $r$ only. The normal component of velocity must vanish at the surface of the cylinders, $u_r = 0$ there, and we will show from continuity (Step 3A) that this makes $u_r = 0$ everywhere, i.e. the flow is unidirectional. The radius of the inner cylinder is $R_i$ and the outer cylinder $R_o$. The inner cylinder rotates with angular velocity $\Omega_i$; the angular velocity of the outer cylinder is zero.
+
+Derive an expression for the velocity distribution between the cylinders. [Hint: work in a cylindrical polar coordinate system.]
+
+![Schematic of flow between concentric cylinders.](../figures/build/ws2-cylinders.svg){#fig-ws2-cyl width=70% fig-alt="An inner cylinder of radius R_i rotating with angular velocity Omega_i inside a fixed outer cylinder of radius R_o. The azimuthal velocity u_theta decreases from the inner to the outer cylinder. A polar coordinate system r, theta has its origin at the centre, with z into the page."}
+
+### Steps 1 & 2: Assumptions and setup
+
+**A. Assumptions checklist**
+
+- Steady flow? [Yes ($\partial/\partial t = 0$)]{.gap}
+- 2D flow? [Yes ($u_z = 0$, $\partial/\partial z = 0$)]{.gap}
+- Flow symmetry? [Circular symmetry ($\partial/\partial \theta = 0$): nothing changes in the flow direction $\theta$, so the flow is fully developed.]{.gap}
+- Flow direction? [Unidirectional ($u_\theta(r)$ only). This is not an extra assumption: with $\partial/\partial\theta = 0$, continuity and the impermeable walls give $u_r = 0$ (Step 3A).]{.gap}
+- Body forces? [No body forces]{.gap}
+- Are $\rho$ and $\mu$ constant? [Yes]{.gap}
+- What are the rotational speeds of the cylinders? [The inner cylinder rotates with angular speed $\Omega_i$ and the outer cylinder is stationary so $\Omega_o = 0$.]{.gap}
+
+**B. Find:** velocity distribution between the cylinders.
+
+**C. Method:** use continuity and Navier–Stokes equations in **cylindrical coordinates** $(r, \theta, z)$.
+
+### Step 3: Governing equations
+
+**A. Continuity (cylindrical coordinates).** Simplify the continuity equation for incompressible flow in cylindrical coordinates using the assumptions. Integrate the result and apply the boundary condition at the solid wall. What does continuity tell us about $u_r$?
+
+<details class="answer"><summary>Show step</summary>
+
+The continuity equation for incompressible flow in cylindrical coordinates is:
+$$
+\frac{1}{r} \frac{\partial (r u_r)}{\partial r} + \frac{1}{r} \frac{\partial u_\theta}{\partial \theta} + \frac{\partial u_z}{\partial z} = 0
+$$
+
+**1. Simplify:**
+
+- Infinite cylinders $\implies \partial/\partial z = 0$ and $u_z = 0$.
+- Axisymmetry $\implies \partial/\partial \theta = 0$.
+
+The equation reduces to:
+$$
+\frac{1}{r} \frac{d(r u_r)}{d r} = 0
+$$
+
+**2. Integrate:** Multiply by $r$ and integrate w.r.t. $r$:
+$$
+\frac{d}{dr}(r u_r) = 0 \implies r u_r = C \implies u_r = \frac{C}{r}
+$$
+
+**3. Apply boundary condition:** The walls are solid (impermeable). Fluid cannot flow through them. At $r = R_o$, $u_r = 0$:
+$$
+0 = \frac{C}{R_o} \implies C = 0
+$$
+
+**Conclusion:** Since the constant of integration is zero, $\boldsymbol{u_r = 0}$ **everywhere**. Continuity dictates that the flow must be purely tangential and unidirectional.
+
+</details>
+
+**B. Navier–Stokes equations (cylindrical).**
+
+**1.** Write the $r$-momentum equation using the provided exam formula sheet and simplify the equation based on our assumptions.
+
+<details class="answer"><summary>Show step</summary>
+
+$$
+\begin{aligned}
+&\rho \left( \frac{\partial u_r}{\partial t} + u_r\frac{\partial u_r}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_r}{\partial \theta} - \frac{u_\theta^2}{r} + u_z\frac{\partial u_r}{\partial z} \right) \\
+&\qquad = F_r - \frac{\partial p}{\partial r} + \mu \left( \nabla^2 u_r - \frac{u_r}{r^2} - \frac{2}{r^2}\frac{\partial u_\theta}{\partial \theta} \right)
+\end{aligned}
+$$
+Apply $u_r = 0$, $u_z = 0$, steady ($\partial/\partial t = 0$), symmetry ($\partial/\partial \theta = 0$), $F_r = 0$:
+$$
+\rho \left( 0 + 0 + 0 - \frac{u_\theta^2}{r} + 0 \right) = 0 - \frac{\partial p}{\partial r} + 0
+$$
+
+**Result (radial equilibrium):**
+$$
+\frac{\partial p}{\partial r} = \rho \frac{u_\theta^2}{r}
+$$
+*(Pressure gradient balances centripetal acceleration.)*
+
+</details>
+
+**2.** Write the $\theta$-momentum equation using the provided exam formula sheet and simplify the equation based on our assumptions.
+
+**Hint:** You can use the following mathematical identity to rewrite the equation for easier integration:
+$$
+\frac{1}{r}\frac{\partial}{\partial r}\left(r \frac{\partial u_\theta}{\partial r}\right) - \frac{u_\theta}{r^2} = \frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial (r u_\theta)}{\partial r}\right)
+$$
+
+<details class="answer"><summary>Show step</summary>
+
+$$
+\begin{aligned}
+&\rho \left( \frac{\partial u_\theta}{\partial t} + u_r\frac{\partial u_\theta}{\partial r} + \frac{u_\theta}{r}\frac{\partial u_\theta}{\partial \theta} + \frac{u_r u_\theta}{r} + u_z\frac{\partial u_\theta}{\partial z} \right) \\
+&\qquad = F_\theta - \frac{1}{r}\frac{\partial p}{\partial \theta} + \mu \left( \frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial (r u_\theta)}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 u_\theta}{\partial \theta^2} + \frac{\partial^2 u_\theta}{\partial z^2} + \frac{2}{r^2}\frac{\partial u_r}{\partial \theta} \right)
+\end{aligned}
+$$
+Apply $u_r = 0$, steady, symmetry ($\partial p/\partial \theta = 0$, $\partial u_\theta/\partial \theta = 0$), 2D ($\partial/\partial z = 0$):
+
+**LHS:** All terms are zero because $u_r = 0$ and derivatives w.r.t. $t$, $\theta$, $z$ are zero.
+
+**RHS:**
+$$
+0 - 0 + \mu \left( \frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial (r u_\theta)}{\partial r}\right) + 0 + 0 + 0 \right)
+$$
+
+**Result (governing ODE):**
+$$
+\frac{d}{dr}\left( \frac{1}{r}\frac{d}{dr}(r u_\theta) \right) = 0
+$$
+
+</details>
+
+### Step 4: Analysis and solution
+
+**1. Solve the ODE.**
+
+<details class="answer"><summary>Show step</summary>
+
+Integrate w.r.t. $r$:
+$$
+\frac{1}{r}\frac{d}{dr}(r u_\theta) = C_1
+$$
+Multiply by $r$:
+$$
+\frac{d}{dr}(r u_\theta) = C_1 r
+$$
+Integrate w.r.t. $r$ again:
+$$
+r u_\theta = C_1 \frac{r^2}{2} + C_2
+$$
+Divide by $r$. Let $A = C_1/2$ and $B = C_2$:
+$$
+u_\theta(r) = Ar + \frac{B}{r}
+$$
+
+</details>
+
+**2. Apply boundary conditions:**
+
+1. Inner cylinder ($r = R_i$): $u_\theta = \Omega_i R_i$
+2. Outer cylinder ($r = R_o$): $u_\theta = 0$ (fixed wall)
+
+<details class="answer"><summary>Show step</summary>
+
+**Condition 2 ($r = R_o$):**
+$$
+0 = A R_o + \frac{B}{R_o} \implies B = -A R_o^2
+$$
+
+**Condition 1 ($r = R_i$):**
+$$
+\Omega_i R_i = A R_i + \frac{B}{R_i}
+$$
+Substitute $B = -A R_o^2$:
+$$
+\Omega_i R_i = A R_i - \frac{A R_o^2}{R_i}
+$$
+Factor out $A$:
+$$
+\Omega_i R_i = A \left( R_i - \frac{R_o^2}{R_i} \right) = A \left( \frac{R_i^2 - R_o^2}{R_i} \right)
+$$
+Rearrange for $A$:
+$$
+A = \frac{\Omega_i R_i^2}{R_i^2 - R_o^2} = -\frac{\Omega_i R_i^2}{R_o^2 - R_i^2}
+$$
+Solve for $B$ (using $B = -A R_o^2$):
+$$
+B = - \left( -\frac{\Omega_i R_i^2}{R_o^2 - R_i^2} \right) R_o^2 = \frac{\Omega_i R_i^2 R_o^2}{R_o^2 - R_i^2}
+$$
+
+**Final velocity profile:**
+$$
+u_\theta(r) = \frac{\Omega_i R_i^2}{R_o^2 - R_i^2} \left( \frac{R_o^2}{r} - r \right)
+$$
+
+</details>
+
+### Step 5: Post-processing (torque & drag)
+
+*Calculate the shear stress and torque. This is the theory behind a rotational viscometer.*
+
+**1. Shear stress distribution ($\tau_{r\theta}$).** In cylindrical coordinates, the shear stress component is:
+$$
+\tau_{r\theta} = \mu \left[ r \frac{\partial}{\partial r}\left(\frac{u_\theta}{r}\right) + \cancelto{0}{\frac{1}{r}\frac{\partial u_r}{\partial \theta}} \right]
+$$
+
+<details class="answer"><summary>Show step</summary>
+
+Recall our solution form: $u_\theta = Ar + \dfrac{B}{r}$.
+$$
+\frac{u_\theta}{r} = A + \frac{B}{r^2}
+$$
+Differentiate w.r.t. $r$:
+$$
+\frac{\partial}{\partial r}\left( A + \frac{B}{r^2} \right) = -2\frac{B}{r^3}
+$$
+Substitute back into the shear stress equation:
+$$
+\tau_{r\theta} = \mu r \left( -2\frac{B}{r^3} \right) = -2\mu \frac{B}{r^2}
+$$
+
+</details>
+
+**2. Torque on the cylinders.** Calculate the torque ($T$) per unit length ($L$).
+$$
+T = \text{Force} \times \text{Radius} = (\text{Stress} \times \text{Area}) \times r
+$$
+Area per unit length $= 2\pi r$.
+
+<details class="answer"><summary>Show step</summary>
+
+$$
+T = (\tau_{r\theta} \cdot 2\pi r) \cdot r = 2\pi r^2 \tau_{r\theta}
+$$
+Substitute $\tau_{r\theta} = -2\mu B / r^2$:
+$$
+T = 2\pi r^2 \left( \frac{-2\mu B}{r^2} \right) = -4\pi \mu B
+$$
+Substitute $B = \dfrac{\Omega_i R_i^2 R_o^2}{R_o^2 - R_i^2}$:
+$$
+T = -4\pi \mu \frac{\Omega_i R_i^2 R_o^2}{R_o^2 - R_i^2}
+$$
+(The minus sign shows that the fluid resists the rotation: evaluated at $r = R_i$, this is the torque per unit length that the fluid exerts on the inner cylinder, so the motor must supply $+4\pi\mu B$.)
+
+**Note:** Torque is independent of $r$ (angular momentum is conserved): in steady flow the fluid between any two radii has no angular acceleration, so the same torque is transmitted across every cylindrical surface.
+
+</details>
+
+::: {.callout-tip icon=false}
+## Application: rotational (Couette) viscometer
+**Context:** A rotational viscometer is a standard lab instrument used to measure the viscosity of fluids (like oil, honey, or blood). It works by placing the fluid in the gap between two concentric cylinders.
+
+**Working principle:** The inner cylinder is rotated at a known speed $\Omega_i$. The instrument measures the **torque** $T$ required to maintain that speed.
+
+**The math:** We can rearrange the torque formula derived above to solve for the unknown viscosity $\mu$ based on the measured torque and known geometry:
+$$
+\mu = \frac{|T| (R_o^2 - R_i^2)}{4\pi \Omega_i R_i^2 R_o^2}
+$$
+:::
+
+::: {.content-visible when-format="html"}
+<script src="../assets/widgets/workshops.js"></script>
+:::

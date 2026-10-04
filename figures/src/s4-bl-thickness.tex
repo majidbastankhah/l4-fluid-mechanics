@@ -1,0 +1,32 @@
+\begin{tikzpicture}[scale=1.8, >=latex, font=\large]
+    % Nominal, displacement and momentum thickness (schematic, after Ch4 Part A slides)
+    \def\Uinf{3.5}
+    \def\DeltaY{3.0}
+    \def\DeltaStar{0.8}
+    \def\ThetaY{0.4}
+    % shaded velocity deficit (drawn first so lines sit on top)
+    \fill[gray, opacity=0.3] plot[domain=0:\DeltaY] ({\Uinf*sin(90*\x/\DeltaY)}, \x) -- (\Uinf, \DeltaY) -- (\Uinf, 0) -- (0,0) -- cycle;
+    % axes and wall
+    \draw[->, thick] (0, 0) -- (\Uinf+0.5, 0) node[right] {$u$};
+    \draw[->, thick] (0, -0.2) -- (0, \DeltaY+0.5) node[above] {$y$};
+    \fill[pattern=north east lines, pattern color=black!50] (0,0) rectangle (\Uinf+0.5, -0.2);
+    % reference lines
+    \draw[thick] (\Uinf, 0) -- (\Uinf, \DeltaY+0.5);
+    \draw[->, thick] (0, \DeltaY+0.5) -- (\Uinf, \DeltaY+0.5) node[midway, above] {$U_\infty$};
+    \draw[dashed, thick] (0, \DeltaY) -- (\Uinf, \DeltaY);
+    \node[above] at (\Uinf/2, \DeltaY) {$0.99 U_\infty$};
+    % profile
+    \draw[ultra thick, smooth, domain=0:\DeltaY] plot ({\Uinf*sin(90*\x/\DeltaY)}, \x);
+    \node at (1.2, 1.2) {$u(y)$};
+    \foreach \y in {0.5, 1.0, 1.5, 2.0, 2.5} {
+        \draw[->, thin] (0, \y) -- ({\Uinf*sin(90*\y/\DeltaY)}, \y);
+    }
+    \draw[<-] (2.5, 1.0) -- (4.3, 1.0) node[right, align=left] {velocity deficit\\$U_\infty - u$};
+    % dimension lines
+    \draw[dashed] (0, \DeltaStar) -- (-1.0, \DeltaStar);
+    \draw[<->, thick] (-0.5, 0) -- (-0.5, \DeltaStar) node[midway, left] {$\delta^*$};
+    \draw[dashed] (0, \ThetaY) -- (-0.6, \ThetaY);
+    \draw[<->, thick] (-0.2, 0) -- (-0.2, \ThetaY) node[midway, right] {$\theta$};
+    \draw[dashed] (\Uinf, \DeltaY) -- (\Uinf+0.5, \DeltaY);
+    \draw[<->, thick] (\Uinf+0.2, 0) -- (\Uinf+0.2, \DeltaY) node[midway, right] {$\delta$};
+\end{tikzpicture}

@@ -1,0 +1,44 @@
+    \begin{tikzpicture}[scale=1.2, >=latex]
+        % --- SETTINGS ---
+        \def\StepH{1.5}   % Step Height
+        \def\InletL{4}    % Inlet Length
+        \def\OutletL{6}   % Outlet Length
+        
+        % --- GEOMETRY ---
+        % Top Wall
+        \draw[thick] (0, 3) -- (\InletL+\OutletL, 3);
+        
+        % Bottom Wall (Step)
+        \draw[thick] (0, \StepH) -- (\InletL, \StepH) -- (\InletL, 0) -- (\InletL+\OutletL, 0);
+        
+        % Wall Hatching (Bottom)
+        \foreach \x in {0, 0.5, ..., 3.5} \draw (\x, \StepH) -- (\x-0.3, \StepH-0.3); % Before step
+        \foreach \x in {4, 4.5, ..., 9.5} \draw (\x, 0) -- (\x-0.3, -0.3); % After step
+        \draw (\InletL, \StepH) -- (\InletL-0.3, \StepH-0.3); % Step corner hatch
+
+        % --- STREAMLINES ---
+        % Main Flow (Smooth curves)
+        \draw[thick, ->] (0, 2.5) -- (\InletL, 2.5) .. controls (\InletL+2, 2.4) .. (\InletL+\OutletL, 2.2);
+        \draw[thick, ->] (0, 1.8) -- (\InletL, 1.8) .. controls (\InletL+2, 1.6) .. (\InletL+\OutletL, 1.4);
+        
+        % Shear Layer (Dashed/Scribbled)
+        % Represents the mixing zone starting from the step corner
+        \draw[thick, dashed] (\InletL, \StepH) .. controls (\InletL+1.5, \StepH) and (\InletL+2.5, 0.5) .. (\InletL+3.5, 0);
+        
+        % Scribbles for high turbulence/mixing
+        \foreach \x in {4.2, 4.3, ..., 6.8} {
+            \draw[gray, thin] (\x, {1.5 - 0.5*(\x-4)}) -- (\x+0.2, {1.5 - 0.5*(\x-4) + 0.2});
+        }
+
+        % --- RECIRCULATION ZONE (Vortex) ---
+        \draw[thick, ->] (\InletL+1.5, 0.5) arc (0:-280:0.4);
+        
+        % --- LABELS ---
+        % Note the curly braces { } around the arrow declaration are required
+\draw[{Latex[scale=2.0]}-] (\InletL+2.4, 0.5) -- (\InletL+5, .5) node[right, align=left] {shear layer, zone of\\high $\mu_t$};
+        %\draw[->] (\InletL+5.5, 1.5) -- (\InletL+5, 1.0); % Pointer to shear layer
+        
+        % Reattachment Zone Marker
+        \draw[thick, |-|] (\InletL+3.0, -0.2) -- (\InletL+3.5, -0.2) node[midway, below] {reattachment zone};
+
+    \end{tikzpicture}

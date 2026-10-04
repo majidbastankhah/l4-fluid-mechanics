@@ -5,13 +5,9 @@ toc: false
 
 The notes are the core reference for the course. Each chapter page includes worked examples (try them before opening the solution), interactive figures, short *check your understanding* questions and links to the problems you should attempt next. A printable PDF of each chapter is available from the link on the chapter page.
 
-| Chapter | Status |
+| Chapter | Topics |
 |:--|:--|
-| [1 · Preliminaries](ch1.qmd) | available |
-| 2 · Conservation Equations | coming soon |
-| 3 · Turbulence and Turbulence Modelling | coming soon |
-| 4 · Boundary Layers | coming soon |
-
-## Coming soon {#coming-soon}
-
-Chapters 2–4 will appear here as the course progresses.
+| [1 · Preliminaries](ch1.qmd) | Fluid elements, Eulerian and Lagrangian descriptions, material derivative, vorticity, shear stress |
+| [2 · Conservation Equations](ch2.qmd) | Continuity, Navier–Stokes and energy equations; conservative form; initial and boundary conditions |
+| [3 · Turbulence and Turbulence Modelling](ch3.qmd) | Characteristics of turbulence, the energy cascade, Kolmogorov scales, Reynolds averaging, RANS, eddy-viscosity, $k$–$\varepsilon$ and Reynolds-stress models |
+| [4 · Boundary Layers](ch4.qmd) | Boundary-layer equations, Blasius solution, momentum integral equation, turbulent boundary layers and the log law, transition, separation |

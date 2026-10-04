@@ -1,0 +1,19 @@
+\begin{tikzpicture}[>=Stealth]
+    % oil bath
+    \fill[cyan!10] (0,0) rectangle (8,-1.5);
+    \draw[thick, cyan!70!blue] (0,0) -- (8,0);
+    % free-surface markers
+    \draw[cyan!70!blue] (1,0) -- (0.8,0.2) -- (1.2,0.2) -- cycle;
+    \draw[cyan!70!blue] (6.6,0) -- (6.4,0.2) -- (6.8,0.2) -- cycle;
+    % cube
+    \draw[thick, fill=brown!40] (3,0) rectangle (5,2);
+    % dimension
+    \draw[|<->|] (3,2.3) -- (5,2.3) node[midway, fill=white] {$L = 2$ cm};
+    % wind force
+    \draw[-{Stealth[scale=1.4]}, thick, red] (0.9,1) -- (2.8,1) node[midway, above] {$F_{\text{wind}}$};
+    % velocity
+    \draw[-{Stealth[scale=1.4]}, thick] (5.2,1) -- (6.6,1) node[midway, above] {$U_\infty = 0.05$ cm/s};
+    % drag
+    \draw[-{Stealth[scale=1.4]}, thick, blue] (5,-0.3) -- (3,-0.3) node[midway, below] {drag};
+    \node at (6.8,-1.0) {oil};
+\end{tikzpicture}

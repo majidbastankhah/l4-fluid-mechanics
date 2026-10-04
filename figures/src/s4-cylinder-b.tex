@@ -1,0 +1,10 @@
+\begin{tikzpicture}[scale=0.4, >={Stealth[length=2mm]}]
+    % Flow past a cylinder, 5 < Re < 40: separated flow with a steady pair of vortices (slides Ch4 part 2)
+    \filldraw[fill=gray!20, draw=black, thick] (0,0) circle (2);
+    \draw[thick, ->] (-6,0) -- (-3,0); \draw[thick, ->] (4,0) -- (6,0);
+    \draw[thick] (-6,2.5) to[out=0,in=160] (1.5, 1.8) to[out=-20,in=180] (6, 1);
+    \draw[thick] (-6,-2.5) to[out=0,in=-160] (1.5, -1.8) to[out=20,in=180] (6, -1);
+    \draw[thick, <-] (1.7, 0.7) to[out=45,in=135] (3.5, 0.7) to[out=-45,in=0] (3.0, 0) to[out=180,in=-45] (1.7, 0.7);
+    \draw[thick, <-] (1.7, -0.7) to[out=-45,in=-135] (3.5, -0.7) to[out=45,in=0] (3.0, 0) to[out=180,in=45] (1.7, -0.7);
+    \path (0,-3.5) (0,3.5);
+\end{tikzpicture}

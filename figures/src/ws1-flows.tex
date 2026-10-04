@@ -1,0 +1,47 @@
+\begin{tikzpicture}[scale=0.8, >=Stealth]
+  % ---------- (a) Couette ----------
+  \begin{scope}
+    \def\h{2.0} \def\w{3.5} \def\U{2.5}
+    \draw[->, thick] (-1.9, -0.5) -- (-1.9, 1.0) node[left] {$y$};
+    \draw[->, thick] (-2.4, 0) -- (-1.2, 0) node[below] {$x$};
+    \draw[dashed] (-1.0, 0) -- (\w, 0);
+    \draw[thick] (-1.0, \h) -- (\w, \h);
+    \node[left] at (-1.0,\h) {$y=h$};
+    \draw[thick] (-1.0, -\h) -- (\w, -\h);
+    \node[left] at (-1.0,-\h) {$y=-h$};
+    \fill[pattern=north east lines] (-1.0, -\h) rectangle (\w, -\h-0.3);
+    \node at (\w/2-0.6, \h+0.42) {\small \textit{MOVING}};
+    \draw[->, thick] (\w-0.3, \h+0.42) -- (\w+0.7, \h+0.42) node[right] {$U$};
+    \node at (\w/2, -\h-0.65) {\small \textit{FIXED}};
+    \draw[dashed] (0.5, -\h) -- (0.5, \h);
+    \draw[thick] (0.5, -\h) -- (0.5+\U, \h);
+    \foreach \y in {-1.5, -1.0, -0.5, 0, 0.5, 1.0, 1.5} {
+      \pgfmathsetmacro{\len}{\U/2 * (\y/\h + 1)}
+      \draw[-{Stealth}] (0.5, \y) -- (0.5+\len, \y);
+    }
+    \draw[-{Stealth}] (0.5, \h-0.1) -- (0.5+\U-0.05, \h-0.1);
+    \node at (1.25, -3.5) {(a) COUETTE FLOW};
+  \end{scope}
+  % ---------- (b) Poiseuille ----------
+  \begin{scope}[xshift=8.3cm]
+    \def\h{2.0} \def\w{3.5} \def\Umax{2.5}
+    \draw[dashed] (-1.0, 0) -- (\w+1.0, 0);
+    \draw[thick] (-0.5, \h) -- (\w, \h);
+    \node[left] at (-0.5,\h) {$y=h$};
+    \draw[thick] (-0.5, -\h) -- (\w, -\h);
+    \node[left] at (-0.5,-\h) {$y=-h$};
+    \fill[pattern=north east lines] (-0.5, \h) rectangle (\w, \h+0.3);
+    \fill[pattern=north east lines] (-0.5, -\h) rectangle (\w, -\h-0.3);
+    \node at (\w/2, \h+0.65) {\small \textit{FIXED}};
+    \node at (\w/2, -\h-0.65) {\small \textit{FIXED}};
+    \draw[dashed] (0.5, -\h) -- (0.5, \h);
+    \draw[thick, domain=-\h:\h, samples=50] plot ({0.5 + \Umax*(1 - (\x/\h)^2)}, \x);
+    \foreach \y in {-1.5, -1.0, -0.5, 0, 0.5, 1.0, 1.5} {
+      \pgfmathsetmacro{\len}{\Umax*(1 - (\y/\h)^2)}
+      \draw[-{Stealth}] (0.5, \y) -- (0.5+\len, \y);
+    }
+    \node[above right] at (0.5+\Umax, 0) {$u_{max}$};
+    \node[below right] at (0.5+1.9, -1.0) {$u(y)$};
+    \node at (1.5, -3.5) {(b) POISEUILLE FLOW};
+  \end{scope}
+\end{tikzpicture}

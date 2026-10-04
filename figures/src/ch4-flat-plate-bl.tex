@@ -1,0 +1,77 @@
+    \begin{tikzpicture}[scale=1.0, >=latex]
+        % --- SETTINGS ---
+        \def\L{10}          % Length of plate
+        \def\H{3}           % Height of flow domain
+        \def\Uinf{1.5}      % Freestream velocity magnitude (length of arrows)
+        \def\BLscale{2.5}   % Scale factor for BL height
+
+        % --- 1. THE PLATE ---
+        \draw[thick] (0,0) -- (\L,0);
+        \fill[pattern=north east lines, pattern color=black!50] (0,0) rectangle (\L, -0.3);
+        
+        \filldraw (0,0) circle (2pt);
+        \filldraw (\L,0) circle (2pt);
+        
+        \draw[<-, thick] (0, -0.1) -- (-1, -1.5) node[below, align=center] {leading edge (LE)\\ of the plate};
+        \draw[<-, thick] (\L, -0.1) -- (\L+1, -1.5) node[below, align=center] {trailing edge (TE)\\ of the plate};
+
+        \draw[|<->|] (0, -0.8) -- (\L, -0.8) node[midway, fill=white] {$L$};
+
+        % --- 2. INLET FLOW ---
+        \foreach \y in {0.5, 1.0, 1.5, 2.0, 2.5, 3.0} {
+            \draw[->, thick] (-1.5, \y) -- (-0.5, \y);
+        }
+        \node[above] at (-1.0, 3.0) {$U_\infty$};
+
+        % --- 3. BOUNDARY LAYER GROWTH ---
+        \draw[dashed, thick] plot[domain=0:\L, samples=100] (\x, {\BLscale * sqrt(\x/\L)});
+        
+        % Dimension line for Delta(x)
+        \def\xloc{7} 
+        \pgfmathsetmacro{\yloc}{\BLscale * sqrt(\xloc/\L)} 
+        \draw[<->] (\xloc, 0) -- (\xloc, \yloc) node[midway, right] {$\delta(x)$};
+
+        % --- 4. VELOCITY PROFILES ---
+        % We draw profiles at x = 2.5, 5.0, 8.5
+        \foreach \pos in {2.5, 5.0, 8.5} {
+            \begin{scope}[shift={(\pos,0)}]
+                % Calculate local BL height at this x position
+                \pgfmathsetmacro{\localDelta}{\BLscale * sqrt(\pos/\L)}
+                
+                % Vertical line for profile reference
+                \draw[thin] (0,0) -- (0, \H);
+                
+                % Draw the Profile Curve
+                % Inside BL: Parabolic
+                \draw[thick] plot[domain=0:\localDelta] ({\Uinf * (2*(\x/\localDelta) - (\x/\localDelta)^2)}, \x);
+                % Outside BL: Straight vertical line (constant U_inf)
+                \draw[thick] (\Uinf, \localDelta) -- (\Uinf, \H);
+                
+                % --- ARROWS (Corrected) ---
+                % Loop through fixed heights up to the top of the figure (\H=3)
+                \foreach \y in {0.3, 0.6, ..., 2.8} {
+                    % Check if we are inside or outside the BL
+                    \pgfmathparse{\y < \localDelta ? 1 : 0}
+                    \ifnum\pgfmathresult=1
+                        % Inside: Parabolic profile u = Uinf * (2n - n^2)
+                        \pgfmathsetmacro{\u}{\Uinf * (2*(\y/\localDelta) - (\y/\localDelta)^2)}
+                        \draw[->, thin] (0, \y) -- (\u, \y);
+                    \else
+                        % Outside: Full Freestream velocity
+                        \draw[->, thin] (0, \y) -- (\Uinf, \y);
+                    \fi
+                }
+                
+                % Label U_infinity on top arrow
+                \node[above] at (\Uinf/2, \H) {$U_\infty$};
+            \end{scope}
+        }
+        
+        % Label u(x,y)
+        \node[right] at (10.15, 1.2) {$u(x,y)$};
+
+        % --- 5. COORDINATE SYSTEM ---
+        \draw[->, thick] (0,0) -- (1,0) node[below] {$x$};
+        \draw[->, thick] (0,0) -- (0,1) node[left] {$y$};
+
+    \end{tikzpicture}

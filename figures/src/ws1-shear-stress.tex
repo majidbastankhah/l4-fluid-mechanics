@@ -1,0 +1,16 @@
+\begin{tikzpicture}[scale=1.1, >=Stealth]
+  \draw[thick] (-1.8,2) -- (1.8,2) node[right] {$y=h$};
+  \draw[thick] (-1.8,-2) -- (1.8,-2) node[right] {$y=-h$};
+  \fill[pattern=north east lines] (-1.8,2) rectangle (1.8,2.2);
+  \fill[pattern=north east lines] (-1.8,-2) rectangle (1.8,-2.2);
+  \draw[->] (0,-2.0) -- (0,2.6) node[above] {$y$};
+  \draw[->] (-1.8,0) -- (1.9,0) node[right] {$\tau_{xy}$};
+  \draw[very thick, blue!70!black] (1.2,-2) -- (-1.2,2);
+  \foreach \yy in {0.5,1,1.5} {
+    \draw[->, blue!70!black] (0,\yy) -- ({-0.6*\yy},\yy);
+    \draw[->, blue!70!black] (0,-\yy) -- ({0.6*\yy},-\yy);
+  }
+  \node[above left, blue!70!black] at (-1.2,1.55) {$\tau_{xy}<0$};
+  \node[below right, blue!70!black] at (1.2,-1.55) {$\tau_{xy}>0$};
+  \node[above right] at (0.05,0) {\small $\tau_{xy}=0$};
+\end{tikzpicture}

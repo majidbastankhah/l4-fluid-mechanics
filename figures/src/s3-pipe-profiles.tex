@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=1.5]
+  \definecolor{normCol}{RGB}{204,0,0}
+  \def\R{1.0} \def\L{4.2} \def\UmaxLam{2.0} \def\UmaxTurb{1.14}
+  % pipe
+  \fill[pattern=north east lines, pattern color=gray] (0,\R) rectangle (\L,\R+0.12);
+  \fill[pattern=north east lines, pattern color=gray] (0,-\R) rectangle (\L,-\R-0.12);
+  \draw[thick] (0, \R) -- (\L, \R); \draw[thick] (0, -\R) -- (\L, -\R);
+  \draw[dashdotted] (-0.3, 0) -- (\L+0.3, 0);
+  \draw[thick] (1.0, \R) -- (1.0, -\R);
+  % laminar: parabola (mean velocity = 1)
+  \draw[very thick, smooth, domain=-\R:\R, samples=60] plot ({1.0 + \UmaxLam*(1 - (\x/\R)^2)}, \x);
+  % turbulent: (1 - r^2/R^2)^{0.14}, scaled to the same mean velocity
+  \draw[very thick, normCol, dashed, smooth, domain=-\R:\R, samples=120] plot ({1.0 + \UmaxTurb*pow(1 - (\x/\R)^2 + 1e-9, 0.14)}, \x);
+  % legend
+  \draw[very thick] (\L+0.6, 0.45) -- (\L+1.1, 0.45) node[right] {Laminar (parabolic)};
+  \draw[very thick, normCol, dashed] (\L+0.6, -0.05) -- (\L+1.1, -0.05) node[right, normCol] {Turbulent (flatter, ``fuller'')};
+  \node[right, font=\small, text width=4.2cm] at (\L+0.6, -0.6) {same flow rate in both cases};
+\end{tikzpicture}
