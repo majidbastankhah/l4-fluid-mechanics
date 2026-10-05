@@ -8,7 +8,7 @@ At this stage the range of problems we can look at is a bit limited; in Chapter 
 ### Problem 3.1 · Kolmogorov scales of a high-speed flow {.unnumbered}
 <!-- origin: Sheet 2 Q7. Statement: "U_A = 150 m/s" corrected to u_l = 150 m/s (the large-eddy velocity scale used everywhere else in the question). -->
 
-[[★★ core]{.tag .diff} Study first: [§3.5 Estimating length scales](../notes/ch3.qmd#sec-length-scales) and [§3.4 The energy cascade](../notes/ch3.qmd#sec-energy-cascade)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§3.5 Estimating length scales](../notes/ch3.qmd#sec-length-scales) and [§3.4 The energy cascade](../notes/ch3.qmd#sec-energy-cascade)]{.meta}
 
 For a turbulent flow, experimental evidence suggests that energy per unit mass is passed down from the largest eddies (integral length scale $l$ and velocity scale $u_l$) at a rate given by the turbulent kinetic energy per unit mass per unit turn-over time, which must equal the rate of dissipation, $\varepsilon$, at the smallest eddies (Kolmogorov length and velocity scales $\eta$ and $u_\eta$), such that $\varepsilon \approx u_l^3/l$.
 
@@ -24,12 +24,6 @@ Raise $\eta = l\,Re_l^{-3/4}$ to the fourth power, write out $Re_l$, and look fo
 <details class="answer"><summary>Final answer</summary>
 
 $\varepsilon = 5.625\times10^{6}\ \text{m}^2\,\text{s}^{-3}$, $\eta = 3.65\ \mu\text{m}$, $u_\eta = 2.74\ \text{m s}^{-1}$, $\tau_\eta = 1.33\ \mu\text{s}$, $\tau_l = 4.0$ ms.
-
-<span class="checker" data-answer="5.625e6" data-tol="0.02">$\varepsilon$ = <input type="text" inputmode="decimal"> m²/s³ <span class="fb"></span></span>
-<span class="checker" data-answer="3.651" data-tol="0.02">$\eta$ = <input type="text" inputmode="decimal"> μm <span class="fb"></span></span>
-<span class="checker" data-answer="2.739" data-tol="0.02">$u_\eta$ = <input type="text" inputmode="decimal"> m/s <span class="fb"></span></span>
-<span class="checker" data-answer="1.333" data-tol="0.02">$\tau_\eta$ = <input type="text" inputmode="decimal"> μs <span class="fb"></span></span>
-<span class="checker" data-answer="4.0" data-tol="0.02">$\tau_l$ = <input type="text" inputmode="decimal"> ms <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -74,7 +68,7 @@ As a check, $Re_l = 150\times0.6/10^{-5} = 9\times10^{6}$, so $l/\eta = Re_l^{3/
 ### Problem 3.2 · Time-averaged continuity for compressible flow {.unnumbered}
 <!-- origin: Sheet 2 Q1 -->
 
-[[★ warm-up]{.tag .diff} Study first: [§3.6.1 Time-averaging rules](../notes/ch3.qmd#sec-averaging-rules) and [§3.7 The time-averaged equations](../notes/ch3.qmd#sec-rans)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§3.6.1 Time-averaging rules](../notes/ch3.qmd#sec-averaging-rules) and [§3.7 The time-averaged equations](../notes/ch3.qmd#sec-rans)]{.meta}
 
 For compressible flow, defining the instantaneous density as $\rho = \bar{\rho} + \rho'$ and $u = U + u'$, $v = V + v'$, $w = W + w'$ (with $U=\overline{u}$, $V=\overline{v}$, $W=\overline{w}$), show that the time-averaged continuity equation can be written as
 $$
@@ -130,7 +124,7 @@ $$
 ### Problem 3.3 · RANS equations in cylindrical polar coordinates {.unnumbered}
 <!-- origin: Sheet 2 Q2. Given N-S equations corrected: r-equation viscous term +u_r/r^2 -> -u_r/r^2; theta-equation pressure term -dp/dtheta -> -(1/r) dp/dtheta. -->
 
-[[★★★ challenge]{.tag .diff} Study first: [§3.7 The time-averaged continuity and N–S equations](../notes/ch3.qmd#sec-rans) and [§3.6.2 Apparent turbulent stresses](../notes/ch3.qmd#sec-turbulent-stresses)]{.meta}
+[[Difficulty: ★★★]{.tag .diff} Study first: [§3.7 The time-averaged continuity and N–S equations](../notes/ch3.qmd#sec-rans) and [§3.6.2 Apparent turbulent stresses](../notes/ch3.qmd#sec-turbulent-stresses)]{.meta}
 
 In cylindrical polar coordinates the velocity field is $\vect{q} = (u_r, u_\theta, u_z)$. Writing $u_r = U_r + u_r'$, $u_\theta = U_\theta + u_\theta'$, $u_z = U_z + u_z'$ and $p = P + p'$, derive the time-averaged continuity and Navier–Stokes equations for incompressible flow in the absence of body forces.
 
@@ -243,7 +237,7 @@ The $\theta$- and $z$-equations follow in exactly the same way. In the $\theta$-
 ### Problem 3.4 · Mixing length between two tall buildings {.unnumbered}
 <!-- origin: Sheet 2 Q4 -->
 
-[[★★ core]{.tag .diff} Study first: [§3.9.3 The Prandtl mixing-length model](../notes/ch3.qmd#sec-mixing-length) and [§3.9.2 The Boussinesq eddy-viscosity model](../notes/ch3.qmd#sec-boussinesq)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§3.9.3 The Prandtl mixing-length model](../notes/ch3.qmd#sec-mixing-length) and [§3.9.2 The Boussinesq eddy-viscosity model](../notes/ch3.qmd#sec-boussinesq)]{.meta}
 
 Even though it can never be true for turbulent flow, assume the mean velocity distribution takes the form $U(y) = ay^2 + b$ for turbulent flow between two stationary plates separated by a distance $2h$. Taking $x$ and $y$ parallel and perpendicular to the plates, with the origin such that $U(0) = U_{\max}$, show that $a = -U_{\max}/h^2$ and $b = U_{\max}$, giving $U(y) = U_{\max}\left[1 - (y/h)^2\right]$.
 
@@ -261,8 +255,6 @@ $$
 \tau_{\text{turb}} = -4\kappa^2 \rho U_{\max}^2 \left(\frac{y}{h}\right)^4 = -0.64\,\rho U_{\max}^2 \left(\frac{y}{h}\right)^4
 $$
 (antisymmetric about the centreline: the sign reverses for $y<0$).
-
-<span class="checker" data-answer="-0.64" data-tol="0.01">$\tau_{\text{turb}}/(\rho U_{\max}^2)$ at $y = h$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -305,7 +297,7 @@ For $y<0$ the same steps give $+0.64\,\rho U_{\max}^2 (y/h)^4$: the stress is an
 ### Problem 3.5 · Mixing length for a power-law profile {.unnumbered}
 <!-- origin: Sheet 2 Q5 -->
 
-[[★ warm-up]{.tag .diff} Study first: [§3.9.3 The Prandtl mixing-length model](../notes/ch3.qmd#sec-mixing-length)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§3.9.3 The Prandtl mixing-length model](../notes/ch3.qmd#sec-mixing-length)]{.meta}
 
 Assume the mean velocity profile for turbulent flow between two stationary flat plates, separated by a small distance $2h$, is given by $U(y) = a y^n$, where $a$ and $n$ are constants. Obtain the mixing length using von Kármán's expression from [Problem 3.4](#p3-4), $l_m = \kappa\left|\dfrac{dU/dy}{d^2U/dy^2}\right|$ with $\kappa = 0.4$. What happens to the mixing length as $n$ is increased from 2 to 3 and then from 3 to 4?
 
@@ -317,9 +309,6 @@ Differentiate twice; the constant $a$ and a factor $n$ cancel in the ratio.
 <details class="answer"><summary>Final answer</summary>
 
 $l_m = \dfrac{\kappa y}{n-1} = \dfrac{0.4\,y}{n-1}$: $0.4y$, $0.2y$ and $0.133y$ for $n = 2, 3, 4$. The mixing length decreases as $n$ increases.
-
-<span class="checker" data-answer="0.2" data-tol="0.02">$l_m/y$ for $n=3$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="0.1333" data-tol="0.02">$l_m/y$ for $n=4$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -345,7 +334,7 @@ As $n$ increases the denominator $(n-1)$ grows, so the mixing length decreases.
 ### Problem 3.6 · Exact and modelled production of $k$ {.unnumbered}
 <!-- origin: Sheet 2 Q6. Pressure-diffusion term corrected from -u' d(p'bar)/dx - v' d(p'bar)/dy to -overline{u' dp'/dx} - overline{v' dp'/dy}. Old equation numbers (3.30, 3.33, 3.20) replaced by links. -->
 
-[[★★ core]{.tag .diff} Study first: [§3.9.4 The one-equation model](../notes/ch3.qmd#sec-one-equation) and [§3.9.2 The Boussinesq eddy-viscosity model](../notes/ch3.qmd#sec-boussinesq)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§3.9.4 The one-equation model](../notes/ch3.qmd#sec-one-equation) and [§3.9.2 The Boussinesq eddy-viscosity model](../notes/ch3.qmd#sec-boussinesq)]{.meta}
 
 Consider the exact transport equation for the turbulent kinetic energy $k$ in steady, two-dimensional mean flow (see [the one-equation model](../notes/ch3.qmd#sec-one-equation) in the notes):
 $$
@@ -418,7 +407,7 @@ $$
 ### Problem 3.7 · From the one-equation model to the mixing-length model {.unnumbered}
 <!-- origin: Sheet 2 Q3 -->
 
-[[★★ core]{.tag .diff} Study first: [§3.9.4 The one-equation model](../notes/ch3.qmd#sec-one-equation) and [§3.9.3 The mixing-length model](../notes/ch3.qmd#sec-mixing-length)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§3.9.4 The one-equation model](../notes/ch3.qmd#sec-one-equation) and [§3.9.3 The mixing-length model](../notes/ch3.qmd#sec-mixing-length)]{.meta}
 
 Consider the modelled transport equation for the turbulent kinetic energy, $k$, in a two-dimensional mean flow:
 $$

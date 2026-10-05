@@ -22,7 +22,6 @@ toc-depth: 3
 <button data-f="ch" data-v="2">2 · Conservation equations</button>
 <button data-f="ch" data-v="3">3 · Turbulence</button>
 <button data-f="ch" data-v="4">4 · Boundary layers</button>
-<button data-f="ch" data-v="R">Exam practice</button>
 <span style="margin-left:1rem">Difficulty:</span>
 <button data-f="d" data-v="all" class="on">All</button>
 <button data-f="d" data-v="1">★</button>
@@ -39,7 +38,5 @@ toc-depth: 3
 {{< include _ch3.qmd >}}
 
 {{< include _ch4.qmd >}}
-
-{{< include _revision.qmd >}}
 
 <script src="../assets/problems.js"></script>

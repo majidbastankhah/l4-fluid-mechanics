@@ -81,7 +81,7 @@ date: "October 2026"
 - "Φ always positive" → "never negative (Φ ≥ 0)".
 - "Forces on the element" frame appeared twice → first shows body force and pressure, second the viscous stresses. Energy-term boxes now revealed in order I–IV (were I, III, II, IV).
 
-**Problems (Sheet 1, now Problems 2.1–2.19)**
+**Problems (Sheet 1, now Problems 2.1–2.14, 2.16–2.19)**
 
 - 2.2 (S1 Q5): stagnation points "(0,0) and (−1,0)" → only (−1,0) (velocity is infinite at the origin).
 - 2.10 (S1 Q14): shear-stress line u_max(1−r²)/R² → u_max(1−r²/R²); answer added for "why does density not appear?"; "steady (fully developed)" separated into two ideas.
@@ -91,7 +91,7 @@ date: "October 2026"
 - 2.19 (S1 Q19): ∂²T/∂θ² = 0 "since 2D problem" → because the problem is axisymmetric.
 - 2.14 (S1 Q23): sign error in the final u_a: "1 − (ρ_b/ρ_a)(h_b/h_a − 1)" → "1 + …" (verified with sympy).
 - 2.12 (S1 Q20): original "solution not repeated here" → short full solution written.
-- 2.15 (supervised problem class, week II): +∂p/∂x → −∂p/∂x in the momentum equation; circular continuity argument fixed; equation references and "db/dx" typo fixed; missing factor in the combined profile u_i/h → (u_i/h)(H + h + αy); power law written as K|du/dy|^{n−1} du/dy with K for the core fluid **(please check)**; interface velocity u_i = Gh(2H + h)/(2μ) found via shear-stress continuity (new part v) **(please check)**; problem statement reconstructed from the solution **(please check)**.
+- Supervised problem class, week II (now merged into 2.15; only its part (v) is kept): +∂p/∂x → −∂p/∂x in the momentum equation; circular continuity argument fixed; equation references and "db/dx" typo fixed; missing factor in the combined profile u_i/h → (u_i/h)(H + h + αy); power law written as K|du/dy|^{n−1} du/dy with K for the core fluid **(please check)**; interface velocity u_i = Gh(2H + h)/(2μ) found via shear-stress continuity (new part v) **(please check)**; problem statement reconstructed from the solution **(please check)**.
 - Clarifications: 2.6/2.8 (S1 Q7, Q10) τ_xx values are viscous normal stresses (total = −p + τ); 2.9 (S1 Q13) why Bernoulli holds for this viscous flow; 2.11 (S1 Q21) pressure drop given per metre (808 Pa/m).
 
 # 4. Errors fixed — Chapter 3
@@ -172,7 +172,7 @@ Also: cylinder regime (b) "non-symmetric" → separated at the rear with a stead
 - Defect-law constant C → B; H = 9/7 → 1.29; experimental H 1.25 → ≈ 1.3–1.4 **(please check)**; "Re ≈ 3–5×10⁵" → Re_x; drag method 2 "per unit width" added; cylinder (c) wording.
 - Revision deck: turbulent BL equation u∂U/∂x + v∂U/∂y → U, V; "LHS = mass × acceleration" → acceleration (per unit mass); "Φ always positive" → Φ ≥ 0; μ_t = C_μ ρ l_s v_s → C ρ l_s v_s (C_μ is the k–ε constant) **(please check)**; "stream-wise normal stresses are ignored" → their gradients are neglected; "Stokes' Hypothesis" → "Stokes' relations".
 
-**Problems (Sheet 3, now Problems 4.1–4.18, and exam practice R.1)**
+**Problems (Sheet 3, now Problems 4.1–4.18; revision-class question, now Problem 2.15)**
 
 - 4.2 (S3 Q1): "v ∝ ν" but the solution used v = ν (dimensionally inconsistent) → v = cν, with c = 1 m⁻¹ in (d) **(please check)**; missing + f(y) after integration added.
 - 4.4 (S3 Q4): Re_L ≈ 1, outside boundary-layer theory → caveat that the answer is order-of-magnitude only **(please check whether 0.05 cm/s is the intended speed)**.
@@ -182,7 +182,7 @@ Also: cylinder regime (b) "non-symmetric" → separated at the rear with a stead
 - 4.14 (S3 Q19): solution mixed θ = 0.036xRe^{−1/5} with H = 1.25 → H = 9/7 throughout: δ* 2.446 → 2.52 mm; θ₃ 0.524 → 0.516 mm; δ*₃ 0.656 → 0.664 mm **(please check)**.
 - 4.16 (S3 Q17): 36.6 → 36.8 N; C̄f 0.0028 → 0.00277 and 248 → 245 N; 264 → 265 N.
 - 4.17 (S3 Q21): intermediate (x_cr − x₀)^{4/5} ≈ 0.0232 → 0.0895 (final x₀ = 0.1011 m was correct).
-- R.1 (Revision Q1): gravity "in the z-direction" → −y (hydrostatic only); carrier-layer viscosity μ → μ_c **(please check)**; sign convention for (du/dy)ⁿ noted.
+- 2.15 (Revision Q1): gravity "in the z-direction" → −y (hydrostatic only); carrier-layer viscosity μ → μ_c **(please check)**; sign convention for (du/dy)ⁿ noted.
 
 # 6. Errors fixed — Workshops
 
@@ -200,9 +200,9 @@ Also: cylinder regime (b) "non-symmetric" → separated at the rear with a stead
 
 # 7. Structural changes and removals
 
-- **Problem sheets → one problem bank**, ordered by notes section; each problem links to the section to study first, and each notes section links to its problems. Numbering: Chapter 1 1.1–1.5; Chapter 2 2.1–2.19; Chapter 3 3.1–3.7; Chapter 4 4.1–4.18; exam practice R.1.
+- **Problem sheets → one problem bank**, ordered by notes section; each problem links to the section to study first, and each notes section links to its problems. Numbering: Chapter 1 1.1–1.5; Chapter 2 2.1–2.19 (2.15 is the revision-class practice question, merged with the week II supervised-class problem); Chapter 3 3.1–3.7; Chapter 4 4.1–4.18.
 - **Dropped problems (Thwaites):** Sheet 3 Q13, Q14, Q15; Revision Q2 (parts ii, iv–vi use Thwaites and iii depends on ii).
-- **Supervised problem class (week II)** solution turned into Problem 2.15 (statement reconstructed).
+- **Supervised problem class (week II)** problem (same flow as the revision-class question) merged into Problem 2.15; it contributed part (v), the interface velocity from shear-stress continuity.
 - **Ch3 Part 1 slides:** the colleague's alternative deck (`Ch3_part1_GrantIngram.tex`) was not converted as a deck; its useful content frames were borrowed (L2 lab pipe photos, flash vs long exposure; STS-135 length-scale slide; Reynolds 1883 apparatus image; Hinze attribution). Personal/administrative frames skipped.
 - **Ch4 notes order:** 4.1 physical characteristics → 4.2 thicknesses → 4.3 BL equations (single scaling analysis) → 4.4 Blasius → 4.5 MIE → 4.6 turbulent BL → 4.7 law of the wall (split out) → 4.8 turbulent flat plate → 4.9 transition → 4.10 combined BL → 4.11 separation.
 - **Ch2 notes:** cylindrical incompressible N–S equations restored from commented-out source.
@@ -215,7 +215,7 @@ Also: cylinder regime (b) "non-symmetric" → separated at the rear with a stead
 - **"In practice" boxes** (wind-energy and engineering context): Ch1 hill speed-up, tip vortices; Ch2 conservative form in CFD, viscous heating in lubricating films; Ch3 −5/3 law in sonic-anemometer data and IEC turbulence models, turbulence intensity and turbine classes; Ch4 log law in the atmosphere, leading-edge erosion, stall and vortex generators.
 - **New worked examples:** Ch3 (5: cascade in the atmospheric BL, Kolmogorov scales, T_I and k from probe data, MLM eddy viscosity, k–ε production vs dissipation); Ch4 (5: laminar plate, cubic profile, wall units, turbulent plate, combined plate); new Ch4 subsections on Falkner–Skan and the drag crisis.
 - **Slides:** 2 peer-instruction "quick question" slides per deck; worked examples revealed step by step; speaker notes kept (revision deck: notes written new).
-- **Problems:** hints and final answers for every problem (new), ~50 self-checking numerical answer boxes, difficulty ratings.
+- **Problems:** hints and final answers for every problem (new), difficulty ratings (★, ★★, ★★★).
 - **Image credits:** the sources of `Turbulence-motion.jpg`, `Strat_Turb.jpeg` and the energy-cascade images are unknown; captions are generic. Please add credits.
 
 # 9. Exam formula sheet
@@ -237,3 +237,10 @@ Consequent changes so the course matches the sheet:
 # 10. Reporting mistakes
 
 The GitHub "Report an issue" links (which need a GitHub account) are replaced by a **⚑ Report a mistake** button on every page except the slides. A student highlights the text, clicks the button, and a Microsoft Form opens with *Where* (page, section or problem, and a link that jumps to the spot) and *Selected text* (formulas as LaTeX) already filled in; they only type what is wrong. An "or email" link sends the same report by email instead.
+
+# 11. Problem bank and slide navigation (October 2026)
+
+- **Final answers:** the self-check input boxes inside the "Final answer" toggles were removed (they looked like missing answers); every final answer now shows its values as text. Problem 1.2(b) now states a_x = 180 m s⁻² (entrance) and 540 m s⁻² (exit).
+- **Difficulty labels:** "★ warm-up", "★★ core", "★★★ challenge" → "Difficulty: ★", "Difficulty: ★★", "Difficulty: ★★★" (no words that could discourage students).
+- **Revision-class question:** no longer a separate "Exam-style practice" section. It covered the same flow as the week II supervised-class problem (then Problem 2.15), so the two were merged into one Problem 2.15 (Difficulty ★★★): the revision-class wording and parts (i)–(iv), plus part (v) from the supervised-class problem (interface velocity from continuity of shear stress, and why the carrier layer increases the flow rate). The paragraph about it being "much more complicated than the exam" and the "Exam practice" filter were removed. Problem numbers 2.16–2.19 are unchanged. The revision slides link to the problem bank by chapter (Ch. 1–4) instead of to the "exam-style practice problem".
+- **Slides:** the ☰ menu in every deck has **Home** and **All slides** buttons.

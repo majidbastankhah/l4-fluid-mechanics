@@ -6,3 +6,5 @@
 .DS_Store
 *.aux
 *.log
+
+_to_delete/

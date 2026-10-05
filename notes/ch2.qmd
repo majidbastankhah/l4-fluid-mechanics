@@ -592,7 +592,7 @@ $$ {#eq-ns-conservative}
 Because @eq-mom-conservative-lhs uses only the general continuity equation, the same conservative left-hand side may equally be combined with the general (compressible, variable-$\mu$) right-hand sides of @eq-ns-cartesian; this is the form quoted in the [summary](#sec-summary). As for the continuity equation, the above vector forms of the equation of motion are valid in any curvilinear coordinate system.
 
 ::: {.try-problems data-sec="sec-momentum"}
-**Try these problems:** [Problem 2.6](../problems/index.qmd#p2-6), [Problem 2.7](../problems/index.qmd#p2-7), [Problem 2.8](../problems/index.qmd#p2-8), [Problem 2.9](../problems/index.qmd#p2-9), [Problem 2.10](../problems/index.qmd#p2-10), [Problem 2.11](../problems/index.qmd#p2-11), [Problem 2.12](../problems/index.qmd#p2-12), [Problem 2.16](../problems/index.qmd#p2-16), [Problem R.1](../problems/index.qmd#pR-1)
+**Try these problems:** [Problem 2.6](../problems/index.qmd#p2-6), [Problem 2.7](../problems/index.qmd#p2-7), [Problem 2.8](../problems/index.qmd#p2-8), [Problem 2.9](../problems/index.qmd#p2-9), [Problem 2.10](../problems/index.qmd#p2-10), [Problem 2.11](../problems/index.qmd#p2-11), [Problem 2.12](../problems/index.qmd#p2-12), [Problem 2.16](../problems/index.qmd#p2-16)
 :::
 
 ## Conservation of Energy {#sec-energy}

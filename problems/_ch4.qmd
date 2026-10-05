@@ -8,7 +8,7 @@
 ### Problem 4.1 · Energy thickness of two simple profiles {.unnumbered}
 <!-- origin: Sheet 3 Q7 -->
 
-[[★ warm-up]{.tag .diff} Study first: [§4.2 Definitions of boundary-layer thickness](../notes/ch4.qmd#sec-bl-thickness)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§4.2 Definitions of boundary-layer thickness](../notes/ch4.qmd#sec-bl-thickness)]{.meta}
 
 The energy thickness is sometimes used to evaluate the loss of kinetic energy of the flow in a laminar boundary layer. Defining the energy thickness as
 $$
@@ -24,9 +24,6 @@ To simplify the calculus, introduce the non-dimensional coordinate $\eta = y/\de
 <details class="answer"><summary>Final answer</summary>
 
 \(a) $\delta_e = \delta/4 = 0.25\,\delta$; (b) $\delta_e = \dfrac{69}{320}\,\delta \approx 0.216\,\delta$.
-
-<span class="checker" data-answer="0.25" data-tol="0.01">(a) $\delta_e/\delta$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="0.2156" data-tol="0.01">(b) $\delta_e/\delta$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -69,7 +66,7 @@ $$
 <!-- origin: Sheet 3 Q1. Old reference "equations (4.17) and (4.18)" replaced by the equations written out. Part (c) originally read "v ∝ ν" while the solution used v = ν; reworded as v = cν (c constant), with (d) the case c = 1 m^-1. -->
 <!-- REVIEW (MB): parts (c)/(d) reworded so that they are dimensionally consistent (v = c nu, c in 1/m); please check this is what was intended. -->
 
-[[★★ core]{.tag .diff} Study first: [§4.3 The boundary-layer equations](../notes/ch4.qmd#sec-bl-equations)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§4.3 The boundary-layer equations](../notes/ch4.qmd#sec-bl-equations)]{.meta}
 
 The Prandtl boundary-layer equations for steady, two-dimensional, incompressible flow are
 $$
@@ -149,7 +146,7 @@ where $b_1$ and $b_2$ are constants of integration. Two boundary conditions, on 
 ### Problem 4.3 · Is channel flow a boundary layer? {.unnumbered}
 <!-- origin: Sheet 3 Q12 -->
 
-[[★★ core]{.tag .diff} Study first: [§4.3 The boundary-layer equations](../notes/ch4.qmd#sec-bl-equations) and [Workshop 1](../workshops/workshop1.qmd)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§4.3 The boundary-layer equations](../notes/ch4.qmd#sec-bl-equations) and [Workshop 1](../workshops/workshop1.qmd)]{.meta}
 
 Discuss whether fully developed laminar incompressible flow between parallel plates (see [Workshop 1](../workshops/workshop1.qmd)) is an exact solution of the boundary-layer equations and boundary conditions. In what sense, if any, are duct flows also boundary-layer flows?
 
@@ -192,7 +189,7 @@ Duct flows are boundary-layer flows in which the boundary layers growing from th
 <!-- origin: Sheet 3 Q4. Added a caveat: Re_L is about 1, far outside the range of validity of boundary-layer theory. -->
 <!-- REVIEW (MB): with Re_L ≈ 1 the Blasius result is only an order-of-magnitude estimate; a caveat has been added to the solution. Please check whether U = 0.05 cm/s is the intended speed. -->
 
-[[★ warm-up]{.tag .diff} Study first: [§4.4 Blasius' solution](../notes/ch4.qmd#sec-blasius)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§4.4 Blasius' solution](../notes/ch4.qmd#sec-blasius)]{.meta}
 
 A solid cube with sides of 2 cm floats on the surface of an oil bath ($\mu = 8.1 \times 10^{-3}$ Pa s, $\rho = 860\ \text{kg m}^{-3}$). What wind force must be applied to the cube to keep it moving at a constant velocity of 0.05 cm/s? Assume that the drag is predominantly due to skin friction on the bottom face of the cube.
 
@@ -206,8 +203,6 @@ Since the cube moves at constant velocity it is in equilibrium: the wind force m
 <details class="answer"><summary>Final answer</summary>
 
 $Re_L \approx 1.06$ (laminar), $\overline{C_f} = 1.29$, $F_{\text{wind}} \approx 5.5 \times 10^{-8}$ N (an order-of-magnitude estimate only, since $Re_L$ is so small).
-
-<span class="checker" data-answer="5.54" data-tol="0.02">$F_{\text{wind}}$ = <input type="text" inputmode="decimal"> $\times 10^{-8}$ N <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -245,7 +240,7 @@ $$
 ### Problem 4.5 · Polished flat plate in air and in water {.unnumbered}
 <!-- origin: Sheet 3 Q8. Water momentum thickness 0.48 mm corrected to 0.47 mm (rounding). -->
 
-[[★★ core]{.tag .diff} Study first: [§4.4 Blasius' solution](../notes/ch4.qmd#sec-blasius) and [§4.9 Transition](../notes/ch4.qmd#sec-transition)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§4.4 Blasius' solution](../notes/ch4.qmd#sec-blasius) and [§4.9 Transition](../notes/ch4.qmd#sec-transition)]{.meta}
 
 A highly polished, sharp-edged flat plate of length $L = 1$ m and width $W = 3$ m is immersed parallel to a smooth free stream of velocity $U_{\infty} = 2\ \text{m s}^{-1}$. Find the drag force on one side of the plate, and the boundary-layer thickness $\delta$, displacement thickness $\delta^*$ and momentum thickness $\theta$ at the trailing edge, for
 
@@ -262,15 +257,6 @@ Because the plate is highly polished and sharp-edged, and the free stream is smo
 Both boundary layers are laminar.
 (a) Air: $Re_L = 1.37\times10^5$, $D = 0.0265$ N, $\delta = 13.5$ mm, $\delta^* = 4.65$ mm, $\theta = 1.79$ mm.
 (b) Water: $Re_L = 1.96\times10^6$, $D = 5.69$ N, $\delta = 3.57$ mm, $\delta^* = 1.23$ mm, $\theta = 0.474$ mm.
-
-<span class="checker" data-answer="0.02648" data-tol="0.02">(a) $D$ = <input type="text" inputmode="decimal"> N <span class="fb"></span></span>
-<span class="checker" data-answer="13.51" data-tol="0.02">(a) $\delta$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="4.649" data-tol="0.02">(a) $\delta^*$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="1.794" data-tol="0.02">(a) $\theta$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="5.69" data-tol="0.02">(b) $D$ = <input type="text" inputmode="decimal"> N <span class="fb"></span></span>
-<span class="checker" data-answer="3.571" data-tol="0.02">(b) $\delta$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="1.229" data-tol="0.02">(b) $\delta^*$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="0.4742" data-tol="0.02">(b) $\theta$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -327,7 +313,7 @@ The water boundary layer is about 3.8 times thinner than the air boundary layer,
 ### Problem 4.6 · Friction force equals momentum deficit {.unnumbered}
 <!-- origin: Sheet 3 Q20 -->
 
-[[★ warm-up]{.tag .diff} Study first: [§4.5 The momentum integral equation](../notes/ch4.qmd#sec-mie)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§4.5 The momentum integral equation](../notes/ch4.qmd#sec-mie)]{.meta}
 
 Given that the momentum integral equation (MIE) for a zero-pressure-gradient boundary layer has the form
 $$
@@ -372,7 +358,7 @@ The momentum thickness is a direct measure of the drag accumulated upstream. Div
 ### Problem 4.7 · Cubic laminar profile and the MIE {.unnumbered}
 <!-- origin: Sheet 3 Q2. Old reference "Eq. 4.41" replaced by the formula. -->
 
-[[★★ core]{.tag .diff} Study first: [§4.5 The momentum integral equation](../notes/ch4.qmd#sec-mie) and [§4.4 Blasius' solution](../notes/ch4.qmd#sec-blasius)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§4.5 The momentum integral equation](../notes/ch4.qmd#sec-mie) and [§4.4 Blasius' solution](../notes/ch4.qmd#sec-blasius)]{.meta}
 
 Experimental data for laminar flow over a flat plate at zero incidence suggest that
 $$
@@ -395,11 +381,6 @@ is a good approximation for the velocity through the boundary layer.
 (b) $\theta = \frac{39}{280}\delta$, $\delta^* = \frac{3}{8}\delta$, and
 $\dfrac{\delta}{x} = \dfrac{4.64}{\sqrt{Re_x}}$, $\dfrac{\delta^*}{x} = \dfrac{1.74}{\sqrt{Re_x}}$, $\dfrac{\theta}{x} = \dfrac{0.646}{\sqrt{Re_x}}$, $\tau|_{y=0} = 0.323\,\rho U_\infty^2\, Re_x^{-1/2}$.
 (c) $\overline{C_f} = 1.293\, Re_L^{-1/2}$, about 3% below Blasius.
-
-<span class="checker" data-answer="4.641" data-tol="0.01">$\delta\sqrt{Re_x}/x$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="0.6464" data-tol="0.01">$\theta\sqrt{Re_x}/x$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="1.740" data-tol="0.01">$\delta^*\sqrt{Re_x}/x$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="1.293" data-tol="0.01">$\overline{C_f}\sqrt{Re_L}$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -484,7 +465,7 @@ $$
 ### Problem 4.8 · Sine-wave laminar profile {.unnumbered}
 <!-- origin: Sheet 3 Q9 -->
 
-[[★★ core]{.tag .diff} Study first: [§4.5 The momentum integral equation](../notes/ch4.qmd#sec-mie)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§4.5 The momentum integral equation](../notes/ch4.qmd#sec-mie)]{.meta}
 
 If the velocity profile through a laminar boundary layer can be written as
 $$
@@ -501,10 +482,6 @@ Use the MIE as in [Problem 4.7](#p4-7). To make the integration simpler use $\et
 
 $\delta^* = \dfrac{\pi-2}{\pi}\delta = 0.363\,\delta$, $\theta = \dfrac{4-\pi}{2\pi}\delta = 0.137\,\delta$, and
 $\dfrac{\delta}{x} = \dfrac{4.80}{\sqrt{Re_x}}$, $\dfrac{\theta}{x} = \dfrac{0.655}{\sqrt{Re_x}}$, $\dfrac{\delta^*}{x} = \dfrac{1.743}{\sqrt{Re_x}}$, $C_f = \dfrac{0.655}{\sqrt{Re_x}}$, $H = 2.66$: all within about 1–3% of Blasius except $\delta$ (4% low).
-
-<span class="checker" data-answer="4.795" data-tol="0.01">$\delta\sqrt{Re_x}/x$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="0.6551" data-tol="0.01">$C_f\sqrt{Re_x}$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="2.660" data-tol="0.01">$H$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -563,7 +540,7 @@ On the whole the sine profile compares extremely well with the exact Blasius sol
 ### Problem 4.9 · Pohlhausen's quartic profile {.unnumbered}
 <!-- origin: Sheet 3 Q10 -->
 
-[[★★ core]{.tag .diff} Study first: [§4.5 The momentum integral equation](../notes/ch4.qmd#sec-mie)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§4.5 The momentum integral equation](../notes/ch4.qmd#sec-mie)]{.meta}
 
 Repeat [Problem 4.8](#p4-8) using the polynomial velocity profile for a laminar boundary layer suggested by Pohlhausen:
 $$
@@ -581,10 +558,6 @@ The steps are the same as in [Problem 4.8](#p4-8). For the boundary conditions, 
 $\delta^* = \frac{3}{10}\delta$, $\theta = \frac{37}{315}\delta$, $\tau|_{y=0} = 2\mu U_\infty/\delta$, and
 $\dfrac{\delta}{x} = \dfrac{5.84}{\sqrt{Re_x}}$, $\dfrac{\theta}{x} = \dfrac{0.685}{\sqrt{Re_x}}$, $\dfrac{\delta^*}{x} = \dfrac{1.751}{\sqrt{Re_x}}$, $C_f = \dfrac{0.685}{\sqrt{Re_x}}$, $H = 2.554$.
 Yes: $u(0) = 0$, $u(\delta) = U_\infty$, $\partial u/\partial y|_\delta = 0$ and $\partial^2 u/\partial y^2|_0 = 0$ are all satisfied.
-
-<span class="checker" data-answer="5.836" data-tol="0.01">$\delta\sqrt{Re_x}/x$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="0.6854" data-tol="0.01">$C_f\sqrt{Re_x}$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="2.554" data-tol="0.01">$H$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -643,7 +616,7 @@ Therefore the Pohlhausen profile satisfies all the boundary conditions of lamina
 ### Problem 4.10 · Why does an exponential profile fail? {.unnumbered}
 <!-- origin: Sheet 3 Q11 -->
 
-[[★★ core]{.tag .diff} Study first: [§4.5 The momentum integral equation](../notes/ch4.qmd#sec-mie) and [§4.3 The boundary-layer equations](../notes/ch4.qmd#sec-bl-equations)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§4.5 The momentum integral equation](../notes/ch4.qmd#sec-mie) and [§4.3 The boundary-layer equations](../notes/ch4.qmd#sec-bl-equations)]{.meta}
 
 The velocity profile
 $$
@@ -699,7 +672,7 @@ $$
 ### Problem 4.11 · Thin-shear-layer equations for axisymmetric turbulent flow {.unnumbered}
 <!-- origin: Sheet 3 Q18. Assumption list corrected/completed: "small transverse gradients" relabelled as slow streamwise (axial) development; added dP/dr ≈ 0, U_r << U_z and the neglect of axial stress gradients. -->
 
-[[★★ core]{.tag .diff} Study first: [§4.6 Turbulent boundary layers](../notes/ch4.qmd#sec-turbulent-bl), [the boundary-layer equations](../notes/ch4.qmd#sec-bl-equations) and [§3.7 The RANS equations](../notes/ch3.qmd#sec-rans)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§4.6 Turbulent boundary layers](../notes/ch4.qmd#sec-turbulent-bl), [the boundary-layer equations](../notes/ch4.qmd#sec-bl-equations) and [§3.7 The RANS equations](../notes/ch3.qmd#sec-rans)]{.meta}
 
 The boundary-layer (thin-shear-layer) approximation of the Reynolds-averaged Navier–Stokes equations for an axisymmetric incompressible turbulent flow is
 $$
@@ -761,7 +734,7 @@ $$
 ### Problem 4.12 · The 1/8th power-law profile {.unnumbered}
 <!-- origin: Sheet 3 Q5. Old reference "equation (4.67)" replaced by the formula and a link. -->
 
-[[★★ core]{.tag .diff} Study first: [§4.8 Turbulent flat-plate boundary layers](../notes/ch4.qmd#sec-turbulent-flat-plate)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§4.8 Turbulent flat-plate boundary layers](../notes/ch4.qmd#sec-turbulent-flat-plate)]{.meta}
 
 Calculate the turbulent boundary-layer thickness $\delta$ if the velocity profile is given by the power law
 $$
@@ -780,8 +753,6 @@ The notes perform the same derivation with the MIE and the 1/7th power law; appl
 <details class="answer"><summary>Final answer</summary>
 
 $\theta = \frac{4}{45}\delta$ and $\delta = 0.398\, x\, Re_x^{-1/5}$ (compared with $0.371\,x\,Re_x^{-1/5}$ for the 1/7th law).
-
-<span class="checker" data-answer="0.398" data-tol="0.01">$\delta\,Re_x^{1/5}/x$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -833,7 +804,7 @@ This is about 7% thicker than the 1/7th-power-law result, $\delta = 0.371\,x\,Re
 ### Problem 4.13 · Growth law from a wall-stress power law {.unnumbered}
 <!-- origin: Sheet 3 Q6. Added the restriction 0 < n < 1 needed for theta(0) = 0. -->
 
-[[★ warm-up]{.tag .diff} Study first: [§4.8 Turbulent flat-plate boundary layers](../notes/ch4.qmd#sec-turbulent-flat-plate) and [§4.5 The MIE](../notes/ch4.qmd#sec-mie)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§4.8 Turbulent flat-plate boundary layers](../notes/ch4.qmd#sec-turbulent-flat-plate) and [§4.5 The MIE](../notes/ch4.qmd#sec-mie)]{.meta}
 
 A boundary layer is turbulent from the leading edge to the trailing edge of a smooth flat plate. The shape of the velocity profile is assumed to be similar at all positions along the plate. If the wall shear stress $\tau|_{y=0}$ is inversely proportional to $x^n$, where $n$ is a positive constant ($n < 1$), show that the boundary-layer thickness obeys the power law $\delta \propto x^{1-n}$.
 
@@ -873,7 +844,7 @@ which is the required result. For example, the 1/7th-power-law analysis gives $\
 ### Problem 4.14 · Boundary layer in a small wind tunnel {.unnumbered}
 <!-- origin: Sheet 3 Q19. Now uses the formula-sheet values theta/x = 0.037 Re^-1/5, delta*/x = 0.0463 Re^-1/5 and H = 1.29 (original: theta/x = 0.036 with H = 1.25). (b) delta* 2.446 -> 2.52 mm; (c) theta3 0.524 -> 0.531 mm, delta*3 0.656 -> 0.682 mm. -->
 
-[[★★★ challenge]{.tag .diff} Study first: [§4.8 Turbulent flat-plate boundary layers](../notes/ch4.qmd#sec-turbulent-flat-plate), [Blasius' solution](../notes/ch4.qmd#sec-blasius) and [§4.5 The MIE](../notes/ch4.qmd#sec-mie)]{.meta}
+[[Difficulty: ★★★]{.tag .diff} Study first: [§4.8 Turbulent flat-plate boundary layers](../notes/ch4.qmd#sec-turbulent-flat-plate), [Blasius' solution](../notes/ch4.qmd#sec-blasius) and [§4.5 The MIE](../notes/ch4.qmd#sec-mie)]{.meta}
 
 A small wind tunnel consists of a smooth inlet, a length of 0.3 m diameter pipe, a constriction, and a fan which sucks air from the atmosphere. The velocity in the pipe section is 10 m/s, the air density is $1.2\ \text{kg m}^{-3}$ and the dynamic viscosity of the air is $1.8 \times 10^{-5}$ kg/(m s).
 
@@ -893,14 +864,6 @@ The boundary layer is thin compared with the pipe radius, so treat the pipe wall
 (a) $L = 0.75$ m, $\theta = 0.704$ mm, $\delta^* = 1.83$ mm, $F = 0.0797$ N.
 (b) $\theta = 2.01$ mm, $\delta^* = 2.52$ mm.
 (c) $\theta_3 = \theta_2 (15/10)^{-(H+2)} \approx 0.531$ mm, $\delta^*_3 \approx 0.682$ mm.
-
-<span class="checker" data-answer="0.75" data-tol="0.01">(a) $L$ = <input type="text" inputmode="decimal"> m <span class="fb"></span></span>
-<span class="checker" data-answer="0.704" data-tol="0.02">(a) $\theta$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="1.825" data-tol="0.02">(a) $\delta^*$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="0.0797" data-tol="0.02">(a) $F$ = <input type="text" inputmode="decimal"> N <span class="fb"></span></span>
-<span class="checker" data-answer="2.52" data-tol="0.03">(b) $\delta^*$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="0.531" data-tol="0.03">(c) $\theta_3$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="0.682" data-tol="0.03">(c) $\delta^*_3$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -975,7 +938,7 @@ The strongly favourable pressure gradient in the constriction thins the boundary
 ### Problem 4.15 · Deriving Prandtl's transition correction {.unnumbered}
 <!-- origin: Sheet 3 Q3. Old reference "equation (4.69)" replaced by the formula and a link. -->
 
-[[★★★ challenge]{.tag .diff} Study first: [§4.10 Combined laminar and turbulent boundary layers](../notes/ch4.qmd#sec-combined-bl) and [§4.8 Turbulent flat-plate boundary layers](../notes/ch4.qmd#sec-turbulent-flat-plate)]{.meta}
+[[Difficulty: ★★★]{.tag .diff} Study first: [§4.10 Combined laminar and turbulent boundary layers](../notes/ch4.qmd#sec-combined-bl) and [§4.8 Turbulent flat-plate boundary layers](../notes/ch4.qmd#sec-turbulent-flat-plate)]{.meta}
 
 The average skin-friction (drag) coefficient for a fully turbulent boundary layer on a flat plate of length $L$ and width $W$ is (see the notes)
 $$
@@ -1004,8 +967,6 @@ $$
 A = 0.074\, Re_{cr}^{4/5} - 1.328\, Re_{cr}^{1/2} \approx 1743 \quad\text{for } Re_{cr} = 5\times10^5,
 $$
 consistent with the tabulated $A = 1700$.
-
-<span class="checker" data-answer="1743" data-tol="0.01">$A$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -1060,7 +1021,7 @@ so $A \approx 1743$, consistent with the tabulated value $A = 1700$. The same fo
 ### Problem 4.16 · Laminar, transitional or tripped: drag on a large plate {.unnumbered}
 <!-- origin: Sheet 3 Q17. Numbers recomputed: (a) 36.6 N -> 36.8 N; (b) Cf 0.0028 -> 0.00277, F 248 N -> 245 N; (c) F 264 N -> 265 N. -->
 
-[[★★ core]{.tag .diff} Study first: [§4.10 Combined laminar and turbulent boundary layers](../notes/ch4.qmd#sec-combined-bl), [transition](../notes/ch4.qmd#sec-transition) and [§4.7 The log law](../notes/ch4.qmd#sec-log-law)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§4.10 Combined laminar and turbulent boundary layers](../notes/ch4.qmd#sec-combined-bl), [transition](../notes/ch4.qmd#sec-transition) and [§4.7 The log law](../notes/ch4.qmd#sec-log-law)]{.meta}
 
 To estimate the average skin-friction coefficient $\overline{C_f}$ for different flat-plate boundary-layer regimes, Prandtl proposed two empirical correlations:
 
@@ -1085,10 +1046,6 @@ Compute $Re_L$ first. Remember that the plate has **two** wetted sides, so the t
 <details class="answer"><summary>Final answer</summary>
 
 $Re_L = 1.02\times10^7$. (a) $\overline{C_f} = 4.16\times10^{-4}$, $F = 36.8$ N; (b) $\overline{C_f} = 2.77\times10^{-3}$, $F = 245$ N; (c) $\overline{C_f} = 2.99\times10^{-3}$, $F = 265$ N. (b) and (c) differ by only about 8%: the laminar region ($x_{cr} \approx 0.15$ m) is a small fraction of the 3 m plate.
-
-<span class="checker" data-answer="36.8" data-tol="0.02">(a) $F$ = <input type="text" inputmode="decimal"> N <span class="fb"></span></span>
-<span class="checker" data-answer="245" data-tol="0.02">(b) $F$ = <input type="text" inputmode="decimal"> N <span class="fb"></span></span>
-<span class="checker" data-answer="265" data-tol="0.02">(c) $F$ = <input type="text" inputmode="decimal"> N <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -1136,7 +1093,7 @@ $$
 ### Problem 4.17 · Wall shear stress along a plate with transition {.unnumbered}
 <!-- origin: Sheet 3 Q21. Intermediate value (x_cr - x0)^{4/5} ≈ 0.0232 corrected to 0.0895 (final x0 = 0.1011 m was already correct). Hand sketch (sketch_shear_stress.png) replaced by a to-scale TikZ figure. -->
 
-[[★★★ challenge]{.tag .diff} Study first: [§4.10 Combined laminar and turbulent boundary layers](../notes/ch4.qmd#sec-combined-bl)]{.meta}
+[[Difficulty: ★★★]{.tag .diff} Study first: [§4.10 Combined laminar and turbulent boundary layers](../notes/ch4.qmd#sec-combined-bl)]{.meta}
 
 For boundary-layer flow over a flat plate of length 181 mm the free-stream velocity is 30 m/s ($\rho = 1.2\ \text{kg m}^{-3}$, $\mu = 1.8 \times 10^{-5}$ kg/(m s)). Transition is known to occur at a Reynolds number of 300 000. Determine, and sketch, the local wall shear stress $\tau|_{y=0}$ along the plate, including numerical values of the shear stress at the important points along the plate.
 
@@ -1148,11 +1105,6 @@ Find $x_{cr}$. Upstream use Blasius, $\tau|_{y=0} = 0.332\,\rho U_\infty^2 Re_x^
 <details class="answer"><summary>Final answer</summary>
 
 $x_{cr} = 150$ mm; laminar $\tau|_{y=0} = 0.254\,x^{-1/2}$ Pa ($x$ in m), infinite at the leading edge and 0.655 Pa just before transition; virtual origin $x_0 = 101$ mm; turbulent $\tau|_{y=0} = 1.756\,(x - 0.1011)^{-1/5}$ Pa, jumping to 3.21 Pa at $x_{cr}$ and falling to 2.91 Pa at the trailing edge.
-
-<span class="checker" data-answer="0.655" data-tol="0.01">$\tau|_{y=0}$ just before transition = <input type="text" inputmode="decimal"> Pa <span class="fb"></span></span>
-<span class="checker" data-answer="101.1" data-tol="0.01">$x_0$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="3.21" data-tol="0.01">$\tau|_{y=0}$ just after transition = <input type="text" inputmode="decimal"> Pa <span class="fb"></span></span>
-<span class="checker" data-answer="2.91" data-tol="0.01">$\tau|_{y=0}$ at $x = L$ = <input type="text" inputmode="decimal"> Pa <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -1216,7 +1168,7 @@ At $x = x_{cr} = 0.15$ m: $\tau|_{y=0} = 1.756\,(0.0489)^{-1/5} = 3.21$ Pa. At $
 ### Problem 4.18 · Preventing separation by wall suction {.unnumbered}
 <!-- origin: Sheet 3 Q16 -->
 
-[[★★★ challenge]{.tag .diff} Study first: [§4.11 Boundary-layer separation](../notes/ch4.qmd#sec-separation), [the MIE](../notes/ch4.qmd#sec-mie) and [§4.3 The boundary-layer equations](../notes/ch4.qmd#sec-bl-equations)]{.meta}
+[[Difficulty: ★★★]{.tag .diff} Study first: [§4.11 Boundary-layer separation](../notes/ch4.qmd#sec-separation), [the MIE](../notes/ch4.qmd#sec-mie) and [§4.3 The boundary-layer equations](../notes/ch4.qmd#sec-bl-equations)]{.meta}
 
 **Part 1.** Consider the effectiveness of separation prevention by boundary-layer suction for a laminar boundary layer on a porous flat plate with continuous suction. We look at a limiting case of the Prandtl equations in which gradients with respect to $x$ can be neglected compared with gradients with respect to $y$, so that the equations become
 $$
@@ -1246,8 +1198,6 @@ Part 1: integrate from $y = 0$ to $\infty$; both integrals are elementary expone
 
 Part 1: $\delta^* = \nu/V_s$, $\theta = \nu/(2V_s)$ (so $H = 2$), hence $V_s/\nu = 1/(2\theta)$ and $u/U_\infty = 1 - e^{-y/(2\theta)}$.
 Part 2: $\delta^* = \frac{2}{5}\delta$, $\theta = \frac{4}{35}\delta$, $\tau|_{y=0} = 0$, so $\frac{22}{35}\delta\,U_\infty\,dU_\infty/dx + U_\infty V_s = 0$, giving $V_s = -\frac{22}{35}\delta\,dU_\infty/dx$ (positive, i.e. suction, in an adverse gradient).
-
-<span class="checker" data-answer="0.6286" data-tol="0.01">$2\theta/\delta + \delta^*/\delta$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>

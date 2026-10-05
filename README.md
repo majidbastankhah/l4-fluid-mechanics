@@ -11,7 +11,7 @@ Every push to `main` re-builds the site and publishes it to GitHub Pages automat
 | `notes/ch1.qmd` … | One page per chapter (HTML + downloadable PDF) |
 | `slides/ch1-lecture1.qmd` … | One reveal.js deck per lecture (`slides/_metadata.yml` holds shared settings) |
 | `slides.qmd` | List of slide decks |
-| `problems/index.qmd` | The single problem bank; includes `problems/_ch1.qmd` … `_ch4.qmd`, `_revision.qmd` |
+| `problems/index.qmd` | The single problem bank; includes `problems/_ch1.qmd` … `_ch4.qmd` |
 | `workshops/workshop1.qmd` … | Workshop pages: blanks `[answer]{.gap}` and `<details class="answer">` solution boxes. `assets/workshop.lua` turns them into "try first, then Show solution" pages and builds a printable handout PDF without solutions (`workshops/_metadata.yml`) |
 | `resources/formula-sheet.qmd` | The exam formula sheet (General Formula Listing), copied verbatim; also built as a PDF |
 | `resources/solving-strategy.qmd` | Problem-solving strategy for flow problems |
@@ -44,5 +44,4 @@ Writing conventions used in the notes:
 
 ## Problem bank conventions
 
-Each problem is a `::: {.problem #pC-N data-sec="chC:sec-…" data-ch="C" data-d="D"}` block (C = chapter, D = difficulty 1–3) containing the statement and three toggles: `details.hint`, `details.answer`, `details.full`. Numeric answers can be made self-checking with
-`<span class="checker" data-answer="180" data-tol="0.01">… <input> <span class="fb"></span></span>`.
+Each problem is a `::: {.problem #pC-N data-sec="chC:sec-…" data-ch="C" data-d="D"}` block (C = chapter, D = difficulty 1–3) containing the statement and three toggles: `details.hint`, `details.answer`, `details.full`. Write the final numbers in the answer toggle as text (no input boxes).

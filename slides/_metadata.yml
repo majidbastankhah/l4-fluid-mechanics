@@ -7,6 +7,7 @@ format:
     chalkboard:
       buttons: true
     menu: true
+    include-after-body: ../assets/slides-home.html   # Home / All slides links in the ☰ menu
     preview-links: auto
     hash-type: number
     width: 1200

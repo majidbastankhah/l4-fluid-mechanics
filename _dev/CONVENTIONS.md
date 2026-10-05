@@ -55,7 +55,7 @@ Chapter 4 `notes/ch4.qmd` (`number-offset: 4`) — new order:
 Chapter 1 anchors already exist: `sec-intro`, `sec-material-derivative`, `sec-convective-meaning`, `sec-vorticity`, `sec-shear-stress`, `sec-summary`, `sec-recipe`, `sec-appendix`, `sec-curvilinear`, `sec-div-curl`.
 
 Workshops: `workshops/workshop1.qmd` … `workshop4.qmd` (page-level links are enough).
-Problem bank chapter anchors: `problems/index.qmd#ch2`, `#ch3`, `#ch4`, `#revision`.
+Problem bank chapter anchors: `problems/index.qmd#ch2`, `#ch3`, `#ch4`.
 
 ## Notes conventions (see notes/ch1.qmd)
 
@@ -98,7 +98,7 @@ Problem bank chapter anchors: `problems/index.qmd#ch2`, `#ch3`, `#ch4`, `#revisi
   ::: {.problem #pN-k data-sec="chN:sec-xxx" data-ch="N" data-d="1|2|3"}
   ### Problem N.k · Short descriptive title {.unnumbered}
 
-  [[★ warm-up]{.tag .diff} Study first: [§N.x Title](../notes/chN.qmd#sec-xxx)]{.meta}
+  [[Difficulty: ★]{.tag .diff} Study first: [§N.x Title](../notes/chN.qmd#sec-xxx)]{.meta}
   statement…
   <details class="hint"><summary>Hint</summary> … </details>
   <details class="answer"><summary>Final answer</summary> … </details>
@@ -106,9 +106,9 @@ Problem bank chapter anchors: `problems/index.qmd#ch2`, `#ch3`, `#ch4`, `#revisi
   <label class="done"><input type="checkbox"> done</label>
   :::
   ```
-  (blank lines inside each `<details>` so the markdown/math renders). Difficulty tags: `★ warm-up`, `★★ core`, `★★★ challenge`. `data-sec` = the ONE main notes section (format `chN:sec-xxx`); you may link more sections in the meta line. For the exam-practice file use `data-ch="R"` and ids `pR-k`.
+  (blank lines inside each `<details>` so the markdown/math renders). Difficulty tags: `Difficulty: ★`, `Difficulty: ★★`, `Difficulty: ★★★` (no words such as "warm-up"; they can discourage students). `data-sec` = the ONE main notes section (format `chN:sec-xxx`); you may link more sections in the meta line.
 - Hints and final answers are NEW content you write: short, accurate, no full working in hints.
-- Numerical final answers: add self-check boxes `<span class="checker" data-answer="180" data-tol="0.01">label = <input type="text" inputmode="decimal"> unit <span class="fb"></span></span>`.
+- Numerical final answers: write the values as text in the Final answer toggle (no self-check input boxes — they looked like missing answers).
 - Keep the original solution content; verify the maths (recompute numbers with python). FIX every error you find (the lecturer asked for this) and LIST each one (location, original vs corrected). If the intended version is ambiguous, choose the most likely one, fix it, add an HTML comment `<!-- REVIEW (MB): … -->`, and mark it 'please check' in your list.
 - In an HTML comment right under the heading record the origin, e.g. `<!-- origin: Sheet 3 Q7 -->`.
 

@@ -6,7 +6,7 @@
 ### Problem 1.1 · Acceleration in an unsteady 3D flow {.unnumbered}
 <!-- origin: Sheet 1 Q1 -->
 
-[[★ warm-up]{.tag .diff} Study first: [§1.2 Acceleration and total time derivative](../notes/ch1.qmd#sec-material-derivative)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§1.2 Acceleration and total time derivative](../notes/ch1.qmd#sec-material-derivative)]{.meta}
 
 An idealised velocity vector field is given by $\vect{q} = 4tx\,\uvec{i} - 2t^{2}y\,\uvec{j} + 4xz\,\uvec{k}$. Is this flow steady or unsteady? Is it two or three dimensional? At the point $(x,y,z) = (-1,1,0)$ determine (a) the acceleration vector and (b) any unit vector normal to the acceleration vector.
 
@@ -53,7 +53,7 @@ $$
 ### Problem 1.2 · Convective acceleration in a nozzle {.unnumbered}
 <!-- origin: Sheet 1 Q2 -->
 
-[[★★ core]{.tag .diff} Study first: [§1.2.1 Physical meaning of convective acceleration](../notes/ch1.qmd#sec-convective-meaning)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§1.2.1 Physical meaning of convective acceleration](../notes/ch1.qmd#sec-convective-meaning)]{.meta}
 
 Flow through the converging nozzle shown in the figure can be approximated by a 1D velocity distribution: $u = V_{0}(1 + 2x/L)$, $v = 0$, $w = 0$.
 (a) Find a general expression for the fluid acceleration in the nozzle; (b) for the specific case $V_{0} = 3\ \text{m s}^{-1}$ and $L = 0.1$ m determine the acceleration at the entrance and at the exit. If instead the velocity has the form $\vect{q} = V_{0}(1 + x/L)\,\uvec{i}$ determine (c) the fluid acceleration at $x = L$ and (d) the time required for a fluid element to travel from $x = 0$ to $x = L$.
@@ -67,10 +67,10 @@ The flow is steady and one-dimensional, so only one term of the material derivat
 </details>
 <details class="answer"><summary>Final answer</summary>
 
-(a) $a_x = \dfrac{2V_0^2}{L}\left(1 + \dfrac{2x}{L}\right)$
-(b) check yours: <span class="checker" data-answer="180" data-tol="0.01">entrance $a_x$ = <input type="text" inputmode="decimal"> m/s² <span class="fb"></span></span> <span class="checker" data-answer="540" data-tol="0.01">exit $a_x$ = <input type="text" inputmode="decimal"> m/s² <span class="fb"></span></span>
-(c) $a_x(L) = 2V_0^2/L$
-(d) $t = \dfrac{L}{V_0}\ln 2$
+\(a) $a_x = \dfrac{2V_0^2}{L}\left(1 + \dfrac{2x}{L}\right)$\
+\(b) $a_x = 180\ \text{m s}^{-2}$ at the entrance and $540\ \text{m s}^{-2}$ at the exit\
+\(c) $a_x(L) = 2V_0^2/L$\
+\(d) $t = \dfrac{L}{V_0}\ln 2$
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -116,7 +116,7 @@ For comparison, in the original nozzle, $u = V_0(1 + 2x/L)$, the same steps give
 ### Problem 1.3 · Acceleration and $Dp/Dt$ in a 2D flow {.unnumbered}
 <!-- origin: Sheet 1 Q3 -->
 
-[[★ warm-up]{.tag .diff} Study first: [§1.2 Acceleration and total time derivative](../notes/ch1.qmd#sec-material-derivative)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§1.2 Acceleration and total time derivative](../notes/ch1.qmd#sec-material-derivative)]{.meta}
 
 A two-dimensional velocity field is given by $\vect{q} = (x^{2} - y^{2} + x)\,\uvec{i} - (2xy + y)\,\uvec{j}$. At $(x,y) = (1,2)$, determine (a) the accelerations $a_{x}$ and $a_{y}$, (b) the velocity. If the pressure field $p = 3x^{3} - 4y^{2}$ is associated with the above velocity field, determine $Dp/Dt$ at $(x,y) = (1,2)$.
 
@@ -126,10 +126,6 @@ Steady and 2D, so $\partial/\partial t = 0$ and the $w$ terms vanish. The materi
 
 </details>
 <details class="answer"><summary>Final answer</summary>
-
-<span class="checker" data-answer="18" data-tol="0.01">$a_x$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="26" data-tol="0.01">$a_y$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
-<span class="checker" data-answer="78" data-tol="0.01">$Dp/Dt$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 $\vect{a} = 18\,\uvec{i} + 26\,\uvec{j}$, $\;\vect{q} = -2\,\uvec{i} - 6\,\uvec{j}$, $\;Dp/Dt = 78$ (units consistent with those of $\vect{q}$ and $p$).
 
@@ -167,7 +163,7 @@ At $(1,2)$: $Dp/Dt = 9(1 - 4 + 1) + 32(2 + 1) = -18 + 96 = 78$.
 ::: {.problem #p1-4 data-sec="ch1:sec-vorticity" data-ch="1" data-d="2"}
 ### Problem 1.4 · Vorticity in cylindrical polar coordinates {.unnumbered}
 
-[[★★ core]{.tag .diff} Study first: [§1.3 Vorticity](../notes/ch1.qmd#sec-vorticity) and the [curl in curvilinear coordinates](../notes/ch1.qmd#sec-curvilinear)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§1.3 Vorticity](../notes/ch1.qmd#sec-vorticity) and the [curl in curvilinear coordinates](../notes/ch1.qmd#sec-curvilinear)]{.meta}
 
 For the following velocity expressions, calculate the components of vorticity $\xi_{r}$, $\xi_{\theta}$ and $\xi_{z}$:
 
@@ -239,7 +235,7 @@ $$
 ### Problem 1.5 · Following a fluid element in stagnation-point flow {.unnumbered}
 <!-- origin: Sheet 1 Q16 -->
 
-[[★★ core]{.tag .diff} Study first: [§1.3 Vorticity](../notes/ch1.qmd#sec-vorticity) and the [divergence](../notes/ch1.qmd#sec-div-curl) in the appendix]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§1.3 Vorticity](../notes/ch1.qmd#sec-vorticity) and the [divergence](../notes/ch1.qmd#sec-div-curl) in the appendix]{.meta}
 
 Consider the simple flow defined by $\vect{q} = x\,\uvec{i} - y\,\uvec{j}$. At time $t = 0$, consider the rectangular fluid element defined by the lines $x = 2$, $x = 3$ and $y = 2$, $y = 3$. Determine and draw to scale the location of this fluid element at time $t = 0.5$ s. Relate this new fluid element shape to whether the flow is irrotational or incompressible and comment on that.
 

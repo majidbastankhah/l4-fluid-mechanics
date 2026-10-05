@@ -17,7 +17,7 @@ format:
 - **Detailed course notes:** your first place to start. Full mathematical derivations and detailed physical explanations: [Ch. 1](../notes/ch1.qmd), [Ch. 2](../notes/ch2.qmd), [Ch. 3](../notes/ch3.qmd), [Ch. 4](../notes/ch4.qmd).
 - **Slides covered in lectures:** useful for high-level summaries and visualising key concepts.
 - **Workshops covered in lectures:** step-by-step application of the theory: [1](../workshops/workshop1.qmd), [2](../workshops/workshop2.qmd), [3](../workshops/workshop3.qmd), [4](../workshops/workshop4.qmd).
-- **Problem sheets:** very important for testing your understanding and practising calculations: [problem bank](../problems/index.qmd) ([Ch. 2](../problems/index.qmd#ch2), [Ch. 3](../problems/index.qmd#ch3), [Ch. 4](../problems/index.qmd#ch4), [exam-style practice](../problems/index.qmd#revision)).
+- **Problem sheets:** very important for testing your understanding and practising calculations: [problem bank](../problems/index.qmd) ([Ch. 1](../problems/index.qmd#ch1), [Ch. 2](../problems/index.qmd#ch2), [Ch. 3](../problems/index.qmd#ch3), [Ch. 4](../problems/index.qmd#ch4)).
 - **Past exams:** the last thing to try. Detailed solutions are provided, but only check them after giving it your best shot.
 
 ::: {.notes}
@@ -549,7 +549,7 @@ This slide is new compared with last year's revision deck, because separation is
 
 ## Where next?
 
-- Work through the [exam-style practice problem](../problems/index.qmd#revision) and the chapter problems: [Ch. 2](../problems/index.qmd#ch2), [Ch. 3](../problems/index.qmd#ch3), [Ch. 4](../problems/index.qmd#ch4).
+- Work through the problems in the [problem bank](../problems/index.qmd): [Ch. 1](../problems/index.qmd#ch1), [Ch. 2](../problems/index.qmd#ch2), [Ch. 3](../problems/index.qmd#ch3), [Ch. 4](../problems/index.qmd#ch4).
 - Re-do the workshops without looking at the solutions: [Workshop 1](../workshops/workshop1.qmd), [2](../workshops/workshop2.qmd), [3](../workshops/workshop3.qmd), [4](../workshops/workshop4.qmd).
 - Use the *summary of key relations* in the notes: [Ch. 1](../notes/ch1.qmd#sec-summary), [Ch. 2](../notes/ch2.qmd#sec-summary).
 - Finally, attempt the past exams under timed conditions, then check the solutions.

@@ -6,7 +6,7 @@
 ### Problem 2.1 · Does this mass flux satisfy steady continuity? {.unnumbered}
 <!-- origin: Sheet 1 Q4 -->
 
-[[★ warm-up]{.tag .diff} Study first: [§2.1.1 Continuity: special cases](../notes/ch2.qmd#sec-continuity-special)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§2.1.1 Continuity: special cases](../notes/ch2.qmd#sec-continuity-special)]{.meta}
 
 Determine if the following expressions for the momentum per unit volume satisfy the steady compressible form of the continuity equation:
 (a) $\rho \vect{q} = 3x\,\uvec{i} - 3y^{2}\,\uvec{j} + \uvec{k}$,
@@ -71,7 +71,7 @@ $$
 ### Problem 2.2 · Incompressible continuity and stagnation points {.unnumbered}
 <!-- origin: Sheet 1 Q5. Solution corrected: (0,0) is a singular point, not a stagnation point. -->
 
-[[★ warm-up]{.tag .diff} Study first: [§2.1.1 Continuity: special cases](../notes/ch2.qmd#sec-continuity-special)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§2.1.1 Continuity: special cases](../notes/ch2.qmd#sec-continuity-special)]{.meta}
 
 Given $\vect{q} = u\,\uvec{i} + v\,\uvec{j}$ with
 $$
@@ -90,8 +90,6 @@ The flow is 2D, so check $\partial u/\partial x + \partial v/\partial y = 0$; th
 <details class="answer"><summary>Final answer</summary>
 
 Yes, $\del\cdot\vect{q} = 0$ (everywhere except the origin, where $\vect{q}$ is singular). The only stagnation point is $(x,y) = (-1, 0)$.
-
-<span class="checker" data-answer="-1" data-tol="0.01">stagnation point: $x$ = <input type="text" inputmode="decimal"> <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -134,7 +132,7 @@ For the flow to be stagnant: $y = 0$ and $x = -1$.
 ### Problem 2.3 · Finding $u_r$ from continuity in polar coordinates {.unnumbered}
 <!-- origin: Sheet 1 Q6 -->
 
-[[★★ core]{.tag .diff} Study first: [§2.1.1 Continuity: special cases](../notes/ch2.qmd#sec-continuity-special) and the [divergence in curvilinear coordinates](../notes/ch1.qmd#sec-curvilinear)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§2.1.1 Continuity: special cases](../notes/ch2.qmd#sec-continuity-special) and the [divergence in curvilinear coordinates](../notes/ch1.qmd#sec-curvilinear)]{.meta}
 
 Given
 $$
@@ -187,7 +185,7 @@ $$
 ### Problem 2.4 · Differential and control-volume continuity agree {.unnumbered}
 <!-- origin: Sheet 1 Q11 -->
 
-[[★★ core]{.tag .diff} Study first: [§2.1.1 Continuity: special cases](../notes/ch2.qmd#sec-continuity-special) and [the divergence theorem](../notes/ch1.qmd#sec-divergence-theorem)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§2.1.1 Continuity: special cases](../notes/ch2.qmd#sec-continuity-special) and [the divergence theorem](../notes/ch1.qmd#sec-divergence-theorem)]{.meta}
 
 By considering the problem of incompressible flow in a converging channel, show that the continuity equation for such a flow, $\del \cdot \vect{q} = 0$, is consistent with the conservation of mass result obtained from the control-volume approach, $u_{A}A_{A} = u_{B}A_{B}$, where $u_{A}$ and $u_{B}$ are the velocities at stations A and B normal to the corresponding cross-sectional areas $A_{A}$ and $A_{B}$, respectively.
 
@@ -239,7 +237,7 @@ i.e. (1). (If the velocity is not uniform over a section, $u_A A_A$ is read as t
 ### Problem 2.5 · Gas compressed by a piston {.unnumbered}
 <!-- origin: Sheet 1 Q9 -->
 
-[[★★ core]{.tag .diff} Study first: [§2.1 Continuity equation](../notes/ch2.qmd#sec-continuity) and [§2.1.2 Non-conservative form](../notes/ch2.qmd#sec-continuity-nonconservative)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§2.1 Continuity equation](../notes/ch2.qmd#sec-continuity) and [§2.1.2 Non-conservative form](../notes/ch2.qmd#sec-continuity-nonconservative)]{.meta}
 
 A piston compresses gas in a cylinder by moving at constant speed $V$, as shown in the figure. The gas density and length at time $t = 0$ are $\rho_{0}$ and $L_{0}$, respectively. Let the gas velocity vary linearly from $u = V$ at the piston face to $u = 0$ at $x = L$. If the gas density varies only with time, find an expression for $\rho(t)$.
 
@@ -304,7 +302,7 @@ $$
 ### Problem 2.6 · Vorticity and viscous stresses of a 3D field {.unnumbered}
 <!-- origin: Sheet 1 Q7 -->
 
-[[★ warm-up]{.tag .diff} Study first: [§2.2.1 Surface stresses and Newtonian constitutive relations](../notes/ch2.qmd#sec-stresses) and [§1.3 Vorticity](../notes/ch1.qmd#sec-vorticity)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§2.2.1 Surface stresses and Newtonian constitutive relations](../notes/ch2.qmd#sec-stresses) and [§1.3 Vorticity](../notes/ch1.qmd#sec-vorticity)]{.meta}
 
 Given $\vect{q} = 3y\,\uvec{i} + 6x\,\uvec{j} + x^{2}\,\uvec{k}$, calculate the vorticity and the normal and shear stresses.
 
@@ -362,7 +360,7 @@ The total normal stress on, e.g., an $x$-face is $-p + \tau_{xx}$; here the visc
 ### Problem 2.7 · Pressure gradient in a frictionless flow {.unnumbered}
 <!-- origin: Sheet 1 Q12 -->
 
-[[★ warm-up]{.tag .diff} Study first: [§2.2.2 Navier–Stokes equations: special cases](../notes/ch2.qmd#sec-ns-special) (Euler's equation)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [§2.2.2 Navier–Stokes equations: special cases](../notes/ch2.qmd#sec-ns-special) (Euler's equation)]{.meta}
 
 A frictionless, incompressible steady flow field is given by $\vect{q} = 2xy\,\uvec{i} - y^{2}\,\uvec{j}$. Let the density be $\rho_{0}$ = constant and neglect gravity. Find an expression for the pressure gradient in the $x$ direction.
 
@@ -410,7 +408,7 @@ $$
 ### Problem 2.8 · Plane stagnation-point flow: pressure, stresses and vorticity {.unnumbered}
 <!-- origin: Sheet 1 Q10 -->
 
-[[★★ core]{.tag .diff} Study first: [§2.2.2 Navier–Stokes equations: special cases](../notes/ch2.qmd#sec-ns-special) and [§2.2.1 Stresses](../notes/ch2.qmd#sec-stresses)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§2.2.2 Navier–Stokes equations: special cases](../notes/ch2.qmd#sec-ns-special) and [§2.2.1 Stresses](../notes/ch2.qmd#sec-stresses)]{.meta}
 
 Consider a two-dimensional steady velocity field of an incompressible fluid for which $u = a x$, $v = -a y$.
 (a) Show that continuity is satisfied, (b) evaluate the pressure distribution $p(x,y)$, (c) evaluate the normal and shear stresses, (d) evaluate the vorticity, (e) is the flow irrotational?
@@ -476,7 +474,7 @@ $$
 ### Problem 2.9 · An exact solution that obeys Bernoulli {.unnumbered}
 <!-- origin: Sheet 1 Q13 -->
 
-[[★★ core]{.tag .diff} Study first: [§2.2.2 Navier–Stokes equations: special cases](../notes/ch2.qmd#sec-ns-special)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§2.2.2 Navier–Stokes equations: special cases](../notes/ch2.qmd#sec-ns-special)]{.meta}
 
 Show that the two-dimensional velocity $\vect{q} = kx\,\uvec{i} - ky\,\uvec{j}$, where $k$ is a constant, is an exact solution to the continuity equation. Using the Navier–Stokes equations for incompressible flow and neglecting gravity, derive an expression for the pressure field $p(x,y)$, relate it to the absolute velocity $|\vect{q}|^{2} = u^{2} + v^{2}$ and interpret the result you have obtained.
 
@@ -532,7 +530,7 @@ $$
 ### Problem 2.10 · Hagen–Poiseuille pipe flow: pressure and wall shear {.unnumbered}
 <!-- origin: Sheet 1 Q14 -->
 
-[[★★ core]{.tag .diff} Study first: [§2.2.2 Navier–Stokes equations: special cases](../notes/ch2.qmd#sec-ns-special) and [§2.2.1 Stresses](../notes/ch2.qmd#sec-stresses)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§2.2.2 Navier–Stokes equations: special cases](../notes/ch2.qmd#sec-ns-special) and [§2.2.1 Stresses](../notes/ch2.qmd#sec-stresses)]{.meta}
 
 For fully developed laminar flow in a pipe the velocity components are $u_{z} = U_{max}\left(1 - \dfrac{r^{2}}{R^{2}}\right)$, $u_{\theta} = u_{r} = 0$, which is an exact solution to the Navier–Stokes equations in cylindrical polar coordinates. Neglecting gravity, determine the pressure distribution $p(r,z)$ in the pipe and the shear stress $\tau_{rz}$ using $R$, $U_{max}$ and $\mu$ as parameters. Why does the maximum shear occur at the wall? Why does density not appear as a parameter?
 
@@ -620,7 +618,7 @@ Its magnitude is a maximum at the wall, $r = R$, where $|\tau_{rz}| = 2\mu U_{ma
 ### Problem 2.11 · Water between two parallel plates {.unnumbered}
 <!-- origin: Sheet 1 Q21 -->
 
-[[★ warm-up]{.tag .diff} Study first: [Workshop 1 (plane Couette and Poiseuille flow)](../workshops/workshop1.qmd) and [§2.2.2 Navier–Stokes equations: special cases](../notes/ch2.qmd#sec-ns-special)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [Workshop 1 (plane Couette and Poiseuille flow)](../workshops/workshop1.qmd) and [§2.2.2 Navier–Stokes equations: special cases](../notes/ch2.qmd#sec-ns-special)]{.meta}
 
 Water flows between two large parallel plates, aligned horizontally, at a distance 1.5 mm apart. If the average flow velocity is $0.15\ \text{m s}^{-1}$, find: (a) the maximum velocity; (b) the pressure drop; (c) the wall shear stress. Take $\mu = 1.01 \times 10^{-3}\ \text{kg m}^{-1}\text{s}^{-1}$.
 
@@ -630,10 +628,6 @@ This is plane Poiseuille flow, solved in Workshop 1 for plates $2h$ apart: $u = 
 
 </details>
 <details class="answer"><summary>Final answer</summary>
-
-<span class="checker" data-answer="0.225" data-tol="0.01">(a) $u_{max}$ = <input type="text" inputmode="decimal"> m/s <span class="fb"></span></span>
-<span class="checker" data-answer="808" data-tol="0.01">(b) $-dp/dx$ = <input type="text" inputmode="decimal"> Pa/m <span class="fb"></span></span>
-<span class="checker" data-answer="0.606" data-tol="0.01">(c) $|\tau_w|$ = <input type="text" inputmode="decimal"> Pa <span class="fb"></span></span>
 
 $u_{max} = \tfrac{3}{2}u_{ave} = 0.225\ \text{m s}^{-1}$; $\;dp/dx = -3\mu u_{ave}/h^2 = -808\ \text{Pa m}^{-1}$ (a pressure drop of 808 Pa per metre); $\;|\tau_w| = 3\mu u_{ave}/h = 0.606\ \text{Pa}$.
 
@@ -725,7 +719,7 @@ $$
 ### Problem 2.12 · Oil film down an inclined plane {.unnumbered}
 <!-- origin: Sheet 1 Q20 (original solution only referred to the class problem; a condensed solution has been written out) -->
 
-[[★ warm-up]{.tag .diff} Study first: [Workshop 2 (gravity- and rotation-driven flows)](../workshops/workshop2.qmd), [§2.2.2 N–S special cases](../notes/ch2.qmd#sec-ns-special) and [§2.5 Boundary conditions](../notes/ch2.qmd#sec-bcs)]{.meta}
+[[Difficulty: ★]{.tag .diff} Study first: [Workshop 2 (gravity- and rotation-driven flows)](../workshops/workshop2.qmd), [§2.2.2 N–S special cases](../notes/ch2.qmd#sec-ns-special) and [§2.5 Boundary conditions](../notes/ch2.qmd#sec-bcs)]{.meta}
 
 A thin film of oil flows over the lip of a reservoir and down a smooth plane inclined at an angle $\alpha$ to the horizontal. At some point down the plane the flow becomes fully developed, i.e. independent of $x$, the coordinate down the plane ($y$ is perpendicular to the plane). Derive an expression for the velocity profile across the film if the fully developed film thickness is $f$. The fluid has constant density and viscosity.
 
@@ -767,7 +761,7 @@ The maximum velocity is at the free surface, $u(f) = \rho g f^2\sin\alpha/(2\mu)
 ### Problem 2.13 · Film dragged up by a moving belt {.unnumbered}
 <!-- origin: Sheet 1 Q22 -->
 
-[[★★ core]{.tag .diff} Study first: [§2.5 Initial and boundary conditions](../notes/ch2.qmd#sec-bcs), [§2.2.2 N–S special cases](../notes/ch2.qmd#sec-ns-special) and [Workshop 2](../workshops/workshop2.qmd)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§2.5 Initial and boundary conditions](../notes/ch2.qmd#sec-bcs), [§2.2.2 N–S special cases](../notes/ch2.qmd#sec-ns-special) and [Workshop 2](../workshops/workshop2.qmd)]{.meta}
 
 A wide belt moving vertically upwards with constant speed $V_{b}$ passes through a tank containing a viscous liquid; in doing so it picks up a film of fluid of thickness $h$. Gravity acts so as to make the fluid drain down the belt. Assuming constant dynamic viscosity $\mu$, find an expression for the average velocity of the film as it is dragged up the belt, assuming also that the flow is fully developed. In addition, assume that the resulting flow is steady and laminar.
 
@@ -849,7 +843,7 @@ You might want to revisit the inclined-film problem of [Workshop 2](../workshops
 ### Problem 2.14 · Two immiscible films down an incline {.unnumbered}
 <!-- origin: Sheet 1 Q23. Sign error corrected in the final expression for u_a. -->
 
-[[★★★ challenge]{.tag .diff} Study first: [§2.5 Initial and boundary conditions](../notes/ch2.qmd#sec-bcs) (fluid–fluid interface) and [Workshop 2](../workshops/workshop2.qmd)]{.meta}
+[[Difficulty: ★★★]{.tag .diff} Study first: [§2.5 Initial and boundary conditions](../notes/ch2.qmd#sec-bcs) (fluid–fluid interface) and [Workshop 2](../workshops/workshop2.qmd)]{.meta}
 
 Two immiscible fluid films, one lying directly above the other, flow down a planar surface inclined at an angle $\theta$ to the vertical. Starting with the Navier–Stokes equations for incompressible flow with constant properties, obtain expressions for the velocity profile in each of the fluid films, assuming the flow to be fully developed.
 
@@ -969,152 +963,193 @@ $$
 :::
 
 ::: {.problem #p2-15 data-sec="ch2:sec-bcs" data-ch="2" data-d="3"}
-### Problem 2.15 · Non-Newtonian core in a three-layer channel flow {.unnumbered}
-<!-- origin: supervised problem class, week II, term 2 (self_study_session2_answer.tex) -->
-<!-- REVIEW (MB): statement reconstructed from the solution. Part (v) (finding u_i from shear-stress continuity) is new: the original solution left u_i undetermined. The power-law fluid's consistency index is written K here (the original used mu for both fluids) and the power law is written with |du/dy| so it is defined for du/dy < 0; please check. -->
+### Problem 2.15 · Non-Newtonian channel flow with a lubricating carrier layer {.unnumbered}
+<!-- origin: Revision class Practice Question 1, merged with the supervised problem class (week II) problem on the same flow, which supplied part (v). Fixes: (1) the solution said gravity acts in the z-direction; with horizontal plates and y perpendicular to them, gravity acts in -y and only adds a hydrostatic pressure variation across the channel. (2) "fully developed and uni-directional" replaced by the continuity argument (one follows from the other). (3) The carrier-layer viscosity is written mu_c (the original used mu for both fluids although the carrier fluid has a lower viscosity). (4) Added a note on the sign convention for (du/dy)^n with du/dy < 0. -->
+<!-- REVIEW (MB): carrier-layer viscosity renamed mu_c in part (iv) and in the solution; please check. -->
 
-[[★★★ challenge]{.tag .diff} Study first: [§2.5 Initial and boundary conditions](../notes/ch2.qmd#sec-bcs), [§2.2 Conservation of momentum](../notes/ch2.qmd#sec-momentum) (stress form), [§1.4 Shear stress](../notes/ch1.qmd#sec-shear-stress) and [Workshop 1](../workshops/workshop1.qmd)]{.meta}
+[[Difficulty: ★★★]{.tag .diff} Study first: [§2.2.1 Stresses and constitutive relations](../notes/ch2.qmd#sec-stresses), [the momentum equations](../notes/ch2.qmd#sec-momentum), [boundary conditions](../notes/ch2.qmd#sec-bcs) and [Workshop 1](../workshops/workshop1.qmd)]{.meta}
 
-A long, horizontal, two-dimensional channel of width $2(H + h)$ carries three immiscible layers. The core, $|y| \le H$, is a non-Newtonian power-law fluid for which
+Without making any assumptions about the nature of the viscosity or density of a fluid, the general continuity and Navier–Stokes equations in Cartesian coordinates are
 $$
-\tau_{xy} = K\left|\frac{du}{dy}\right|^{n-1}\frac{du}{dy} ,
+\frac{\partial\rho}{\partial t} + \del \cdot (\rho\vect{q}) = 0
 $$
-and it is bounded on each side by a layer of Newtonian fluid of viscosity $\mu$ and thickness $h$ in contact with the walls (see the figure). The flow is driven by a constant pressure gradient $dp/dx < 0$; it is steady, laminar, incompressible and fully developed, and body forces may be neglected.
+and
+$$
+\begin{aligned}
+\rho\frac{Du}{Dt} &= \rho F_{x} - \frac{\partial p}{\partial x} + \frac{\partial\tau_{xx}}{\partial x} + \frac{\partial\tau_{xy}}{\partial y} + \frac{\partial\tau_{xz}}{\partial z} \\
+\rho\frac{Dv}{Dt} &= \rho F_{y} - \frac{\partial p}{\partial y} + \frac{\partial\tau_{yx}}{\partial x} + \frac{\partial\tau_{yy}}{\partial y} + \frac{\partial\tau_{yz}}{\partial z} \\
+\rho\frac{Dw}{Dt} &= \rho F_{z} - \frac{\partial p}{\partial z} + \frac{\partial\tau_{zx}}{\partial x} + \frac{\partial\tau_{zy}}{\partial y} + \frac{\partial\tau_{zz}}{\partial z}
+\end{aligned}
+$$
+where the normal stresses are
+$$
+\begin{aligned}
+\tau_{xx} &= \mu\left(2\frac{\partial u}{\partial x} - \frac{2}{3}\del \cdot \vect{q}\right), \quad
+\tau_{yy} = \mu\left(2\frac{\partial v}{\partial y} - \frac{2}{3}\del \cdot \vect{q}\right), \\
+\tau_{zz} &= \mu\left(2\frac{\partial w}{\partial z} - \frac{2}{3}\del \cdot \vect{q}\right)
+\end{aligned}
+$$
+and the tangential (shear) stresses are
+$$
+\begin{aligned}
+\tau_{xy} &= \tau_{yx} = \mu\left(\frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}\right)^n, \qquad
+\tau_{xz} = \tau_{zx} = \mu\left(\frac{\partial w}{\partial x} + \frac{\partial u}{\partial z}\right)^n, \\
+\tau_{yz} &= \tau_{zy} = \mu\left(\frac{\partial v}{\partial z} + \frac{\partial w}{\partial y}\right)^n
+\end{aligned}
+$$
+such that the fluid is Newtonian when $n=1$ and non-Newtonian otherwise.
 
-![](../figures/build/p2-layered-channel.svg){width=70% fig-alt="Channel with walls at y = plus and minus (H+h); Newtonian layers of thickness h next to each wall and a power-law fluid core of half-width H about the centreline."}
+Consider steady, fully developed, two-dimensional, incompressible, laminar flow between two horizontal flat parallel plates, driven by a constant pressure gradient, the purpose being to transport a non-Newtonian fluid. To increase the flow rate it is proposed to introduce a thin carrier layer of a low-viscosity Newtonian fluid (viscosity $\mu_c$) of thickness $h$, separating the non-Newtonian bulk flow, of thickness $2H$, from each plate, so that the plates are a total distance $2(H+h)$ apart, with $h \ll H$.
 
-(i) State the boundary and interface conditions, placing the origin on the centreline.
-(ii) Use continuity to show that the flow is unidirectional, and reduce the $x$-momentum equation to $dp/dx = d\tau_{xy}/dy$.
-(iii) Find the velocity profile in the non-Newtonian core in terms of the interface velocity $u_i$, and check your result for $n = 1$.
-(iv) Find the velocity profile in the Newtonian layers in terms of $u_i$.
-(v) Use continuity of shear stress at the interfaces to find $u_i$.
+(i) Sketch the problem using Cartesian coordinates $(x, y)$, with $x$ along the centre/symmetry line between the plates in the direction of flow and $y$ perpendicular to it, and list any assumptions, additional to those above, needed to reduce the governing equations to a form that can be solved analytically.
+
+(ii) List the boundary conditions at the surfaces of the plates, at the interfaces between the two fluids (where the velocity is $u_{i}$) and at the centre/symmetry plane.
+
+(iii) Show that the velocity profile in the non-Newtonian bulk layer is
+$$
+u(y) = \frac{n}{n+1}\left(\frac{1}{\mu}\frac{dp}{dx}\right)^{\frac{1}{n}}\left(y^{\frac{n+1}{n}} - H^{\frac{n+1}{n}}\right) + u_{i} .
+$$
+
+(iv) Show that the velocity profile in the upper Newtonian carrier layer is
+$$
+u(y) = \frac{1}{2\mu_c}\frac{dp}{dx}\,[H+h-y]^{2} + \left(\frac{u_{i}}{h} - \frac{1}{2\mu_c}\frac{dp}{dx}\,h\right)[H+h-y] .
+$$
+Is the velocity profile in the lower carrier layer the same as that in the upper one?
+
+(v) Use continuity of shear stress at the interfaces to find $u_{i}$, and hence explain why the carrier layer increases the flow rate.
 
 <details class="hint"><summary>Hint</summary>
 
-The Navier–Stokes equations assume a Newtonian fluid, so start from the momentum equation written with the stresses, $\rho Du/Dt = \rho F_x - \partial p/\partial x + \partial\tau_{xx}/\partial x + \partial\tau_{xy}/\partial y + \partial\tau_{xz}/\partial z$. Integrating $d\tau_{xy}/dy = dp/dx$ once shows that $\tau_{xy}$ is linear in $y$ across *all three* layers; symmetry fixes the constant. For $y > 0$ the velocity decreases with $y$, so $|du/dy| = -du/dy$.
+Follow the [solving strategy](../resources/solving-strategy.qmd): "fully developed" plus continuity gives $v = 0$ and $u = u(y)$, so all normal stresses vanish and only $\tau_{xy} = \mu(du/dy)^n$ survives. The $x$-momentum equation becomes $dp/dx = \frac{d}{dy}\left[\mu (du/dy)^n\right]$. In the bulk, integrate once and use symmetry at $y = 0$; then use $u = u_i$ at $y = H$. In the carrier layer ($n = 1$, viscosity $\mu_c$) the substitution $Y = H + h - y$ makes the boundary conditions ($u = 0$ at $Y=0$, $u = u_i$ at $Y = h$) tidy. For (v), integrating $dp/dx = d\tau_{xy}/dy$ once shows that $\tau_{xy}$ is linear in $y$; because the shear stress is continuous at the interfaces, the *same* straight line holds across all three layers.
 
 </details>
 <details class="answer"><summary>Final answer</summary>
 
-With $G = -dp/dx > 0$, $\tau_{xy} = -Gy$ in every layer; in the core, $|y| \le H$:
-$$
-u = u_i + \frac{n}{n+1}\left(\frac{G}{K}\right)^{1/n}\left(H^{\frac{n+1}{n}} - |y|^{\frac{n+1}{n}}\right);
-$$
-in the Newtonian layers, $H \le |y| \le H+h$:
-$$
-u = (H + h - |y|)\left[\frac{u_i}{h} - \frac{G}{2\mu}(H - |y|)\right];
-$$
-and the interface velocity is
-$$
-u_i = \frac{G h (2H + h)}{2\mu},
-$$
-so that in the Newtonian layers $u = \dfrac{G}{2\mu}\left[(H+h)^2 - y^2\right]$.
+\(ii) $y = 0$: $du/dy = 0$, $v = 0$ (symmetry); $y = \pm H$: $u = u_i$ in both fluids and equal shear stresses; $y = \pm(H+h)$: $u = v = 0$ (no slip, no penetration).
+
+\(iii), (iv): as stated.
+The lower carrier layer is the mirror image of the upper one: replace $y$ by $-y$, i.e. $[H + h + y]$ in place of $[H + h - y]$.
+
+\(v) $u_i = -\dfrac{1}{2\mu_c}\dfrac{dp}{dx}\,h\,(2H + h)$, and the carrier-layer profile becomes $u = -\dfrac{1}{2\mu_c}\dfrac{dp}{dx}\left[(H+h)^2 - y^2\right]$. A small $\mu_c$ gives a large $u_i$: the whole bulk slides along on the carrier layers, which increases the flow rate.
 
 </details>
 <details class="full"><summary>Full solution</summary>
 
-**Assumptions** (most are given): steady, $\partial/\partial t \equiv 0$; fully developed; two-dimensional, $\partial/\partial z = 0$; incompressible, $\rho$ = constant; $\mu$ constant in the Newtonian fluid; laminar; $dp/dx$ constant in the direction of flow. Gravity is perpendicular to the flow and only adds a hydrostatic variation of $p$ with $y$, so we ignore body forces: $\vect{F} = (F_x, F_y) = 0$. The obvious place for the axes is the centreline, about which the flow is symmetric.
+**(i) Sketch and assumptions.**
 
-**(i) Boundary and interface conditions**
+![Two-layer channel flow: a non-Newtonian bulk fluid lubricated by thin Newtonian carrier layers.](../figures/build/prev-carrier-layer.svg){width=75% fig-alt="Sketch of two stationary horizontal plates a distance 2(H+h) apart. Thin Newtonian carrier layers of thickness h lie against each plate; the non-Newtonian bulk fluid of thickness 2H fills the middle. Axes x along the centreline and y perpendicular to it; interface velocity u_i at y = plus or minus H."}
 
-1. At $y = 0$ (symmetry plane): $\partial u/\partial y = 0$, $v = 0$.
-2. At $y = \pm H$: the velocities of the Newtonian and non-Newtonian fluids are equal, $u = u_i$ (and $v = 0$); the shear stresses are equal too, which we use in (v).
-3. At $y = \pm (H + h)$: no slip, $u = 0$, $v = 0$.
+Given: stationary plates; $dp/dx$ = constant. Additional assumptions:
 
-**(ii) Continuity and momentum**
+- the plates are infinitely long and wide, so the flow is two-dimensional ($w = 0$, $\partial/\partial z = 0$);
+- each fluid has constant properties ($\rho$, $\mu$, $n$ in the bulk; $\rho_c$, $\mu_c$ in the carrier layers); the fluids are immiscible and the interfaces are flat, at $y = \pm H$;
+- body forces can be ignored in the $x$-momentum equation: the plates are horizontal, so gravity acts in the $-y$ direction and only adds a hydrostatic variation of pressure across the channel ($\partial p/\partial y = -\rho g$), which does not affect the flow; we therefore set $F_x = F_y = 0$ and work with the pressure variation due to the flow;
+- the flow is symmetric about the centreline $y = 0$.
 
-Steady and incompressible, so $\partial\rho/\partial t = 0$ and continuity becomes $\del\cdot\vect{q} = 0$:
-$$
-\cancel{\frac{\partial u}{\partial x}} + \frac{\partial v}{\partial y} = 0 .
-$$
-Because the flow is fully developed, $\partial u/\partial x = 0$, so $\partial v/\partial y = 0$; since $v = 0$ at the walls, $v = 0$ everywhere. The flow is therefore unidirectional, $u = u(y)$ only.
+**(ii) Boundary conditions.**
+1. At $y = 0$: $\partial u/\partial y = 0$, $v = 0$ (symmetry plane).
+2. At $y = \pm H$: $u = u_{i}$ in both fluids and $\tau_{xy}\big|_{\text{Newtonian}} = \tau_{xy}\big|_{\text{non-Newtonian}}$ (continuity of velocity and of shear stress across the interface).
+3. At $y = \pm(H+h)$: $u = 0$, $v = 0$ (no slip, no penetration).
 
-Since the core fluid is non-Newtonian we cannot use the Navier–Stokes equations; we use the momentum equations written in terms of the stresses:
+**(iii) Non-Newtonian bulk flow.** Continuity: since the flow is incompressible ($\rho$ = constant), $\partial\rho/\partial t = 0$ and $\del\cdot(\rho\vect{q}) = \rho\,\del\cdot\vect{q}$, so
 $$
-\begin{aligned}
-\rho \left[ \cancel{\frac{\partial u}{\partial t}} + \cancel{u\frac{\partial u}{\partial x}} + \cancel{v\frac{\partial u}{\partial y}} \right] &= \cancel{\rho F_x} - \frac{\partial p}{\partial x} + \cancel{\frac{\partial \tau_{xx}}{\partial x}} + \frac{\partial \tau_{xy}}{\partial y}, \\
-\rho \left[ \cancel{\frac{\partial v}{\partial t}} + \cancel{u\frac{\partial v}{\partial x}} + \cancel{v\frac{\partial v}{\partial y}} \right] &= \cancel{\rho F_y} - \frac{\partial p}{\partial y} + \cancel{\frac{\partial \tau_{yx}}{\partial x}} + \cancel{\frac{\partial \tau_{yy}}{\partial y}} .
-\end{aligned}
+\del \cdot \vect{q} = 0 \quad\Longrightarrow\quad \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0 \qquad (4)
 $$
-The terms vanish because the flow is steady, $u = u(y)$, $v = 0$ and there is no body force. The normal stresses are zero: $\tau_{xx} = \mu\left(2\,\partial u/\partial x - \tfrac{2}{3}\del\cdot\vect{q}\right) = 0$ since $u = u(y)$ and $\del\cdot\vect{q} = 0$, and similarly $\tau_{yy} = 0$ since $v = 0$ (for the power-law fluid the normal stresses also vanish in this simple shear flow). The shear stress depends on $y$ only. The $y$-equation then gives $\partial p/\partial y = 0$ (with gravity ignored), so $p = p(x)$, and the $x$-equation gives
-$$
-\frac{dp}{dx} = \frac{d\tau_{xy}}{dy} ,
-\tag{1}
-$$
-valid in every layer, to be solved remembering that $dp/dx$ is constant.
+The flow is fully developed, $\partial u/\partial x = 0$, so (4) gives $\partial v/\partial y = 0$; with $v = 0$ at the walls this means $v = 0$ everywhere, i.e. the flow is unidirectional. With $w = 0$ as well, $u = u(y)$ only.
 
-Integrating (1): $\tau_{xy} = \dfrac{dp}{dx}\,y + C_1$. The shear stress is continuous across the interfaces, so the same straight line holds in all three layers, and symmetry ($\partial u/\partial y = 0$, hence $\tau_{xy} = 0$, at $y = 0$) gives $C_1 = 0$:
+The $x$- and $y$-momentum equations become
 $$
-\tau_{xy} = \frac{dp}{dx}\,y = -G y, \qquad G \equiv -\frac{dp}{dx} > 0 .
-\tag{2}
+\rho \cancelto{0}{\frac{\partial u}{\partial t}} + \rho \left( u \cancelto{0}{\frac{\partial u}{\partial x}} + \cancelto{0}{v} \frac{\partial u}{\partial y} \right) = \rho \cancelto{0}{F_{x}} - \frac{\partial p}{\partial x} + \frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y}
+$$
+$$
+\rho \cancelto{0}{\frac{\partial v}{\partial t}} + \rho \left( u \cancelto{0}{\frac{\partial v}{\partial x}} + \cancelto{0}{v \frac{\partial v}{\partial y}} \right) = \rho \cancelto{0}{F_{y}} - \cancelto{0}{\frac{\partial p}{\partial y}} + \frac{\partial \tau_{yx}}{\partial x} + \frac{\partial \tau_{yy}}{\partial y}
+$$
+(steady flow; $\partial u/\partial x = 0$ from continuity; $v = 0$ everywhere). So we are left with
+$$
+0 = -\frac{dp}{dx} + \frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} \quad (5), \qquad
+0 = \frac{\partial \tau_{yx}}{\partial x} + \frac{\partial \tau_{yy}}{\partial y} \quad (6)
+$$
+The normal stresses vanish:
+$$
+\tau_{xx} = \mu \left( 2\cancelto{0}{\frac{\partial u}{\partial x}} - \frac{2}{3}\cancelto{0}{\del \cdot \vect{q}} \right) = 0, \qquad
+\tau_{yy} = \mu \left( 2\cancelto{0}{\frac{\partial v}{\partial y}} - \frac{2}{3}\cancelto{0}{\del \cdot \vect{q}} \right) = 0
+$$
+and the shear stress is
+$$
+\tau_{xy} = \tau_{yx} = \mu \left( \cancelto{0}{\frac{\partial v}{\partial x}} + \frac{\partial u}{\partial y} \right)^n = \mu \left( \frac{du}{dy} \right)^n
+$$
+Hence (6) becomes $0 = 0$ and (5) becomes the ODE
+$$
+\frac{dp}{dx} = \frac{d}{dy} \left[ \mu \left( \frac{du}{dy} \right)^n \right] \qquad (8)
+$$
+to be solved for $u(y)$, remembering that $dp/dx$ is constant. Integrating once:
+$$
+\mu \left( \frac{du}{dy} \right)^n = \frac{dp}{dx}\,y + C_{1}
+$$
+and from B.C. 1, $du/dy = 0$ at $y=0$, so $C_{1}=0$. Hence $(du/dy)^n = \frac{1}{\mu}\frac{dp}{dx}\,y$. Raising both sides to the power $1/n$ and writing $A = \left(\frac{1}{\mu}\frac{dp}{dx}\right)^{1/n}$:
+$$
+\frac{du}{dy} = A\, y^{1/n} \qquad (9)
+$$
+(For $y > 0$ and $dp/dx < 0$ both sides are negative. Powers of negative quantities are to be read as sign-preserving, $(-a)^{1/n} = -a^{1/n}$; this is what the power-law model means when written properly as $\tau_{xy} = \mu\,|du/dy|^{n-1}\,du/dy$.) Integrating,
+$$
+u(y) = mA\, y^{1/m} + C_{2}, \qquad m = \frac{n}{n+1}
+$$
+Using B.C. 2, $u = u_{i}$ at $y=H$: $C_{2} = u_{i} - mA H^{1/m}$, so $u(y) = u_{i} + mA \left( y^{1/m} - H^{1/m} \right)$, i.e.
+$$
+u(y) = \frac{n}{n+1}\left(\frac{1}{\mu}\frac{dp}{dx}\right)^{\frac{1}{n}} \left( y^{\frac{n+1}{n}} - H^{\frac{n+1}{n}} \right) + u_{i} \qquad (10)
+$$
+*Check:* if the bulk fluid is Newtonian ($n=1$), (10) becomes $u(y) = \frac{1}{2\mu}\frac{dp}{dx}(y^2 - H^2) + u_{i}$: at $y = \pm H$, $u = u_i$ as it should be, and at $y = 0$, $du/dy = \frac{1}{\mu}\frac{dp}{dx}\,y = 0$, as it should be.
+
+**(iv) Upper Newtonian carrier layer.** Start from (8) with $n=1$ and the constant viscosity $\mu_c$ of the carrier fluid. The algebra is easier with the coordinate $Y = (H+h) - y$ measured from the upper plate:
+$$
+y = H+h \;\Rightarrow\; Y = 0,\; u=0 \quad (11), \qquad
+y = H \;\Rightarrow\; Y = h,\; u=u_{i} \quad (12)
+$$
+Since $d^2/dy^2 = d^2/dY^2$, we need to solve
+$$
+\frac{dp}{dx} = \mu_c\frac{d^{2}u}{dY^{2}}
+\quad\Rightarrow\quad
+u(Y) = \frac{1}{2\mu_c}\frac{dp}{dx}\,Y^{2} + C_{3}Y + C_{4}
+$$
+B.C. (11) gives $C_{4} = 0$, and B.C. (12) gives $u_{i} = \frac{1}{2\mu_c}\frac{dp}{dx}h^{2} + C_{3}h$, i.e. $C_{3} = \frac{u_{i}}{h} - \frac{1}{2\mu_c}\frac{dp}{dx}\,h$. So
+$$
+u(y) = \frac{1}{2\mu_c}\frac{dp}{dx}\,(H+h-y)^{2} + \left(\frac{u_{i}}{h} - \frac{1}{2\mu_c}\frac{dp}{dx}\,h\right)(H+h-y) \qquad (13)
+$$
+*Check:* at $y=H+h$, $u = 0$; at $y=H$, $u = \frac{1}{2\mu_c}\frac{dp}{dx}h^{2} + \left(\frac{u_{i}}{h} - \frac{1}{2\mu_c}\frac{dp}{dx}h\right)h = u_{i}$.
+
+**Lower carrier layer.** For the lower layer we write $Y = H+h+y$ and use $u = 0$ at $y = -(H+h)$ and $u = u_{i}$ at $y = -H$, giving
+$$
+u(y) = \frac{1}{2\mu_c}\frac{dp}{dx}\,(H+h+y)^{2} + \left(\frac{u_{i}}{h} - \frac{1}{2\mu_c}\frac{dp}{dx}\,h\right)(H+h+y) \qquad (14)
+$$
+which is the mirror image of (13) about the centreline, as expected from the symmetry of the problem. (13) and (14) can be combined into one expression for both layers:
+$$
+u(y) = \frac{1}{2\mu_c}\frac{dp}{dx}\,(H+h+\alpha y)^{2} + \left(\frac{u_{i}}{h} - \frac{1}{2\mu_c}\frac{dp}{dx}\,h\right)(H+h+\alpha y),
+$$
+$$
+\alpha = \begin{cases} -1, & y \ge 0 \\ +1, & y \le 0 \end{cases}
 $$
 
-**(iii) Non-Newtonian core**
+**(v) The interface velocity.** Velocity continuity alone leaves $u_i$ undetermined; the second interface condition in B.C. 2, continuity of shear stress, fixes it. Integrating (8) once in the carrier layer ($n = 1$, viscosity $\mu_c$) gives $\tau_{xy} = \frac{dp}{dx}\,y + C$. Matching the bulk stress $\tau_{xy} = \frac{dp}{dx}\,y$ (from (iii), with $C_1 = 0$) at $y = H$ gives $C = 0$, so the shear stress is the same straight line right across the channel, in all three layers:
+$$
+\tau_{xy} = \frac{dp}{dx}\,y . \qquad (15)
+$$
+In the upper carrier layer, differentiating (13) with $dY/dy = -1$,
+$$
+\frac{du}{dy}\bigg|_{y=H} = -\frac{du}{dY}\bigg|_{Y=h} = -\left(\frac{1}{\mu_c}\frac{dp}{dx}\,h + \frac{u_i}{h} - \frac{1}{2\mu_c}\frac{dp}{dx}\,h\right) = -\frac{u_i}{h} - \frac{1}{2\mu_c}\frac{dp}{dx}\,h .
+$$
+Setting $\mu_c\, du/dy = \frac{dp}{dx}\,H$ at $y = H$, from (15):
+$$
+-\frac{\mu_c u_i}{h} - \frac{1}{2}\frac{dp}{dx}\,h = \frac{dp}{dx}\,H
+\quad\Rightarrow\quad
+u_i = -\frac{1}{2\mu_c}\frac{dp}{dx}\,h\,(2H + h) . \qquad (16)
+$$
+Since $dp/dx < 0$, $u_i > 0$. Substituting (16) back into (13) and (14), the carrier-layer profile simplifies to
+$$
+u(y) = -\frac{1}{2\mu_c}\frac{dp}{dx}\left[(H+h)^2 - y^2\right], \qquad H \le |y| \le H + h ,
+$$
+exactly the Poiseuille parabola that would fill the whole channel if it contained only the carrier fluid. The carrier layers do not "know" what fluid is in the core, because the shear-stress distribution (15) is fixed by the pressure gradient alone.
 
-Consider $0 \le y \le H$ (the profile is symmetric about $y = 0$). There $\tau_{xy} = -Gy \le 0$, so $du/dy \le 0$ and $|du/dy|^{n-1}du/dy = -(-du/dy)^n$. Then (2) gives
-$$
-K\left(-\frac{du}{dy}\right)^n = G y \quad\Rightarrow\quad \frac{du}{dy} = -\left(\frac{G}{K}\right)^{1/n} y^{1/n} .
-$$
-Integrating, with $m = n/(n+1)$:
-$$
-u(y) = -m\left(\frac{G}{K}\right)^{1/n} y^{1/m} + C_2 .
-$$
-Using $u = u_i$ at $y = H$:
-$$
-u(y) = u_i + \frac{n}{n+1}\left(\frac{G}{K}\right)^{1/n}\left(H^{\frac{n+1}{n}} - y^{\frac{n+1}{n}}\right), \qquad 0 \le y \le H ,
-\tag{3}
-$$
-and with $|y|$ in place of $y$ for $-H \le y \le 0$. The core velocity is largest on the centreline, $u(0) = u_i + \frac{n}{n+1}(G/K)^{1/n}H^{(n+1)/n}$; for shear-thinning fluids ($n < 1$) the profile is blunter ("plug-like") than a parabola.
-
-**Check, $n = 1$** (a Newtonian core with viscosity $K$): (3) becomes $u = u_i + \dfrac{G}{2K}(H^2 - y^2) = u_i + \dfrac{1}{2K}\dfrac{dp}{dx}(y^2 - H^2)$, the familiar parabola. At $y = \pm H$, $u = u_i$, and at $y = 0$, $du/dy = 0$, as they should.
-
-**(iv) Newtonian layers**
-
-With $n = 1$ and viscosity $\mu$, (1) becomes $\mu\, d^2u/dy^2 = dp/dx$. For the upper layer the algebra is simpler with the coordinate $Y = (H + h) - y$ measured from the wall, so that
-
-- at $y = H + h$: $Y = 0$, $u = 0$;
-- at $y = H$: $Y = h$, $u = u_i$.
-
-Since $d^2/dy^2 = d^2/dY^2$, we solve $\mu\, d^2u/dY^2 = dp/dx$:
-$$
-u(Y) = \frac{1}{2\mu}\frac{dp}{dx}Y^2 + C_3 Y + C_4 .
-$$
-$u(Y{=}0) = 0 \Rightarrow C_4 = 0$; $\;u(Y{=}h) = u_i \Rightarrow C_3 = \dfrac{u_i}{h} - \dfrac{1}{2\mu}\dfrac{dp}{dx}h$. So, in the upper Newtonian layer,
-$$
-u(y) = \frac{1}{2\mu}\frac{dp}{dx}(H+h-y)^2 + \left(\frac{u_i}{h} - \frac{1}{2\mu}\frac{dp}{dx}h\right)(H+h-y) .
-\tag{4}
-$$
-Check: $u(H+h) = 0$ and $u(H) = \frac{1}{2\mu}\frac{dp}{dx}h^2 + \left(\frac{u_i}{h} - \frac{1}{2\mu}\frac{dp}{dx}h\right)h = u_i$. ✓
-
-For the lower layer the conditions are $u(-[H+h]) = 0$ and $u(-H) = u_i$, and the same steps give
-$$
-u(y) = \frac{1}{2\mu}\frac{dp}{dx}(H+h+y)^2 + \left(\frac{u_i}{h} - \frac{1}{2\mu}\frac{dp}{dx}h\right)(H+h+y) .
-\tag{5}
-$$
-(4) and (5) combine into one expression valid for both layers, with $\alpha = -1$ for $y \ge 0$ and $\alpha = 1$ for $y \le 0$ (i.e. $H + h + \alpha y = H + h - |y|$):
-$$
-\begin{aligned}
-u(y) &= \frac{1}{2\mu}\frac{dp}{dx}(H+h+\alpha y)^2 + \left(\frac{u_i}{h} - \frac{1}{2\mu}\frac{dp}{dx}h\right)(H+h+\alpha y) \\
-&= \frac{u_i}{h}(H+h+\alpha y) + \frac{1}{2\mu}\frac{dp}{dx}\left[(H+h+\alpha y) - h\right](H+h+\alpha y) \\
-&= \frac{u_i}{h}(H+h+\alpha y) + \frac{1}{2\mu}\frac{dp}{dx}(H+\alpha y)(H+h+\alpha y) .
-\end{aligned}
-$$
-
-**(v) The interface velocity**
-
-So far $u_i$ is unknown: velocity continuity alone does not fix it. The second interface condition, continuity of shear stress, does. In the upper Newtonian layer (2) gives $\mu\, du/dy = -Gy$, so at $y = H$
-$$
-\mu \frac{du}{dy}\bigg|_{y=H} = -\mu\frac{du}{dY}\bigg|_{Y=h} = -\mu\left(-\frac{G h}{\mu} + \frac{u_i}{h} + \frac{G h}{2\mu}\right) = -GH
-$$
-$$
-\Rightarrow\quad
-u_i = \frac{G h (2H + h)}{2\mu} .
-$$
-Substituting back, the Newtonian-layer profile simplifies to
-$$
-u(y) = \frac{G}{2\mu}\left[(H+h)^2 - y^2\right], \qquad H \le |y| \le H + h ,
-$$
-exactly the Poiseuille parabola that would fill the whole channel if it were all Newtonian: the wall layers do not "know" what fluid is in the core, because the shear stress distribution (2) is fixed by the pressure gradient alone. Note that $u_i$ depends only on the Newtonian fluid, while the extra velocity in the core, (3), depends on $K$ and $n$.
+**Why the carrier layer helps.** $u_i$ depends only on the carrier fluid and is large when $\mu_c$ is small: the low-viscosity layers let the whole bulk slide along at $u_i$, and the bulk's own shearing, (10), is added on top. This is why the carrier layer increases the flow rate.
 
 </details>
 <label class="done"><input type="checkbox"> done</label>
@@ -1124,7 +1159,7 @@ exactly the Poiseuille parabola that would fill the whole channel if it were all
 ### Problem 2.16 · Concentric cylinders with the outer one rotating {.unnumbered}
 <!-- origin: Sheet 1 Q17. Explanation of superposition corrected (the centripetal term is not zero; the theta-equation is linear). -->
 
-[[★★ core]{.tag .diff} Study first: [Workshop 2 (flow between concentric cylinders)](../workshops/workshop2.qmd) and [§2.2.2 N–S special cases](../notes/ch2.qmd#sec-ns-special)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [Workshop 2 (flow between concentric cylinders)](../workshops/workshop2.qmd) and [§2.2.2 N–S special cases](../notes/ch2.qmd#sec-ns-special)]{.meta}
 
 With reference to the flow between long concentric cylinders considered in [Workshop 2](../workshops/workshop2.qmd), modify the analysis to find the velocity $u_{\theta}$ when the inner cylinder (radius $R_i$) is fixed and the outer cylinder (radius $R_o$) rotates with angular velocity $\Omega_{o}$. May this solution be added to the Workshop 2 solution to represent the flow caused when both inner and outer cylinders rotate? Explain your conclusion.
 
@@ -1178,7 +1213,7 @@ Note, however, that not all convective terms are zero: the centripetal accelerat
 ### Problem 2.17 · Liquid film draining down a vertical rod {.unnumbered}
 <!-- origin: Sheet 1 Q18 -->
 
-[[★★★ challenge]{.tag .diff} Study first: [§2.5 Initial and boundary conditions](../notes/ch2.qmd#sec-bcs), [§2.2.2 N–S special cases](../notes/ch2.qmd#sec-ns-special) and [Workshop 2](../workshops/workshop2.qmd)]{.meta}
+[[Difficulty: ★★★]{.tag .diff} Study first: [§2.5 Initial and boundary conditions](../notes/ch2.qmd#sec-bcs), [§2.2.2 N–S special cases](../notes/ch2.qmd#sec-ns-special) and [Workshop 2](../workshops/workshop2.qmd)]{.meta}
 
 Consider a viscous film of liquid draining uniformly down the side of a vertical cylindrical rod, as shown in the figure. At some distance down the rod the film is fully developed, with constant outer radius $b$ and $u_{z} = u_{z}(r)$, $u_{\theta} = u_{r} = 0$. Assume that the outer atmosphere offers no shear resistance ($\mu_{atm} = 0$ effectively). Derive a differential equation for $u_{z}$, state the proper boundary conditions and solve for the film velocity distribution. What is the relationship between $b$, the radius of the rod $a$, and the volume flow rate $Q$?
 
@@ -1258,7 +1293,7 @@ This relation fixes the film radius $b$ for a given rod radius $a$ and flow rate
 ### Problem 2.18 · The entropy equation {.unnumbered}
 <!-- origin: Sheet 1 Q15. Solution generalised: the original assumed Drho/Dt = 0 ("by definition"); the result holds for compressible flow too once the -p div q term is kept. -->
 
-[[★★ core]{.tag .diff} Study first: [§2.3.1 Energy equation in terms of internal energy](../notes/ch2.qmd#sec-energy-internal)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§2.3.1 Energy equation in terms of internal energy](../notes/ch2.qmd#sec-energy-internal)]{.meta}
 
 Manipulate the differential energy equation for the internal energy $e$ to show that the rate of change of entropy $s$ in a Newtonian fluid with constant thermal conductivity $k$ is given by
 $$
@@ -1321,7 +1356,7 @@ as required. For incompressible flow, $D\rho/Dt = 0$ and $\del\cdot\vect{q} = 0$
 ### Problem 2.19 · Conduction between stationary concentric cylinders {.unnumbered}
 <!-- origin: Sheet 1 Q19 -->
 
-[[★★ core]{.tag .diff} Study first: [§2.3.1 Energy equation in terms of internal energy](../notes/ch2.qmd#sec-energy-internal), [§2.4 Summary](../notes/ch2.qmd#sec-summary) and [Workshop 2](../workshops/workshop2.qmd)]{.meta}
+[[Difficulty: ★★]{.tag .diff} Study first: [§2.3.1 Energy equation in terms of internal energy](../notes/ch2.qmd#sec-energy-internal), [§2.4 Summary](../notes/ch2.qmd#sec-summary) and [Workshop 2](../workshops/workshop2.qmd)]{.meta}
 
 Suppose that, for the flow between long concentric cylinders considered in Workshop 2 and Problem 2.16, neither cylinder is moving. The fluid has constant $\rho$, $\mu$, $k$, $C_{v}$, $C_{p}$. What, then, is the steady flow solution for $u_{\theta}(r)$? For this condition, suppose that the inner and outer cylinder surface temperatures are $T_{i}$ and $T_{o}$ respectively. Simplify the differential energy equation appropriately for this problem, state the boundary conditions and find the temperature distribution in the fluid. Neglect gravity.
 

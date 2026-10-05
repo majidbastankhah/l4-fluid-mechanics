@@ -1,0 +1,37 @@
+<!-- Adds "Home" and "All slides" links to the slide menu (☰, bottom left; or press M).
+     Included in every deck via slides/_metadata.yml (include-after-body). -->
+<style>
+.slide-menu-wrapper .slide-menu-toolbar > li.sm-link { padding: 0; }
+.slide-menu-wrapper .slide-menu-toolbar > li.sm-link a { display: block; color: #aaa; text-decoration: none; line-height: 150%; }
+.slide-menu-wrapper .slide-menu-toolbar > li.sm-link a:hover { color: #fff; }
+.slide-menu-wrapper .slide-menu-toolbar > li.sm-link svg { width: 1.8rem; height: 1.8rem; vertical-align: -0.125em; fill: currentColor; }
+.slide-menu-wrapper .slide-menu-toolbar > li.sm-link .slide-menu-toolbar-label { visibility: visible; }
+</style>
+<script>
+(function () {
+  var LINKS = [
+    { href: '../index.html', label: 'Home',
+      svg: '<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>' },
+    { href: '../slides.html', label: 'All slides',
+      svg: '<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>' }
+  ];
+  function add() {
+    var bar = document.querySelector('.slide-menu-wrapper .slide-menu-toolbar');
+    if (!bar) return false;
+    if (bar.querySelector('.sm-link')) return true;
+    var close = bar.querySelector('#close');
+    LINKS.forEach(function (l) {
+      var li = document.createElement('li');
+      li.className = 'sm-link';
+      li.innerHTML = '<a href="' + l.href + '"><svg viewBox="0 0 16 16" aria-hidden="true">' + l.svg +
+        '</svg><br><span class="slide-menu-toolbar-label">' + l.label + '</span></a>';
+      bar.insertBefore(li, close);
+    });
+    return true;
+  }
+  function whenReady() { if (!add()) setTimeout(whenReady, 200); }
+  if (window.Reveal && Reveal.isReady && Reveal.isReady()) whenReady();
+  else if (window.Reveal) Reveal.on('ready', whenReady);
+  window.addEventListener('load', whenReady);
+})();
+</script>
