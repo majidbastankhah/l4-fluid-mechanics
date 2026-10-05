@@ -1,0 +1,2 @@
+- **5 Oct 2026** · Problem bank: final answers now show the numbers directly; difficulty is shown as ★ to ★★★; the revision-class practice question is now part of [Problem 2.15](problems/index.qmd#p2-15).
+- **5 Oct 2026** · Slides: the ☰ menu (bottom left) now has **Home** and **All slides** buttons.

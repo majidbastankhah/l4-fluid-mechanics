@@ -34,6 +34,8 @@ website:
             href: resources/formula-sheet.qmd
           - text: "Problem-solving strategy"
             href: resources/solving-strategy.qmd
+          - text: "What's new"
+            href: whats-new.qmd
   sidebar:
     - title: "Notes"
       style: docked

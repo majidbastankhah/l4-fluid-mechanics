@@ -7,7 +7,8 @@ Every push to `main` re-builds the site and publishes it to GitHub Pages automat
 
 | Path | What it is |
 |:--|:--|
-| `index.qmd` | Home page and course roadmap |
+| `index.qmd` | Home page (with the "What's new" box) |
+| `_whats-new.md`, `whats-new.qmd` | Change log for students: edit `_whats-new.md` only |
 | `notes/ch1.qmd` … | One page per chapter (HTML + downloadable PDF) |
 | `slides/ch1-lecture1.qmd` … | One reveal.js deck per lecture (`slides/_metadata.yml` holds shared settings) |
 | `slides.qmd` | List of slide decks |
@@ -22,6 +23,16 @@ Every push to `main` re-builds the site and publishes it to GitHub Pages automat
 | `figures/build/` | Generated `.svg` (web) and `.pdf` (PDF notes) — commit these |
 | `assets/widgets/widgets.js` | Interactive figures (nozzle, vorticity explorer) |
 | `_macros.qmd`, `assets/macros.tex` | Shared LaTeX macros (`\vect`, `\uvec`, `\del`) for web and PDF |
+
+## Telling students what changed
+
+Add one line at the **top** of `_whats-new.md` whenever you change something students should know about (corrections, new material, renumbering; not typo fixes):
+
+```
+- **6 Oct 2026** · Chapter 2 notes: corrected the sign in [eq. (2.14)](notes/ch2.qmd#eq-xxx).
+```
+
+Write links relative to the site root (`notes/ch2.qmd`, `problems/index.qmd#p2-15`). The home page shows the 5 newest entries in its "What's new" box; `whats-new.qmd` (Resources → What's new) shows the full list. For important changes, also post an announcement on Blackboard Ultra.
 
 ## Everyday editing
 

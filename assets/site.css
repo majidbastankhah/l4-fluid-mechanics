@@ -61,3 +61,8 @@ main span.math.inline mjx-container { max-width: 100%; }
 .sol-locked { color: #8a6d1c; font-size: .9rem; font-style: italic; margin: .2rem 0 1rem; }
 .quarto-dark .sol-locked { color: #e0c27a; }
 .gap-locked { display: inline-block; min-width: 2.6em; text-align: center; border-bottom: 2px solid #b0b0b0; background: rgba(0,0,0,.05); color: #777; border-radius: 3px; padding: 0 .35em; margin: 0 .1em; font-weight: 700; font-size: .9em; }
+
+/* Home page "What's new" box: show the 5 newest entries (full list on whats-new.qmd) */
+.whats-new ul { margin-bottom: .3rem; padding-left: 1.1rem; }
+.whats-new ul > li:nth-child(n+6) { display: none; }
+.whats-new li { margin: .15rem 0; }

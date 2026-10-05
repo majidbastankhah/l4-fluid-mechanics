@@ -1,0 +1,9 @@
+---
+title: "What's new"
+subtitle: "Changes to the course materials, newest first"
+toc: false
+---
+
+Corrections and additions to the notes, slides, problems and workshops are listed here as they are made. Important changes are also announced on Blackboard Ultra.
+
+{{< include _whats-new.md >}}
