@@ -71,7 +71,7 @@ local function writing_space(chars)
   local cm = math.max(2.5, math.min(9, 1.5 + chars / 120))
   return pandoc.RawBlock("latex", string.format(
     "\\par\\noindent\\fbox{\\begin{minipage}[t][%.1fcm]{\\dimexpr\\linewidth-2\\fboxsep-2\\fboxrule\\relax}" ..
-    "\\end{minipage}}\\par\\medskip", cm))
+    "\\mbox{}\\end{minipage}}\\par\\medskip", cm))  -- \\mbox{} keeps the empty box at full height
 end
 
 local process -- forward declaration
