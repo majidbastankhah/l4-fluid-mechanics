@@ -47,5 +47,5 @@ Guided problem-solving sessions, released before each workshop.
 4. Use the [exam formula sheet](resources/formula-sheet.qmd) (the equations you are given in the exam) and the [problem-solving strategy](resources/solving-strategy.qmd) while solving problems, and come to the workshops with questions.
 
 ::: {.callout-tip appearance="simple"}
-Found a mistake or something unclear? Use the **Report an issue** link in the right-hand margin of any page, or email the lecturer.
+Found a mistake or something unclear? Highlight the text on any page and click the **⚑ Report a mistake** button that appears. It opens a short form with the location already filled in; just say what is wrong.
 :::

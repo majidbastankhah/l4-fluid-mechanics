@@ -233,3 +233,7 @@ Consequent changes so the course matches the sheet:
 - Notes §4.8 key-result box now lists the formula-sheet values: δ/x = 0.3707, δ*/x = 0.0463, θ/x = 0.037, C_f = 0.0592, C̄f = 0.074 (all × Re^{−1/5}), H = 1.29. The power-law derivation itself still shows that the uncalibrated analysis gives 0.0360 and 0.0721, with a note explaining the difference.
 - Worked example 4.4 recomputed with 0.037 and 0.074: θ = 5.31 mm (was 5.17), D = 2.55 N/m (was 2.48); Re_L^{−1/5} = 0.0478 (was 0.0479).
 - Problem 4.14 (Sheet 3 Q19) now uses the formula-sheet values: (b) θ = 2.01 mm, δ* = 2.52 mm; (c) θ₃ = 0.531 mm, δ*₃ = 0.682 mm.
+
+# 10. Reporting mistakes
+
+The GitHub "Report an issue" links (which need a GitHub account) are replaced by a **⚑ Report a mistake** button on every page except the slides. A student highlights the text, clicks the button, and a Microsoft Form opens with *Where* (page, section or problem, and a link that jumps to the spot) and *Selected text* (formulas as LaTeX) already filled in; they only type what is wrong. An "or email" link sends the same report by email instead.

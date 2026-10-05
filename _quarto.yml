@@ -11,7 +11,6 @@ website:
   description: "Course materials for ENGI44710 / ENGI47215 Fluid Mechanics, Durham University"
   site-url: "https://majidbastankhah.github.io/l4-fluid-mechanics"
   repo-url: "https://github.com/majidbastankhah/l4-fluid-mechanics"
-  repo-actions: [issue]
   search:
     location: navbar
     type: overlay
@@ -46,7 +45,7 @@ website:
         - notes/ch4.qmd
   page-footer:
     left: "L4 Fluid Mechanics · Dr Majid Bastankhah · Department of Engineering, Durham University"
-    right: "Spotted a mistake? Use **Report an issue** in the page margin, or email the lecturer."
+    right: "Spotted a mistake? Highlight it and click **⚑ Report a mistake**."
 
 format:
   html:
@@ -54,6 +53,7 @@ format:
       light: [cosmo, assets/theme.scss]
       dark: [darkly, assets/theme.scss, assets/theme-dark.scss]
     css: assets/site.css
+    include-after-body: assets/report.html
     toc: true
     toc-depth: 3
     toc-title: "On this page"

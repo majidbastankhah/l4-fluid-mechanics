@@ -1,0 +1,125 @@
+<!-- "Report a mistake": highlight text on any page, click the button, and a pre-filled
+     Microsoft Form opens (Where / Selected text filled in; the student adds What's wrong).
+     Included on every HTML page via _quarto.yml (include-after-body). Not used in slides. -->
+<style>
+#rm-btn{position:absolute;z-index:1050;display:none;align-items:center;gap:.35rem;background:#68246D;color:#fff;border:0;border-radius:999px;padding:.3rem .8rem;font-size:.85rem;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.25);cursor:pointer;font-family:inherit}
+#rm-btn:hover{background:#7b2d82}
+#rm-btn .rm-mail{color:#e8d3ec;font-weight:400;text-decoration:underline;margin-left:.35rem;font-size:.78rem}
+</style>
+<button type="button" id="rm-btn" aria-label="Report a mistake in the selected text">⚑ Report a mistake<a class="rm-mail" href="#" title="Send by email instead">or email</a></button>
+<script>
+(function () {
+  'use strict';
+  // ---- Microsoft Form (pre-filled link). Question ids come from the form's "Get Pre-filled URL" link.
+  var FORM = 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=i9hQcmhLKUW-RNWaLYpvlH3PaF_mEOpMtTMavvTCvgtUNTBSWlRBTkhPU0tMWjRQMElGTTJBSTFHVC4u';
+  var Q_WHERE = 'r2d79e093ad5e474a876654e50704657d';
+  var Q_TEXT  = 'r6834367582c748bdbb57f48130397e70';
+  var Q_WHAT  = 'ra0e1e466a6f846cf9030afbd9d12100c';
+  var EMAIL   = 'majid.bastankhah@durham.ac.uk';
+  var MAXLEN  = 400;
+
+  var btn = document.getElementById('rm-btn');
+  var main = document.querySelector('main') || document.body;
+  var current = null;   // {where, text}
+
+  // TeX source of a MathJax-rendered formula (the rendered glyphs are not selectable text)
+  function texOf(container) {
+    try {
+      var items = MathJax.startup.document.getMathItemsWithin(container.parentNode || container);
+      for (var i = 0; i < items.length; i++) if (items[i].typesetRoot === container) return items[i].math.trim();
+    } catch (e) {}
+    var mml = container.querySelector('mjx-assistive-mml');
+    return mml ? mml.textContent.trim() : '';
+  }
+
+  // selected text, with formulas written as $TeX$
+  function selectedText(range) {
+    var root = range.commonAncestorContainer;
+    if (root.nodeType === 3) root = root.parentNode;
+    if (root.closest && root.closest('mjx-container')) return '$' + texOf(root.closest('mjx-container')) + '$';
+    var out = '', walker = document.createTreeWalker(root, NodeFilter.SHOW_ALL, null);
+    for (var node = walker.currentNode; node; node = walker.nextNode()) {
+      if (!range.intersectsNode(node)) continue;
+      var isMath = node.nodeType === 1 && node.tagName.toLowerCase() === 'mjx-container';
+      var parentEl = node.nodeType === 1 ? node.parentElement : node.parentNode;
+      if (parentEl && parentEl.closest && parentEl.closest('mjx-container')) continue;   // inside a formula
+      if (isMath) { var t = texOf(node); if (t) out += ' $' + t + '$ '; continue; }
+      if (node.nodeType === 3) {
+        var s = node.nodeValue, a = 0, b = s.length;
+        if (node === range.startContainer) a = range.startOffset;
+        if (node === range.endContainer) b = range.endOffset;
+        out += s.slice(a, b);
+      }
+    }
+    return out.replace(/\s+/g, ' ').trim();
+  }
+
+  function plainSnippet(text) {            // first few consecutive ordinary words, for a #:~:text= jump link
+    var first = text.split('$')[0].replace(/\s+/g, ' ').trim();       // text before the first formula
+    var words = first.split(' ');
+    if (words.length < 2 || !/^[A-Za-z]/.test(first)) return '';
+    return words.slice(0, 6).join(' ').replace(/[,;:.]+$/, '');
+  }
+
+  function location_(range, text) {
+    var el = range.startContainer.nodeType === 3 ? range.startContainer.parentNode : range.startContainer;
+    var page = (document.querySelector('h1.title') || {}).textContent || document.title;
+    var parts = [page.trim()];
+    var sec = el.closest('section[id]'), secs = [];
+    while (sec) { secs.unshift(sec); sec = sec.parentElement && sec.parentElement.closest('section[id]'); }
+    var anchor = '';
+    secs.forEach(function (s) {
+      var h = s.querySelector(':scope > h2, :scope > h3, :scope > h4');
+      if (h) parts.push(h.textContent.replace(/\s+/g, ' ').trim());
+      anchor = s.id;
+    });
+    var prob = el.closest('.problem');
+    if (prob) { var ph = prob.querySelector('h3'); if (ph) parts.push(ph.textContent.trim()); anchor = prob.id || anchor; }
+    parts = parts.filter(function (p, i) { return p && parts.indexOf(p) === i; });   // drop duplicates
+    var det = el.closest('details');
+    if (det) { var sm = det.querySelector('summary'); if (sm) parts.push('(' + sm.textContent.trim() + ')'); }
+    var link = location.origin + location.pathname + (anchor ? '#' + anchor : '');
+    var snip = plainSnippet(text);
+    if (snip) link += (anchor ? '' : '#') + ':~:text=' + encodeURIComponent(snip);
+    return { label: parts.join(' · '), link: link };
+  }
+
+  function hide() { btn.style.display = 'none'; current = null; }
+
+  function update() {
+    var sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0 || sel.isCollapsed) { hide(); return; }
+    var range = sel.getRangeAt(0);
+    var node = range.commonAncestorContainer.nodeType === 3 ? range.commonAncestorContainer.parentNode : range.commonAncestorContainer;
+    if (!main.contains(node) || (node.closest && node.closest('.widget, .ws-attempt, textarea, input, #rm-btn, nav, .sidebar, #TOC'))) { hide(); return; }
+    var text = selectedText(range);
+    if (text.length < 2) { hide(); return; }
+    if (text.length > MAXLEN) text = text.slice(0, MAXLEN) + ' …';
+    var loc = location_(range, text);
+    current = { where: loc.label + ' — ' + loc.link, text: text };
+    var r = range.getBoundingClientRect();
+    btn.style.display = 'inline-flex';
+    var top = window.scrollY + r.bottom + 8, left = window.scrollX + Math.max(8, Math.min(r.left, window.innerWidth - btn.offsetWidth - 16));
+    btn.style.top = top + 'px'; btn.style.left = left + 'px';
+  }
+
+  var t = null;
+  document.addEventListener('selectionchange', function () { clearTimeout(t); t = setTimeout(update, 250); });
+  window.addEventListener('scroll', function () { if (current) update(); }, { passive: true });
+
+  btn.addEventListener('mousedown', function (e) { e.preventDefault(); });   // keep the selection
+  btn.addEventListener('click', function (e) {
+    if (!current) return;
+    var viaMail = e.target.classList.contains('rm-mail');
+    e.preventDefault();
+    if (viaMail) {
+      var body = 'Where: ' + current.where + '\n\nSelected text: ' + current.text + '\n\nWhat is wrong: \n';
+      location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('L4 Fluid Mechanics: possible mistake') + '&body=' + encodeURIComponent(body);
+    } else {
+      var url = FORM + '&' + Q_WHERE + '=' + encodeURIComponent(current.where) + '&' + Q_TEXT + '=' + encodeURIComponent(current.text) + '&' + Q_WHAT + '=';
+      window.open(url, '_blank', 'noopener');
+    }
+    hide();
+  });
+})();
+</script>
