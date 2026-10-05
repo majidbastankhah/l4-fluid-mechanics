@@ -2,8 +2,9 @@
  * Usage (at the end of a workshop page):
  *   <script src="../assets/widgets/workshops.js"></script>
  *
- * 1) Page tools (run on every page that loads this file): "Your attempt" boxes remembered in the
- *    browser, and a "have you tried it yourself?" check before a solution is first opened.
+ * 1) Page tools (run on every page that loads this file): writing pads ("Your attempt": stylus,
+ *    mouse or optional typing, remembered in the browser), and a "have you tried it yourself?"
+ *    check before a solution is first opened.
  *    The page structure (blanks, attempt boxes, solution boxes) is made by assets/workshop.lua.
  *
  * 2) Widget  <div class="widget" data-widget="couette-poiseuille"></div>
@@ -29,7 +30,13 @@
     '.ws-attempt{margin:.8rem 0 .3rem}',
     '.ws-attempt label{display:block;font-size:.85rem;font-weight:600;color:#68246D;margin-bottom:.15rem}',
     '.quarto-dark .ws-attempt label{color:#c79bd0}',
-    '.ws-attempt textarea{width:100%;min-height:4.2em;border:1px dashed rgba(104,36,109,.55);border-radius:6px;padding:.4rem .6rem;background:rgba(104,36,109,.03);color:inherit;font-size:.95rem;resize:vertical}',
+    '.ws-attempt .pad-bar{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;margin-bottom:.25rem;font-size:.85rem}',
+    '.ws-attempt .pad-bar button{border:1px solid rgba(104,36,109,.45);background:transparent;color:inherit;border-radius:6px;padding:.05rem .55rem;font-size:.85rem;line-height:1.5}',
+    '.ws-attempt .pad-bar button.on{background:#68246D;border-color:#68246D;color:#fff}',
+    '.ws-attempt .pad-bar .sep{flex:1}',
+    '.ws-attempt .pad-bar .hint{opacity:.65;font-size:.8rem}',
+    '.ws-attempt canvas{display:block;width:100%;background:#fff;border:1px dashed rgba(104,36,109,.55);border-radius:6px;touch-action:none;cursor:crosshair}',
+    '.ws-attempt textarea{width:100%;min-height:4.2em;margin-top:.35rem;border:1px dashed rgba(104,36,109,.55);border-radius:6px;padding:.4rem .6rem;background:rgba(104,36,109,.03);color:inherit;font-size:.95rem;resize:vertical}',
     '.ws-confirm{margin:-.9rem 0 1.3rem;padding:.5rem .9rem;border:1px solid rgba(214,158,46,.6);background:rgba(214,158,46,.12);border-radius:6px;font-size:.92rem}',
     '.ws-confirm button{margin:.3rem .5rem 0 0;border:1px solid rgba(104,36,109,.55);background:transparent;color:inherit;border-radius:6px;padding:.1rem .7rem}',
     '.ws-confirm button.yes{background:#68246D;border-color:#68246D;color:#fff}',
@@ -50,12 +57,8 @@
     document.head.appendChild(st);
     const page = 'l4fm-ws:' + location.pathname.split('/').pop();
 
-    // the student's own attempts, remembered in this browser
-    document.querySelectorAll('.ws-attempt textarea').forEach((t, i) => {
-      const key = page + ':attempt:' + i;
-      const v = store(key); if (v) t.value = v;
-      t.addEventListener('input', () => store(key, t.value));
-    });
+    // writing pads: stylus / mouse (finger scrolls unless "Finger" is switched on), optional text box
+    document.querySelectorAll('.ws-attempt').forEach((box, i) => inkPad(box, page + ':attempt:' + i));
 
     // ask before the first reveal of each solution
     document.querySelectorAll('details.answer').forEach((d, i) => {
@@ -75,6 +78,121 @@
         box.querySelector('.no').addEventListener('click', () => { box.remove(); });
       });
     });
+  }
+
+
+  // ---------------------------------------------------------------------
+  // Writing pad. Strokes are stored in coordinates normalised by the canvas width,
+  // so they redraw correctly at any screen size; saved in localStorage (this browser only).
+  // ---------------------------------------------------------------------
+  function inkPad(box, key) {
+    let state = { ratio: (parseFloat(box.dataset.h) || 300) / 800, strokes: [], text: '' };
+    try { const v = JSON.parse(store(key) || 'null'); if (v && v.strokes) state = Object.assign(state, v); } catch (e) {}
+    const save = () => store(key, JSON.stringify(state));
+
+    box.innerHTML =
+      '<div class="pad-bar"><label style="margin:0">Your attempt</label>' +
+      '<button type="button" data-a="pen" class="on" title="Write">✎ Pen</button>' +
+      '<button type="button" data-a="eraser" title="Erase strokes">⌫ Eraser</button>' +
+      '<button type="button" data-a="finger" title="Allow drawing with a finger (otherwise a finger scrolls the page)">☝ Finger</button>' +
+      '<button type="button" data-a="undo" title="Undo last stroke">↶ Undo</button>' +
+      '<button type="button" data-a="clear" title="Clear this pad">Clear</button>' +
+      '<button type="button" data-a="more" title="Add more writing space">＋ More space</button>' +
+      '<span class="sep"></span><button type="button" data-a="type" title="Type instead of (or as well as) writing">⌨ Type</button></div>' +
+      '<canvas aria-label="Writing space for your own attempt"></canvas>' +
+      '<textarea placeholder="Type key steps here (optional)" hidden></textarea>';
+    const cv = box.querySelector('canvas'), ctx = cv.getContext('2d');
+    const ta = box.querySelector('textarea');
+    const btn = a => box.querySelector('[data-a="' + a + '"]');
+    let tool = 'pen', finger = false, cur = null, lastTouchY = null, clearArmed = false;
+    if (state.text) { ta.hidden = false; ta.value = state.text; btn('type').classList.add('on'); }
+
+    function size() {
+      const w = cv.clientWidth || box.clientWidth || 800;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.style.height = Math.round(w * state.ratio) + 'px';
+      cv.width = Math.round(w * dpr); cv.height = Math.round(w * state.ratio * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      redraw();
+    }
+    function W() { return cv.clientWidth || 800; }
+    function ruled() {
+      const w = W(), h = w * state.ratio, gap = Math.max(26, w * 0.04);
+      ctx.strokeStyle = 'rgba(104,36,109,.10)'; ctx.lineWidth = 1;
+      for (let y = gap; y < h; y += gap) { ctx.beginPath(); ctx.moveTo(8, y); ctx.lineTo(w - 8, y); ctx.stroke(); }
+    }
+    function drawStroke(st) {
+      const w = W(), p = st.p;
+      ctx.strokeStyle = '#1b1b1f'; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      if (p.length === 1) { ctx.fillStyle = '#1b1b1f'; ctx.beginPath(); ctx.arc(p[0][0] * w, p[0][1] * w, 1.2, 0, 7); ctx.fill(); return; }
+      for (let k = 1; k < p.length; k++) {
+        ctx.lineWidth = 0.8 + 2.2 * (p[k][2] || 0.5);
+        ctx.beginPath(); ctx.moveTo(p[k - 1][0] * w, p[k - 1][1] * w); ctx.lineTo(p[k][0] * w, p[k][1] * w); ctx.stroke();
+      }
+    }
+    function redraw() {
+      const w = W(); ctx.clearRect(0, 0, w, w * state.ratio); ruled();
+      state.strokes.forEach(drawStroke);
+    }
+    function pos(e) {
+      const r = cv.getBoundingClientRect(), w = r.width;
+      const pr = e.pointerType === 'pen' ? (e.pressure || 0.5) : 0.5;
+      return [+((e.clientX - r.left) / w).toFixed(4), +((e.clientY - r.top) / w).toFixed(4), +pr.toFixed(2)];
+    }
+    function erase(pt) {
+      const r = 12 / W(), n = state.strokes.length;
+      state.strokes = state.strokes.filter(st => !st.p.some(q => Math.hypot(q[0] - pt[0], q[1] - pt[1]) < r));
+      if (state.strokes.length !== n) redraw();
+    }
+    const canDraw = e => e.pointerType === 'pen' || e.pointerType === 'mouse' || (e.pointerType === 'touch' && finger);
+
+    cv.addEventListener('pointerdown', e => {
+      if (!canDraw(e)) { lastTouchY = e.clientY; return; }        // a finger scrolls the page instead
+      e.preventDefault(); cv.setPointerCapture(e.pointerId);
+      const pt = pos(e);
+      if (tool === 'eraser') { cur = { erasing: true }; erase(pt); return; }
+      cur = { p: [pt] }; state.strokes.push(cur);
+    });
+    cv.addEventListener('pointermove', e => {
+      if (!cur) {
+        if (lastTouchY !== null && e.pointerType === 'touch') { window.scrollBy(0, lastTouchY - e.clientY); lastTouchY = e.clientY; }
+        return;
+      }
+      const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+      evs.forEach(ev => {
+        const pt = pos(ev);
+        if (cur.erasing) { erase(pt); return; }
+        const p = cur.p, a = p[p.length - 1];
+        p.push(pt);
+        const w = W();
+        ctx.strokeStyle = '#1b1b1f'; ctx.lineCap = 'round'; ctx.lineWidth = 0.8 + 2.2 * pt[2];
+        ctx.beginPath(); ctx.moveTo(a[0] * w, a[1] * w); ctx.lineTo(pt[0] * w, pt[1] * w); ctx.stroke();
+      });
+    });
+    const end = () => { if (cur) { if (!cur.erasing && cur.p.length === 1) drawStroke(cur); cur = null; save(); } lastTouchY = null; };
+    cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end); cv.addEventListener('pointerleave', e => { if (e.pointerType !== 'touch') end(); });
+
+    box.querySelector('.pad-bar').addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      const a = b.dataset.a;
+      if (a === 'pen' || a === 'eraser') { tool = a; btn('pen').classList.toggle('on', a === 'pen'); btn('eraser').classList.toggle('on', a === 'eraser'); }
+      if (a === 'finger') { finger = !finger; b.classList.toggle('on', finger); }
+      if (a === 'undo') { state.strokes.pop(); redraw(); save(); }
+      if (a === 'clear') {
+        if (!clearArmed) { clearArmed = true; b.textContent = 'Clear all?'; setTimeout(() => { clearArmed = false; b.textContent = 'Clear'; }, 2500); return; }
+        state.strokes = []; clearArmed = false; b.textContent = 'Clear'; redraw(); save();
+      }
+      if (a === 'more') { state.ratio += 0.25; size(); save(); }
+      if (a === 'type') { ta.hidden = !ta.hidden; b.classList.toggle('on', !ta.hidden); if (!ta.hidden) ta.focus(); }
+    });
+    ta.addEventListener('input', () => { state.text = ta.value; save(); });
+
+    let rt = null;
+    window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 150); });
+    if ('IntersectionObserver' in window) {        // canvases inside collapsed/hidden parts get sized when shown
+      new IntersectionObserver(es => { if (es[0].isIntersecting && Math.abs(cv.width / (window.devicePixelRatio || 1) - cv.clientWidth) > 2) size(); }).observe(cv);
+    }
+    size();
   }
 
   // =====================================================================

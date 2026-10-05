@@ -12,8 +12,8 @@ HTML (website)
   * a block (paragraph, list, table) that contains blanks is followed by a solution box
     holding the same block with the blanks filled in (merged into the next solution box
     if one follows directly);
-  * before every solution box a "Your attempt" box is inserted (typed text is kept in the
-    student's own browser); summaries read "Show solution". The confirmation step
+  * before every solution box a writing pad is inserted (stylus/mouse, with an optional text box;
+    kept in the student's own browser); summaries read "Show solution". The confirmation step
     ("Have you tried it yourself?") is added by assets/widgets/workshops.js.
 PDF (printable handout)
   * blanks become write-on lines; solution boxes are replaced by empty space to write in,
@@ -48,10 +48,11 @@ local function filled_version(block)
   })
 end
 
-local function attempt_box()
-  return pandoc.RawBlock("html",
-    '<div class="ws-attempt"><label>Your attempt</label>' ..
-    '<textarea rows="3" placeholder="Write your working on paper, or type the key steps here (saved in this browser only)"></textarea></div>')
+local function attempt_box(chars)
+  -- writing pad built by assets/widgets/workshops.js; height (in px at 800 px width) grows
+  -- with the length of the solution, so longer steps get more room to write
+  local h = math.floor(math.max(320, math.min(1000, 220 + 0.6 * (chars or 0))))
+  return pandoc.RawBlock("html", string.format('<div class="ws-attempt" data-h="%d"></div>', h))
 end
 
 local OPEN = '<details class="answer"><summary>Show solution</summary>'
@@ -70,7 +71,7 @@ local function writing_space(chars)
   local cm = math.max(2.5, math.min(9, 1.5 + chars / 120))
   return pandoc.RawBlock("latex", string.format(
     "\\par\\noindent\\fbox{\\begin{minipage}[t][%.1fcm]{\\dimexpr\\linewidth-2\\fboxsep-2\\fboxrule\\relax}" ..
-    "\\footnotesize\\textcolor{gray}{Your working}\\end{minipage}}\\par\\medskip", cm))
+    "\\end{minipage}}\\par\\medskip", cm))
 end
 
 local process -- forward declaration
@@ -99,7 +100,7 @@ process = function(blocks)
       if is_latex then
         out:insert(writing_space(words(inner)))
       else
-        out:insert(attempt_box())
+        out:insert(attempt_box(words(inner)))
         out:insert(pandoc.RawBlock("html", OPEN))
         out:extend(inner)
         out:insert(pandoc.RawBlock("html", "</details>"))
@@ -124,7 +125,7 @@ process = function(blocks)
           for k = 3, #rest do out:insert(rest[k]) end
           return out
         else
-          out:insert(attempt_box())
+          out:insert(attempt_box(#pandoc.utils.stringify(b)))
           out:insert(pandoc.RawBlock("html", OPEN))
           out:insert(filled_version(b))
           out:insert(pandoc.RawBlock("html", "</details>"))

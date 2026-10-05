@@ -20,7 +20,7 @@ toc-depth: 2
 ::: {.callout-note icon=false}
 ## How to use this page
 ::: {.content-visible when-format="html"}
-**Try every step yourself before looking at the solution.** Write out the full working on paper (📄 [**download the printable handout**](workshop4.pdf), which has space to write under each step), or type the key steps in the *Your attempt* box under each step. Only then open **Show solution** and compare. Looking at a solution before you have tried makes the workshop far less useful, so please resist the temptation.
+**Try every step yourself before looking at the solution.** Write out the full working on paper (📄 [**download the printable handout**](workshop4.pdf), which has space to write under each step), or write it with a stylus or mouse in the *Your attempt* space under each step (use **＋ More space** if you need more room; your writing is kept in this browser). Only then open **Show solution** and compare. Looking at a solution before you have tried makes the workshop far less useful, so please resist the temptation.
 :::
 
 ::: {.content-visible when-format="pdf"}
