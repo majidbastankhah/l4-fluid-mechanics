@@ -871,8 +871,7 @@ which is the required result. For example, the 1/7th-power-law analysis gives $\
 
 ::: {.problem #p4-14 data-sec="ch4:sec-turbulent-flat-plate" data-ch="4" data-d="3"}
 ### Problem 4.14 · Boundary layer in a small wind tunnel {.unnumbered}
-<!-- origin: Sheet 3 Q19. Part (b): delta* corrected from 2.446 mm to 2.52 mm (the solution used theta = 0.036 x Re^-1/5 from the 1/7 law with the empirical H = 1.25; the 1/7-law value H = 9/7 = 1.29 is now used consistently). Part (c) changed accordingly: theta3 0.524 -> 0.516 mm, delta*3 0.656 -> 0.664 mm. -->
-<!-- REVIEW (MB): H = 1.25 replaced by H = 1.29 (1/7 power law, consistent with theta/x = 0.036 Re^-1/5); please check. -->
+<!-- origin: Sheet 3 Q19. Now uses the formula-sheet values theta/x = 0.037 Re^-1/5, delta*/x = 0.0463 Re^-1/5 and H = 1.29 (original: theta/x = 0.036 with H = 1.25). (b) delta* 2.446 -> 2.52 mm; (c) theta3 0.524 -> 0.531 mm, delta*3 0.656 -> 0.682 mm. -->
 
 [[★★★ challenge]{.tag .diff} Study first: [§4.8 Turbulent flat-plate boundary layers](../notes/ch4.qmd#sec-turbulent-flat-plate), [Blasius' solution](../notes/ch4.qmd#sec-blasius) and [§4.5 The MIE](../notes/ch4.qmd#sec-mie)]{.meta}
 
@@ -892,16 +891,16 @@ The boundary layer is thin compared with the pipe radius, so treat the pipe wall
 <details class="answer"><summary>Final answer</summary>
 
 (a) $L = 0.75$ m, $\theta = 0.704$ mm, $\delta^* = 1.83$ mm, $F = 0.0797$ N.
-(b) $\theta = 1.96$ mm, $\delta^* \approx 2.52$ mm.
-(c) $\theta_3 = \theta_2 (15/10)^{-(H+2)} \approx 0.516$ mm, $\delta^*_3 \approx 0.664$ mm.
+(b) $\theta = 2.01$ mm, $\delta^* = 2.52$ mm.
+(c) $\theta_3 = \theta_2 (15/10)^{-(H+2)} \approx 0.531$ mm, $\delta^*_3 \approx 0.682$ mm.
 
 <span class="checker" data-answer="0.75" data-tol="0.01">(a) $L$ = <input type="text" inputmode="decimal"> m <span class="fb"></span></span>
 <span class="checker" data-answer="0.704" data-tol="0.02">(a) $\theta$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
 <span class="checker" data-answer="1.825" data-tol="0.02">(a) $\delta^*$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
 <span class="checker" data-answer="0.0797" data-tol="0.02">(a) $F$ = <input type="text" inputmode="decimal"> N <span class="fb"></span></span>
 <span class="checker" data-answer="2.52" data-tol="0.03">(b) $\delta^*$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="0.516" data-tol="0.03">(c) $\theta_3$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
-<span class="checker" data-answer="0.664" data-tol="0.03">(c) $\delta^*_3$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
+<span class="checker" data-answer="0.531" data-tol="0.03">(c) $\theta_3$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
+<span class="checker" data-answer="0.682" data-tol="0.03">(c) $\delta^*_3$ = <input type="text" inputmode="decimal"> mm <span class="fb"></span></span>
 
 </details>
 <details class="full"><summary>Full solution</summary>
@@ -928,14 +927,14 @@ F = \frac{1}{2}\rho U_{\infty}^2 A\, \overline{C_f} = \frac{1}{2}(1.2)(10.0)^2 (
 $$
 *Check:* for a zero-pressure-gradient boundary layer the drag per unit width is $\rho U_{\infty}^2 \theta$ ([Problem 4.6](#p4-6)); here the "width" is the circumference $\pi D$, so $F = 1.2 \times 100 \times (7.04 \times 10^{-4}) \times (\pi \times 0.3) = 0.0797$ N.
 
-**(b) Turbulent pipe section.** Using the 1/7th-power-law results, $\theta/x = 0.036\, Re_x^{-1/5}$ and $H = 9/7 \approx 1.29$:
+**(b) Turbulent pipe section.** Using the turbulent flat-plate results from the formula sheet, $\theta/x = 0.037\, Re_x^{-1/5}$ and $\delta^*/x = 0.0463\, Re_x^{-1/5}$, at $x = 0.75$ m with $Re_x^{-1/5} = (5\times10^5)^{-1/5} = 0.0725$:
 $$
-\theta = 0.036 \times 0.75 \times (5 \times 10^5)^{-1/5} = 1.957 \times 10^{-3}\ \text{m} = 1.96\ \text{mm},
+\theta = 0.037 \times 0.75 \times 0.0725 = 2.01 \times 10^{-3}\ \text{m} = 2.01\ \text{mm},
 $$
 $$
-\delta^* = H\theta = 1.29 \times 1.957\ \text{mm} \approx 2.52\ \text{mm}
+\delta^* = 0.0463 \times 0.75 \times 0.0725 = 2.52 \times 10^{-3}\ \text{m} = 2.52\ \text{mm}.
 $$
-(equivalently $\delta^*/x = 0.0463\,Re_x^{-1/5}$). The turbulent boundary layer is about $\delta = 0.37\,x\,Re_x^{-1/5} \approx 20$ mm thick, still small compared with the 150 mm radius.
+The turbulent boundary layer is about $\delta = 0.37\,x\,Re_x^{-1/5} \approx 20$ mm thick, still small compared with the 150 mm radius.
 
 **(c) The constriction.** Start from the MIE with pressure gradient:
 $$
@@ -955,16 +954,16 @@ $$
 \Rightarrow\quad
 \frac{\theta_3}{\theta_2} = \left(\frac{U_{\infty,3}}{U_{\infty,2}}\right)^{-(H+2)}
 $$
-With $H = 9/7$, $-(H+2) = -3.29$, and $U_{\infty,2} = 10$, $U_{\infty,3} = 15$ m/s, $\theta_2 = 1.957$ mm:
+With $H = 1.29$, $-(H+2) = -3.29$, and $U_{\infty,2} = 10$, $U_{\infty,3} = 15$ m/s, $\theta_2 = 2.01$ mm:
 $$
 \frac{\theta_3}{\theta_2} = (1.5)^{-3.29} = 0.264
 \quad\Rightarrow\quad
-\theta_3 = 0.264 \times 1.957\ \text{mm} = 0.516\ \text{mm},
+\theta_3 = 0.264 \times 2.01\ \text{mm} = 0.531\ \text{mm},
 $$
 $$
-\delta^*_3 = H\theta_3 = 1.29 \times 0.516\ \text{mm} = 0.664\ \text{mm}
+\delta^*_3 = H\theta_3 = 1.29 \times 0.531\ \text{mm} = 0.682\ \text{mm}
 $$
-The strongly favourable pressure gradient in the constriction thins the boundary layer considerably. (With the empirical value $H = 1.25$ instead, the results change only slightly: $\theta_3 = 0.524$ mm, $\delta^*_3 = 0.655$ mm.)
+The strongly favourable pressure gradient in the constriction thins the boundary layer considerably.
 
 </details>
 <label class="done"><input type="checkbox"> done</label>

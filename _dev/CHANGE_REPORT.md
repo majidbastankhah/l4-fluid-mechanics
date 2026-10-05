@@ -16,7 +16,7 @@ date: "October 2026"
 
 | Reflection | Where | What was done |
 |:--|:--|:--|
-| Workshops 1 & 2: unidirectional **or** fully developed, not both | Workshops 1, 2; Problems 2.x (exact solutions); Problem R.1; Ch2 slides quick question; revision deck notes | One assumption is stated and the other is derived from continuity. W1: "2D, unidirectional", and continuity gives ∂u/∂x = 0. W2A: "assuming the flow is unidirectional (parallel to the incline)". W2B: circular symmetry (∂/∂θ = 0, i.e. fully developed) is assumed and u_r = 0 follows from continuity. |
+| Workshops 1 & 2: unidirectional **or** fully developed, not both | Workshops 1, 2 | Only one assumption is listed in Step 1 (W1: "2D, unidirectional"; W2A: unidirectional; W2B: circular symmetry). The link between the two appears only where it arises naturally, in Step 3A (continuity gives ∂u/∂x = 0, i.e. fully developed; in W2B continuity gives u_r = 0). No design-discussion remarks are shown to students. |
 | Ch3: energy cascade and −5/3 law | Notes §3.4 (new section); Ch3 Part 1 slides (3 new slides); revision deck | Richardson cascade (with verse), production ≈ dissipation, ε ~ u_l³/l, Kolmogorov's three hypotheses, the three spectral ranges, full dimensional derivation of E(κ) = C_K ε^{2/3} κ^{−5/3} (C_K ≈ 1.5), link to η and l/η ~ Re^{3/4}. New spectrum figure (Pope's model spectrum) and an interactive spectrum widget. §3.5 (length scales) re-worded so the two sections do not repeat each other. |
 | Ch4: streamline the scaling analysis | Notes §4.1/§4.3; Ch4 Part 1 slides | The early "inertia ~ diffusion ⇒ δ small" estimate is removed from §4.1 (a short bridging paragraph points ahead). The order-of-magnitude analysis is done once, completely, in §4.3; δ/L ~ Re_L^{−1/2}, τ_w, drag and C_D scaling follow from it. |
 | Ch4: one separation section, at the end | Notes §4.11; Ch4 Part 2 slides | Cylinder regimes, von Kármán street, adverse pressure gradient, separation criterion and point of inflection, aerofoils, plus Falkner–Skan profiles and the drag crisis, in one section at the end. Prandtl's equations (§4.3) now lead straight into Blasius (§4.4). Five separation slides moved from Part 1 to the end of Part 2. |
@@ -206,7 +206,7 @@ Also: cylinder regime (b) "non-symmetric" → separated at the rear with a stead
 - **Ch3 Part 1 slides:** the colleague's alternative deck (`Ch3_part1_GrantIngram.tex`) was not converted as a deck; its useful content frames were borrowed (L2 lab pipe photos, flash vs long exposure; STS-135 length-scale slide; Reynolds 1883 apparatus image; Hinze attribution). Personal/administrative frames skipped.
 - **Ch4 notes order:** 4.1 physical characteristics → 4.2 thicknesses → 4.3 BL equations (single scaling analysis) → 4.4 Blasius → 4.5 MIE → 4.6 turbulent BL → 4.7 law of the wall (split out) → 4.8 turbulent flat plate → 4.9 transition → 4.10 combined BL → 4.11 separation.
 - **Ch2 notes:** cylindrical incompressible N–S equations restored from commented-out source.
-- **Workshops:** gaps are revealed step by step ("Show step" toggles, inline "?" gaps, "Reveal all answers" button). The Colab link in Workshop 1 is replaced by an interactive Couette–Poiseuille widget (Colab kept as an optional extra). Note: answers are on the page, hidden; if you want to release them only after each workshop, they need to be held back until then.
+- **Workshops:** each step shows the prompt with empty blanks, a "Your attempt" box (typed text is kept in the student's own browser) and a **Show solution** box; the first time a solution is opened students are asked "Have you written your own attempt?". There is no "reveal all" button. Each workshop also has a **printable handout (PDF)** generated from the same page, with the solutions removed and space to write under each step. The Colab link in Workshop 1 is replaced by an interactive Couette–Poiseuille widget (Colab kept as an optional extra).
 
 # 8. New content (summary)
 
@@ -217,3 +217,19 @@ Also: cylinder regime (b) "non-symmetric" → separated at the rear with a stead
 - **Slides:** 2 peer-instruction "quick question" slides per deck; worked examples revealed step by step; speaker notes kept (revision deck: notes written new).
 - **Problems:** hints and final answers for every problem (new), ~50 self-checking numerical answer boxes, difficulty ratings.
 - **Image credits:** the sources of `Turbulence-motion.jpg`, `Strat_Turb.jpeg` and the energy-cascade images are unknown; captions are generic. Please add credits.
+
+# 9. Exam formula sheet
+
+The "Key equations" page was replaced by the exam formula sheet (General Formula Listing), reproduced verbatim (all 26 equation blocks checked against the LaTeX source by script) and also available as a PDF. Agreed corrections for 2026/27:
+
+- Thwaites' theory section removed (no longer in the course).
+- Law of the wall: von Kármán constant K → κ (as in the notes).
+- Cartesian stresses: τ_yz = … = τ_yx → τ_zy.
+- Coordinate brackets: vorticity components ζ = (ζ_x, ζ_y, ζ_z) and (ζ_r, ζ_θ, ζ_z) → ξ, consistent with the vorticity equations on the sheet and the notes.
+- Power-law table: θ/x Re^{1/5} = 0.037 kept (consistent with C̄f = 0.074, the experimentally calibrated drag law); H = 1.25 → 1.29 (= 9/7 from the 1/7 profile; 1.25 came from dividing the theoretical δ* by the experimental θ).
+
+Consequent changes so the course matches the sheet:
+
+- Notes §4.8 key-result box now lists the formula-sheet values: δ/x = 0.3707, δ*/x = 0.0463, θ/x = 0.037, C_f = 0.0592, C̄f = 0.074 (all × Re^{−1/5}), H = 1.29. The power-law derivation itself still shows that the uncalibrated analysis gives 0.0360 and 0.0721, with a note explaining the difference.
+- Worked example 4.4 recomputed with 0.037 and 0.074: θ = 5.31 mm (was 5.17), D = 2.55 N/m (was 2.48); Re_L^{−1/5} = 0.0478 (was 0.0479).
+- Problem 4.14 (Sheet 3 Q19) now uses the formula-sheet values: (b) θ = 2.01 mm, δ* = 2.52 mm; (c) θ₃ = 0.531 mm, δ*₃ = 0.682 mm.

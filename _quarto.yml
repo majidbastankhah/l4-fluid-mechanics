@@ -31,8 +31,8 @@ website:
         href: workshops/index.qmd
       - text: "Resources"
         menu:
-          - text: "Key equations"
-            href: resources/key-equations.qmd
+          - text: "Exam formula sheet"
+            href: resources/formula-sheet.qmd
           - text: "Problem-solving strategy"
             href: resources/solving-strategy.qmd
   sidebar:

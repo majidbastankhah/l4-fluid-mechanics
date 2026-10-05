@@ -1,0 +1,7 @@
+# Applies to every workshop page: "try first, then reveal" on the website,
+# and a printable student handout (PDF, no solutions) built from the same source
+# (the PDF format is switched on in each workshop's front matter).
+filters:
+  - ../assets/svg-to-pdf.lua
+  - ../assets/workshop.lua
+format-links: false   # each page links its handout in the "How to use this page" box

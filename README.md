@@ -12,8 +12,8 @@ Every push to `main` re-builds the site and publishes it to GitHub Pages automat
 | `slides/ch1-lecture1.qmd` … | One reveal.js deck per lecture (`slides/_metadata.yml` holds shared settings) |
 | `slides.qmd` | List of slide decks |
 | `problems/index.qmd` | The single problem bank; includes `problems/_ch1.qmd` … `_ch4.qmd`, `_revision.qmd` |
-| `workshops/index.qmd` | Workshop handouts |
-| `resources/key-equations.qmd` | Equation sheet; includes `resources/_keyeq-ch2.qmd` … `_keyeq-ch4.qmd` |
+| `workshops/workshop1.qmd` … | Workshop pages: blanks `[answer]{.gap}` and `<details class="answer">` solution boxes. `assets/workshop.lua` turns them into "try first, then Show solution" pages and builds a printable handout PDF without solutions (`workshops/_metadata.yml`) |
+| `resources/formula-sheet.qmd` | The exam formula sheet (General Formula Listing), copied verbatim; also built as a PDF |
 | `resources/solving-strategy.qmd` | Problem-solving strategy for flow problems |
 | `assets/widgets/ch2.js`, `ch3.js`, `ch4.js`, `workshops.js` | Chapter-specific interactive figures |
 | `_dev/` | Not published: conventions (`CONVENTIONS.md`), change report, helper scripts |

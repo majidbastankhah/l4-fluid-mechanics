@@ -437,7 +437,7 @@ $$
 **Note:** $\vect{q}\cdot\del \neq \del\cdot\vect{q} = \dfrac{\partial u}{\partial x}+\dfrac{\partial v}{\partial y}+\dfrac{\partial w}{\partial z}$ ($\del\cdot\vect{q}$ will arise in Chapter 2).
 :::
 
-These are also collected on the [Key equations](../resources/key-equations.qmd) page.
+See also the [exam formula sheet](../resources/formula-sheet.qmd), which lists the equations you will be given in the exam.
 
 ## Problem Solving Recipe {#sec-recipe}
 

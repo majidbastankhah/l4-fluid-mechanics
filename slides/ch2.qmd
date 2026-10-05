@@ -457,7 +457,7 @@ Steady flow between two infinitely long parallel plates: $u = u(y)$, $v = w = 0$
 ::: {.notes}
 Vote, discuss with a neighbour, vote again. Many students pick C because "the fluid is moving, so there must be convective acceleration".
 
-Note we only needed to say the flow is unidirectional (v = w = 0): continuity then gives ∂u/∂x = 0, i.e. the flow is also fully developed. Say EITHER unidirectional OR fully developed; one follows from the other. This sets up next week (Couette and Poiseuille flows).
+Note we only needed to say the flow is unidirectional (v = w = 0): continuity then gives ∂u/∂x = 0, i.e. the flow is also fully developed. This sets up next week (Couette and Poiseuille flows).
 :::
 
 ## Conservation of energy

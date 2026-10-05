@@ -1465,29 +1465,23 @@ $$
 $$ {#eq-turb-exp}
 
 ::: {.callout-tip icon=false}
-## Key result: the assumed power-law velocity profile solution summarised
+## Key result: the power-law turbulent boundary layer solution summarised
 
 $$
 \frac{\delta}{x} = 0.3707\, Re_x^{-1/5}, \qquad
 \frac{\delta^*}{x} = 0.0463\, Re_x^{-1/5}, \qquad
-\frac{\theta}{x} = 0.0360\, Re_x^{-1/5},
+\frac{\theta}{x} = 0.037\, Re_x^{-1/5},
 $$
 
 $$
-C_f = 0.0577\, Re_x^{-1/5}, \qquad
-\overline{C}_f = 0.0721\, Re_L^{-1/5}, \qquad
+C_f = 0.0592\, Re_x^{-1/5}, \qquad
+\overline{C}_f = 0.074\, Re_L^{-1/5}, \qquad
 H = 1.29
 $$ {#eq-turb-summary}
 
-where $Re_x = U_\infty x/\nu$, $Re_L = U_\infty L/\nu$, $\overline{C}_f = \left(2\theta/x\right)_{x=L}$.
+where $Re_x = U_\infty x/\nu$, $Re_L = U_\infty L/\nu$, $\overline{C}_f = \left(2\theta/x\right)_{x=L}$ and $C_f = 2\,d\theta/dx$. These are the values on the [exam formula sheet](../resources/formula-sheet.qmd).
 
-Note that $\delta$, $\delta^*$ and $\theta$ are all $\propto x^{4/5}$. If we take instead of the theoretical $\theta/x$ and $\overline{C}_f$ their experimentally determined relationships @eq-turb-exp, we have
-
-$$
-\frac{\theta}{x} = 0.0370\, Re_x^{-1/5}, \qquad
-\overline{C}_f = 0.0740\, Re_L^{-1/5}, \qquad
-H \approx 1.3\text{--}1.4 \ \text{(measured)}.
-$$
+Note that $\delta$, $\delta^*$ and $\theta$ are all $\propto x^{4/5}$. The values of $\theta/x$ and $\overline{C}_f$ are the experimentally calibrated ones, @eq-turb-exp; the power-law analysis alone gives $0.0360$ and $0.0721$ (@eq-turb-theta and @eq-turb-cfbar). $H = 9/7 \approx 1.29$ follows from the $1/7$ profile; measured values for flat-plate turbulent boundary layers are about $1.3$–$1.4$.
 :::
 
 ::: {.callout-note icon=false}
@@ -1498,18 +1492,18 @@ A flat plate of length $L = 3$ m is placed in an air stream ($\nu = 1.5\times10^
 <details class="solution"><summary>Show solution</summary>
 ```
 
-$Re_L = 20 \times 3/1.5\times10^{-5} = 4\times10^6$ and $Re_L^{-1/5} = 0.0479$. From @eq-turb-summary:
+$Re_L = 20 \times 3/1.5\times10^{-5} = 4\times10^6$ and $Re_L^{-1/5} = 0.0478$. From @eq-turb-summary:
 $$
-\delta = 0.3707 \times 3 \times 0.0479 = 53.2 \text{ mm}, \qquad
-\theta = 0.0360 \times 3 \times 0.0479 = 5.17 \text{ mm}.
+\delta = 0.3707 \times 3 \times 0.0478 = 53.2 \text{ mm}, \qquad
+\theta = 0.037 \times 3 \times 0.0478 = 5.31 \text{ mm}.
 $$
-Drag per unit width: $\overline{C}_f = 0.0721 \times 0.0479 = 3.45\times10^{-3}$, so
+Drag per unit width: $\overline{C}_f = 0.074 \times 0.0478 = 3.54\times10^{-3}$, so
 $$
-D = \overline{C}_f \cdot \tfrac{1}{2}\rho U_\infty^2 L = 3.45\times10^{-3}\times 240 \times 3 = 2.48 \text{ N/m}
+D = \overline{C}_f \cdot \tfrac{1}{2}\rho U_\infty^2 L = 3.54\times10^{-3}\times 240 \times 3 = 2.55 \text{ N/m}
 $$
-($= \rho U_\infty^2\, \theta(L)$, as it must be). The empirical coefficient 0.0740 gives $\overline{C}_f = 3.54\times10^{-3}$ and $D = 2.55$ N/m.
+($= \rho U_\infty^2\, \theta(L)$, as it must be). The uncalibrated power-law coefficients (0.0360 and 0.0721) would give $\theta = 5.16$ mm and $D = 2.48$ N/m.
 
-A laminar BL would have had $\delta = 5.0 L\, Re_L^{-1/2} = 7.5$ mm and $\overline{C}_f = 1.328\,Re_L^{-1/2} = 0.66\times10^{-3}$: the turbulent BL is about 7 times thicker and has about 5 times the friction drag.
+A laminar BL would have had $\delta = 5.0 L\, Re_L^{-1/2} = 7.5$ mm and $\overline{C}_f = 1.328\,Re_L^{-1/2} = 0.66\times10^{-3}$: the turbulent BL is about 7 times thicker and has about 5.3 times the friction drag.
 
 ```{=html}
 </details>

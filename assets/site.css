@@ -56,3 +56,8 @@ main .table-responsive, main table { max-width: 100%; }
 main span.math.display { display: block; overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 main span.math.inline mjx-container { max-width: 100%; }
 @media (max-width: 700px) { main span.math.inline { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle; } }
+/* Workshop solutions not yet released (assets/release-solutions.lua) */
+.sol-banner { border: 1px solid rgba(214,158,46,.6); background: rgba(214,158,46,.12); border-radius: 8px; padding: .6rem 1rem; margin: .4rem 0 1.2rem; font-size: .95rem; }
+.sol-locked { color: #8a6d1c; font-size: .9rem; font-style: italic; margin: .2rem 0 1rem; }
+.quarto-dark .sol-locked { color: #e0c27a; }
+.gap-locked { display: inline-block; min-width: 2.6em; text-align: center; border-bottom: 2px solid #b0b0b0; background: rgba(0,0,0,.05); color: #777; border-radius: 3px; padding: 0 .35em; margin: 0 .1em; font-weight: 700; font-size: .9em; }

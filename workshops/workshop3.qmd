@@ -1,7 +1,17 @@
 ---
+format:
+  html: default
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry: margin=2cm
+    fontsize: 11pt
+    toc: false
+    colorlinks: true
+    include-in-header:
+      - ../assets/macros.tex
 title: "Workshop 3: Turbulence Modelling"
 subtitle: "Part A: applied turbulence modelling · Part B: near-wall turbulence modelling"
-toc: true
 toc-depth: 3
 ---
 
@@ -9,12 +19,17 @@ toc-depth: 3
 
 ::: {.callout-note icon=false}
 ## How to use this page
-Work through the steps on paper first, exactly as you would with the printed handout. Each blank in a prompt is shown as a highlighted **?** that you can click to reveal that answer on its own, and each **Show step** box opens the worked answer for that step. Only open them after you have had a go.
+::: {.content-visible when-format="html"}
+**Try every step yourself before looking at the solution.** Write out the full working on paper (📄 [**download the printable handout**](workshop3.pdf), which has space to write under each step), or type the key steps in the *Your attempt* box under each step. Only then open **Show solution** and compare. Looking at a solution before you have tried makes the workshop far less useful, so please resist the temptation.
+:::
+
+::: {.content-visible when-format="pdf"}
+**Try every step yourself.** Write out the full working in the space provided. The worked solutions are on the course website, under Workshops; check your answers there after you have had a go.
+:::
 
 **Study first:** [Reynolds averaging](../notes/ch3.qmd#sec-reynolds-averaging) · [Averaging rules](../notes/ch3.qmd#sec-averaging-rules) · [Turbulent stresses](../notes/ch3.qmd#sec-turbulent-stresses) · [Energy cascade](../notes/ch3.qmd#sec-energy-cascade) · [Kolmogorov length scales](../notes/ch3.qmd#sec-length-scales) · [DNS, LES and RANS](../notes/ch3.qmd#sec-modelling) · [Boussinesq hypothesis](../notes/ch3.qmd#sec-boussinesq) · [Mixing-length model](../notes/ch3.qmd#sec-mixing-length) · [$k$–$\varepsilon$ model](../notes/ch3.qmd#sec-k-epsilon). For Part B, the viscous sublayer is discussed in [the law of the wall](../notes/ch4.qmd#sec-log-law).
 :::
 
-<div class="ws-tools"><button type="button" class="reveal-all">Reveal all answers</button><span>opens every step and blank in both parts (click again to hide)</span></div>
 
 ## Part A: Applied turbulence modelling {#part-a}
 

@@ -1091,7 +1091,7 @@ $$
 $$ {#eq-dissipation-incompressible}
 :::
 
-These are also collected on the [Key equations](../resources/key-equations.qmd#ch2) page.
+See also the [exam formula sheet](../resources/formula-sheet.qmd), which lists the equations you will be given in the exam.
 
 ::: {.try-problems data-sec="sec-summary"}
 :::

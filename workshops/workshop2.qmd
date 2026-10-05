@@ -1,7 +1,17 @@
 ---
+format:
+  html: default
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry: margin=2cm
+    fontsize: 11pt
+    toc: false
+    colorlinks: true
+    include-in-header:
+      - ../assets/macros.tex
 title: "Workshop 2: Gravity & Rotation Driven Flows"
 subtitle: "Film flow down an incline and flow between concentric cylinders"
-toc: true
 toc-depth: 2
 ---
 
@@ -9,12 +19,17 @@ toc-depth: 2
 
 ::: {.callout-note icon=false}
 ## How to use this page
-Work through the steps on paper first, exactly as you would with the printed handout. Each blank in a prompt is shown as a highlighted **?** that you can click to reveal that answer on its own, and each **Show step** box opens the worked answer for that step. Only open them after you have had a go.
+::: {.content-visible when-format="html"}
+**Try every step yourself before looking at the solution.** Write out the full working on paper (📄 [**download the printable handout**](workshop2.pdf), which has space to write under each step), or type the key steps in the *Your attempt* box under each step. Only then open **Show solution** and compare. Looking at a solution before you have tried makes the workshop far less useful, so please resist the temptation.
+:::
+
+::: {.content-visible when-format="pdf"}
+**Try every step yourself.** Write out the full working in the space provided. The worked solutions are on the course website, under Workshops; check your answers there after you have had a go.
+:::
 
 **Study first:** [Continuity equation](../notes/ch2.qmd#sec-continuity) · [Navier–Stokes equations](../notes/ch2.qmd#sec-ns-special) · [Newtonian stresses](../notes/ch2.qmd#sec-stresses) · [Boundary conditions](../notes/ch2.qmd#sec-bcs) · [Curvilinear coordinates](../notes/ch1.qmd#sec-curvilinear). For Problem B you need the continuity and Navier–Stokes equations in cylindrical polar coordinates (exam formula sheet). See also the [problem-solving strategy for flow problems](../resources/solving-strategy.qmd) and [Workshop 1](workshop1.qmd).
 :::
 
-<div class="ws-tools"><button type="button" class="reveal-all">Reveal all answers</button><span>opens every step and fills every blank on this page (click again to hide them)</span></div>
 
 ## Problem A: Film flow down an incline
 
@@ -31,7 +46,7 @@ Consider the case of a thin film of liquid flowing steadily under gravity down a
 - Is the flow steady? [Yes, $\partial/\partial t = 0$]{.gap}
 - Is the flow 2D? [Yes, $w = 0$, $\partial/\partial z = 0$]{.gap}
 - Are fluid properties constant? [Yes, $\rho =$ const, $\mu =$ const]{.gap}
-- Direction of flow? [Unidirectional ($v = 0$). We do not also assume that the flow is fully developed: with $v = w = 0$, continuity gives $\partial u/\partial x = 0$ (Step 3A), so "fully developed" follows automatically.]{.gap}
+- Direction of flow? [Unidirectional ($v = 0$).]{.gap}
 - Is a body force present? [Yes, gravity. Using the coordinate system in @fig-ws2-film, the body force per unit volume $\vect{F} = (F_x, F_y)$ has components $F_x = \rho g \sin \alpha$ and $F_y = -\rho g \cos \alpha$.]{.gap}
 - Is the film thickness constant? [Yes]{.gap}
 - Is the surrounding air stationary? [Yes]{.gap}
@@ -175,7 +190,7 @@ Notice that thickness scales with $q^{1/3}$. To double the coating thickness, yo
 
 ## Problem B: Flow between concentric cylinders {.ws-part}
 
-Consider the case of the flow in the gap between two very long concentric cylinders driven by the rotation of the inner cylinder; $\rho$ and $\mu$ (and hence $\nu$) constant. Since the cylinders are long and concentric, and the wall velocities do not vary with $\theta$, there is angular symmetry so the velocity does not vary with $\theta$ (nothing changes in the flow direction, i.e. the flow is fully developed); it is a function of $r$ only. The normal component of velocity must vanish at the surface of the cylinders, $u_r = 0$ there, and we will show from continuity (Step 3A) that this makes $u_r = 0$ everywhere, i.e. the flow is unidirectional. The radius of the inner cylinder is $R_i$ and the outer cylinder $R_o$. The inner cylinder rotates with angular velocity $\Omega_i$; the angular velocity of the outer cylinder is zero.
+Consider the case of the flow in the gap between two very long concentric cylinders driven by the rotation of the inner cylinder; $\rho$ and $\mu$ (and hence $\nu$) constant. Since the cylinders are long and concentric, and the wall velocities do not vary with $\theta$, there is angular symmetry so the velocity does not vary with $\theta$ (nothing changes in the flow direction, i.e. the flow is fully developed); it is a function of $r$ only. The normal component of velocity must vanish at the surface of the cylinders, $u_r = 0$ there. The radius of the inner cylinder is $R_i$ and the outer cylinder $R_o$. The inner cylinder rotates with angular velocity $\Omega_i$; the angular velocity of the outer cylinder is zero.
 
 Derive an expression for the velocity distribution between the cylinders. [Hint: work in a cylindrical polar coordinate system.]
 
@@ -188,7 +203,7 @@ Derive an expression for the velocity distribution between the cylinders. [Hint:
 - Steady flow? [Yes ($\partial/\partial t = 0$)]{.gap}
 - 2D flow? [Yes ($u_z = 0$, $\partial/\partial z = 0$)]{.gap}
 - Flow symmetry? [Circular symmetry ($\partial/\partial \theta = 0$): nothing changes in the flow direction $\theta$, so the flow is fully developed.]{.gap}
-- Flow direction? [Unidirectional ($u_\theta(r)$ only). This is not an extra assumption: with $\partial/\partial\theta = 0$, continuity and the impermeable walls give $u_r = 0$ (Step 3A).]{.gap}
+- Flow direction? [Circumferential, $u_\theta(r)$; we find $u_r$ from continuity in Step 3A.]{.gap}
 - Body forces? [No body forces]{.gap}
 - Are $\rho$ and $\mu$ constant? [Yes]{.gap}
 - What are the rotational speeds of the cylinders? [The inner cylinder rotates with angular speed $\Omega_i$ and the outer cylinder is stationary so $\Omega_o = 0$.]{.gap}

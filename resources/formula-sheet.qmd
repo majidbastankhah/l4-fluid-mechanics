@@ -1,0 +1,292 @@
+---
+title: "Exam formula sheet"
+subtitle: "General Formula Listing — the sheet you are given in the exam"
+toc: true
+toc-depth: 2
+format:
+  html: default
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: article
+    papersize: a4
+    geometry: margin=2cm
+    toc: false
+    number-sections: false
+    colorlinks: true
+    output-file: "L4-Fluid-Mechanics-Formula-Sheet"
+    include-in-header:
+      - text: |
+          \usepackage{bm}
+          \providecommand{\Rn}{\mathrm{Re}}
+          \providecommand{\de}{\mathrm{d}}
+format-links: [pdf]
+---
+
+<!--
+  The equations below are copied VERBATIM from the exam formula sheet (General Formula Listing),
+  with the 2026/27 corrections agreed with the lecturer: Thwaites' theory removed (no longer in the
+  course), von Karman constant K -> \kappa, tau_yz = ... = tau_zy (was tau_yx), vorticity components
+  in the coordinate brackets zeta -> xi, power-law table H = 1.25 -> 1.29. Do not edit them unless the exam sheet itself changes. Only layout commands were dropped
+  (\hspace*, mdframed boxes, \underline headings); macros \Rn and \de are defined below.
+-->
+
+::: {.content-visible when-format="html"}
+::: {.hidden}
+$$
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\newcommand{\Rn}{\mathrm{Re}}
+\newcommand{\de}{\mathrm{d}}
+$$
+:::
+:::
+
+::: {.callout-note appearance="simple" icon=false}
+This page reproduces the formula sheet provided in the examination, so you know exactly which equations and relationships will be available to you.
+:::
+
+**NOTE: The following equations and relationships apply for the case of incompressible flow [$\varrho =$ constant] and when $\mu =$ constant, and $C_p(\mbox{or}~C_v) =$ constant. These and all other quantities/parameters have their usual meaning as per the lectures and accompanying course material.**
+
+## 1 · Conservation Equations (Cartesian Coordinates) {#sec-cartesian}
+
+[$\bm{r} = (x,y,z)$, $\bm q = (u,v,w)$, $\bm F = (F_x,F_y,F_z)$, $\bm \xi = (\xi_x, \xi_y, \xi_z)$]
+
+#### Continuity {.unnumbered}
+
+$$
+\begin{aligned}
+\bm \nabla \cdot \bm q = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} = 0
+\end{aligned}
+$$
+
+#### Momentum {.unnumbered}
+
+$$
+\begin{aligned}
+&\underline{\text{x-direction}} \qquad \frac{Du}{Dt} = F_x - \frac{1}{\varrho}\frac{\partial p}{\partial x} + \nu \nabla^2u \\
+&\underline{\text{y-direction}} \qquad \frac{Dv}{Dt} = F_y - \frac{1}{\varrho}\frac{\partial p}{\partial y} + \nu \nabla^2v \\
+&\underline{\text{z-direction}} \qquad \frac{Dw}{Dt} = F_z - \frac{1}{\varrho}\frac{\partial p}{\partial z} + \nu \nabla^2w \\
+&\text{where } \, \quad \frac{D}{Dt} = \frac{\partial}{\partial t} + \bm q \cdot \bm \nabla \, , \quad \quad \bm q \cdot \bm \nabla = u\frac{\partial}{\partial x} + v\frac{\partial}{\partial y} + w\frac{\partial}{\partial z} \, , \\
+&\text{and } \,~~~\quad \nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \, .
+\end{aligned}
+$$
+
+#### Energy {.unnumbered}
+
+$$
+\begin{aligned}
+\varrho C_v \frac{DT}{Dt} &= \varrho \dot Q + k \nabla^2T + \Phi \\
+\text{where} \quad \Phi &= \mu \left\{ 2 \left(\frac{\partial u}{\partial x}\right)^2 + 2 \left(\frac{\partial v}{\partial y}\right)^2 + 2\left(\frac{\partial w}{\partial z}\right)^2 \right. \\
+& \qquad + \left. \left( \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y} \right)^2 + \left( \frac{\partial w}{\partial x} + \frac{\partial u}{\partial z} \right)^2 + \left( \frac{\partial w}{\partial y} + \frac{\partial v}{\partial z} \right)^2 \right\}
+\end{aligned}
+$$
+
+#### Shear stresses (Normal and Tangential) {.unnumbered}
+
+$$
+\begin{aligned}
+\tau_{xx} &= 2\mu \frac{\partial u}{\partial x}\, , \quad \tau_{yy} = 2\mu \frac{\partial v}{\partial y} \, , \quad  \tau_{zz} = 2\mu \frac{\partial w}{\partial z} \\
+\tau_{xy} &= \mu \left( \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y} \right) = \tau_{yx} \\
+\tau_{xz} &= \mu \left( \frac{\partial w}{\partial x} + \frac{\partial u}{\partial z} \right) = \tau_{zx} \\
+\tau_{yz} &= \mu \left( \frac{\partial w}{\partial y} + \frac{\partial v}{\partial z} \right) = \tau_{zy}
+\end{aligned}
+$$
+
+#### Vorticity {.unnumbered}
+
+$$
+\begin{aligned}
+\bm \xi = \bm \nabla \times \bm q = \left( \frac{\partial w}{\partial y} - \frac{\partial v}{\partial z} \right) \bm{\hat i} + \left( \frac{\partial u}{\partial z} - \frac{\partial w}{\partial x} \right) \bm{\hat j} + \left( \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} \right)\bm{\hat k}
+\end{aligned}
+$$
+
+## 2 · Conservation Equations (Cylindrical Coordinates) {#sec-cylindrical}
+
+[$\bm r = (r,\theta,z)$, $\bm q = (u_r,u_\theta,u_z)$, $\bm F = (F_r,F_\theta,F_z)$, $\bm \xi = (\xi_r, \xi_\theta, \xi_z)$]
+
+#### Continuity {.unnumbered}
+
+$$
+\begin{aligned}
+\bm \nabla \cdot \bm q = \frac{1}{r} \frac{\partial r u_r}{\partial r} + \frac{1}{r} \frac{\partial u_\theta}{\partial \theta} + \frac{\partial u_z}{\partial z} = 0
+\end{aligned}
+$$
+
+#### Momentum {.unnumbered}
+
+$$
+\begin{aligned}
+&\underline{\text{r-direction}} \qquad \frac{Du_r}{Dt} - \frac{u_\theta^2}{r} = F_r - \frac{1}{\varrho}\frac{\partial p}{\partial r} + \nu \left( \nabla^2u_r - \frac{u_r}{r^2} - \frac{2}{r^2} \frac{\partial u_\theta}{\partial \theta} \right) \\
+&\underline{\text{$\theta$-direction}} \qquad \frac{Du_\theta}{Dt}  + \frac{u_{r} u_{\theta}}{r} = F_\theta - \frac{1}{r \varrho}\frac{\partial p}{\partial \theta} + \nu \left( \nabla^2u_\theta  - \frac{u_\theta}{r^2} + \frac{2}{r^2} \frac{\partial u_r}{\partial \theta} \right)\\
+&\underline{\text{z-direction}} \qquad \frac{Du_z}{Dt} = F_z - \frac{1}{\varrho}\frac{\partial p}{\partial z} + \nu \nabla^2u_z \\
+&\text{where } \, \quad \frac{D}{Dt} = \frac{\partial}{\partial t} + \bm q \cdot \bm \nabla \, , \quad \quad \bm q \cdot \bm \nabla = u_r\frac{\partial}{\partial r} + \frac{u_\theta}{r} \frac{\partial}{\partial \theta} + u_z \frac{\partial}{\partial z} \, , \\
+&\text{and } \,~~~\quad \nabla^2 = \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial}{\partial r} \right) + \frac{1}{r^2} \frac{\partial^2}{\partial \theta^2} + \frac{\partial^2}{\partial z^2} \, .
+\end{aligned}
+$$
+
+#### Energy {.unnumbered}
+
+$$
+\begin{aligned}
+\varrho C_v \frac{DT}{Dt} &= \varrho \dot Q + k \nabla^2T + \Phi \\
+\text{where} \quad \Phi &= \mu \left\{ 2 \left(\frac{\partial u_r}{\partial r}\right)^2 + 2 \left(\frac{1}{r} \left[ \frac{\partial u_\theta}{\partial \theta} + u_r \right] \right)^2 + 2\left(\frac{\partial u_z}{\partial z}\right)^2 \right. \\
+& \qquad + \left. \left( \frac{1}{r} \frac{\partial u_z}{\partial \theta} + \frac{\partial u_\theta}{\partial z} \right)^2 + \left( \frac{\partial u_r}{\partial z} + \frac{\partial u_z}{\partial r} \right)^2 + \left( \frac{1}{r} \left[ \frac{\partial u_r}{\partial \theta} - u_\theta \right]+ \frac{\partial u_\theta}{\partial r} \right)^2 \right\}
+\end{aligned}
+$$
+
+#### Shear stresses (Normal and Tangential) {.unnumbered}
+
+$$
+\begin{aligned}
+\tau_{rr} &= 2 \mu \frac{\partial u_r}{\partial r}\, , \quad \tau_{\theta \theta} = \frac{2 \mu}{r} \left( \frac{\partial u_\theta}{\partial \theta} + u_r \right)\, , \quad  \tau_{zz} = 2 \mu \frac{\partial u_z}{\partial z} \\
+\tau_{r \theta} &= \mu \left( \frac{1}{r} \left[ \frac{\partial u_r}{\partial \theta} - u_\theta \right] + \frac{\partial u_\theta}{\partial r} \right) = \tau_{\theta r} \\
+\tau_{rz} &= \mu \left( \frac{\partial u_r}{\partial z} + \frac{\partial u_z}{\partial r} \right) = \tau_{zr} \\
+\tau_{\theta z} &= \mu \left( \frac{1}{r} \frac{\partial u_z}{\partial \theta} + \frac{\partial u_\theta}{\partial z} \right) = \tau_{z \theta}
+\end{aligned}
+$$
+
+#### Vorticity {.unnumbered}
+
+$$
+\begin{aligned}
+\bm \xi = \bm \nabla \times \bm q = \frac{1}{r} \left( \frac{\partial u_z}{\partial \theta} - \frac{\partial r u_\theta}{\partial z} \right) \bm{\hat r} + \left( \frac{\partial u_r}{\partial z} - \frac{\partial u_z}{\partial r} \right) \bm{\hat \theta} + \frac{1}{r} \left( \frac{\partial r u_\theta}{\partial r} - \frac{\partial u_r}{\partial \theta} \right)\bm{\hat k}
+\end{aligned}
+$$
+
+## 3 · Turbulent Flow (Cartesian Coordinates) {#sec-turbulent}
+
+[$\bm r = (x,y,z)$, $\bm q = \bm Q + \bm q'$ with $\bm Q = (U,V,W)$, $\bm q' = (u', v', w')$, and assuming $\bm F = (F_x,F_y,F_z) = 0$]
+
+#### Scaling relationships {.unnumbered}
+
+If $l$, $u_l$ and $\tau_l$ are integral length, velocity and time scales, respectively, the corresponding Kolmogorov scales, $\eta$, $u_\eta$ and $\tau_\eta$, are given by:
+
+$$
+\begin{aligned}
+\eta = l \Rn^{-3/4} \, , \quad u_\eta = u_l \Rn^{-1/4} \, , \quad \tau_\eta = \frac{l}{u_l} \Rn^{-1/2} \, ,
+\end{aligned}
+$$
+
+where $\Rn = lu_l/\nu$.
+
+#### Time-Averaged continuity and Navier-Stokes Equations {.unnumbered}
+
+$$
+\begin{aligned}
+\bm \nabla \cdot \bm Q  = \frac{\partial U}{\partial x} + \frac{\partial V}{\partial y} + \frac{\partial W}{\partial z} &= 0 \\
+~\\
+\varrho \left( \frac{\partial U}{\partial t} + U\frac{\partial U}{\partial x} + V\frac{\partial U}{\partial y} + W\frac{\partial U}{\partial z}\right) &= - \frac{\partial P}{\partial x} + \mu \nabla^2U - \varrho \left( \frac{\partial}{\partial x}(\overline{u'^2}) + \frac{\partial}{\partial y}(\overline{u'v'}) + \frac{\partial}{\partial z}(\overline{u'w'}) \right) \\
+\varrho \left( \frac{\partial V}{\partial t} + U\frac{\partial V}{\partial x} + V\frac{\partial V}{\partial y} + W\frac{\partial V}{\partial z}\right) &=  - \frac{\partial P}{\partial y} + \mu \nabla^2V - \varrho \left( \frac{\partial}{\partial x}(\overline{u'v'}) + \frac{\partial}{\partial y}(\overline{v'^2}) + \frac{\partial}{\partial z}(\overline{v'w'}) \right) \\
+\varrho \left( \frac{\partial W}{\partial t} + U\frac{\partial W}{\partial x} + V\frac{\partial W}{\partial y} + W\frac{\partial W}{\partial z}\right) &=  - \frac{\partial P}{\partial z} + \mu \nabla^2W - \varrho \left( \frac{\partial}{\partial x}(\overline{u'w'}) + \frac{\partial}{\partial y}(\overline{v'w'}) + \frac{\partial}{\partial z}(\overline{w'^2}) \right)
+\end{aligned}
+$$
+
+#### Boussinesq Eddy Viscosity, $\mu_t \propto \varrho l_s v_s$, Model {.unnumbered}
+
+$$
+\begin{aligned}
+-\varrho \overline{u_i'u_j'} = \mu_t \left( \frac{\partial U_i}{\partial x_j} + \frac{\partial U_j}{\partial x_i} \right) - \frac{2}{3} \varrho k \delta_{ij};~~\delta_{ij} = 1~\mbox{when}~i = j~\mbox{and} = 0~\mbox{otherwise}
+\end{aligned}
+$$
+
+#### Prandtl Mixing Length, $l_m$, Model {.unnumbered}
+
+$$
+\begin{aligned}
+\mu_t = \varrho l_m^2 \left| \frac{\partial U}{\partial y}\right| \, , \quad -\varrho \overline{u'v'} = \mu_t \frac{\partial U}{\partial y} = \varrho l_m^2 \left| \frac{\partial U}{\partial y}\right| \frac{\partial U}{\partial y}
+\end{aligned}
+$$
+
+#### Prandtl Kolmogorov Formula for $\mu_t$ {.unnumbered}
+
+$$
+\begin{aligned}
+\mu_t = C_\mu \varrho l_s k^{1/2} \, , \quad v_s = k^{1/2} \, , \quad k = \frac{1}{2}(\overline{u'^2} + \overline{v'^2} + \overline{w'^2})
+\end{aligned}
+$$
+
+#### Dissipation of $k$ {.unnumbered}
+
+$$
+\begin{aligned}
+\varepsilon = \frac{k^{3/2}}{l_s} \quad \Rightarrow \quad \mu_t = C_\mu \varrho \frac{k^2}{\varepsilon}
+\end{aligned}
+$$
+
+## 4 · Steady Flow Boundary Layer Theory {#sec-bl}
+
+#### Displacement, $\delta^*$, Thickness {.unnumbered}
+
+$$
+\begin{aligned}
+\delta^* = \int_0^\infty \left( 1-\frac{u}{U_\infty}\right) \, \mathrm{d}y
+\end{aligned}
+$$
+
+#### Momentum, $\theta$, Thickness {.unnumbered}
+
+$$
+\begin{aligned}
+\theta = \int_0^\infty \left( 1-\frac{u}{U_\infty}\right)\frac{u}{U_\infty} \, \mathrm{d}y
+\end{aligned}
+$$
+
+#### Shape factor {.unnumbered}
+
+$$
+\begin{aligned}
+H = \frac{\delta^*}{\theta}
+\end{aligned}
+$$
+
+#### Laminar Boundary Layer Equations {.unnumbered}
+
+$$
+\begin{aligned}
+\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} &= 0 \\
+u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} &= -\frac{1}{\varrho} \frac{d p}{d x} + \nu \frac{\partial^2 u}{\partial y^2}
+\end{aligned}
+$$
+
+#### The Momentum Integral Equation {.unnumbered}
+
+$$
+\begin{aligned}
+\frac{\de}{\de x}(U_\infty^2 \theta) + \delta^* U_\infty \frac{\de U_\infty}{\de x} &= \frac{\tau |_{y=0}}{\varrho} \\
+\text{or, } \quad \frac{\de \theta}{\de x} + (H+2) \frac{\theta}{U_\infty}\frac{\de U_\infty}{\de x} &= \frac{C_f}{2} \\
+\text{where the local skin friction } C_f &= \frac{\tau |_{y=0}}{\frac{1}{2} \varrho U_\infty^2}
+\end{aligned}
+$$
+
+#### Blasius Laminar Boundary Layer Solution Summarised {.unnumbered}
+
+| $\displaystyle \frac{\delta}{x} \Rn_x^{1/2}$ | $\displaystyle \frac{\delta^*}{x} \Rn_x^{1/2}$ | $\displaystyle \frac{\theta}{x} \Rn_x^{1/2}$ | $\displaystyle C_f \Rn_x^{1/2}$ | $\displaystyle \overline C_f \Rn_L^{1/2}$ | $H$ |
+|:--:|:--:|:--:|:--:|:--:|:--:|
+| 5.00 | 1.7208 | 0.664 | 0.664 | 1.328 | 2.59 |
+
+where $\overline C_f = \left( \frac{2 \theta}{x} \right)_{x = L}$ is the average skin friction, $\Rn_x = \frac{U_\infty x}{\nu}$, $\Rn_L = \frac{U_\infty L}{\nu}$.
+
+#### Turbulent Boundary Layer Equations {.unnumbered}
+
+$$
+\begin{aligned}
+\frac{\partial U}{\partial x} + \frac{\partial V}{\partial y} &= 0 \\
+U\frac{\partial U}{\partial x} + V\frac{\partial U}{\partial y} &= -\frac{1}{\varrho} \frac{\de P_\infty}{\de x} + \nu \frac{\partial^2 U}{\partial y^2} - \frac{\partial}{\partial y}(\overline{u'v'})
+\end{aligned}
+$$
+
+#### Law of the Wall {.unnumbered}
+
+$$
+\begin{aligned}
+&u^+ = \frac{1}{\kappa}\ln (y^+) + C \, , \quad u^+ = \frac{U}{u_\tau} \, , \quad y^+ = \frac{u_\tau y}{\nu} \, , \\
+&\text{where } u_\tau = \sqrt{\frac{\tau|_{y = 0}}{\varrho}} \, .
+\end{aligned}
+$$
+
+#### Power Law Turbulent Boundary Layer Solution Summarised {.unnumbered}
+
+| $\displaystyle \frac{\delta}{x} \Rn_x^{1/5}$ | $\displaystyle \frac{\delta^*}{x} \Rn_x^{1/5}$ | $\displaystyle \frac{\theta}{x} \Rn_x^{1/5}$ | $\displaystyle \overline C_f \Rn_L^{1/5}$ | $H$ |
+|:--:|:--:|:--:|:--:|:--:|
+| 0.3707 | 0.0463 | 0.037 | 0.074 | 1.29 |
+
+where $\overline C_f = \left( \frac{2 \theta}{x} \right)_{x = L}$ is the average skin friction, $\Rn_x = \frac{U_\infty x}{\nu}$, $\Rn_L = \frac{U_\infty L}{\nu}$.

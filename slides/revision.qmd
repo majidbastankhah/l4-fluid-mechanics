@@ -113,7 +113,7 @@ $$
   $$ \del \cdot \vect{q} = 0 $$
 
 ::: {.notes}
-Remind them of the one-sentence argument from Workshops 1–2: for a unidirectional flow u = u(y, z), continuity gives ∂u/∂x = 0, so the flow is automatically fully developed. Say EITHER unidirectional OR fully developed — one follows from the other.
+Remind them of the one-sentence argument from Workshops 1–2: for a unidirectional flow u = u(y, z), continuity gives ∂u/∂x = 0, so the flow is automatically fully developed.
 :::
 
 ## Equation of motion & stress

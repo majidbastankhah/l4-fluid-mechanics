@@ -2,12 +2,9 @@
  * Usage (at the end of a workshop page):
  *   <script src="../assets/widgets/workshops.js"></script>
  *
- * 1) Page tools (run on every page that loads this file)
- *    - <details class="answer"> blocks: "Show step" toggles placed after each prompt.
- *    - [answer]{.gap} spans: inline gaps of the handout. They are shown as a highlighted
- *      "?" chip; clicking the chip reveals (or hides again) the answer.
- *    - <button class="reveal-all">: opens / closes every step and gap on the page.
- *    The few CSS rules these need are injected below (they can be moved to assets/site.css).
+ * 1) Page tools (run on every page that loads this file): "Your attempt" boxes remembered in the
+ *    browser, and a "have you tried it yourself?" check before a solution is first opened.
+ *    The page structure (blanks, attempt boxes, solution boxes) is made by assets/workshop.lua.
  *
  * 2) Widget  <div class="widget" data-widget="couette-poiseuille"></div>
  *    Plane Couette + Poiseuille flow between plates at y = -h (fixed) and y = +h (moving with U):
@@ -18,67 +15,66 @@
   'use strict';
 
   // =====================================================================
-  // PAGE TOOLS
+  // PAGE TOOLS  ("try first, then reveal"; page structure is produced by assets/workshop.lua)
+  //  - .ws-attempt textarea: the student's own attempt, kept in this browser (localStorage)
+  //  - details.answer: the first time a solution is opened, ask "Have you tried it yourself?"
   // =====================================================================
   const CSS = [
-    '.ws-tools{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;margin:.3rem 0 1.2rem;font-size:.92rem}',
-    '.ws-tools .reveal-all{border:1px solid rgba(104,36,109,.55);background:transparent;color:inherit;border-radius:6px;padding:.15rem .75rem;font-weight:600}',
-    '.ws-tools .reveal-all.on{background:var(--bs-primary);border-color:var(--bs-primary);color:#fff}',
-    'details.answer{margin:.5rem 0 1.1rem;border-left:3px solid #2b6cb0;border-radius:0 6px 6px 0;padding:.15rem .9rem}',
+    'details.answer{margin:.3rem 0 1.3rem;border-left:3px solid #2b6cb0;border-radius:0 6px 6px 0;padding:.15rem .9rem}',
     'details.answer>summary{cursor:pointer;font-weight:600;color:#2b6cb0}',
     'details.answer[open]{background:rgba(43,108,176,.06);padding-bottom:.5rem}',
     'details.answer[open]>summary{margin-bottom:.4rem}',
     '.quarto-dark details.answer>summary{color:#8fbcef}',
     '.quarto-dark details.answer[open]{background:rgba(143,188,239,.07)}',
-    '.gap{white-space:normal}',
-    '.gap .gap-q{display:inline-block;min-width:2.6em;border:0;border-bottom:2px solid #2b6cb0;background:rgba(43,108,176,.13);color:#2b6cb0;font-weight:700;border-radius:3px;padding:0 .35em;margin:0 .1em;line-height:1.35;cursor:pointer;font-size:.9em}',
-    '.gap.ready .gap-a{display:none}',
-    '.gap.ready.shown .gap-a{display:inline;color:#1f5596;border-bottom:1px dotted #2b6cb0;cursor:pointer}',
-    '.gap.shown .gap-q{display:none}',
-    '.quarto-dark .gap .gap-q{color:#8fbcef;border-color:#8fbcef;background:rgba(143,188,239,.15)}',
-    '.quarto-dark .gap.ready.shown .gap-a{color:#a9cdf3;border-color:#8fbcef}',
+    '.ws-attempt{margin:.8rem 0 .3rem}',
+    '.ws-attempt label{display:block;font-size:.85rem;font-weight:600;color:#68246D;margin-bottom:.15rem}',
+    '.quarto-dark .ws-attempt label{color:#c79bd0}',
+    '.ws-attempt textarea{width:100%;min-height:4.2em;border:1px dashed rgba(104,36,109,.55);border-radius:6px;padding:.4rem .6rem;background:rgba(104,36,109,.03);color:inherit;font-size:.95rem;resize:vertical}',
+    '.ws-confirm{margin:-.9rem 0 1.3rem;padding:.5rem .9rem;border:1px solid rgba(214,158,46,.6);background:rgba(214,158,46,.12);border-radius:6px;font-size:.92rem}',
+    '.ws-confirm button{margin:.3rem .5rem 0 0;border:1px solid rgba(104,36,109,.55);background:transparent;color:inherit;border-radius:6px;padding:.1rem .7rem}',
+    '.ws-confirm button.yes{background:#68246D;border-color:#68246D;color:#fff}',
+    '.blank{display:inline-block;min-width:3.2em;border-bottom:1.5px solid currentColor;margin:0 .15em;height:1.1em;vertical-align:baseline;opacity:.7}',
+    '.filled{background:rgba(43,108,176,.13);border-radius:3px;padding:0 .2em}',
     '.ws-part{border-top:2px solid rgba(104,36,109,.35);margin-top:2.2rem;padding-top:.4rem}',
     /* keep long equations and tables inside the column on narrow screens (scroll instead of overflow) */
     'main mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;max-width:100%;min-width:0 !important;padding-bottom:2px}',
     'main table{display:block;max-width:100%;overflow-x:auto}'
   ].join('\n');
 
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+
   function pageTools() {
     if (document.getElementById('ws-tools-css')) return;
     const st = document.createElement('style');
     st.id = 'ws-tools-css'; st.textContent = CSS;
     document.head.appendChild(st);
+    const page = 'l4fm-ws:' + location.pathname.split('/').pop();
 
-    // inline gaps
-    document.querySelectorAll('span.gap').forEach(g => {
-      if (g.classList.contains('ready')) return;
-      const a = document.createElement('span'); a.className = 'gap-a';
-      while (g.firstChild) a.appendChild(g.firstChild);
-      const q = document.createElement('button');
-      q.type = 'button'; q.className = 'gap-q'; q.textContent = '?';
-      q.title = 'Show / hide the answer'; q.setAttribute('aria-expanded', 'false');
-      q.addEventListener('click', () => setGap(g, !g.classList.contains('shown')));
-      a.title = 'Click to hide the answer again';
-      a.addEventListener('click', () => setGap(g, false));
-      g.appendChild(q); g.appendChild(a); g.classList.add('ready');
+    // the student's own attempts, remembered in this browser
+    document.querySelectorAll('.ws-attempt textarea').forEach((t, i) => {
+      const key = page + ':attempt:' + i;
+      const v = store(key); if (v) t.value = v;
+      t.addEventListener('input', () => store(key, t.value));
     });
 
-    // reveal-all buttons
-    const btns = Array.from(document.querySelectorAll('button.reveal-all'));
-    btns.forEach(b => b.addEventListener('click', () => {
-      const open = !b.classList.contains('on');
-      document.querySelectorAll('details.answer').forEach(d => { d.open = open; });
-      document.querySelectorAll('span.gap.ready').forEach(g => setGap(g, open));
-      btns.forEach(x => {
-        x.classList.toggle('on', open);
-        x.textContent = open ? 'Hide all answers' : 'Reveal all answers';
+    // ask before the first reveal of each solution
+    document.querySelectorAll('details.answer').forEach((d, i) => {
+      const key = page + ':seen:' + i;
+      const sum = d.querySelector('summary');
+      if (!sum) return;
+      sum.addEventListener('click', ev => {
+        if (d.open || store(key) === '1') return;            // closing, or already confirmed once
+        ev.preventDefault();
+        if (d.nextElementSibling && d.nextElementSibling.classList.contains('ws-confirm')) return;
+        const box = document.createElement('div');
+        box.className = 'ws-confirm';
+        box.innerHTML = '<b>Have you written your own attempt at this step?</b> You will learn much more if you try it first.<br>' +
+          '<button type="button" class="yes">Yes, show the solution</button><button type="button" class="no">Not yet</button>';
+        d.after(box);
+        box.querySelector('.yes').addEventListener('click', () => { store(key, '1'); box.remove(); d.open = true; });
+        box.querySelector('.no').addEventListener('click', () => { box.remove(); });
       });
-    }));
-  }
-  function setGap(g, show) {
-    g.classList.toggle('shown', show);
-    const q = g.querySelector('.gap-q');
-    if (q) q.setAttribute('aria-expanded', show ? 'true' : 'false');
+    });
   }
 
   // =====================================================================

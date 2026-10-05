@@ -3,7 +3,7 @@ title: "Workshops"
 toc: false
 ---
 
-Workshops are guided problem-solving sessions in which we work through a full problem together, step by step. Each workshop page follows the same structure as the printed handout: identify the characteristics of the flow, choose the method, simplify the governing equations and solve. Every gap in the handout can be revealed on its own, so try each step yourself before opening it; a **Reveal all answers** button at the top of each page shows the completed version.
+Workshops are guided problem-solving sessions in which we work through a full problem together, step by step. Each workshop page follows the same structure as the printed handout: identify the characteristics of the flow, choose the method, simplify the governing equations and solve. Under each step there is space for your own attempt and a **Show solution** box. Write out your own working first, on paper or in the box, and only then compare with the solution. Each workshop page also links a **printable handout (PDF)** with space to write, if you prefer to work on paper.
 
 | Workshop | Topic | Notes sections used |
 |:--|:--|:--|

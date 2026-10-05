@@ -44,7 +44,7 @@ Guided problem-solving sessions, released before each workshop.
 1. **Before the lecture**, skim the notes section for that week.
 2. **In the lecture**, follow the slides and join in with the quick questions.
 3. **After the lecture**, work through the linked problems: try first, use the hint, then check the answer.
-4. Use the [Key equations](resources/key-equations.qmd) page and the [problem-solving strategy](resources/solving-strategy.qmd) while solving problems, and come to the workshops with questions.
+4. Use the [exam formula sheet](resources/formula-sheet.qmd) (the equations you are given in the exam) and the [problem-solving strategy](resources/solving-strategy.qmd) while solving problems, and come to the workshops with questions.
 
 ::: {.callout-tip appearance="simple"}
 Found a mistake or something unclear? Use the **Report an issue** link in the right-hand margin of any page, or email the lecturer.

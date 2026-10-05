@@ -93,7 +93,7 @@ Given: stationary plates; $dp/dx$ = constant. Additional assumptions:
 $$
 \del \cdot \vect{q} = 0 \quad\Longrightarrow\quad \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0 \qquad (4)
 $$
-The flow is fully developed, $\partial u/\partial x = 0$, so (4) gives $\partial v/\partial y = 0$; with $v = 0$ at the walls this means $v = 0$ everywhere, i.e. the flow is unidirectional. (Fully developed and unidirectional are therefore not two separate assumptions: one follows from the other through continuity.) With $w = 0$ as well, $u = u(y)$ only.
+The flow is fully developed, $\partial u/\partial x = 0$, so (4) gives $\partial v/\partial y = 0$; with $v = 0$ at the walls this means $v = 0$ everywhere, i.e. the flow is unidirectional. With $w = 0$ as well, $u = u(y)$ only.
 
 The $x$- and $y$-momentum equations become
 $$
