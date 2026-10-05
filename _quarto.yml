@@ -30,6 +30,8 @@ website:
         href: workshops/index.qmd
       - text: "Resources"
         menu:
+          - text: "Course overview"
+            href: overview.qmd
           - text: "Exam formula sheet"
             href: resources/formula-sheet.qmd
           - text: "Problem-solving strategy"

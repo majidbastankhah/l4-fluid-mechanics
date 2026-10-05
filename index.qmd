@@ -4,7 +4,7 @@ subtitle: "ENGI44710 / ENGI47215 · Department of Engineering, Durham University
 toc: false
 ---
 
-Welcome to the course website. Everything for the module lives here: lecture notes, slides, problems with hints and solutions, and workshop material. Use the **search** box (top right) to find any topic across all of them.
+Welcome to the course website. Everything for the module lives here: lecture notes, slides, problems with hints and solutions, and workshop material. Use the **search** box (top right) to find any topic across all of them. New to the course? Start with the [course overview](overview.qmd).
 
 ::: {.callout-note .whats-new appearance="simple" icon=false}
 ## What's new

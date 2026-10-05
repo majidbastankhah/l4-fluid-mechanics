@@ -1,0 +1,31 @@
+---
+title: "Course overview"
+subtitle: "Fluid Mechanics 4 (ENGI44710 / ENGI47215): essential background reading"
+toc: false
+---
+
+The information contained within this Overview has been prepared in support of Fluid Mechanics 4 (ENGI44710/ENGI47215) and forms essential background reading for all students taking it. All course materials are on this website, which brings together:
+
+\(i) comprehensive [Course Notes](notes/index.qmd) (four chapters, also downloadable as PDFs),\
+\(ii) [lecture slides](slides.qmd), including problems worked through in class,\
+\(iii) a [problem bank](problems/index.qmd), ordered by topic, for you to attempt in your own time, with hints, final answers and full solutions, and\
+\(iv) four [workshops](workshops/index.qmd), which guide you step by step through solving flow problems, with printable handouts.
+
+The problem bank and workshops are designed to further reinforce understanding of the taught material. Reading the relevant section of the Course Notes before the lectures covering it is strongly recommended.
+
+The course comprises 20 one-hour sessions given over the Michaelmas/Epiphany term, plus a revision class in the first or second week of the Easter term. Assessment is 100% by a written examination in the May–June examination period. The four chapters differ in length because of the amount of necessary background material they provide: this is not an indication of the level of difficulty associated with each of them.
+
+Although comprehensive, the Course Notes are not a substitute for attending lectures; the lectures cover their content from a complementary perspective, highlighting key points and their relevance. Having the notes and slides to hand during lectures (on the website or as PDFs) will be beneficial, as you may wish to annotate them.
+
+Remember that just reading and working through the Course Notes is not sufficient in itself; using the knowledge you have gained to understand and solve fluid flow problems is a crucial part of your studies.
+
+The course has been designed to address the physics and engineering importance of Fluid Mechanics from a general perspective, and the modelling of flows starting from direct use of the governing conservation equations. The emphasis is not on memorising and reproducing their derivation, but on understanding the assumptions on which they are based and using them, after further simplification, to solve problems of engineering interest; the two go hand in hand. Accordingly, lectures summarise the key points of each chapter associated with the modelling of fluid flow and are problem-solving based.
+
+It is impossible to escape the need for a basic grasp of the mathematics that underpins the course and that is needed to solve the problems worked through in class, in the workshops and in the problem bank. Students are therefore expected to be comfortable with basic algebra and with standard integrals and derivatives of functions of one or more variables. If, on reading this, you are concerned about your competence in this respect, now is the time to act and undertake the necessary revision.
+
+## Final note
+
+The recipe for successful completion of the course, demonstrated by numerous students and evidenced in the marks returned after the May/June examination, is a sustained level of effort throughout the course, attempting the problem bank as the topics are covered. The worst approach is to leave everything until the Easter break and begin learning the material then: it leaves students overwhelmed and simply does not work. There is no pretence here that Fluid Mechanics is an easy subject to understand; far from it. But there is a lot you can do to address this by adopting the right approach and work ethic from the outset.
+
+Best regards,\
+Dr Majid Bastankhah

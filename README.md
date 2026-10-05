@@ -8,6 +8,7 @@ Every push to `main` re-builds the site and publishes it to GitHub Pages automat
 | Path | What it is |
 |:--|:--|
 | `index.qmd` | Home page (with the "What's new" box) |
+| `overview.qmd` | Course overview (background reading; Resources → Course overview, linked from the home page) |
 | `_whats-new.md`, `whats-new.qmd` | Change log for students: edit `_whats-new.md` only |
 | `notes/ch1.qmd` … | One page per chapter (HTML + downloadable PDF) |
 | `slides/ch1-lecture1.qmd` … | One reveal.js deck per lecture (`slides/_metadata.yml` holds shared settings) |
