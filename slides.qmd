@@ -21,7 +21,6 @@ The slides open full screen in your browser. They link to the matching section o
 ## Keyboard shortcuts
 - **→ / Space**: next step · **←**: back · **F**: full screen · **Esc / O**: slide overview
 - **M**: menu (jump to any slide, change theme)
-- **S**: speaker view with notes and timer (lecturer)
 - **C**: draw on the slide · **B**: blackboard
 - **E**: printable view; then print to PDF from your browser to save a copy
 :::

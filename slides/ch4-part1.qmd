@@ -20,7 +20,7 @@ To fully grasp the derivations and succeed in this module, you **must study the 
 :::
 
 ::: {.notes}
-OPENING: Welcome to Chapter 4. Today we are exploring Boundary Layers, a concept that revolutionized fluid mechanics. Over the next 120 minutes, we'll cover the physics, the governing equations, and both exact and approximate mathematical solutions. (Flow separation now comes at the end of the chapter, in Part 2, once we have both laminar and turbulent boundary layers.)
+OPENING: Welcome to Chapter 4. Today we are exploring Boundary Layers, a concept that revolutionized fluid mechanics. Over the next 120 minutes, we'll cover the physics, the governing equations, and both exact and approximate mathematical solutions. (Flow separation comes at the end of the chapter, in Part 2, once we have both laminar and turbulent boundary layers.)
 
 Remind students verbally: Slides = summary, Notes = full details needed for exams.
 :::
@@ -210,7 +210,7 @@ Peer instruction: one minute to work it out individually, vote, then discuss wit
 ::: {.notes}
 Flow past a body of slender cross-section; the BL thickness has been exaggerated to aid understanding. x runs along the surface and y normal to it. Outside the BL the velocities are of the order of U_FS and the flow is essentially the frictionless one.
 
-This is now the single, complete scaling analysis of the chapter: we will get v ~ εU, δ/L ~ Re^(-1/2), ∂p/∂y ≈ 0, and then the wall-shear and drag scalings, all from the same argument.
+From this one scaling analysis we will get v ~ εU, δ/L ~ Re^(-1/2), ∂p/∂y ≈ 0, and then the wall-shear and drag scalings, all from the same argument.
 :::
 
 ## Order of magnitude: continuity
@@ -248,7 +248,7 @@ $$
 :::
 
 ::: {.notes}
-This replaces the old "quick estimate" (inertia ~ viscous force) that used to appear at the start of the chapter: it is the same balance, but now it comes out of the full non-dimensional equations, together with the information about which terms can be dropped.
+This is the balance inertia ~ viscous force, but here it comes out of the full non-dimensional equations, together with the information about which terms can be dropped.
 
 In dimensional form the balance reads ρU²/L ~ μU/δ², i.e. inertia per unit volume ~ viscous force per unit volume.
 :::

@@ -207,7 +207,7 @@ $t \approx \dfrac{10^{20}}{46.6\times10^{12}} \approx 2\times10^6\ \text{s} \app
 :::
 
 ::: {.notes}
-The original slide quoted "10^18 flops" and "24 days". These are not consistent: 10^18 flops at 46.6 Tflops would take only about 6 hours. Re^3 = 10^18 counts point-updates (mesh points × time steps); each update costs of order 10^2 floating-point operations, so ≈ 10^20 flops, which gives about 25 days at peak speed (real codes rarely reach peak, so in practice longer still).
+Re^3 = 10^18 counts point-updates (mesh points × time steps), not floating-point operations; each update costs of order 10^2 flops, so ≈ 10^20 flops, which gives about 25 days at peak speed (real codes rarely reach peak, so in practice longer still). A common slip is to divide 10^18 by the machine speed, which gives only about 6 hours.
 
 And don't forget the size of the data files generated (terabytes) and the huge amount of time it would take to interrogate them.
 :::
@@ -328,7 +328,7 @@ Whatever one does, there are always more unknowns than equations available. The 
 :::
 
 ::: {.notes}
-Original wording was "we close it at the second-order level". Strictly, eddy-viscosity models close the equations at the level of the second moments themselves (they express the Reynolds stresses, which are second-order correlations, through mean-flow gradients; sometimes called first-order closure), whereas Reynolds stress models keep transport equations for the second moments and model the third-order terms (second-order closure). Both are covered today.
+Strictly, eddy-viscosity models close the equations at the level of the second moments themselves (they express the Reynolds stresses, which are second-order correlations, through mean-flow gradients; sometimes called first-order closure), whereas Reynolds stress models keep transport equations for the second moments and model the third-order terms (second-order closure). Both are covered today.
 :::
 
 ## Desirable model attributes
@@ -574,7 +574,7 @@ $$
 ::: {.notes}
 Point out the sheer number of unknown higher-order correlations (like the triple velocity products in term ②). This is the perfect setup for the next slide, where we explain why drastic modelling assumptions are necessary!
 
-Corrections to the original slide: the pressure term is the average of u'∂p'/∂x (the original had the overbar over p' alone, and the mean of p' is zero); it equals −∂(mean p'u')/∂x − ∂(mean p'v')/∂y because the fluctuations are divergence-free. Term ③ sits on the left with a + sign, so it equals −P_k, where P_k = −ρ(mean u_i'u_j') ∂U_i/∂x_j is the (usually positive) production. Term ⑤ = μ∇²k − (viscous dissipation); at high Re it is dominated by the dissipation −ρε.
+The pressure term is the average of u'∂p'/∂x (not u' times the mean of ∂p'/∂x, which is zero); it equals −∂(mean p'u')/∂x − ∂(mean p'v')/∂y because the fluctuations are divergence-free. Term ③ sits on the left with a + sign, so it equals −P_k, where P_k = −ρ(mean u_i'u_j') ∂U_i/∂x_j is the (usually positive) production. Term ⑤ = μ∇²k − (viscous dissipation); at high Re it is dominated by the dissipation −ρε.
 :::
 
 ## Modelling the $k$ equation
@@ -759,7 +759,7 @@ $\mu_t \approx 1.4\times10^{-2}$ Pa s $\;\Rightarrow\; \mu_t/\mu \approx 750$
 :::
 
 ::: {.notes}
-NEW worked example. The point: the eddy viscosity is hundreds of times the molecular viscosity, which is why the Reynolds stresses dominate the viscous stresses away from walls (Part 1). And μ_t is not a fluid property: at a different point in the same flow, k and ε, and hence μ_t, are different.
+The point: the eddy viscosity is hundreds of times the molecular viscosity, which is why the Reynolds stresses dominate the viscous stresses away from walls (Part 1). And μ_t is not a fluid property: at a different point in the same flow, k and ε, and hence μ_t, are different.
 
 Check of numbers: k^(3/2) = 0.5^1.5 = 0.354; 0.354/2 = 0.177 m; 0.09 × 1.2 × 0.125 = 0.0135; 0.0135/1.8e−5 = 750.
 :::

@@ -1,4 +1,6 @@
-<!-- Adds "Home" and "All slides" links to the slide menu (☰, bottom left; or press M).
+<!-- Adds "Home" and "All slides" links to the slide menu (☰, bottom left; or press M),
+     removes "Speaker View" from its Tools panel, and makes the speaker view (S) show only the
+     current slide and the notes (no upcoming slide).
      Included in every deck via slides/_metadata.yml (include-after-body). -->
 <style>
 .slide-menu-wrapper .slide-menu-toolbar > li.sm-link { padding: 0; }
@@ -19,6 +21,16 @@
     var bar = document.querySelector('.slide-menu-wrapper .slide-menu-toolbar');
     if (!bar) return false;
     if (bar.querySelector('.sm-link')) return true;
+    // drop "Speaker View" from the Tools panel (the speaker view is for the lecturer)
+    var sv = document.querySelector('.slide-menu-wrapper a[onclick*="speakerMode"]');
+    if (sv) {
+      var list = sv.closest('ul');
+      sv.closest('li').remove();
+      list.querySelectorAll('li.slide-tool-item').forEach(function (li, i) {
+        li.setAttribute('data-item', i);
+        li.classList.toggle('active', i === 0);
+      });
+    }
     var close = bar.querySelector('#close');
     LINKS.forEach(function (l) {
       var li = document.createElement('li');
@@ -33,5 +45,36 @@
   if (window.Reveal && Reveal.isReady && Reveal.isReady()) whenReady();
   else if (window.Reveal) Reveal.on('ready', whenReady);
   window.addEventListener('load', whenReady);
+})();
+
+// Speaker view (S): show only the current slide (left) and the notes (right), no "upcoming" slide.
+(function () {
+  var CSS =
+    '#upcoming-slide, #speaker-layout { display: none !important; }' +
+    '#current-slide { display: block !important; position: absolute !important; top: 0 !important; left: 0 !important;' +
+    '  width: 64% !important; height: 100% !important; padding: 6px !important; }' +
+    '#speaker-controls { position: absolute !important; top: 0 !important; left: 64% !important; right: auto !important;' +
+    '  width: 36% !important; height: 100% !important; padding-top: 6px !important; font-size: 1.25em !important; }' +
+    '.speaker-controls-time .timer, .speaker-controls-time .clock { font-size: 1.3em !important; white-space: nowrap; }';
+  function style(w) {
+    try {
+      var d = w.document;
+      if (!d || !d.getElementById('current-slide')) return false;
+      if (!d.getElementById('l4-speaker-css')) {
+        var s = d.createElement('style'); s.id = 'l4-speaker-css'; s.textContent = CSS;
+        (d.head || d.documentElement).appendChild(s);
+      }
+      return true;
+    } catch (e) { return true; }   // not accessible: leave the default view
+  }
+  var open = window.open;
+  window.open = function (url, name) {
+    var w = open.apply(window, arguments);
+    if (w && name === 'reveal.js - Notes') {
+      var n = 0;
+      (function poll() { if (!style(w) && ++n < 100) setTimeout(poll, 50); })();
+    }
+    return w;
+  };
 })();
 </script>

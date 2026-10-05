@@ -544,7 +544,7 @@ Steps: θ_cr from Blasius at x_cr; find x₀ from the turbulent θ formula with 
 - **Control:** blowing, suction, tripping / vortex generators.
 
 ::: {.notes}
-This slide is new compared with last year's revision deck, because separation is now one complete section at the end of Chapter 4 (cylinder regimes, von Kármán street, adverse pressure gradient, separation criterion, aerofoils).
+Separation is one complete section at the end of Chapter 4 (cylinder regimes, von Kármán street, adverse pressure gradient, separation criterion, aerofoils); this slide summarises it.
 :::
 
 ## Where next?

@@ -177,7 +177,7 @@ Graph explanation:
 ::::
 
 ::: {.notes}
-Borrowed from the L2 pipe-flow experiment (in use since 1965): the jet leaving the end of the pipe, photographed with a flash (top: an instant) and with a longer exposure (bottom: a time average).
+Photos from the L2 pipe-flow experiment (in use since 1965): the jet leaving the end of the pipe, photographed with a flash (top: an instant) and with a longer exposure (bottom: a time average).
 
 - Laminar (left): flash and long exposure look the same. The flow is steady: the instantaneous flow IS the mean flow.
 - Turbulent (right, press →): the flash shows a rough, broken-up, irregular jet; the long exposure shows a smooth, well-defined jet.
@@ -513,8 +513,6 @@ Algebra if asked: from u_η = ν/η and ε = ν u_η²/η² we get ε = ν³/η�
 ::::
 
 ::: {.notes}
-NEW slide (energy cascade and −5/3 law, requested after last year's feedback).
-
 - Richardson's picture (1922): energy enters at the integral scale, is handed down through a sequence of ever smaller eddies, and is dissipated at the Kolmogorov scale.
 - Kolmogorov (1941) made this quantitative with two similarity hypotheses. First: at sufficiently high Re the small-scale motions are statistically isotropic and universal, determined by ν and ε only (that is why η, u_η, τ_η are built from ν and ε). Second: in the intermediate range of scales, l ≫ ℓ ≫ η, the statistics are determined by ε alone; viscosity is not yet important there.
 - Emphasise: ε plays two roles. It is the rate at which energy is passed down (the flux through the inertial range) and the rate at which it is finally dissipated. In equilibrium they are equal.
@@ -550,7 +548,7 @@ $E(\kappa) = C_K\,\varepsilon^{2/3}\kappa^{-5/3}, \quad C_K \approx 1.5, \qquad$
 :::
 
 ::: {.notes}
-NEW slide. Derive it live on the board.
+Derive it live on the board.
 
 - κ = 2π/ℓ is the wavenumber of an eddy of size ℓ. E(κ)dκ is the turbulent kinetic energy (per unit mass) contained in eddies with wavenumbers between κ and κ + dκ, so E has units (m²/s²)/(1/m) = m³/s².
 - Kolmogorov's second hypothesis says E can depend only on ε and κ in the inertial subrange. Only one combination has the right units: ε^(2/3) κ^(−5/3). The constant C_K (Kolmogorov constant) ≈ 1.5 is found from experiments.
@@ -610,7 +608,6 @@ Computational cost:
 - The number of grid points needed for 3D DNS scales as Re^(9/4).
 - For a car (Re = 10^6): (10^6)^2.25 ≈ 10^13.5 ≈ 3 × 10^13 grid points.
 - This is why direct numerical simulation (DNS) is impossible for industrial flows. We can't resolve η.
-- (The original slide said "billions of cells"; the estimate actually gives tens of trillions, which makes the point even more strongly.)
 :::
 
 ## Conclusion on scales
