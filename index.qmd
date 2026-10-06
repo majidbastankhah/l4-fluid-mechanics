@@ -6,13 +6,6 @@ toc: false
 
 Welcome to the course website. Everything for the module lives here: lecture notes, slides, problems with hints and solutions, and workshop material. Use the **search** box (top right) to find any topic across all of them. New to the course? Start with the [course overview](overview.qmd).
 
-::: {.callout-note .whats-new appearance="simple" icon=false}
-## What's new
-{{< include _whats-new.md >}}
-
-[All changes →](whats-new.qmd)
-:::
-
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-6}

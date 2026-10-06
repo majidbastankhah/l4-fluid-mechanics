@@ -7,7 +7,7 @@ Every push to `main` re-builds the site and publishes it to GitHub Pages automat
 
 | Path | What it is |
 |:--|:--|
-| `index.qmd` | Home page (with the "What's new" box) |
+| `index.qmd` | Home page |
 | `overview.qmd` | Course overview (background reading; Resources → Course overview, linked from the home page) |
 | `_whats-new.md`, `whats-new.qmd` | Change log for students: edit `_whats-new.md` only |
 | `notes/ch1.qmd` … | One page per chapter (HTML + downloadable PDF) |
@@ -33,7 +33,7 @@ Add one line at the **top** of `_whats-new.md` whenever you change something stu
 - **6 Oct 2026** · Chapter 2 notes: corrected the sign in [eq. (2.14)](notes/ch2.qmd#eq-xxx).
 ```
 
-Write links relative to the site root (`notes/ch2.qmd`, `problems/index.qmd#p2-15`). The home page shows the 5 newest entries in its "What's new" box; `whats-new.qmd` (Resources → What's new) shows the full list. For important changes, also post an announcement on Blackboard Ultra.
+Write links relative to the site root (`notes/ch2.qmd`, `problems/index.qmd#p2-15`). They appear on the What's new page (`whats-new.qmd`, Resources → What's new). For important changes, also post an announcement on Blackboard Ultra.
 
 ## Everyday editing
 
