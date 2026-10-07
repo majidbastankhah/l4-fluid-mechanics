@@ -29,6 +29,17 @@ jobs:
       - name: Render site
         run: quarto render
 
+      - name: Set up Python (for the slide PDFs)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Save every slide deck as a PDF (_site/slides/pdf/)
+        run: |
+          pip install playwright pypdf
+          python -m playwright install --with-deps chromium
+          python _dev/make-slide-pdfs.py
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

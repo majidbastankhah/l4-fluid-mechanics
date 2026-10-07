@@ -1,0 +1,29 @@
+---
+title: "L4 Fluid Mechanics: problem bank"
+subtitle: "With hints, final answers and full solutions"
+search: false
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry: margin=2cm
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    colorlinks: true
+    include-in-header: ../assets/macros.tex
+    output-file: "L4-Fluid-Mechanics-Problem-Bank-Solutions"
+problem-solutions: true
+filters:
+  - ../assets/problems-print.lua
+---
+
+<!-- Printable PDF of the problem bank (built automatically; the web version is problems/index.qmd). -->
+
+{{< include _ch1.qmd >}}
+
+{{< include _ch2.qmd >}}
+
+{{< include _ch3.qmd >}}
+
+{{< include _ch4.qmd >}}

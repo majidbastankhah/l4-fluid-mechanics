@@ -293,3 +293,9 @@ New TikZ figures: figures/src/s2-mass-abc, s2-conservative-cells, s2-free-surfac
 
 `publish.bat` in course-site: double-click, type a description, and it runs git add / commit / push.
 
+# 15. PDF downloads (October 2026)
+
+- **Slides:** every deck is saved as a PDF (one slide per page, exactly as on screen, all steps shown) by `_dev/make-slide-pdfs.py`, which the GitHub workflow runs after rendering. Links in a new PDF column on the Slides page.
+- **Problem bank:** two printable PDFs, problems only and with hints, final answers and full solutions (`problems/problem-bank-problems.qmd`, `problem-bank-solutions.qmd`, filter `assets/problems-print.lua`). Links in the "How to use this page" box. Both are rebuilt automatically from the same problem files, so they never go out of date.
+- What's new entry added.
+

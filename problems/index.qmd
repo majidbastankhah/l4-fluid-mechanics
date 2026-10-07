@@ -13,6 +13,7 @@ toc-depth: 3
 - Each problem says which part of the notes to **study first**. Just reading the notes is not sufficient in itself; using the knowledge you have gained to solve problems is a crucial part of your studies.
 - Help is layered: open the **hint** if you are stuck, check your **final answer**, and only then read the **full solution**. You will learn significantly more by struggling with a problem than by reading the answer.
 - Tick **done** when you have solved a problem; your progress is saved in this browser only.
+- **Printable versions (PDF):** [problems only](L4-Fluid-Mechanics-Problem-Bank.pdf) · [with hints, final answers and full solutions](L4-Fluid-Mechanics-Problem-Bank-Solutions.pdf).
 :::
 
 <div class="filterbar" id="filters">

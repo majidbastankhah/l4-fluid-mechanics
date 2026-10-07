@@ -4,23 +4,22 @@ format: html
 toc: false
 ---
 
-The slides open full screen in your browser. They link to the matching section of the notes, and the interactive figures work inside the slides too.
+The slides open full screen in your browser. They link to the matching section of the notes, and the interactive figures work inside the slides too. Each deck can also be downloaded as a PDF (one slide per page, all steps shown), for example to annotate in your own PDF app.
 
-| Lecture | Topic |
-|:--|:--|
-| [Chapter 1 · Lecture 1](slides/ch1-lecture1.qmd) | Fields and the material derivative |
-| [Chapter 1 · Lecture 2](slides/ch1-lecture2.qmd) | Vorticity and shear stress |
-| [Chapter 2](slides/ch2.qmd) | Conservation equations: mass, momentum and energy |
-| [Chapter 3 · Part 1](slides/ch3-part1.qmd) | What is turbulence? Scales, the energy cascade, averaging and the RANS equations |
-| [Chapter 3 · Part 2](slides/ch3-part2.qmd) | Turbulence modelling for incompressible flows |
-| [Chapter 4 · Part 1](slides/ch4-part1.qmd) | Laminar boundary layers: thicknesses, Prandtl's equations, Blasius, momentum integral |
-| [Chapter 4 · Part 2](slides/ch4-part2.qmd) | Turbulent boundary layers, transition, combined boundary layers, separation |
-| [Revision](slides/revision.qmd) | Chapters 1–4 |
+| Lecture | Topic | PDF |
+|:--|:--|:--|
+| [Chapter 1 · Lecture 1](slides/ch1-lecture1.qmd) | Fields and the material derivative | [PDF](slides/pdf/ch1-lecture1.pdf) |
+| [Chapter 1 · Lecture 2](slides/ch1-lecture2.qmd) | Vorticity and shear stress | [PDF](slides/pdf/ch1-lecture2.pdf) |
+| [Chapter 2](slides/ch2.qmd) | Conservation equations: mass, momentum and energy | [PDF](slides/pdf/ch2.pdf) |
+| [Chapter 3 · Part 1](slides/ch3-part1.qmd) | What is turbulence? Scales, the energy cascade, averaging and the RANS equations | [PDF](slides/pdf/ch3-part1.pdf) |
+| [Chapter 3 · Part 2](slides/ch3-part2.qmd) | Turbulence modelling for incompressible flows | [PDF](slides/pdf/ch3-part2.pdf) |
+| [Chapter 4 · Part 1](slides/ch4-part1.qmd) | Laminar boundary layers: thicknesses, Prandtl's equations, Blasius, momentum integral | [PDF](slides/pdf/ch4-part1.pdf) |
+| [Chapter 4 · Part 2](slides/ch4-part2.qmd) | Turbulent boundary layers, transition, combined boundary layers, separation | [PDF](slides/pdf/ch4-part2.pdf) |
+| [Revision](slides/revision.qmd) | Chapters 1–4 | [PDF](slides/pdf/revision.pdf) |
 
 ::: {.callout-note appearance="simple" collapse="true"}
 ## Keyboard shortcuts
 - **→ / Space**: next step · **←**: back · **F**: full screen · **Esc / O**: slide overview
 - **M**: menu (jump to any slide, change theme)
 - **C**: draw on the slide · **B**: blackboard
-- **E**: printable view; then print to PDF from your browser to save a copy
 :::

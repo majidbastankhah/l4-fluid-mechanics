@@ -19,6 +19,8 @@ Every push to `main` re-builds the site and publishes it to GitHub Pages automat
 | `resources/solving-strategy.qmd` | Problem-solving strategy for flow problems |
 | `assets/widgets/ch2.js`, `ch3.js`, `ch4.js`, `workshops.js` | Chapter-specific interactive figures |
 | `assets/report.html` | "⚑ Report a mistake" button: highlight text on any page → pre-filled Microsoft Form (form link and question ids at the top of the file); email fallback |
+| `problems/problem-bank-problems.qmd`, `problem-bank-solutions.qmd` | Printable PDFs of the problem bank (problems only / with hints, answers and solutions); `assets/problems-print.lua` turns the web toggles into PDF headings |
+| `_dev/make-slide-pdfs.py` | Saves every slide deck as a PDF in `_site/slides/pdf/` (run automatically by the GitHub workflow after rendering) |
 | `_dev/` | Not published: conventions (`CONVENTIONS.md`), change report, helper scripts |
 | `figures/src/*.tex` | TikZ source for every figure (one `tikzpicture` per file) |
 | `figures/build/` | Generated `.svg` (web) and `.pdf` (PDF notes) — commit these |
