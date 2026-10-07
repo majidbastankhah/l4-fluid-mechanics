@@ -1,0 +1,20 @@
+% Ch2 slides: free surface - zero shear at the liquid surface, non-zero at the wall
+\begin{tikzpicture}[scale=1.5, >=latex]
+  \definecolor{dpurple}{HTML}{68246D}
+  \fill[pattern=north east lines, pattern color=black!50] (0,-0.25) rectangle (4.2,0);
+  \draw[thick] (0,0) -- (4.2,0);
+  \fill[blue!6] (0,0) rectangle (4.2,2.0);
+  \draw[thick, blue!60!black] (0,2.0) -- (4.2,2.0);
+  \node[font=\Large] at (3.3,2.45) {air};
+  \node[font=\Large, blue!60!black] at (3.4,1.0) {water};
+  \draw[->, thick] (0.4,0) -- (0.4,2.6) node[left, font=\Large] {$y$};
+  % profile u(y): parabolic half-profile with zero slope at the surface
+  \draw[very thick, dpurple, domain=0:2.0, samples=40] plot ({0.4+1.8*(2*\x/2.0-(\x/2.0)^2)}, \x);
+  \foreach \yy in {0.4,0.9,1.4,1.85} {
+    \pgfmathsetmacro{\uu}{1.8*(2*\yy/2.0-(\yy/2.0)^2)}
+    \draw[->, dpurple!70] (0.4,\yy) -- ({0.4+\uu},\yy);
+  }
+  \node[font=\large, right, align=left] at (2.3,1.6) {$\partial u/\partial y \approx 0$};
+  \node[font=\large, right] at (1.55,0.3) {$\partial u/\partial y \neq 0$};
+  \draw[->, thin] (1.55,0.3) -- (0.75,0.2);
+\end{tikzpicture}

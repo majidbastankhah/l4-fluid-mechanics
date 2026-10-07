@@ -25,6 +25,10 @@ Every push to `main` re-builds the site and publishes it to GitHub Pages automat
 | `assets/widgets/widgets.js` | Interactive figures (nozzle, vorticity explorer) |
 | `_macros.qmd`, `assets/macros.tex` | Shared LaTeX macros (`\vect`, `\uvec`, `\del`) for web and PDF |
 
+## Publishing
+
+Double-click `publish.bat` (Windows), type a few words describing the change and press Enter: it runs `git add -A`, `git commit` and `git push`, and the website updates a few minutes later. The same by hand: `git add -A`, `git commit -m "..."`, `git push`.
+
 ## Telling students what changed
 
 Add one line at the **top** of `_whats-new.md` whenever you change something students should know about (corrections, new material, renumbering; not typo fixes):

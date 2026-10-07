@@ -13,10 +13,18 @@ institute: "Department of Engineering, Durham University · ENGI44710 / ENGI4721
 
 Two complementary viewpoints:
 
-::: {.incremental}
-- **Control-volume approach**: used in L1–L2 to analyse devices (pumps, turbines, ducts). Applies conservation laws over finite regions.
-- **Differential approach**: used in this course. Examines pointwise behaviour of *fluid elements*.
+:::: {.columns}
+::: {.column width="50%"}
+**Control-volume approach** (L1–L2): conservation laws over a finite region; devices such as pumps, turbines and ducts.
+
+![](../figures/build/ch1-approach-cv.svg){height="300px"}
 :::
+::: {.column .fragment width="50%"}
+**Differential approach** (this course): the pointwise behaviour of *fluid elements*.
+
+![](../figures/build/ch1-approach-element.svg){height="300px"}
+:::
+::::
 
 ::: {.notes}
 OPENING: This first lecture sets the conceptual foundations needed for the differential analysis of fluid motion. They have seen fluids before, but always at the control-volume level. Here we shift to analysing fields: velocity, pressure, density defined at every point. This is essential for later derivations of continuity, Navier–Stokes, and energy equations. Make clear that this pointwise viewpoint is what enables CFD and many modern engineering analyses.
@@ -35,6 +43,11 @@ Implications:
 
 - Fluids cannot sustain a shear force at rest.
 - Even tiny shear forces cause ongoing deformation.
+- A shear force acts *tangentially* (parallel) to the surface.
+
+::: {.fragment}
+![](../figures/build/ch1-solid-vs-fluid.svg){height="230px"}
+:::
 
 ::: {.notes}
 Use the comparison with solids: solids can support a shear force without flowing; fluids cannot. This behaviour defines fluids functionally rather than by molecular structure. It's a key concept for understanding viscosity and shear-driven flows later.
@@ -46,11 +59,13 @@ Shear force acts parallel, not perpendicular, to a surface.
 
 Two competing physical influences:
 
-- **Inertial forces**: due to fluid momentum (convective transport, destabilising).
-- **Viscous forces**: due to momentum diffusion (stabilising).
+- **Inertial forces**: due to fluid momentum.
+- **Viscous forces**: due to momentum diffusion.
 
 $$
-Re = \frac{\text{inertia forces}}{\text{viscous forces}}
+Re = \frac{\text{inertial forces}}{\text{viscous forces}}
+   = \frac{\text{convective transport}}{\text{diffusive transport}}
+   \;\sim\; \frac{\text{destabilising}}{\text{stabilising}}
 $$
 
 ::: {.fragment}
@@ -66,18 +81,26 @@ Also discuss convective vs diffusive process and how it relates to the Re number
 
 ## Unknown fields in fluid mechanics
 
-Six primary fields in general flows:
+:::: {.columns}
+::: {.column width="47%"}
+**Six unknown fields** (general flow):
 
-$$
-u,\; v,\; w,\; p,\; \rho,\; T
-$$
+- velocity $\vect{q} = (u, v, w) = u\,\uvec{i} + v\,\uvec{j} + w\,\uvec{k}$ **(3)**
+- pressure $p$ **(1)**
+- density $\rho$ **(1)**
+- temperature $T$ **(1)**
+:::
+::: {.column .fragment width="53%"}
+**Six equations** connect them:
 
-Connected through:
+- continuity (mass) **(1)**
+- momentum, i.e. force = mass × acceleration **(3)**
+- energy **(1)**
+- equation of state, e.g. ideal gas $p = \rho R T$ **(1)**
+:::
+::::
 
-- Continuity (mass)
-- Momentum conservation (3 scalar equations)
-- Energy conservation
-- Equation of state
+[$\uvec{i}, \uvec{j}, \uvec{k}$: unit vectors in the $x$, $y$, $z$ directions.]{.small}
 
 ::: {.notes}
 This produces a tightly coupled system of PDEs. Analytical solutions exist only for special cases; most engineering flows require numerical methods. Important to emphasise that the equations stem from universal physical principles, not empirical correlations.
@@ -93,6 +116,12 @@ Assumptions:
 - Properties represent averages over volumes that are still large compared with molecular scales.
 - Quantities like $u(x,y,z,t)$ are smooth functions.
 
+::: {.fragment}
+![](../figures/build/ch1-continuum-scales.svg){height="230px"}
+
+problem scale $L$ $\;\gg\;$ fluid element $\;\gg\;$ molecular scale
+:::
+
 ::: {.notes}
 Writing equations in differential form is the key for solving these equations numerically. Note that within each element we assume changes in fluid properties are negligible.
 
@@ -107,6 +136,10 @@ Two representations:
 - **Eulerian**: observe flow properties at fixed spatial points.
 
 We prefer the **Eulerian** viewpoint.
+
+::: {.fragment}
+![](../figures/build/ch1-euler-lagrange.svg){height="330px"}
+:::
 
 ::: {.notes}
 Use a simple analogy: standing on a bridge watching water pass (Eulerian) vs attaching a tracker to a leaf and following it downstream (Lagrangian). The material derivative is the link between these descriptions.
@@ -137,14 +170,14 @@ Emphasise why we need to know acceleration and its importance in the momentum eq
 For a fluid element moving along a path, $u = u\big(x(t),y(t),z(t),t\big)$:
 
 $$
-\frac{du}{dt} = \frac{\partial u}{\partial t} + \frac{\partial u}{\partial x}\frac{dx}{dt} + \frac{\partial u}{\partial y}\frac{dy}{dt} + \frac{\partial u}{\partial z}\frac{dz}{dt}
+\frac{du}{dt} = \frac{\partial u}{\partial t} + \frac{\partial u}{\partial x}\underbrace{\frac{dx}{dt}}_{=\,u} + \frac{\partial u}{\partial y}\underbrace{\frac{dy}{dt}}_{=\,v} + \frac{\partial u}{\partial z}\underbrace{\frac{dz}{dt}}_{=\,w}
 $$
 
 ::: {.fragment}
-and since $dx/dt = u$, $dy/dt = v$, $dz/dt = w$:
+The element's position changes at the local velocity, so
 
 $$
-\frac{du}{dt} = \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}
+\underbrace{\frac{du}{dt}}_{\substack{\text{following the element}\\ \text{(Lagrangian)}}} = \underbrace{\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}}_{\text{evaluated from the Eulerian field } u(x,y,z,t)}
 $$
 
 Similarly for $v$ and $w$.
@@ -154,11 +187,41 @@ Similarly for $v$ and $w$.
 Explain step-by-step: $u(x(t),y(t),z(t),t)$ is a composite function, so its derivative must account for how the fluid element moves through the field. Students should see why spatial gradients contribute to acceleration.
 :::
 
+## Compact notation: the operator $\vect{q}\cdot\del$
+
+The gradient operator and its dot product with $\vect{q}$:
+
+$$
+\del = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right) = \uvec{i}\,\frac{\partial}{\partial x} + \uvec{j}\,\frac{\partial}{\partial y} + \uvec{k}\,\frac{\partial}{\partial z}
+\qquad
+\vect{q}\cdot\del = u\frac{\partial}{\partial x} + v\frac{\partial}{\partial y} + w\frac{\partial}{\partial z}
+$$
+
+::: {.fragment}
+So each component reads
+
+$$
+\frac{du}{dt} = \frac{\partial u}{\partial t} + (\vect{q}\cdot\del)\,u, \qquad
+\frac{dv}{dt} = \frac{\partial v}{\partial t} + (\vect{q}\cdot\del)\,v, \qquad
+\frac{dw}{dt} = \frac{\partial w}{\partial t} + (\vect{q}\cdot\del)\,w
+$$
+:::
+
+::: {.fragment}
+**Careful:** $\;\vect{q}\cdot\del \neq \del\cdot\vect{q}$. For two vectors $\vect{a}\cdot\vect{b} = \vect{b}\cdot\vect{a}$, but $\del$ is an operator: $\vect{q}\cdot\del$ is an operator waiting to act on something, while $\del\cdot\vect{q} = \partial u/\partial x + \partial v/\partial y + \partial w/\partial z$ is a number at each point (the divergence, Chapter 2).
+:::
+
+::: {.notes}
+Write ∇ as a vector of derivatives first, then form the dot product with q. The order matters: q·∇ is a scalar differential operator, ∇·q is the divergence that will appear in the continuity equation next week.
+:::
+
 ## Vector form of the material derivative
 
 $$
 \frac{D\vect{q}}{Dt} = \frac{\partial \vect{q}}{\partial t} + (\vect{q}\cdot\del)\vect{q}
 $$
+
+$D/Dt$ (also written $d/dt$) is the **total**, or **material**, derivative: the rate of change *following the fluid element*.
 
 Two contributions:
 
@@ -188,13 +251,14 @@ Peer-instruction moment: ask them to vote (hands, or the in-class polling tool),
 
 ## Example: material derivative
 
-Given the velocity field, find the acceleration of a fluid element:
-$$
-\vect{q} = 3t\,\uvec{i} + xz\,\uvec{j} + t y^2\,\uvec{k}
-$$
+Find the acceleration of a fluid element in the velocity field $\;\vect{q} = 3t\,\uvec{i} + xz\,\uvec{j} + t y^2\,\uvec{k}$
 
 ::: {.fragment}
 $u = 3t,\; v = xz,\; w = t y^2 \qquad \dfrac{\partial \vect{q}}{\partial t} = 3\uvec{i} + y^2\uvec{k}$
+:::
+
+::: {.fragment}
+$\vect{q}\cdot\del = 3t\,\dfrac{\partial}{\partial x} + xz\,\dfrac{\partial}{\partial y} + ty^2\,\dfrac{\partial}{\partial z}$
 :::
 
 ::: {.fragment}
@@ -231,6 +295,10 @@ Encourage students to try deriving this live with you before revealing each step
 $A_B < A_A$ and $A_A u_A = A_B u_B \;\Rightarrow\; u_B > u_A$: elements accelerate even though the flow is steady.
 :::
 
+::: {.fragment}
+Steady: $\partial/\partial t = 0$, but the convective term survives: $(\vect{q}\cdot\del)\vect{q} \to u\,\dfrac{\partial u}{\partial x} \neq 0$.
+:::
+
 ::: {.notes}
 Use this figure to reinforce the idea of convective acceleration. Point out that:
 
@@ -253,9 +321,13 @@ With V0 = 3 m/s, L = 0.1 m this is exactly Problem 1.2 — students can use it t
 
 ## Streamtube interpretation
 
-![](../figures/build/ch1-streamtube.svg){width=80%}
+![](../figures/build/ch1-streamtube.svg){height="360px"}
 
 No flow crosses the wall of a streamtube, so the same argument applies: as the tube narrows from A to B the element speeds up.
+
+::: {.fragment}
+**Steady** ($\partial/\partial t = 0$) does **not** mean $D/Dt = 0$.
+:::
 
 ::: {.notes}
 Explain that a streamtube is a bundle of streamlines such that there is no flow across its mantle. Fluid entering at A remains within the streamtube and exits at B. For incompressible steady flow, the volume flow rate is constant, so A_A u_A = A_B u_B. Just as in the converging duct, this implies acceleration of fluid elements in the streamtube as the area shrinks.

@@ -248,3 +248,48 @@ The GitHub "Report an issue" links (which need a GitHub account) are replaced by
 - **Speaker view layout:** the speaker view (S) shows only the current slide (left, larger) and the notes with the timer (right); the "upcoming slide" panel and the layout selector were removed.
 - **What's new:** a "What's new" box at the top of the home page shows the 5 newest changes; the full list is under Resources → What's new. Both come from one file, `_whats-new.md` (add one line at the top per change; see README).
 - **Course overview page** (`overview.qmd`, Resources → Course overview, linked from the home page): last year's course overview, updated for 2026/27 (20 one-hour sessions, website, problem bank, workshops). The course roadmap table was removed from the home page (it is on the Notes page).
+
+# 12. Lecture 1 slides: last year's annotations (October 2026)
+
+The handwritten annotations from last year's Lecture 1 (lecture_1_annotated.pdf) were turned into slide content, so they no longer need to be drawn live:
+
+- Two approaches: sketches of a control volume (fluxes across its boundary) and of a fluid element in the field.
+- Definition of a fluid: shear force acts tangentially; sketch of a solid (fixed deformation) vs a fluid (keeps deforming).
+- Reynolds number: inertial/viscous = convective/diffusive transport ~ destabilising/stabilising.
+- Unknown fields: the 6 unknowns (q = (u,v,w), p, ρ, T) matched with the 6 equations (continuity 1, momentum 3 = force = mass × acceleration, energy 1, equation of state 1, e.g. p = ρRT).
+- Continuum hypothesis: sketch of problem scale ≫ fluid element ≫ molecular scale.
+- Eulerian vs Lagrangian: sketch (follow one element vs watch fixed points).
+- Chain rule: dx/dt = u, dy/dt = v, dz/dt = w marked; left side labelled "following the element (Lagrangian)", right side "evaluated from the Eulerian field".
+- New slide "Compact notation: the operator q·∇": ∇ as a vector of derivatives, q·∇, the three component equations, and the warning q·∇ ≠ ∇·q.
+- Vector form: D/Dt named the total (material) derivative. Worked example: q·∇ written out for the given field.
+- Converging duct and streamtube: steady (∂/∂t = 0) does not mean D/Dt = 0; in 1D the convective term is u ∂u/∂x.
+
+Five new TikZ figures: figures/src/ch1-approach-cv, ch1-approach-element, ch1-solid-vs-fluid, ch1-continuum-scales, ch1-euler-lagrange.
+
+# 13. Chapter 2 slides: last year's annotations (October 2026)
+
+From lecture_ch2_annotated.pdf, added as slide content:
+
+- Mass concept: sketch of a fluid element with (A) out, (B) in, (C) accumulation; (C) = ∂m/∂t = ∂(ρ dV)/∂t = ∂ρ/∂t dx dy dz.
+- Taylor series: the neglected ½ ∂²φ/∂x² (dx)² + … term shown explicitly.
+- x-direction balance: the y- and z-face results ∂(ρv)/∂y dV and ∂(ρw)/∂z dV.
+- General continuity: component form after dividing by dV, and the definition of the divergence ∇·a.
+- Incompressible: ρ∇·q = 0 and ρ = 0 is non-physical, hence ∇·q = 0; Ma = U/c with c the speed of sound.
+- Continuity example: "incompressible" emphasised; the integration ∫∂v/∂y dy = ∫−2ax dy written out.
+- Conservative form: sketch of neighbouring cells (what leaves one cell enters the next).
+- Non-conservative form: ∂ρ/∂t + q·∇ρ marked as Dρ/Dt, with the Chapter 1 reminder d/dt = D/Dt = ∂/∂t + (q·∇).
+- Momentum: ΣF = ma is a vector equation (three scalar equations). Net pressure force written as −∂p/∂x dV. τ_ij = τ_ji.
+- Summing forces in x: normal stress (x-faces) and shear stresses (y-, z-faces) labelled.
+- Equation of motion (x): terms labelled (mass × acceleration, body force, pressure, viscous stresses); body force per unit volume; gravity usually the only body force.
+- Stokes' relations: index-notation form τ_ij = μ(∂u_i/∂x_j + ∂u_j/∂x_i) − ⅔μ(∇·q)δ_ij; ∇·q = 0 for incompressible flow.
+- Navier–Stokes: q = (u, v, w); the Laplacian and (μ∇²q)_x = μ∇²u written out.
+- Physical interpretation: x-component in full; ν = μ/ρ; g = (0, 0, −g) with z up.
+- Energy: E = e + ½|q|² with e = C_v T; ρ and C_v constant; DT/Dt = ∂T/∂t + (q·∇)T.
+- Free surface: sketch of the liquid film with ∂u/∂y ≈ 0 at the surface and ≠ 0 at the wall.
+
+New TikZ figures: figures/src/s2-mass-abc, s2-conservative-cells, s2-free-surface.
+
+# 14. Publishing
+
+`publish.bat` in course-site: double-click, type a description, and it runs git add / commit / push.
+

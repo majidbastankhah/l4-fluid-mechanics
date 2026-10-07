@@ -53,6 +53,19 @@ $$
 = 0
 $$
 
+:::: {.columns}
+::: {.column width="40%"}
+![](../figures/build/s2-mass-abc.svg){height="170px"}
+:::
+::: {.column .fragment width="60%"}
+**(C)**: mass in the element $m = \rho\, dV$, so
+$$
+\frac{\partial m}{\partial t} = \frac{\partial (\rho\, dV)}{\partial t} = \frac{\partial \rho}{\partial t}\, dx\,dy\,dz
+$$
+**(A), (B)**: next slides.
+:::
+::::
+
 ::: {.notes}
 Start by establishing the physical principle before the maths. Draw a simple box on the board to represent the control volume.
 
@@ -69,7 +82,7 @@ Consider a small element of volume $dV = dx\,dy\,dz$.
 
 **Taylor series approximation:** since $dx$ is small, the outflow is approximated as
 $$
-\phi(x+dx) \approx \phi(x) + \frac{\partial \phi}{\partial x}\, dx
+\phi(x+dx) = \phi(x) + \frac{\partial \phi}{\partial x}\, dx + \underbrace{\frac{1}{2}\frac{\partial^2 \phi}{\partial x^2}(dx)^2 + \dots}_{\approx\, 0 \text{ as } dx \to 0} \;\approx\; \phi(x) + \frac{\partial \phi}{\partial x}\, dx
 $$
 
 ::: {.notes}
@@ -80,13 +93,17 @@ Explain why we use a Taylor series. We neglect higher-order terms ($dx^2$, etc.)
 
 Let's sum the mass flow in the $x$-direction:
 
-![](../figures/build/s2-element-massflux.svg){height="240px" fig-align="center"}
+![](../figures/build/s2-element-massflux.svg){height="170px" fig-align="center"}
 
 **Inflow:** $(\rho u)\, dy\,dz$ &emsp;&emsp; **Outflow:** $\left( \rho u + \dfrac{\partial (\rho u)}{\partial x}dx \right) dy\,dz$
 
 ::: {.fragment}
 **Net outflow (out − in):**<br>
 $\displaystyle \left[\rho u + \frac{\partial (\rho u)}{\partial x}dx\right]dy\,dz - \rho u\,dy\,dz = \frac{\partial (\rho u)}{\partial x}\,dx\,dy\,dz = \frac{\partial (\rho u)}{\partial x}\,dV$
+:::
+
+::: {.fragment}
+Similarly, faces normal to $y$: $\;\dfrac{\partial (\rho v)}{\partial y}\,dV$ &emsp; faces normal to $z$: $\;\dfrac{\partial (\rho w)}{\partial z}\,dV$
 :::
 
 ::: {.notes}
@@ -108,7 +125,13 @@ $$
 
 ::: {.fragment}
 Dividing by the volume $dV$:
+$$
+\frac{\partial \rho}{\partial t} + \frac{\partial (\rho u)}{\partial x} + \frac{\partial (\rho v)}{\partial y} + \frac{\partial (\rho w)}{\partial z} = 0
+$$
+:::
 
+::: {.fragment}
+With the divergence $\;\del\cdot\vect{a} = \dfrac{\partial a_x}{\partial x} + \dfrac{\partial a_y}{\partial y} + \dfrac{\partial a_z}{\partial z}\;$ and $\;\vect{q} = (u, v, w)$:
 $$
 \boxed{\;\frac{\partial \rho}{\partial t} + \del \cdot (\rho \vect{q}) = 0\;}
 $$
@@ -134,14 +157,14 @@ $$
 ::: {.fragment}
 **2. Incompressible flow:** density $\rho = \text{constant}$.
 
-- $\partial \rho / \partial t = 0$
-- $\rho$ can be pulled out of the divergence.
+- $\partial \rho / \partial t = 0$, and $\rho$ can be pulled out of the divergence: $\;\rho\, \del \cdot \vect{q} = 0$.
+- $\rho = 0$ is non-physical, so
 
 $$
 \boxed{\;\del \cdot \vect{q} = 0\;}
 $$
 
-*This applies to almost all liquids and low-speed gases ($Ma < 0.3$).*
+*This applies to almost all liquids and low-speed gases ($Ma = U/c < 0.3$, with $c$ the speed of sound).*
 :::
 
 ::: {.notes}
@@ -167,7 +190,7 @@ Peer-instruction moment: give them 30 s to vote individually (hands or the polli
 
 ## Example: continuity equation
 
-An incompressible velocity field is given by
+An **incompressible** velocity field is given by
 $$
 u = a(x^2 - y^2), \qquad w = b, \qquad v \text{ unknown,}
 $$
@@ -182,7 +205,7 @@ Substitute: $\quad 2ax + \dfrac{\partial v}{\partial y} + 0 = 0 \;\Rightarrow\; 
 :::
 
 ::: {.fragment}
-Integrate with respect to $y$ (holding $x$, $z$, $t$ fixed):
+Integrate with respect to $y$ (holding $x$, $z$, $t$ fixed): $\;\displaystyle\int \frac{\partial v}{\partial y}\, dy = \int -2ax\, dy$
 :::
 
 ::: {.fragment .answer-box}
@@ -213,6 +236,10 @@ $$
 - Explicitly represents fluxes through the "boundaries" of fluid elements.
 - Preferred for numerical simulations (CFD).
 
+::: {.fragment}
+![](../figures/build/s2-conservative-cells.svg){height="170px" fig-align="center"}
+:::
+
 ::: {.notes}
 "Conservative" means it strictly conserves the quantity (mass) inside the box. If density goes up, it MUST be because mass flowed in through the boundary.
 :::
@@ -227,14 +254,15 @@ $$
 ::: {.fragment}
 Substitute this back into the continuity equation:
 $$
-\frac{\partial \rho}{\partial t} + \vect{q} \cdot \del \rho + \rho\, \del \cdot \vect{q} = 0
+\underbrace{\frac{\partial \rho}{\partial t} + \vect{q} \cdot \del \rho}_{D\rho/Dt} + \rho\, \del \cdot \vect{q} = 0
 $$
 :::
 
 ::: {.fragment}
-Using the material derivative $\dfrac{D}{Dt} = \dfrac{\partial}{\partial t} + \vect{q}\cdot\del$:
+Using the material derivative from Chapter 1, $\;\dfrac{d}{dt} = \dfrac{D}{Dt} = \dfrac{\partial}{\partial t} + (\vect{q}\cdot\del)$:
 $$
 \boxed{\;\frac{D\rho}{Dt} + \rho\, \del \cdot \vect{q} = 0\;}
+\qquad \text{non-conservative form of continuity}
 $$
 :::
 
@@ -252,6 +280,8 @@ We apply Newton's 2nd law to the fluid element:
 $$
 \sum \vect{F} = m\, \vect{a}
 $$
+
+A vector equation, i.e. three scalar ones: $\quad \sum F_x = m\,a_x, \quad \sum F_y = m\,a_y, \quad \sum F_z = m\,a_z$
 
 ::: {.fragment}
 What forces act on the fluid?
@@ -275,7 +305,7 @@ Momentum is a VECTOR equation. We will derive it for the x-direction first.
 
 ::: {.fragment}
 Net pressure force:
-$\quad p\,dy\,dz - \left(p + \dfrac{\partial p}{\partial x}dx\right)dy\,dz = -\dfrac{\partial p}{\partial x}\,dx\,dy\,dz$
+$\quad p\,dy\,dz - \left(p + \dfrac{\partial p}{\partial x}dx\right)dy\,dz = -\dfrac{\partial p}{\partial x}\,dx\,dy\,dz = -\dfrac{\partial p}{\partial x}\,dV$
 :::
 
 ::: {.notes}
@@ -298,7 +328,7 @@ Action (press C to draw over the figure, or reveal step by step):
 
 ![](../figures/build/s2-stress-notation.svg){height="290px" fig-align="center"}
 
-[Normal stresses are sometimes written $\sigma_{xx}$.]{.small}
+Symmetry: $\;\tau_{ij} = \tau_{ji}$, e.g. $\tau_{xy} = \tau_{yx}$. &emsp; [Normal stresses are sometimes written $\sigma_{xx}$.]{.small}
 
 ::: {.notes}
 Use the diagram from the notes here. $\tau_{xy}$ acts in the x-direction on a face whose normal is in the y-direction.
@@ -322,7 +352,7 @@ Same element, now with the viscous stresses that act in the x-direction (pressur
 - On each pair of faces the value at the far face is expanded with a Taylor series, exactly as for the mass flux, so only the derivative survives in the net force (next slide).
 :::
 
-## Summing the forces
+## Summing the forces in $x$
 
 Summing all surface forces in the $x$-direction:
 
@@ -333,7 +363,7 @@ $$
 
 **Viscous stress force (net):**
 $$
-\left( \frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z} \right) dx\,dy\,dz
+\Bigg( \underbrace{\frac{\partial \tau_{xx}}{\partial x}}_{\substack{\text{normal stress}\\ x\text{-faces}}} + \underbrace{\frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z}}_{\substack{\text{shear stresses}\\ y\text{- and } z\text{-faces}}} \Bigg)\, dx\,dy\,dz
 $$
 
 ::: {.notes}
@@ -342,13 +372,15 @@ Walk through the pressure cancellation: p − (p + ∂p/∂x dx) = −∂p/∂x 
 Same for each stress pair, e.g. (τ_xy + ∂τ_xy/∂y dy) dx dz − τ_xy dx dz = ∂τ_xy/∂y dx dy dz.
 :::
 
-## Equation of motion
+## Equation of motion ($x$-direction)
 
-Mass $\times$ acceleration = forces (per unit volume):
+Mass $\times$ acceleration = forces, per unit volume (mass $= \rho\,dV$, acceleration $= Du/Dt$):
 
 $$
-\rho \frac{Du}{Dt} = \rho F_x - \frac{\partial p}{\partial x} + \left( \frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z} \right)
+\underbrace{\rho \frac{Du}{Dt}}_{\text{mass}\,\times\,\text{accel.}} = \underbrace{\rho F_x}_{\text{body force}} \underbrace{- \frac{\partial p}{\partial x}}_{\text{pressure}} + \underbrace{\left( \frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z} \right)}_{\text{viscous stresses}}
 $$
+
+[$\rho F_x$: body force per unit volume ($F_x$ per unit mass). Often gravity is the only body force.]{.small}
 
 [Similarly in $y$ and $z$ (with $\tau_{yx}, \tau_{yy}, \tau_{yz}$ and $\tau_{zx}, \tau_{zy}, \tau_{zz}$).]{.small}
 
@@ -382,6 +414,10 @@ $$
 
 [and similarly for $\tau_{yz}$, $\tau_{zx}$, $\tau_{yy}$, $\tau_{zz}$.]{.small}
 
+::: {.fragment}
+Compactly (index notation): $\;\tau_{ij} = \tau_{ji} = \mu\left(\dfrac{\partial u_i}{\partial x_j} + \dfrac{\partial u_j}{\partial x_i}\right) - \dfrac{2}{3}\mu\,(\del\cdot\vect{q})\,\delta_{ij}$. &emsp; Incompressible: $\del\cdot\vect{q} = 0$.
+:::
+
 - $\mu$: dynamic viscosity.
 - Relates stress directly to **velocity gradients**.
 
@@ -397,16 +433,18 @@ The shear stress formula should look familiar from Chapter 1 (Couette flow was j
 
 Substituting the stresses back into the equation of motion.
 
-**Assumptions:**
-
-- Incompressible ($\rho$ is constant).
-- Constant viscosity ($\mu$ is constant).
-- Body force = gravity ($\vect{F} = \vect{g}$).
+**Assumptions:** incompressible ($\rho$ constant); constant viscosity ($\mu$ constant); body force = gravity ($\vect{F} = \vect{g}$).
 
 ::: {.fragment}
 $$
-\boxed{\;\rho \frac{D\vect{q}}{Dt} = -\del p + \mu \del^2 \vect{q} + \rho \vect{g}\;}
+\boxed{\;\rho \frac{D\vect{q}}{Dt} = -\del p + \mu \del^2 \vect{q} + \rho \vect{g}\;} \qquad \vect{q} = (u, v, w)
 $$
+:::
+
+::: {.fragment}
+Laplacian: $\;\del^2 = \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2}$
+
+e.g. $\;(\mu \del^2 \vect{q})_x = \mu \del^2 u = \mu\left(\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} + \dfrac{\partial^2 u}{\partial z^2}\right)$
 :::
 
 ::: {.notes}
@@ -434,6 +472,14 @@ $$
 $$
 
 [(all forces per unit mass)]{.small}
+
+::: {.fragment}
+$x$-component:
+$$
+\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z} = -\frac{1}{\rho}\frac{\partial p}{\partial x} + \nu \del^2 u + g_x
+$$
+[$\nu = \mu/\rho$: kinematic viscosity. &emsp; With $z$ pointing up, $\vect{g} = (0, 0, -g)$.]{.small}
+:::
 
 ::: {.notes}
 This is the NON-CONSERVATIVE form.
@@ -469,7 +515,9 @@ Note we only needed to say the flow is unidirectional (v = w = 0): continuity th
 Rate of change of energy = net heat added + net work done
 :::
 
-Skipping the derivation (see [Lecture Notes §2.3](../notes/ch2.qmd#sec-energy)), the final equation for an incompressible, constant-property fluid is:
+Total energy = internal energy + kinetic energy: $\;E = e + \tfrac{1}{2}|\vect{q}|^2$, with $e = C_v T$.
+
+Skipping the derivation (see [Lecture Notes §2.3](../notes/ch2.qmd#sec-energy)), the final equation for an incompressible ($\rho$ constant), constant-property ($C_v$, $k$ constant) fluid is:
 
 $$
 \boxed{\;\rho C_v \frac{DT}{Dt} = k \del^2 T + \Phi + \rho \dot{Q}\;}
@@ -502,7 +550,7 @@ $$
 ::: {.fragment fragment-index=1}
 [**(I) Change in internal energy**]{style="color:#0066CC"}
 
-- Includes **local** and **convection** terms.
+- Includes **local** and **convection** terms: $\dfrac{DT}{Dt} = \dfrac{\partial T}{\partial t} + (\vect{q}\cdot\del)T$.
 :::
 
 ::: {.fragment fragment-index=3}
@@ -689,12 +737,19 @@ $$
 
 ## Special case: the free surface
 
+:::: {.columns}
+::: {.column width="64%"}
 **Scenario:** liquid (e.g. water) meeting gas (e.g. air).
 
 **1. Shear stress balance (dynamic condition):**
 $$
-\tau_{\text{liquid}} = \tau_{\text{gas}} \quad\Rightarrow\quad \mu_L \left(\frac{\partial u}{\partial y}\right)_L = \mu_G \left(\frac{\partial u}{\partial y}\right)_G
+\tau_{\text{liquid}} = \tau_{\text{gas}} \;\Rightarrow\; \mu_L \left(\frac{\partial u}{\partial y}\right)_L = \mu_G \left(\frac{\partial u}{\partial y}\right)_G
 $$
+:::
+::: {.column width="36%"}
+![](../figures/build/s2-free-surface.svg){height="200px"}
+:::
+::::
 
 ::: {.fragment}
 **2. Approximation:** gas is much less viscous than liquid ($\mu_G \ll \mu_L$):
