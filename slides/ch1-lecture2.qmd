@@ -91,6 +91,15 @@ Which flow has **zero** vorticity (away from the centre/walls)?
 **A.** The whirlpool (free vortex) is irrotational; the shear flow, with *straight* streamlines, is rotational: $\xi_z = -U/h$. Let's see why.
 :::
 
+::: {.fragment}
+For the whirlpool, use the curl in cylindrical coordinates $(r, \theta, z)$ ([notes, Appendix](../notes/ch1.qmd#sec-curvilinear)):
+$$
+\xi_z = \frac{1}{r}\frac{\partial (r\,u_\theta)}{\partial r} - \frac{1}{r}\frac{\partial u_r}{\partial \theta},
+\qquad r\,u_\theta = \frac{\Gamma}{2\pi} = \text{const},\; u_r = 0
+\;\Rightarrow\; \xi_z = 0 \quad (r \neq 0)
+$$
+:::
+
 ::: {.notes}
 Vote, discuss with a neighbour, vote again. Most students pick B (or "neither"): the classic misconception that curved streamlines mean rotation. Resolve it with the explorer on the next slide.
 :::

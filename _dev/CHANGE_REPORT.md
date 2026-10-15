@@ -299,3 +299,7 @@ New TikZ figures: figures/src/s2-mass-abc, s2-conservative-cells, s2-free-surfac
 - **Problem bank:** two printable PDFs, problems only and with hints, final answers and full solutions (`problems/problem-bank-problems.qmd`, `problem-bank-solutions.qmd`, filter `assets/problems-print.lua`). Links in the "How to use this page" box. Both are rebuilt automatically from the same problem files, so they never go out of date.
 - What's new entry added.
 
+# 16. Lecture 2 vorticity quick question (October 2026)
+
+The quick question gives the whirlpool as $u_\theta = \Gamma/2\pi r$, but the slides never showed the curl in cylindrical coordinates. A reveal step now shows $\xi_z = \frac{1}{r}\partial(r u_\theta)/\partial r - \frac{1}{r}\partial u_r/\partial\theta = 0$ (since $r u_\theta$ = const, $u_r = 0$), with a link to the notes appendix (curl in curvilinear coordinates).
+
