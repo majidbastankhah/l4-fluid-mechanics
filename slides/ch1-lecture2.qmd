@@ -88,16 +88,25 @@ Which flow has **zero** vorticity (away from the centre/walls)?
 4. Neither
 
 ::: {.fragment}
-**A.** The whirlpool (free vortex) is irrotational; the shear flow, with *straight* streamlines, is rotational: $\xi_z = -U/h$. Let's see why.
+**A.** Only the whirlpool (free vortex) is irrotational.
 :::
 
 ::: {.fragment}
-For the whirlpool, use the curl in cylindrical coordinates $(r, \theta, z)$ ([notes, Appendix](../notes/ch1.qmd#sec-curvilinear)):
+:::: {.columns}
+::: {.column width="55%"}
+**Whirlpool** ([cylindrical curl](../notes/ch1.qmd#sec-curvilinear)):
 $$
-\xi_z = \frac{1}{r}\frac{\partial (r\,u_\theta)}{\partial r} - \frac{1}{r}\frac{\partial u_r}{\partial \theta},
-\qquad r\,u_\theta = \frac{\Gamma}{2\pi} = \text{const},\; u_r = 0
-\;\Rightarrow\; \xi_z = 0 \quad (r \neq 0)
+\xi_z = \frac{1}{r}\frac{\partial (r\,u_\theta)}{\partial r} - \frac{1}{r}\frac{\partial u_r}{\partial \theta} = 0
 $$
+[since $r\,u_\theta = \Gamma/2\pi$ is constant and $u_r = 0$ (for $r \neq 0$)]{.small}
+:::
+::: {.column width="45%"}
+**Plates** ($u = Uy/h$, $v = 0$):
+$$
+\xi_z = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = 0 - \frac{U}{h} = -\frac{U}{h} \neq 0
+$$
+:::
+::::
 :::
 
 ::: {.notes}

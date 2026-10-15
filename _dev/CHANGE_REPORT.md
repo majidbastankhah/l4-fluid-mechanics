@@ -303,3 +303,4 @@ New TikZ figures: figures/src/s2-mass-abc, s2-conservative-cells, s2-free-surfac
 
 The quick question gives the whirlpool as $u_\theta = \Gamma/2\pi r$, but the slides never showed the curl in cylindrical coordinates. A reveal step now shows $\xi_z = \frac{1}{r}\partial(r u_\theta)/\partial r - \frac{1}{r}\partial u_r/\partial\theta = 0$ (since $r u_\theta$ = const, $u_r = 0$), with a link to the notes appendix (curl in curvilinear coordinates).
 
+The same reveal step also shows the calculation for the flow between plates: $\xi_z = \partial v/\partial x - \partial u/\partial y = -U/h \neq 0$, side by side with the whirlpool.
