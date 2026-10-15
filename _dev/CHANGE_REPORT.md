@@ -304,3 +304,15 @@ New TikZ figures: figures/src/s2-mass-abc, s2-conservative-cells, s2-free-surfac
 The quick question gives the whirlpool as $u_\theta = \Gamma/2\pi r$, but the slides never showed the curl in cylindrical coordinates. A reveal step now shows $\xi_z = \frac{1}{r}\partial(r u_\theta)/\partial r - \frac{1}{r}\partial u_r/\partial\theta = 0$ (since $r u_\theta$ = const, $u_r = 0$), with a link to the notes appendix (curl in curvilinear coordinates).
 
 The same reveal step also shows the calculation for the flow between plates: $\xi_z = \partial v/\partial x - \partial u/\partial y = -U/h \neq 0$, side by side with the whirlpool.
+
+# 17. Vorticity explorer (October 2026)
+
+The red and black cross on each fluid element used to be a rigid cross turning at ξ/2, drawn on top of a deforming (material) element, which looked inconsistent. Now:
+
+- the red and black lines are **material lines** drawn on the fluid: they move with the flow, so they turn at different rates and bend (in the free vortex the radial line tilts backwards and the tangential line turns forwards by the same amount);
+- a **dashed blue rigid cross** (the "vorticity meter") turns at the average rate of the two lines, ξ/2;
+- two tick boxes switch each on or off, and the legend under the explorer explains both;
+- elements in simple shear now restart every few seconds, like the other flows, so the lines stay readable.
+
+Notes §1.3 text and the Lecture 2 speaker notes were updated to match.
+

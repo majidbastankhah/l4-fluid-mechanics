@@ -217,17 +217,19 @@
     let opts = '';
     for (const k in FIELDS) opts += '<option value="' + k + '"' + (k === start ? ' selected' : '') + '>' + FIELDS[k].name.replace(/<[^>]+>/g, '') + '</option>';
     ctrl.innerHTML = '<label>Flow: <select data-k="field">' + opts + '</select></label>' +
-      '<label><input type="checkbox" data-k="cross" checked> show "vorticity meter" cross</label>' +
+      '<label><input type="checkbox" data-k="arms" checked> lines drawn on the fluid</label>' +
+      '<label><input type="checkbox" data-k="cross" checked> vorticity meter</label>' +
       '<button class="wbtn" data-k="play">Pause</button><button class="wbtn" data-k="reset">Restart</button>';
     root.appendChild(ctrl);
     const H = 400, ctx = makeCanvas(root, H);
     const out = el('div', { class: 'readout' });
     root.appendChild(out);
 
-    const s = { field: start, playing: true, cross: true, els: [] };
+    const s = { field: start, playing: true, cross: true, arms: true, els: [] };
     const q = k => ctrl.querySelector('[data-k="' + k + '"]');
     q('field').addEventListener('change', e => { s.field = e.target.value; reset(); });
     q('cross').addEventListener('change', e => { s.cross = e.target.checked; });
+    q('arms').addEventListener('change', e => { s.arms = e.target.checked; });
     q('play').addEventListener('click', e => { s.playing = !s.playing; e.target.textContent = s.playing ? 'Pause' : 'Play'; });
     q('reset').addEventListener('click', reset);
 
@@ -244,14 +246,16 @@
         case 'stagnation': return [[0.25, 1.9], [-0.25, 1.9], [0.6, -1.9], [-0.9, -1.9]];
       }
     }
-    function reset() {
-      const a = 0.22;
-      s.els = seeds().map(([cx, cy]) => ({
-        home: [cx, cy], c: [cx, cy], th: 0, age: 0,
-        pts: [[cx - a, cy - a], [cx + a, cy - a], [cx + a, cy + a], [cx - a, cy + a]]
-      }));
-      s.els.forEach(e => { e.pts = refine(e.pts); });
+    const A = 0.22;   // half-size of a fluid element
+    function fresh(cx, cy) {
+      // pts: element boundary; arms: two perpendicular material lines through the centre
+      // (red along x, black along y), all carried by the flow
+      const line = (dx, dy) => Array.from({ length: 11 }, (_, k) => [cx + dx * (k / 5 - 1), cy + dy * (k / 5 - 1)]);
+      return { home: [cx, cy], c: [cx, cy], th: 0, age: 0,
+        pts: refine([[cx - A, cy - A], [cx + A, cy - A], [cx + A, cy + A], [cx - A, cy + A]]),
+        arms: [line(A, 0), line(0, A)] };
     }
+    function reset() { s.els = seeds().map(([cx, cy]) => fresh(cx, cy)); }
     function refine(sq) { // 10 points per side so the element outline can bend
       const p = [];
       for (let i = 0; i < 4; i++) {
@@ -273,18 +277,17 @@
         const h = dt * 0.6, F = FIELDS[s.field];
         for (const e of s.els) {
           e.c = adv(e.c, h); e.pts = e.pts.map(p => adv(p, h));
-          e.th += 0.5 * F.w(e.c[0], e.c[1]) * h; // fluid element spins at half the vorticity
+          e.arms = e.arms.map(l => l.map(p => adv(p, h)));
+          e.th += 0.5 * F.w(e.c[0], e.c[1]) * h; // the meter turns at half the vorticity
           e.age += h;
           const out = Math.abs(e.c[0]) > xmax() + 0.5 || Math.abs(e.c[1]) > ymax() + 0.5;
-          const tooOld = (s.field === 'stagnation' && e.age > 3.2) || (s.field === 'vortex' && e.age > 3);
-          if (out || tooOld) {
-            if (s.field === 'uniform' || s.field === 'shear') { // wrap around horizontally
-              const L = 2 * xmax() + 1, sh = e.c[0] > 0 ? -L : L;
-              e.c[0] += sh; e.pts.forEach(p => { p[0] += sh; });
-            } else {
-              const a = 0.22, [cx, cy] = e.home;
-              Object.assign(e, { c: [cx, cy], th: 0, age: 0, pts: refine([[cx - a, cy - a], [cx + a, cy - a], [cx + a, cy + a], [cx - a, cy + a]]) });
-            }
+          // restart elements before they become long slivers (the lines stay readable)
+          const tooOld = (s.field === 'stagnation' && e.age > 3.2) || (s.field === 'vortex' && e.age > 3) || (s.field === 'shear' && e.age > 4);
+          if (tooOld || (out && s.field !== 'uniform' && s.field !== 'shear')) {
+            Object.assign(e, fresh(e.home[0], e.home[1]));
+          } else if (out) { // uniform flow and shear: wrap around horizontally
+            const L = 2 * xmax() + 1, sh = e.c[0] > 0 ? -L : L;
+            e.c[0] += sh; e.pts.forEach(p => { p[0] += sh; }); e.arms.forEach(l => l.forEach(p => { p[0] += sh; }));
           }
         }
       }
@@ -310,21 +313,29 @@
         ctx.closePath();
         ctx.fillStyle = 'rgba(104,36,109,0.18)'; ctx.fill();
         ctx.strokeStyle = COL.purple; ctx.lineWidth = 2; ctx.stroke();
-        if (s.cross) {
-          const r = 0.3 * sc(), cx = X(e.c[0]), cy = Y(e.c[1]);
+        const cx = X(e.c[0]), cy = Y(e.c[1]);
+        if (s.arms) { // material lines: they move (and bend) with the fluid
           ctx.lineWidth = 2.5;
+          e.arms.forEach((l, k) => {
+            ctx.strokeStyle = k ? COL.ink : COL.red;
+            ctx.beginPath(); l.forEach((p, i) => (i ? ctx.lineTo(X(p[0]), Y(p[1])) : ctx.moveTo(X(p[0]), Y(p[1])))); ctx.stroke();
+          });
+        }
+        if (s.cross) { // rigid vorticity meter: turns at the average rate of the two lines, xi/2
+          const r = 1.7 * A * sc();
+          ctx.save(); ctx.setLineDash([6, 4]); ctx.lineWidth = 2.2; ctx.strokeStyle = COL.blue;
           for (let k = 0; k < 2; k++) {
             const a = e.th + k * Math.PI / 2;
-            ctx.strokeStyle = k ? COL.ink : COL.red;
             ctx.beginPath(); ctx.moveTo(cx - r * Math.cos(a), cy + r * Math.sin(a)); ctx.lineTo(cx + r * Math.cos(a), cy - r * Math.sin(a)); ctx.stroke();
           }
-          ctx.fillStyle = COL.ink; ctx.beginPath(); ctx.arc(cx, cy, 3, 0, 7); ctx.fill();
+          ctx.restore();
         }
+        ctx.fillStyle = COL.ink; ctx.beginPath(); ctx.arc(cx, cy, 3, 0, 7); ctx.fill();
       }
       if (s.field === 'vortex' || s.field === 'solid') { ctx.fillStyle = '#999'; ctx.beginPath(); ctx.arc(X(0), Y(0), 3, 0, 7); ctx.fill(); }
       const w = F.w(0, 0);
       out.innerHTML = '<b>ξ<sub>z</sub> = ' + fmt(w, 1) + '</b> → ' + (w === 0 ? '<b>irrotational</b>' : '<b>rotational</b>') + '. ' + F.note +
-        '<br><span style="opacity:.7;font-size:.85em">Purple shape: a material fluid element (its boundary moves with the flow). Cross: turns at the local angular velocity ξ/2.</span>';
+        '<br><span style="opacity:.75;font-size:.85em">Purple shape: a fluid element (its boundary moves with the flow). <span style="color:#c0392b">Red</span> and black: two lines drawn on the fluid, moving with it; they can turn at different rates and bend. <span style="color:#2b6cb0">Dashed blue cross</span>: a rigid vorticity meter, which turns at the <i>average</i> rate of the two lines, ξ/2.</span>';
     }
     reset();
     animate(root, step);

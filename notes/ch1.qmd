@@ -319,7 +319,7 @@ These two conditions are illustrated in @fig-vorticity for the case of a steady 
 Whether an element rotates is a **local** property: it has nothing to do with whether the streamlines are curved.
 
 ::: {.content-visible when-format="html"}
-Use the explorer below to compare a *free vortex* (circular streamlines, no rotation of the element) with *simple shear* (straight streamlines, but the element rotates). The cross at the centre of each element turns at the local angular velocity, which is half the vorticity.
+Use the explorer below to compare a *free vortex* (circular streamlines, no rotation of the element) with *simple shear* (straight streamlines, but the element rotates). Two short lines are drawn on each element (red and black); they move with the fluid, so they can turn at different rates and bend. The dashed blue cross is a rigid *vorticity meter*: it turns at the **average** rate of the two lines, which is the local angular velocity, half the vorticity. In the free vortex the two lines turn by equal amounts in opposite directions, so the element deforms but its average rotation is zero.
 :::
 
 ::: {.content-visible when-format="html"}

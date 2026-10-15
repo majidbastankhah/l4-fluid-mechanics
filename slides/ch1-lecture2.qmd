@@ -118,7 +118,7 @@ Vote, discuss with a neighbour, vote again. Most students pick B (or "neither"):
 <div class="widget" data-widget="vorticity" data-field="vortex"></div>
 
 ::: {.notes}
-Start with the free vortex: the elements orbit the centre but the cross does not turn. Switch to simple shear: straight streamlines, yet the cross turns clockwise and the element shears. Then solid-body rotation (ξ = 2Ω), then stagnation-point flow (Problem 1.5: stretched, not rotated).
+Start with the free vortex: the elements orbit the centre and deform, but the dashed vorticity meter does not turn. Point at the two lines drawn on the fluid: the radial one tilts backwards (outer end slower), the tangential one turns forwards with the curved path, by equal amounts, so the average rotation is zero (ξ_z = ∂u_θ/∂r + u_θ/r = 0). Switch to simple shear: straight streamlines, yet only the vertical line tilts, so the average (the meter) turns clockwise at ξ/2 while the element shears. Then solid-body rotation (ξ = 2Ω), then stagnation-point flow (Problem 1.5: stretched, not rotated).
 
 Stress that this is a local concept: global curvature of streamlines does not necessarily imply local rotation of the element. What matters is whether the element itself spins about its centre.
 :::
