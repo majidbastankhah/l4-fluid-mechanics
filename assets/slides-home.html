@@ -1,6 +1,7 @@
 <!-- Adds "Home" and "All slides" links to the slide menu (☰, bottom left; or press M),
      removes "Speaker View" from its Tools panel, and makes the speaker view (S) show only the
-     current slide and the notes (no upcoming slide).
+     current slide and the notes (no upcoming slide), and lets the stylus erase drawings with its
+     barrel button or eraser end.
      Included in every deck via slides/_metadata.yml (include-after-body). -->
 <style>
 .slide-menu-wrapper .slide-menu-toolbar > li.sm-link { padding: 0; }
@@ -45,6 +46,41 @@
   if (window.Reveal && Reveal.isReady && Reveal.isReady()) whenReady();
   else if (window.Reveal) Reveal.on('ready', whenReady);
   window.addEventListener('load', whenReady);
+})();
+
+// Pen eraser for the chalkboard (C / B): erase by holding the stylus's barrel button or by using
+// the eraser end of the pen, as in OneNote. The chalkboard plugin already erases with the right
+// mouse button, so these pen events are passed on to it as a right-button drag.
+(function () {
+  function isPenEraser(e) {
+    return e.pointerType === 'pen' &&
+      (e.button === 2 || e.button === 5 || (e.buttons & 2) !== 0 || (e.buttons & 32) !== 0);
+  }
+  function onBoard(t) { return t && t.tagName === 'CANVAS' && t.hasAttribute('data-chalkboard'); }
+  let target = null;
+  var R = 20;   // the plugin's sponge erases a circle of radius 20 px below-right of the pointer: centre it on the pen tip
+  function relay(type, e) {
+    target.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window,
+      clientX: e.clientX - R, clientY: e.clientY - R, screenX: e.screenX - R, screenY: e.screenY - R,
+      button: 2, buttons: type === 'mouseup' ? 0 : 2 }));
+  }
+  document.addEventListener('pointerdown', function (e) {
+    if (!onBoard(e.target) || !isPenEraser(e)) return;
+    e.preventDefault(); e.stopPropagation();       // also stops the browser's own mouse events for this stroke
+    target = e.target;
+    try { target.setPointerCapture(e.pointerId); } catch (err) {}
+    relay('mousedown', e);
+  }, true);
+  document.addEventListener('pointermove', function (e) {
+    if (!target || e.pointerType !== 'pen') return;
+    e.preventDefault(); relay('mousemove', e);
+  }, true);
+  ['pointerup', 'pointercancel'].forEach(function (t) {
+    document.addEventListener(t, function (e) {
+      if (!target || e.pointerType !== 'pen') return;
+      e.preventDefault(); relay('mouseup', e); target = null;
+    }, true);
+  });
 })();
 
 // Speaker view (S): show only the current slide (left) and the notes (right), no "upcoming" slide.

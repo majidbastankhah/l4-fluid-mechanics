@@ -316,3 +316,7 @@ The red and black cross on each fluid element used to be a rigid cross turning a
 
 Notes §1.3 text and the Lecture 2 speaker notes were updated to match.
 
+# 18. Stylus eraser on slide drawings (October 2026)
+
+When drawing on the slides (C / B), the stylus now erases while its barrel button is held, or with the eraser end of the pen, as in OneNote, without picking the sponge from the toolbar. The pen events are passed to the chalkboard plugin as a right-button drag (which it already treats as erasing), with the eraser circle centred on the pen tip. Code: `assets/slides-home.html`.
+
