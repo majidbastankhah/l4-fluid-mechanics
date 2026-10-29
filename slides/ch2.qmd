@@ -427,11 +427,47 @@ Mention that the 2/3 term vanishes for incompressible flow, because ∇·q = 0 t
 The shear stress formula should look familiar from Chapter 1 (Couette flow was just τ = μ du/dy).
 :::
 
+## From stresses to $\mu \del^2 u$
+
+Incompressible ($\del \cdot \vect{q} = 0$), constant $\mu$. The stresses acting in $x$:
+$\;\tau_{xx} = 2\mu\, \partial u/\partial x$, $\;\tau_{xy} = \mu \left( \partial u/\partial y + \partial v/\partial x \right)$, $\;\tau_{xz} = \mu \left( \partial u/\partial z + \partial w/\partial x \right)$.
+
+::: {.fragment}
+Differentiate and add (the viscous term of the equation of motion):
+$$
+\frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z}
+= \mu \left( 2\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 v}{\partial x\,\partial y} + \frac{\partial^2 u}{\partial z^2} + \frac{\partial^2 w}{\partial x\,\partial z} \right)
+$$
+:::
+
+::: {.fragment}
+Split $2\,\partial^2 u/\partial x^2$ into two and regroup:
+$$
+= \mu \underbrace{\color{#0066CC}{\left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right)}}_{\del^2 u}
++ \mu \frac{\partial}{\partial x} \underbrace{\color{#CC0000}{\left( \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} \right)}}_{\del \cdot \vect{q} \;=\; 0 \text{ (continuity)}}
+= \mu \del^2 u
+$$
+:::
+
+::: {.fragment}
+So the $x$-equation of motion becomes $\;\boxed{\rho\, Du/Dt = \rho F_x - \partial p/\partial x + \mu \del^2 u}$
+:::
+
+::: {.notes}
+The point of this slide: the cross-derivative terms from the shear stresses (∂²v/∂x∂y, ∂²w/∂x∂z) look messy, but together with the "spare" ∂²u/∂x² from τ_xx they form ∂/∂x of the continuity equation, so they vanish.
+
+What is left is the Laplacian of u: viscosity diffuses x-momentum in all three directions.
+
+If the flow were compressible these terms would not cancel; with Stokes' hypothesis they leave an extra (μ/3) ∂(∇·q)/∂x (notes, constant-viscosity N–S).
+
+The y and z components work the same way, giving the vector form on the next slide.
+:::
+
 ## The Navier–Stokes equations
 
 [[📖 Notes §2.2](../notes/ch2.qmd#sec-ns-special)]{.notes-link}
 
-Substituting the stresses back into the equation of motion.
+The same steps for $y$ and $z$ give the vector form.
 
 **Assumptions:** incompressible ($\rho$ constant); constant viscosity ($\mu$ constant); body force = gravity ($\vect{F} = \vect{g}$).
 
