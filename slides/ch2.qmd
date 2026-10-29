@@ -699,7 +699,7 @@ $$
 ::: {.notes}
 Term by term: (1) steady, so ∂T/∂t = 0; (2) convection u ∂T/∂x + v ∂T/∂y + w ∂T/∂z = 0 because T = T(y) and v = w = 0; (3) Q̇ = 0, no volumetric heating; (4) k∇²T = k d²T/dy²; (5) Φ = μ(du/dy)², the only non-zero velocity gradient.
 
-Physical message: the linear part of T is pure conduction between the plates; the parabolic part is the viscous heating. Its size relative to the imposed temperature difference is the Brinkman number Br = μU²/[k(T∞ − T_w)]. With θ = (T − T_w)/(T∞ − T_w) and η = y/h: dθ/dη = 1 + (Br/2)(1 − 2η), so for Br > 2 the temperature maximum lies inside the gap and heat flows from the fluid into the hotter moving plate.
+Physical message: the linear part of T is pure conduction between the plates; the parabolic part is the viscous heating, which grows with μU² compared with k(T∞ − T_w). If μU² > 2k(T∞ − T_w) the temperature maximum lies inside the gap and heat flows from the fluid into the hotter moving plate too.
 :::
 
 ## See it: Couette flow with viscous heating
@@ -707,7 +707,7 @@ Physical message: the linear part of T is pure conduction between the plates; th
 <div class="widget" data-widget="couette-heat"></div>
 
 ::: {.notes}
-Live demo of the example just verified. Start with negligible viscous heating (small Brinkman number Br = μU²/[k(T∞ − T_w)]): the temperature profile is linear (pure conduction). Increase U (or Br): the parabolic viscous-heating part grows; at Br = 2 the temperature gradient at the moving plate is zero, and for Br > 2 the maximum temperature moves inside the gap.
+Live demo of the example just verified. Start with oil at low U: the profile is almost the straight conduction line. Increase U: the parabolic viscous-heating part grows, and once μU² > 2k(T∞ − T_w) the maximum temperature moves inside the gap (heat then leaves through both plates, including the hotter moving one). Switch to water or air: almost no viscous heating at these speeds.
 :::
 
 ## Initial and boundary conditions

@@ -2,8 +2,6 @@
  * Usage (notes or slides):
  *   <div class="widget" data-widget="couette-heat"></div>
  *   <script src="../assets/widgets/ch2.js"></script>   (path relative to the page)
- * Optional attributes: data-mode="nd" | "dim" (start in non-dimensional or dimensional mode),
- *                      data-br="4" (initial Brinkman number).
  * Plain JavaScript, no libraries. Only initialises the widget names listed in init().
  */
 (function () {
@@ -111,8 +109,8 @@
   // COUETTE-HEAT: plane Couette flow with viscous dissipation
   //   lower plate y = 0: stationary, T = T_w;  upper plate y = h: speed U, T = T_inf
   //   u = U y/h,  k T'' = -mu (U/h)^2
-  //   theta = (T - T_w)/(T_inf - T_w) = eta + (Br/2) eta (1 - eta),  eta = y/h,
-  //   Br = mu U^2 / [k (T_inf - T_w)]
+  //   T - T_w = (T_inf - T_w) eta + (mu U^2 / 2k) eta (1 - eta),  eta = y/h
+  //   (G = mu U^2 / [k (T_inf - T_w)] is used internally only; it is not shown to students)
   // =====================================================================
   function couetteHeat(root) {
     root.appendChild(el('div', { class: 'wtitle' }, 'Couette flow with viscous heating'));
@@ -120,41 +118,25 @@
     let fopts = '';
     for (const key in FLUIDS) fopts += '<option value="' + key + '"' + (key === 'oil' ? ' selected' : '') + '>' + FLUIDS[key].name + '</option>';
     ctrl.innerHTML =
-      '<label>Parameters: <select data-k="mode"><option value="nd">set Br directly</option><option value="dim">choose fluid, U, h, ΔT</option></select></label>' +
-      '<span data-row="nd"><label>Br <input type="range" min="0" max="20" step="0.1" value="4" data-k="Br"><span data-o="Br">4.0</span></label></span>' +
-      '<span data-row="dim" style="display:none;flex-wrap:wrap;gap:.5rem 1rem">' +
-      '<label><select data-k="fluid">' + fopts + '</select></label>' +
-      '<label>U (m/s) <input type="range" min="0.1" max="20" step="0.1" value="5" data-k="U"><span data-o="U">5.0</span></label>' +
-      '<label>h (mm) <input type="range" min="0.05" max="5" step="0.05" value="0.5" data-k="h"><span data-o="h">0.50</span></label>' +
-      '<label>T<sub>∞</sub> − T<sub>w</sub> (K) <input type="range" min="0.5" max="50" step="0.5" value="5" data-k="dT"><span data-o="dT">5.0</span></label>' +
-      '</span>';
+      '<label>Fluid <select data-k="fluid">' + fopts + '</select></label>' +
+      '<label>Plate speed U (m/s) <input type="range" min="0" max="10" step="0.1" value="3" data-k="U"><span data-o="U">3.0</span></label>' +
+      '<label>T<sub>∞</sub> − T<sub>w</sub> (K) <input type="range" min="1" max="20" step="0.5" value="5" data-k="dT"><span data-o="dT">5.0</span></label>';
     root.appendChild(ctrl);
     const H = 400, ctx = makeCanvas(root, H);
     const out = el('div', { class: 'readout' });
     root.appendChild(out);
 
-    const s = { mode: root.getAttribute('data-mode') === 'dim' ? 'dim' : 'nd', Br: 4, fluid: 'oil', U: 5, h: 0.5, dT: 5 };
-    const b0 = parseFloat(root.getAttribute('data-br'));
-    if (isFinite(b0)) s.Br = Math.max(0, Math.min(20, b0));
+    const s = { fluid: 'oil', U: 3, dT: 5 };
     const q = k => ctrl.querySelector('[data-k="' + k + '"]');
     const o = k => ctrl.querySelector('[data-o="' + k + '"]');
-    q('mode').value = s.mode; q('Br').value = s.Br; o('Br').textContent = s.Br.toFixed(1);
-    function showRows() {
-      ctrl.querySelector('[data-row="nd"]').style.display = s.mode === 'nd' ? '' : 'none';
-      ctrl.querySelector('[data-row="dim"]').style.display = s.mode === 'dim' ? 'inline-flex' : 'none';
-    }
-    showRows();
-    q('mode').addEventListener('change', e => { s.mode = e.target.value; showRows(); draw(); });
     q('fluid').addEventListener('change', e => { s.fluid = e.target.value; draw(); });
-    [['Br', 1], ['U', 1], ['h', 2], ['dT', 1]].forEach(([k, d]) => q(k).addEventListener('input', e => {
+    [['U', 1], ['dT', 1]].forEach(([k, d]) => q(k).addEventListener('input', e => {
       s[k] = parseFloat(e.target.value); o(k).textContent = s[k].toFixed(d); draw();
     }));
 
     // --- physics ---
     function state() {
-      let Br, F = null;
-      if (s.mode === 'nd') Br = s.Br;
-      else { F = FLUIDS[s.fluid]; Br = F.mu * s.U * s.U / (F.k * s.dT); }
+      const F = FLUIDS[s.fluid], Br = F.mu * s.U * s.U / (F.k * s.dT);   // internal only
       const theta = eta => eta + 0.5 * Br * eta * (1 - eta);
       const etaMax = Br > 2 ? 0.5 + 1 / Br : 1;                 // location of maximum T
       const thMax = Br > 2 ? (Br + 2) * (Br + 2) / (8 * Br) : 1;  // = theta(etaMax)
@@ -225,8 +207,7 @@
       if (Math.abs(st.qUp) > 1e-3) ctx.fillText('heat flux', xa - 10, yTop - 34);
 
       // ---------- temperature profile plot ----------
-      const dim = s.mode === 'dim';
-      const scaleT = dim ? s.dT : 1;                // convert theta -> plotted variable
+      const scaleT = s.dT;                // convert theta -> plotted variable
       const tAxis = niceMax(thTop * scaleT);
       const X = v => px0 + (px1 - px0) * v / tAxis; // v in plotted units
       ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1; ctx.fillStyle = '#555'; ctx.font = '12px sans-serif';
@@ -244,9 +225,9 @@
       }
       ctx.strokeStyle = COL.ink; ctx.lineWidth = 1.2; ctx.strokeRect(px0, yTop, px1 - px0, gap);
       ctx.fillStyle = COL.ink; ctx.textAlign = 'center'; ctx.font = '13px sans-serif';
-      stext(ctx, dim ? 'T − T_w  (K)' : 'θ = (T − T_w)/(T∞ − T_w)', (px0 + px1) / 2, yBot + 36, 'center', 13);
+      stext(ctx, 'T − T_w  (K)', (px0 + px1) / 2, yBot + 36, 'center', 13);
       ctx.save(); ctx.translate(px0 - 40, (yTop + yBot) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('y/h', 0, 0); ctx.restore();
-      // conduction only (Br = 0)
+      // conduction only (no viscous heating)
       ctx.strokeStyle = '#888'; ctx.lineWidth = 2; ctx.setLineDash([6, 5]);
       ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(scaleT), Y(1)); ctx.stroke(); ctx.setLineDash([]);
       // current profile
@@ -268,37 +249,17 @@
       // legend
       ctx.textAlign = 'left'; ctx.font = '12px sans-serif';
       ctx.strokeStyle = COL.red; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(px0 + 10, yTop - 30); ctx.lineTo(px0 + 34, yTop - 30); ctx.stroke();
-      ctx.fillStyle = COL.ink; ctx.fillText('with viscous dissipation', px0 + 40, yTop - 26);
-      ctx.strokeStyle = '#888'; ctx.lineWidth = 2; ctx.setLineDash([6, 5]); ctx.beginPath(); ctx.moveTo(px0 + 190, yTop - 30); ctx.lineTo(px0 + 214, yTop - 30); ctx.stroke(); ctx.setLineDash([]);
-      ctx.fillText('conduction only (Br = 0)', px0 + 220, yTop - 26);
+      ctx.fillStyle = COL.ink; ctx.fillText('with viscous heating', px0 + 40, yTop - 26);
+      ctx.strokeStyle = '#888'; ctx.lineWidth = 2; ctx.setLineDash([6, 5]); ctx.beginPath(); ctx.moveTo(px0 + 170, yTop - 30); ctx.lineTo(px0 + 194, yTop - 30); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillText('conduction only', px0 + 200, yTop - 26);
 
       // ---------- readout ----------
-      const where = st.Br > 2
-        ? 'inside the fluid at <b>y/h = ' + fmt(st.etaMax, 3) + '</b> (= 1/2 + 1/Br; interior maximum because Br &gt; 2)'
-        : 'at the moving plate, y = h (no interior maximum while Br ≤ 2)';
-      const dirUp = st.qUp > 1e-9 ? 'from the fluid into the upper plate' : (st.qUp < -1e-9 ? 'from the upper plate into the fluid' : 'zero (adiabatic upper plate)');
-      let html = '<b>Br = μU²/[k(T<sub>∞</sub> − T<sub>w</sub>)] = ' + fmt(st.Br, 2) + '</b>. ' +
-        'θ(η) = η + (Br/2) η(1 − η), with η = y/h. <span style="color:' + COL.red + '">Maximum temperature</span> ' + where + '.<br>';
-      if (!dim) {
-        html += '<span style="color:' + COL.orange + '"><b>Wall heat fluxes</b></span> in units of k(T<sub>∞</sub> − T<sub>w</sub>)/h: ' +
-          'lower plate q = 1 + Br/2 = <b>' + fmt(st.qLow, 2) + '</b> (from the fluid into the plate); ' +
-          'upper plate |q| = |Br/2 − 1| = <b>' + fmt(Math.abs(st.qUp), 2) + '</b> (' + dirUp + '). ' +
-          'Net heat removed through the two plates = (1 + Br/2) + (Br/2 − 1) = Br, i.e. μU²/h per unit plate area: exactly the viscous dissipation μ(U/h)² integrated across the gap.';
-      } else {
-        const F = st.F, hm = s.h * 1e-3, flux = F.k * s.dT / hm;
-        const tau = F.mu * s.U / hm, Re = F.rho * s.U * hm / F.mu, rise = (st.thMax - 1) * s.dT;
-        html += F.name + ': μ = ' + fmt(F.mu, 3) + ' Pa s, k = ' + fmt(F.k, 3) + ' W/(m K). ' +
-          'T<sub>max</sub> − T<sub>w</sub> = <b>' + fmt(st.thMax * s.dT, 2) + ' K</b>' + (st.Br > 2 ? ' (' + fmt(rise, 2) + ' K above the moving plate)' : '') + '.<br>' +
-          '<span style="color:' + COL.orange + '"><b>Wall heat fluxes:</b></span> lower plate ' + fmtSI(st.qLow * flux, 'W/m²') + ' (fluid → plate); ' +
-          'upper plate ' + fmtSI(Math.abs(st.qUp) * flux, 'W/m²') + ' (' + dirUp + '). ' +
-          'Shear stress τ = μU/h = ' + fmtSI(tau, 'Pa') + '; power to drive the plate τU = ' + fmtSI(tau * s.U, 'W/m²') +
-          ' = net heat removed through the walls (' + fmtSI((st.qLow + st.qUp) * flux, 'W/m²') + ').<br>' +
-          'Re = ρUh/μ = ' + fmt(Re, Re < 10 ? 2 : 0) +
-          (Re > 1400 ? ' <b style="color:' + COL.red + '">— plane Couette flow is usually turbulent above Re ≈ 1400, so this laminar solution would not apply.</b>' : ' (laminar).') +
-          (st.thMax * s.dT > 30 ? ' <b>A temperature rise this large would change μ appreciably; the constant-property result is then only indicative.</b>' : '');
-      }
-      html += '<br><span style="opacity:.7;font-size:.85em">Steady, laminar, fully developed flow with constant μ and k (temperature dependence of the properties neglected). Tracer dots move with u(y), not to scale. Property values are typical, for illustration.</span>';
-      out.innerHTML = html;
+      const html = st.Br > 2
+        ? '<span style="color:' + COL.red + '"><b>Maximum temperature inside the fluid</b></span> (y/h = ' + fmt(st.etaMax, 2) + '): ' +
+          'T<sub>max</sub> − T<sub>w</sub> = <b>' + fmt(st.thMax * s.dT, 2) + ' K</b>. Heat flows out through <b>both</b> plates.'
+        : '<b>Maximum temperature at the moving plate</b>: viscous heating is too weak to make the fluid hotter than the upper plate.' +
+          (st.Br < 0.05 ? ' The profile is almost the straight conduction line.' : '');
+      out.innerHTML = html + '<br><span style="opacity:.7;font-size:.85em">Steady laminar flow, constant μ and k; typical property values. Tracer dots move with u(y), not to scale.</span>';
     }
     draw();
     animate(root, step);
