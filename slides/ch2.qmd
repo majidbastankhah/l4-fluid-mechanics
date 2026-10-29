@@ -559,6 +559,8 @@ $$
 \boxed{\;\rho C_v \frac{DT}{Dt} = k \del^2 T + \Phi + \rho \dot{Q}\;}
 $$
 
+[$k$: thermal conductivity (W m$^{-1}$ K$^{-1}$), from Fourier's law, heat flux $= -k\del T$. &emsp; $C_v$: specific heat at constant volume.]{.small}
+
 ::: {.notes}
 Talking points:
 
@@ -566,6 +568,28 @@ Talking points:
 - Why temperature? We convert from total energy (E) to temperature (T) because that is what we measure in engineering (internal energy e = C_v T).
 - Assumptions: this equation assumes ρ, k and C_v are constant (for an incompressible fluid C_v = C_p).
 - The terms: we have conduction, dissipation, and a new term Q̇ for internal heat sources (per unit mass).
+:::
+
+## The dissipation function $\Phi$
+
+[[📖 Notes §2.3](../notes/ch2.qmd#sec-energy)]{.notes-link}
+
+$\Phi$ is the **viscous dissipation function**: the rate at which viscous stresses turn mechanical energy into heat, per unit volume. For an incompressible fluid:
+
+$$
+\Phi = \mu \Bigg[ \underbrace{2\left(\frac{\partial u}{\partial x}\right)^2 + \cdots}_{\text{3 stretching terms}} \; + \; \underbrace{\left(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}\right)^2 + \cdots}_{\text{3 shearing terms}} \Bigg]
+$$
+
+- A sum of squares, so $\Phi \ge 0$: viscous friction can only heat the fluid, never cool it.
+- Built from the same velocity gradients as the viscous stresses.
+- Full expression on the formula sheet (Cartesian and cylindrical).
+
+::: {.notes}
+Students do not need to derive this; they need to read off which terms survive for a given flow.
+
+Only one term of each kind is shown; the other terms follow the same pattern in y and z (full form on the formula sheet and in the notes).
+
+Ask: for simple shear u = u(y), v = w = 0, which term survives? (Answer: only (∂u/∂y)², so Φ = μ(du/dy)², which is used in the Couette example in a few slides.)
 :::
 
 ## Physical interpretation of terms (energy)
@@ -656,7 +680,7 @@ Set the problem and give them two minutes to decide which terms vanish before mo
 :::
 
 ::: {.fragment}
-**Conduction:** $k\del^2 T = k\, d^2 T/dy^2$. &emsp; **Dissipation:** only $\partial u/\partial y \neq 0$, so $\Phi = \mu (du/dy)^2 = \mu U^2/h^2$.
+**Conduction:** $k\del^2 T = k\, d^2 T/dy^2$. &emsp; **Dissipation:** in $\Phi$ only $\partial u/\partial y \neq 0$, so $\Phi = \mu (du/dy)^2 = \mu U^2/h^2$.
 :::
 
 ::: {.fragment}
